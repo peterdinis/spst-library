@@ -1,7 +1,9 @@
+"use client"
+
 import { FC } from "react";
 import Header from "../shared/Header";
 import { Input } from "~/components/ui/input";
-import { Link } from "lucide-react";
+import { Link, Loader2 } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import {
   Card,
@@ -9,8 +11,21 @@ import {
   CardTitle,
   CardDescription,
 } from "~/components/ui/card";
+import { api } from "~/trpc/react";
 
 const AllBooksWrapper: FC = () => {
+  const {data, isLoading, isError} = api.book.fetchBooks.useQuery();
+
+  if(isLoading) {
+    return <Loader2 className="animate-spin" />
+  }
+
+  if(isError) {
+      throw new Error("Shomething went wrong");
+  }
+
+  console.log(data);
+
   return (
     <>
       <Header text="Všetky knihy" />
