@@ -1,0 +1,36 @@
+import { FC } from 'react';
+import Link from 'next/link';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { Button } from '~/components/ui/button';
+import { Card, CardHeader, CardTitle, CardDescription } from '~/components/ui/card';
+import { IGlobalCardType } from '~/app/types/sharedTypes';
+
+const GlobalCard: FC<IGlobalCardType> = ({
+    name,
+    description,
+    id,
+    linkName,
+    image,
+}) => {
+    return (
+        <Card>
+            {!image ? (
+                <></>
+            ) : (
+                <LazyLoadImage
+                    src={image as unknown as string}
+                    alt={name as unknown as string}
+                />
+            )}
+            <CardHeader>
+                <CardTitle>{name}</CardTitle>
+                <CardDescription>{description}</CardDescription>
+            </CardHeader>
+            <Button variant={'default'} size='lg'>
+                <Link href={`/${linkName}/${id}`}>Detail</Link>
+            </Button>
+        </Card>
+    );
+};
+
+export default GlobalCard;
