@@ -18,3 +18,15 @@ model Post {
 
     @@index([name])
 }
+
+model Book {
+    id          Int     @id @default(autoincrement())
+    name        String
+    description String
+    image       String
+    authorName  String
+    year        Int
+    pages       Int
+    isAvaiable  Boolean
+    itemsInStock Int
+}

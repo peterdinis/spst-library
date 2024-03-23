@@ -21,10 +21,10 @@ const AllBooksWrapper: FC = () => {
       </div>
 
       {/* TODO: Update later */}
-      <div className="className='mx-auto xl:grid-cols-4' mt-5 grid gap-8 overflow-x-auto pt-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className='mx-auto xl:grid-cols-4 mt-5 grid gap-8 overflow-x-auto pt-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
         <Card>
           <img
-            src={"https://picsum.photos/200/300"}
+            src={"https://picsum.photos/400/300"}
             alt={"RORORORO"}
           />
           <CardHeader>
