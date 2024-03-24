@@ -12,7 +12,7 @@ import {
 const GlobalPagination: FC = () => {
     return (
         <>
-            <Pagination>
+            <Pagination className='mt-5'>
                 <PaginationContent>
                     <PaginationItem>
                         <PaginationPrevious href='#' />

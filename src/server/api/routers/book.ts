@@ -30,4 +30,29 @@ export const bookRouter = createTRPCRouter({
 
             return findOneBook;
         }),
+
+        searchForBook: publicProcedure.input(z.object({
+            name: z.string().min(1)
+        })).query(async({ctx, input}) => {
+            const findSpecificBooks = await ctx.db.book.findMany({
+                where: {
+                    AND: [
+                        {
+                            name: {
+                                contains: input.name 
+                            }
+                        },
+                    ]
+                }
+            });
+
+            if(!findSpecificBooks) {
+                throw new TRPCError({
+                    message: "Book with these name does not exists",
+                    code: "NOT_FOUND"
+                })
+            };
+
+            return findSpecificBooks
+        })
 });

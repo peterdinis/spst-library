@@ -29,7 +29,6 @@ const BookDetail: FC = () => {
         );
     }
 
-    console.log('D', data);
     return (
         <>
             <Header text='Detail knihy' />
@@ -83,6 +82,26 @@ const BookDetail: FC = () => {
                                         : {data && data.itemsInStock}
                                     </p>
 
+                                    <div>
+                                        <p className='mb-4 mt-3 text-2xl font-light  leading-relaxed'>
+                                            <span className='font-bold'>
+                                                {' '}
+                                                Kniha je:
+                                            </span>{' '}
+                                            {data &&
+                                            data.isAvaiable !== true ? (
+                                                <span className='text-red-800'>
+                                                    Nedostupná
+                                                </span>
+                                            ) : (
+                                                <span className='text-green-800'>
+                                                    Dostupná
+                                                </span>
+                                            )}
+                                            <br />
+                                        </p>
+                                    </div>
+
                                     <hr className='mt-6' />
                                     <div className='flex'>
                                         <Button
@@ -99,7 +118,7 @@ const BookDetail: FC = () => {
                                             size={'lg'}
                                             className='ml-4 mt-5'
                                         >
-                                            Požičať knihu TODO
+                                            TODO Požičanie knihy
                                         </Button>
                                     </div>
                                     <br />
