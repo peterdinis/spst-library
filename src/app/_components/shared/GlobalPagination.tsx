@@ -9,7 +9,7 @@ import {
   PaginationNext,
 } from "~/components/ui/pagination";
 
-const BooksPagination: FC = () => {
+const GlobalPagination: FC = () => {
   return (
     <>
       <Pagination>
@@ -32,4 +32,4 @@ const BooksPagination: FC = () => {
   );
 };
 
-export default BooksPagination;
+export default GlobalPagination;

@@ -1,9 +1,8 @@
 import { NextPage } from "next";
+import AllCategories from "../_components/categories/AllCategories";
 
 const CategoriesPage: NextPage = () => {
-    return (
-        <></>
-    )
+    return <AllCategories />
 }
 
 export default CategoriesPage;

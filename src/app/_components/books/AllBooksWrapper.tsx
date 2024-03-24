@@ -6,7 +6,7 @@ import { Input } from "~/components/ui/input";
 import { Loader2 } from "lucide-react";
 import { api } from "~/trpc/react";
 import GlobalCard from "../shared/GlobalCard";
-import BooksPagination from "./BooksPagination";
+import GlobalPagination from "../shared/GlobalPagination";
 
 const AllBooksWrapper: FC = () => {
   const { data, isLoading, isError } = api.book.fetchBooks.useQuery();
@@ -45,7 +45,7 @@ const AllBooksWrapper: FC = () => {
           })}
       </div>
 
-      <BooksPagination />
+      <GlobalPagination />
     </>
   );
 };
