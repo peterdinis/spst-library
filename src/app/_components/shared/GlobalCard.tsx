@@ -18,6 +18,7 @@ const GlobalCard: FC<IGlobalCardType> = ({
                 <></>
             ) : (
                 <LazyLoadImage
+                    className='h-auto max-w-sm rounded-lg shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30'
                     src={image as unknown as string}
                     alt={name as unknown as string}
                 />
