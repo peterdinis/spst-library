@@ -10,7 +10,7 @@ import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 const BookDetail: FC = () => {
     const { id } = useParams();
     const {data, isLoading, isError} = api.book.fetchBookById.useQuery({
-        id: id as unknown as number
+        id: Number(id)
     })
 
     if(isLoading) {

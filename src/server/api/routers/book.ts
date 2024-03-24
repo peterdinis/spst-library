@@ -11,7 +11,7 @@ export const bookRouter = createTRPCRouter({
     fetchBookById: publicProcedure.input(z.object({
         id: z.number()
     })).query(async({ctx, input}) => {
-        const findOneBook = await ctx.db.book.findFirst({
+        const findOneBook = await ctx.db.book.findUnique({
             where: {
                 id: input.id
             }
