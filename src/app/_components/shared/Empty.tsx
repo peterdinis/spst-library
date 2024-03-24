@@ -2,8 +2,8 @@ import { Ghost } from 'lucide-react';
 import { FC } from 'react';
 
 type EmptyProps = {
-    text: string
-}
+    text: string;
+};
 
 const Empty: FC<EmptyProps> = ({ text }: EmptyProps) => {
     return (

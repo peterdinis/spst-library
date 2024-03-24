@@ -1,4 +1,4 @@
-import { BookType } from "./bookTypes";
+import { BookType } from './bookTypes';
 
 type GlobalExtendedProps = {
     linkName: string;

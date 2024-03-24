@@ -1,8 +1,8 @@
-import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
-import { bookRouter } from "./routers/book";
+import { createCallerFactory, createTRPCRouter } from '~/server/api/trpc';
+import { bookRouter } from './routers/book';
 
 export const appRouter = createTRPCRouter({
-  book: bookRouter
+    book: bookRouter,
 });
 
 export type AppRouter = typeof appRouter;

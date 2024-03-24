@@ -1,33 +1,38 @@
-"use client"
+'use client';
 
-import { FC } from "react";
-import Header from "../shared/Header";
-import { useParams } from "next/navigation";
-import { api } from "~/trpc/react";
-import { Loader2 } from "lucide-react";
-import GlobalErrorComponent from "../shared/GlobalErrorComponent";
-import {format} from "date-fns";
-import { Button } from "~/components/ui/button";
-import Link from "next/link";
+import { FC } from 'react';
+import Header from '../shared/Header';
+import { useParams } from 'next/navigation';
+import { api } from '~/trpc/react';
+import { Loader2 } from 'lucide-react';
+import GlobalErrorComponent from '../shared/GlobalErrorComponent';
+import { format } from 'date-fns';
+import { Button } from '~/components/ui/button';
+import Link from 'next/link';
 
 const BookDetail: FC = () => {
     const { id } = useParams();
-    const {data, isLoading, isError} = api.book.fetchBookById.useQuery({
-        id: Number(id)
-    })
+    const { data, isLoading, isError } = api.book.fetchBookById.useQuery({
+        id: Number(id),
+    });
 
-    if(isLoading) {
-        return <Loader2 className="animate-spin" />
+    if (isLoading) {
+        return <Loader2 className='animate-spin' />;
     }
 
-    if(isError) {
-        return <GlobalErrorComponent statusCode="404" message="Kniha pod týmto id neexistuje" />
+    if (isError) {
+        return (
+            <GlobalErrorComponent
+                statusCode='404'
+                message='Kniha pod týmto id neexistuje'
+            />
+        );
     }
 
-    console.log("D", data);
+    console.log('D', data);
     return (
         <>
-            <Header text="Detail knihy" />
+            <Header text='Detail knihy' />
             {!isLoading ? (
                 <>
                     <section className='body-font mt-2 overflow-hidden bg-white text-gray-700'>
@@ -105,7 +110,7 @@ const BookDetail: FC = () => {
                 </>
             ) : null}
         </>
-    )
-}
+    );
+};
 
 export default BookDetail;

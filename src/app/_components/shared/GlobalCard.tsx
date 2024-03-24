@@ -2,7 +2,12 @@ import { FC } from 'react';
 import Link from 'next/link';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Button } from '~/components/ui/button';
-import { Card, CardHeader, CardTitle, CardDescription } from '~/components/ui/card';
+import {
+    Card,
+    CardHeader,
+    CardTitle,
+    CardDescription,
+} from '~/components/ui/card';
 import { IGlobalCardType } from '~/app/types/sharedTypes';
 
 const GlobalCard: FC<IGlobalCardType> = ({

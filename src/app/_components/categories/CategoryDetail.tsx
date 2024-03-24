@@ -1,9 +1,7 @@
-import { FC } from "react";
+import { FC } from 'react';
 
 const CategoryDetail: FC = () => {
-    return (
-        <></>
-    )
-}
+    return <></>;
+};
 
 export default CategoryDetail;

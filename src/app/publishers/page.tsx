@@ -1,9 +1,7 @@
-import { NextPage } from "next";
+import { NextPage } from 'next';
 
 const PublishersPage: NextPage = () => {
-    return (
-        <>rrrrrr</>
-    )
-}
+    return <>rrrrrr</>;
+};
 
 export default PublishersPage;
