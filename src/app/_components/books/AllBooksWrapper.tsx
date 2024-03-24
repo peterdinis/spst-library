@@ -3,7 +3,7 @@
 import { FC } from "react";
 import Header from "../shared/Header";
 import { Input } from "~/components/ui/input";
-import { Loader2 } from "lucide-react";
+import { Ghost, Loader2 } from "lucide-react";
 import { api } from "~/trpc/react";
 import GlobalCard from "../shared/GlobalCard";
 import GlobalPagination from "../shared/GlobalPagination";
@@ -12,11 +12,15 @@ const AllBooksWrapper: FC = () => {
   const { data, isLoading, isError } = api.book.fetchBooks.useQuery();
 
   if (isLoading) {
-    return <Loader2 className="animate-spin" />;
+    return <Loader2 className="animate-spin w-8 h-8" />;
   }
 
   if (isError) {
-    throw new Error("Shomething went wrong");
+    return (
+      <>
+      <Ghost className="animate-bounce w-8 h-8" /> <span className="font-bold">Knihy neboli nájdené</span>
+      </>
+    )
   }
 
   return (
