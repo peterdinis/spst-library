@@ -2,15 +2,15 @@
 
 import { FC, useState } from 'react';
 import Header from '../shared/Header';
-import {
-    Dialog,
-    DialogTrigger,
-    DialogContent,
-    DialogTitle,
-    DialogDescription,
-} from '@radix-ui/react-dialog';
 import { Button } from '~/components/ui/button';
-import { DialogHeader } from '~/components/ui/dialog';
+import {
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+    Dialog,
+    DialogContent,
+    DialogDescription,
+} from '~/components/ui/dialog';
 import { Input } from '~/components/ui/input';
 import { useToast } from '~/components/ui/use-toast';
 

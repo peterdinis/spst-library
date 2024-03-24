@@ -9,6 +9,7 @@ import GlobalErrorComponent from '../shared/GlobalErrorComponent';
 import { format } from 'date-fns';
 import { Button } from '~/components/ui/button';
 import Link from 'next/link';
+import BookingModal from '../booking/BookingModal';
 
 const BookDetail: FC = () => {
     const { id } = useParams();
@@ -118,7 +119,7 @@ const BookDetail: FC = () => {
                                             size={'lg'}
                                             className='ml-4 mt-5'
                                         >
-                                            TODO Požičanie knihy
+                                            <BookingModal />
                                         </Button>
                                     </div>
                                     <br />
