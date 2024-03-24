@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import React, { FC, useState } from 'react';
 import Header from '../shared/Header';
 import { Input } from '~/components/ui/input';
 import { Ghost, Loader2 } from 'lucide-react';
@@ -10,6 +10,7 @@ import GlobalPagination from '../shared/GlobalPagination';
 
 const AllBooksWrapper: FC = () => {
     const { data, isLoading, isError } = api.book.fetchBooks.useQuery();
+    const [searchTerm, setSearchTerm] = useState('');
 
     if (isLoading) {
         return <Loader2 className='h-8 w-8 animate-spin' />;
@@ -24,30 +25,40 @@ const AllBooksWrapper: FC = () => {
         );
     }
 
+    const filteredData = data && data.filter((item: any) =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <>
             <Header text='Všetky knihy' />
             <div className='mt-5'>
                 <form>
-                    <Input placeholder='Hľadaj knihu...' />
+                    <Input
+                        placeholder='Hľadaj knihu...'
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
                 </form>
             </div>
 
+            {filteredData && filteredData.length === 0 && (
+                <div className='flex justify-center align-top mt-5'>
+                    <span className="text-center font-bold text-gray-500"><Ghost className='w-8 h-8 animate-bounce' />Žiadne knihy neboli nájdené.</span>
+                </div>
+            )}
+
             <div className='mx-auto mt-5 grid gap-8 overflow-x-auto pt-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-                {data &&
-                    data.map((item: any) => {
-                        return (
-                            <>
-                                <GlobalCard
-                                    image={item.image}
-                                    linkName='books'
-                                    name={item.name}
-                                    description={item.description}
-                                    id={item.id}
-                                />
-                            </>
-                        );
-                    })}
+                {filteredData && filteredData.map((filteredItem: any) => (
+                    <GlobalCard
+                        key={filteredItem.id}
+                        image={filteredItem.image}
+                        linkName='books'
+                        name={filteredItem.name}
+                        description={filteredItem.description}
+                        id={filteredItem.id}
+                    />
+                ))}
             </div>
 
             <GlobalPagination />
