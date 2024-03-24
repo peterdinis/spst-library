@@ -32,7 +32,8 @@ export const bookRouter = createTRPCRouter({
         }),
 
         searchForBook: publicProcedure.input(z.object({
-            name: z.string().min(1)
+            name: z.string().min(1),
+            authorName: z.string().min(1),
         })).query(async({ctx, input}) => {
             const findSpecificBooks = await ctx.db.book.findMany({
                 where: {
@@ -42,6 +43,12 @@ export const bookRouter = createTRPCRouter({
                                 contains: input.name 
                             }
                         },
+
+                        {
+                            authorName: {
+                                contains: input.authorName
+                            }
+                        }
                     ]
                 }
             });
