@@ -11,24 +11,33 @@ datasource db {
 }
 
 model Book {
-    id          Int     @id @default(autoincrement())
-    name        String
-    description String
-    image       String
-    authorName  String
-    year        Int
-    pages       Int
-    isAvaiable  Boolean
+    id           Int     @id @default(autoincrement())
+    name         String
+    description  String
+    image        String
+    authorName   String
+    year         Int
+    pages        Int
+    isAvaiable   Boolean
     itemsInStock Int
+    categoryNmae String
 }
 
 model Category {
-    id          Int     @id @default(autoincrement())
+    id          Int    @id @default(autoincrement())
     name        String
     description String
 }
 
 model Publisher {
-    id          Int     @id @default(autoincrement())
-    name        String
+    id   Int    @id @default(autoincrement())
+    name String
+}
+
+model Author {
+    id   Int    @id @default(autoincrement())
+    name String
+    deathYear String?
+    birthYear String
+    
 }
