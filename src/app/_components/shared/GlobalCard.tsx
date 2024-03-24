@@ -26,7 +26,7 @@ const GlobalCard: FC<IGlobalCardType> = ({
                         {description}
                     </p>
                     <div className='flex items-center'>
-                        <Button variant={"default"} size={"lg"}>
+                        <Button variant={'default'} size={'lg'}>
                             <Link href={`/${linkName}/${id}`}>Detail</Link>
                         </Button>
                     </div>

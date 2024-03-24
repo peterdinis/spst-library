@@ -25,9 +25,11 @@ const AllBooksWrapper: FC = () => {
         );
     }
 
-    const filteredData = data && data.filter((item: any) =>
-        item.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const filteredData =
+        data &&
+        data.filter((item: any) =>
+            item.name.toLowerCase().includes(searchTerm.toLowerCase()),
+        );
 
     return (
         <>
@@ -43,22 +45,26 @@ const AllBooksWrapper: FC = () => {
             </div>
 
             {filteredData && filteredData.length === 0 && (
-                <div className='flex justify-center align-top mt-5'>
-                    <span className="text-center font-bold text-gray-500"><Ghost className='w-8 h-8 animate-bounce' />Žiadne knihy neboli nájdené.</span>
+                <div className='mt-5 flex justify-center align-top'>
+                    <span className='text-center font-bold text-gray-500'>
+                        <Ghost className='h-8 w-8 animate-bounce' />
+                        Žiadne knihy neboli nájdené.
+                    </span>
                 </div>
             )}
 
             <div className='mx-auto mt-5 grid gap-8 overflow-x-auto pt-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-                {filteredData && filteredData.map((filteredItem: any) => (
-                    <GlobalCard
-                        key={filteredItem.id}
-                        image={filteredItem.image}
-                        linkName='books'
-                        name={filteredItem.name}
-                        description={filteredItem.description}
-                        id={filteredItem.id}
-                    />
-                ))}
+                {filteredData &&
+                    filteredData.map((filteredItem: any) => (
+                        <GlobalCard
+                            key={filteredItem.id}
+                            image={filteredItem.image}
+                            linkName='books'
+                            name={filteredItem.name}
+                            description={filteredItem.description}
+                            id={filteredItem.id}
+                        />
+                    ))}
             </div>
 
             <GlobalPagination />

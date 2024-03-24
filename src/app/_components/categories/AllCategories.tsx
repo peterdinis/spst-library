@@ -6,7 +6,7 @@ const AllCategories: FC = () => {
         <>
             <Header text='Všetky kategórie' />
         </>
-    )
+    );
 };
 
 export default AllCategories;

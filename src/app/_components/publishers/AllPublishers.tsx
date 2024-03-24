@@ -6,7 +6,7 @@ const AllPublishers: FC = () => {
         <>
             <Header text='Všetky vydavateľstvá' />
         </>
-    )
+    );
 };
 
 export default AllPublishers;

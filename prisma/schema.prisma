@@ -20,7 +20,7 @@ model Book {
     pages        Int
     isAvaiable   Boolean
     itemsInStock Int
-    categoryNmae String
+    categoryNmae String  @default("ABC")
 }
 
 model Category {
@@ -39,5 +39,8 @@ model Author {
     name String
     deathYear String?
     birthYear String
-    
+    description String
+    litPeriod String
+    totalBooks Int
+
 }

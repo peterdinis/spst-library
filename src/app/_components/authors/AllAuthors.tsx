@@ -6,7 +6,7 @@ const AllAuthors: FC = () => {
         <>
             <Header text='Všetky spisovatelia' />
         </>
-    )
+    );
 };
 
 export default AllAuthors;
