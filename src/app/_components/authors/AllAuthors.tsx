@@ -4,7 +4,7 @@ import Header from '../shared/Header';
 const AllAuthors: FC = () => {
     return (
         <>
-            <Header text='Všetky spisovatelia' />
+            <Header text='Všetci spisovatelia' />
         </>
     );
 };

@@ -6,9 +6,9 @@ interface IHeaderProps {
 
 const Header: FC<IHeaderProps> = ({ text }: IHeaderProps) => {
     return (
-        <pre className='mt-5 scroll-m-20 text-center text-4xl font-extrabold tracking-tight lg:text-5xl'>
+        <h2 className='mt-5 text-center font-extrabold tracking-tight text-4xl lg:text-5xl'>
             {text}
-        </pre>
+        </h2>
     );
 };
 
