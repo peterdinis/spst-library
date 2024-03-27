@@ -11,7 +11,7 @@ import {
 
 const GlobalPagination: FC = () => {
     return (
-        <>
+        <div className='mt-5'>
             <Pagination className='mt-5'>
                 <PaginationContent>
                     <PaginationItem>
@@ -28,7 +28,7 @@ const GlobalPagination: FC = () => {
                     </PaginationItem>
                 </PaginationContent>
             </Pagination>
-        </>
+        </div>
     );
 };
 
