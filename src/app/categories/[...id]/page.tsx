@@ -1,8 +1,8 @@
-import { NextPage } from "next";
-import CategoryDetail from "~/app/_components/categories/CategoryDetail";
+import { NextPage } from 'next';
+import CategoryDetail from '~/app/_components/categories/CategoryDetail';
 
 const CategoryDetailPage: NextPage = () => {
-    return <CategoryDetail />
-}
+    return <CategoryDetail />;
+};
 
 export default CategoryDetailPage;
