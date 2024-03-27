@@ -2,7 +2,7 @@ import { FC } from "react";
 
 const ProfileWrapper: FC = () => {
     return (
-        <></>
+        <>PROFILE</>
     )
 }
 
