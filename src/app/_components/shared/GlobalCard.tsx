@@ -25,7 +25,7 @@ const GlobalCard: FC<IGlobalCardType> = ({
                     <p className='block truncate text-lg font-bold capitalize text-black'>
                         {description}
                     </p>
-                    <div className='flex p-4 items-center'>
+                    <div className='flex items-center p-4'>
                         <Button variant={'default'} size={'lg'}>
                             <Link href={`/${linkName}/${id}`}>Detail</Link>
                         </Button>

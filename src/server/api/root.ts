@@ -8,7 +8,7 @@ export const appRouter = createTRPCRouter({
     book: bookRouter,
     category: categoryRouter,
     publisher: publisherRouter,
-    author: authorRouter
+    author: authorRouter,
 });
 
 export type AppRouter = typeof appRouter;

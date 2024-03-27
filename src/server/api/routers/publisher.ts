@@ -1,5 +1,3 @@
-import { createTRPCRouter } from "../trpc";
+import { createTRPCRouter } from '../trpc';
 
-export const publisherRouter = createTRPCRouter({
-
-});
+export const publisherRouter = createTRPCRouter({});

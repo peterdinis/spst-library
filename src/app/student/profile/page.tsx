@@ -1,9 +1,7 @@
-import { NextPage } from "next";
+import { NextPage } from 'next';
 
 const StudentProfilePage: NextPage = () => {
-    return (
-        <></>
-    )
-}
+    return <></>;
+};
 
 export default StudentProfilePage;

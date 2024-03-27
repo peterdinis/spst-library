@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import AllAuthors from '../_components/authors/AllAuthors';
 
 const AuthorsPage: NextPage = () => {
-    return <AllAuthors />
+    return <AllAuthors />;
 };
 
 export default AuthorsPage;
