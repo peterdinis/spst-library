@@ -4,7 +4,7 @@ import { FC, useState, useRef, useCallback, useMemo } from 'react';
 import QuillEditor from 'react-quill';
 
 const Editor: FC = () => {
-    const [value, setValue] = useState<string>('Some default content');
+    const [value, setValue] = useState<string>('Popis pre knihu');
     const quill = useRef<any | null>(null);
 
     const imageHandler = useCallback(() => {
@@ -82,6 +82,7 @@ const Editor: FC = () => {
     return (
         <div className='mt-4'>
             <QuillEditor
+                // className='peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600'
                 ref={(el: any) => (quill.current = el)}
                 theme='snow'
                 value={value}
