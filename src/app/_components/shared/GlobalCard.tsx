@@ -13,11 +13,17 @@ const GlobalCard: FC<IGlobalCardType> = ({
     return (
         <div className='w-72 rounded-xl bg-white shadow-md duration-500'>
             <div>
-                <img
-                    src={image}
-                    alt={name}
-                    className='h-80 w-72 rounded-t-xl object-cover'
-                />
+                {image ? (
+                    <>
+                        <img
+                            src={image}
+                            alt={name}
+                            className='h-80 w-72 rounded-t-xl object-cover'
+                        />
+                    </>
+                ) : (
+                    <></>
+                )}
                 <div className='w-72 px-4 py-3'>
                     <span className='mr-3 text-xs uppercase text-gray-400'>
                         {name}
