@@ -1,7 +1,7 @@
 import '~/styles/globals.css';
 
 import { Inter } from 'next/font/google';
-
+import 'react-quill/dist/quill.snow.css'
 import { TRPCReactProvider } from '~/trpc/react';
 import Navigation from './_components/shared/Navigation';
 import { Toaster } from '~/components/ui/toaster';
