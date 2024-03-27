@@ -1,7 +1,13 @@
 import { FC } from 'react';
 import Header from '../shared/Header';
 import { Input } from '~/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from '~/components/ui/select';
 import { Button } from '~/components/ui/button';
 
 const CreateCategory: FC = () => {
@@ -23,8 +29,10 @@ const CreateCategory: FC = () => {
                         placeholder='Popis kategórie'
                     />
                 </div>
-                <div className="flex justify-center align-top">
-                    <Button variant={"default"} size={"lg"}>Pridaj novú kategóiu</Button>
+                <div className='flex justify-center align-top'>
+                    <Button variant={'default'} size={'lg'}>
+                        Pridaj novú kategóiu
+                    </Button>
                 </div>
             </form>
         </>

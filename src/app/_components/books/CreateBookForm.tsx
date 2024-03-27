@@ -72,8 +72,8 @@ const CreateBookForm: FC = () => {
                     />
                 </div>
 
-                <div className="flex justify-center align-top">
-                    <Button variant={"default"} size={"lg"}>
+                <div className='flex justify-center align-top'>
+                    <Button variant={'default'} size={'lg'}>
                         Pridaj novú knihu
                     </Button>
                 </div>
