@@ -10,12 +10,15 @@ const CreateBookForm: FC = () => {
     return (
         <>
           <Header text='Tvorba novej knihy' />
+          <div className="mt-4">
           <ReactQuill
             theme='snow'
             value={convertedText}
+            preserveWhitespace={true}
             onChange={setConvertedText}
             style={{minHeight: '300px'}}
             />
+          </div>
         </>
     )
 };
