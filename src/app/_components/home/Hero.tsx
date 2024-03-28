@@ -39,8 +39,8 @@ const Hero: FC = () => {
                             alt='Scholl homepage'
                             className='rounded-xl bg-transparent md:absolute md:-ml-28 md:w-1/2'
                             placeholder='blur'
-                            width={800}
-                            height={800}
+                            width={1200}
+                            height={1200}
                         />
                     </div>
                 </div>
