@@ -1,11 +1,8 @@
 import { NextPage } from "next";
+import AdminRegisterForm from "~/app/_components/admin/AdminRegisterForm";
 
 const RegisterAdminPage: NextPage = () => {
-    return (
-        <>
-        rrrr
-        </>
-    )
+    return <AdminRegisterForm />
 }
 
 export default RegisterAdminPage;
