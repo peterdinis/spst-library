@@ -15,7 +15,12 @@ const inter = Inter({
 export const metadata = {
     title: 'Spsť Knižnica',
     description: 'Stránka školskej webovej knižnice',
-    icons: [{ rel: 'icon', url: 'https://www.spsbj.sk/wp-content/uploads/cropped-original-32x32.png' }],
+    icons: [
+        {
+            rel: 'icon',
+            url: 'https://www.spsbj.sk/wp-content/uploads/cropped-original-32x32.png',
+        },
+    ],
 } as Metadata;
 
 export default function RootLayout({
