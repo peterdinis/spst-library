@@ -1,9 +1,7 @@
-import { FC } from "react";
+import { FC } from 'react';
 
 const ProfileWrapper: FC = () => {
-    return (
-        <>PROFILE</>
-    )
-}
+    return <>PROFILE</>;
+};
 
 export default ProfileWrapper;
