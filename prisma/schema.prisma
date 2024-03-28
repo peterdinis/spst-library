@@ -42,5 +42,5 @@ model Author {
     description String
     litPeriod String
     totalBooks Int
-
+    authorImage String @default("")
 }
