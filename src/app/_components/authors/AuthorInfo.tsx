@@ -1,9 +1,7 @@
-import { FC } from "react";
+import { FC } from 'react';
 
 const AuthorInfo: FC = () => {
-    return (
-        <>rrrr</>
-    )
-}
+    return <>rrrr</>;
+};
 
 export default AuthorInfo;

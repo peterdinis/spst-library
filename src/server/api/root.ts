@@ -14,7 +14,7 @@ export const appRouter = createTRPCRouter({
     author: authorRouter,
     booking: bookingRouter,
     student: studentRouter,
-    teacher: teacherRouter
+    teacher: teacherRouter,
 });
 
 export type AppRouter = typeof appRouter;

@@ -1,11 +1,7 @@
-import { FC } from "react";
+import { FC } from 'react';
 
 const PublisherInfo: FC = () => {
-    return (
-        <>
-        totot
-        </>
-    )
-}
+    return <>totot</>;
+};
 
-export default PublisherInfo
+export default PublisherInfo;

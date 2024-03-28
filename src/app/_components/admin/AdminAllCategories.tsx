@@ -1,11 +1,7 @@
-import { FC } from "react"
+import { FC } from 'react';
 
 const AdminAllCategories: FC = () => {
-    return (
-        <>
-        
-        </>
-    )
-}
+    return <></>;
+};
 
-export default AdminAllCategories
+export default AdminAllCategories;

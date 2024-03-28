@@ -1,11 +1,7 @@
-import { FC } from "react"
+import { FC } from 'react';
 
 const AdminAllPublishers: FC = () => {
-    return (
-        <>
-        
-        </>
-    )
-}
+    return <></>;
+};
 
 export default AdminAllPublishers;
