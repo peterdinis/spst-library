@@ -101,13 +101,13 @@ const BookDetail: FC = () => {
                                             data.isAvaiable !== true ? (
                                                 <Badge
                                                     variant={'destructive'}
-                                                    className='text-lg'
+                                                    className='text-sm'
                                                 >
                                                     Nedostupná
                                                 </Badge>
                                             ) : (
                                                 <Badge
-                                                    className='bg-green-500 text-lg text-white'
+                                                    className='bg-green-500 text-sm text-white'
                                                     variant={'default'}
                                                 >
                                                     Dostupná
