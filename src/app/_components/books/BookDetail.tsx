@@ -10,6 +10,7 @@ import { format } from 'date-fns';
 import { Button } from '~/components/ui/button';
 import Link from 'next/link';
 import BookingModal from '../booking/BookingModal';
+import { Badge } from '~/components/ui/badge';
 
 const BookDetail: FC = () => {
     const { id } = useParams();
@@ -91,13 +92,13 @@ const BookDetail: FC = () => {
                                             </span>{' '}
                                             {data &&
                                             data.isAvaiable !== true ? (
-                                                <span className='text-red-800'>
+                                                <Badge variant={"destructive"} className='text-lg'>
                                                     Nedostupná
-                                                </span>
+                                                </Badge>
                                             ) : (
-                                                <span className='text-green-800'>
+                                                <Badge className='bg-green-500 text-white text-lg' variant={"default"}>
                                                     Dostupná
-                                                </span>
+                                                </Badge>
                                             )}
                                             <br />
                                         </p>
