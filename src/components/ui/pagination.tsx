@@ -70,7 +70,9 @@ const PaginationPrevious = ({
         {...props}
     >
         <ChevronLeft className='h-4 w-4' />
-        <span className='text-ellipsis overflow-hidden '>Predchádzajúca stránka</span>
+        <span className='overflow-hidden text-ellipsis '>
+            Predchádzajúca stránka
+        </span>
     </PaginationLink>
 );
 PaginationPrevious.displayName = 'PaginationPrevious';
@@ -85,7 +87,9 @@ const PaginationNext = ({
         className={cn('gap-1 pr-2.5', className)}
         {...props}
     >
-        <span className='text-ellipsis overflow-hidden '>Nasledujúca stránka</span>
+        <span className='overflow-hidden text-ellipsis '>
+            Nasledujúca stránka
+        </span>
         <ChevronRight className='h-4 w-4' />
     </PaginationLink>
 );

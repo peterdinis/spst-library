@@ -31,24 +31,28 @@ export const categoryRouter = createTRPCRouter({
             return findOneCategory;
         }),
 
-    createCategory: publicProcedure.input(z.object({
-        name: z.string().min(5),
-        description: z.string().min(5)
-    })).mutation(async({ctx, input}) => {
-        const addNewCategory = await ctx.db.category.create({
-            data: {
-                name: input.name,
-                description: input.description
+    createCategory: publicProcedure
+        .input(
+            z.object({
+                name: z.string().min(5),
+                description: z.string().min(5),
+            }),
+        )
+        .mutation(async ({ ctx, input }) => {
+            const addNewCategory = await ctx.db.category.create({
+                data: {
+                    name: input.name,
+                    description: input.description,
+                },
+            });
+
+            if (!addNewCategory) {
+                throw new TRPCError({
+                    message: 'Something went wrong',
+                    code: 'BAD_REQUEST',
+                });
             }
-        });
 
-        if(!addNewCategory) {
-            throw new TRPCError({
-                message: "Something went wrong",
-                code: "BAD_REQUEST"
-            })
-        }
-
-        return addNewCategory;
-    })
+            return addNewCategory;
+        }),
 });

@@ -11,7 +11,7 @@ const GlobalCard: FC<IGlobalCardType> = ({
     image,
 }) => {
     return (
-        <div className='w-72 rounded-xl bg-white shadow-md duration-500 z-50'>
+        <div className='z-50 w-72 rounded-xl bg-white shadow-md duration-500'>
             <div>
                 {image ? (
                     <>
@@ -24,7 +24,7 @@ const GlobalCard: FC<IGlobalCardType> = ({
                 ) : (
                     <></>
                 )}
-                <div className='w-72 px-4 py-3 z-50'>
+                <div className='z-50 w-72 px-4 py-3'>
                     <span className='mr-3 text-xs uppercase text-gray-400'>
                         {name}
                     </span>
