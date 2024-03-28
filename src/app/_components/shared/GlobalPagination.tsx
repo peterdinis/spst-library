@@ -13,7 +13,7 @@ const GlobalPagination: FC = () => {
     return (
         <div className='mt-5'>
             <Pagination className='mt-5'>
-                <PaginationContent>
+                <PaginationContent className='flex flex-wrap'>
                     <PaginationItem>
                         <PaginationPrevious href='#' />
                     </PaginationItem>
