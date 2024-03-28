@@ -11,6 +11,7 @@ import { Button } from '~/components/ui/button';
 import Link from 'next/link';
 import BookingModal from '../booking/BookingModal';
 import { Badge } from '~/components/ui/badge';
+import LongText from '../shared/LongText';
 
 const BookDetail: FC = () => {
     const { id } = useParams();
@@ -53,12 +54,18 @@ const BookDetail: FC = () => {
                                             : {data && data.name}{' '}
                                         </h1>
                                     </div>
-                                    <p className='mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800'>
-                                        <span className='font-bold'>
+                                    <div className='mb-4 mt-3 text-2xl font-light leading-relaxed text-gray-800'>
+                                        <div className='font-bold'>
                                             Krátky popis:{' '}
-                                            {data && data.description}
-                                        </span>
-                                    </p>
+                                        </div>
+                                        <LongText
+                                            text={
+                                                data &&
+                                                (data.description as unknown as string)
+                                            }
+                                            maxLength={30}
+                                        />
+                                    </div>
                                     <p className='mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800'>
                                         <span className='font-bold'>
                                             Autor / ka
@@ -92,11 +99,17 @@ const BookDetail: FC = () => {
                                             </span>{' '}
                                             {data &&
                                             data.isAvaiable !== true ? (
-                                                <Badge variant={"destructive"} className='text-lg'>
+                                                <Badge
+                                                    variant={'destructive'}
+                                                    className='text-lg'
+                                                >
                                                     Nedostupná
                                                 </Badge>
                                             ) : (
-                                                <Badge className='bg-green-500 text-white text-lg' variant={"default"}>
+                                                <Badge
+                                                    className='bg-green-500 text-lg text-white'
+                                                    variant={'default'}
+                                                >
                                                     Dostupná
                                                 </Badge>
                                             )}
