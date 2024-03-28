@@ -10,7 +10,7 @@ import {
 const AuthorSelect: FC = () => {
     return (
         <Select>
-            <SelectTrigger className='w-[180px]'>
+            <SelectTrigger>
                 <SelectValue placeholder='Theme' />
             </SelectTrigger>
             <SelectContent>
