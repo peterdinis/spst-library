@@ -25,7 +25,7 @@ const GlobalCard: FC<IGlobalCardType> = ({
                 <></>
             )}
             <div className='z-50 w-72 px-4 py-3'>
-                <CardHeader className='mr-3 text-lg uppercase text-gray-400 font-bold'>
+                <CardHeader className='mr-3 text-lg font-bold uppercase text-gray-400'>
                     {name}
                 </CardHeader>
                 {!description ? (
@@ -36,11 +36,11 @@ const GlobalCard: FC<IGlobalCardType> = ({
                     </CardDescription>
                 )}
                 <CardFooter>
-                <div className='flex items-center p-4'>
-                    <Button variant={'default'} size={'lg'}>
-                        <Link href={`/${linkName}/${id}`}>Detail</Link>
-                    </Button>
-                </div>
+                    <div className='flex items-center p-4'>
+                        <Button variant={'default'} size={'lg'}>
+                            <Link href={`/${linkName}/${id}`}>Detail</Link>
+                        </Button>
+                    </div>
                 </CardFooter>
             </div>
         </div>

@@ -35,7 +35,7 @@ const AllBooksWrapper: FC = () => {
 
     if (paginatedError) {
         return (
-            <div className='flex justify-center align-top mt-6'>
+            <div className='mt-6 flex justify-center align-top'>
                 <Ghost className='h-8 w-8 animate-bounce' />{' '}
                 <span className='font-bold'>Knihy neboli nájdené</span>
             </div>
