@@ -41,8 +41,7 @@ const AllBooksWrapper: FC = () => {
             </div>
         );
     }
-
-    // Vyhľadávanie kníh na základe searchTerm
+    
     let filteredBooks = paginatedData?.pages[page]?.items;
     if (searchTerm.trim() !== '') {
         filteredBooks = filteredBooks?.filter((book: any) =>
