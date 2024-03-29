@@ -11,7 +11,7 @@ const GlobalCard: FC<IGlobalCardType> = ({
     image,
 }) => {
     return (
-        <div>
+        <div className='ml-4'>
             {image ? (
                 <>
                     <img
