@@ -31,7 +31,7 @@ export const bookRouter = createTRPCRouter({
             return findOneBook;
         }),
 
-        paginatedBooks: publicProcedure
+    paginatedBooks: publicProcedure
         .input(
             z.object({
                 limit: z.number(),
@@ -49,7 +49,7 @@ export const bookRouter = createTRPCRouter({
                     id: 'asc',
                 },
             });
-    
+
             let nextCursor = undefined;
             if (items.length > limit) {
                 const nextItem = items.pop();
