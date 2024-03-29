@@ -24,7 +24,6 @@ const GlobalPagination: FC<IGlobalPaginationProps> = ({
     handleFetchNextPage,
     handleFetchPreviousPage,
 }: IGlobalPaginationProps) => {
-    console.log(page);
     if (nextCursor)
         return (
             <div className='mt-5'>
