@@ -49,14 +49,14 @@ const CategoryDetail: FC = () => {
                         {data && data.description}
                     </dd>
                 </div>
-                <div className='bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
+               {/*  <div className='bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
                     <dt className='text-sm font-medium text-gray-500'>
                         Knihy ktoré májú danú kategóriu
                     </dt>
                     <dd className='mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0'>
-                        rrrr
+                        rorororo
                     </dd>
-                </div>
+                </div> */}
 
                 <Button className='mt-5' variant={'destructive'} size={'lg'}>
                     <Link href='/categories'>Späť na kategórie</Link>
