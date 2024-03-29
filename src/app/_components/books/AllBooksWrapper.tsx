@@ -29,8 +29,6 @@ const AllBooksWrapper: FC = () => {
         },
     );
 
-    console.log('PD', paginatedData);
-
     if (isFetchingNextPage || paginatedLoading) {
         return <Loader2 className='h-8 w-8 animate-spin' />;
     }
@@ -96,7 +94,7 @@ const AllBooksWrapper: FC = () => {
             <GlobalPagination
                 handleFetchNextPage={handleFetchNextPage}
                 page={page}
-                nextCursor={nextCursor}
+                nextCursor={nextCursor as unknown as number}
                 handleFetchPreviousPage={handleFetchPreviousPage}
             />
         </>
