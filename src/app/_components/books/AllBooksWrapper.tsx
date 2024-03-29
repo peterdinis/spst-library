@@ -11,6 +11,24 @@ import GlobalPagination from '../shared/GlobalPagination';
 const AllBooksWrapper: FC = () => {
     const { data, isLoading, isError } = api.book.fetchBooks.useQuery();
     const [searchTerm, setSearchTerm] = useState('');
+    const [page, setPage] = useState(0);
+
+    const limit = 2 as const;
+
+    const {
+        data: paginatedData,
+        fetchNextPage,
+        isFetchingNextPage,
+        isLoading: paginatedLoading,
+        isError: paginatedError,
+    } = api.book.paginatedBooks.useInfiniteQuery(
+        {
+            limit,
+        },
+        {
+            getNextPageParam: (lastPage) => lastPage.nextCursor,
+        },
+    );
 
     if (isLoading) {
         return <Loader2 className='h-8 w-8 animate-spin' />;
@@ -30,6 +48,22 @@ const AllBooksWrapper: FC = () => {
         data.filter((item: any) =>
             item.name.toLowerCase().includes(searchTerm.toLowerCase()),
         );
+
+    const handleFetchNextPage = async () => {
+        await fetchNextPage();
+        setPage((prev) => prev + 1);
+    };
+
+    const handleFetchPreviousPage = () => {
+        setPage((prev) => prev - 1);
+    };
+
+    const toShow = paginatedData?.pages[page]?.items;
+    // figure out last page
+    const nextCursor = paginatedData?.pages[page]?.nextCursor;
+
+    // don't show empty categories
+    if (toShow?.length === 0) return null;
 
     return (
         <>
@@ -55,6 +89,8 @@ const AllBooksWrapper: FC = () => {
 
             <div className='mx-auto mt-5 grid gap-8 overflow-x-auto pt-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
                 {filteredData &&
+                    isFetchingNextPage &&
+                    toShow &&
                     filteredData.map((filteredItem: any) => (
                         <GlobalCard
                             key={filteredItem.id}
@@ -67,7 +103,12 @@ const AllBooksWrapper: FC = () => {
                     ))}
             </div>
 
-            <GlobalPagination />
+            <GlobalPagination
+                handleFetchNextPage={handleFetchNextPage}
+                nextCursor={nextCursor}
+                page={page}
+                handleFetchPreviousPage={handleFetchPreviousPage}
+            />
         </>
     );
 };

@@ -30,4 +30,34 @@ export const bookRouter = createTRPCRouter({
 
             return findOneBook;
         }),
+
+    paginatedBooks: publicProcedure
+        .input(
+            z.object({
+                limit: z.number(),
+                cursor: z.any(),
+                skip: z.number().optional(),
+            }),
+        )
+        .query(async ({ ctx, input }) => {
+            const { limit, skip, cursor } = input;
+            const items = await ctx.db.book.findMany({
+                take: limit + 1,
+                skip: skip,
+                cursor: cursor,
+                orderBy: {
+                    id: 'asc',
+                },
+            });
+
+            let nextCursor: typeof cursor | any = undefined;
+            if (items.length > limit) {
+                const nextItem = items.pop();
+                nextCursor = nextItem?.id;
+            }
+            return {
+                items,
+                nextCursor,
+            };
+        }),
 });

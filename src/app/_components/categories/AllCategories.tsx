@@ -68,7 +68,7 @@ const AllCategories: FC = () => {
                     ))}
             </div>
 
-            <GlobalPagination />
+            {/* <GlobalPagination /> */}
         </>
     );
 };
