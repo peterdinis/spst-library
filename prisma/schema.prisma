@@ -11,45 +11,52 @@ datasource db {
 }
 
 model Book {
-    id           Int     @id @default(autoincrement())
+    id           Int       @id @default(autoincrement())
     name         String
     description  String
     image        String
-    authorName   String
     year         Int
     pages        Int
     isAvaiable   Boolean
     itemsInStock Int
-    categoryNmae String  @default("ABC")
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt @default(now())
+    category     Category  @relation(fields: [categoryId], references: [id])
+    categoryId   Int      
+    publisher    Publisher @relation(fields: [publisherId], references: [id])
+    author       Author    @relation(fields: [authorId], references: [id])
+    authorId     Int
+    publisherId  Int     
+    createdAt    DateTime  @default(now())
+    updatedAt    DateTime  @updatedAt @default(now())
 }
 
 model Category {
-    id          Int    @id @default(autoincrement())
+    id          Int      @id @default(autoincrement())
     name        String
     description String
+    books       Book[]
     createdAt   DateTime @default(now())
     updatedAt   DateTime @updatedAt @default(now())
 }
 
 model Publisher {
-    id   Int    @id @default(autoincrement())
-    name String
-    image String @default("")
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt @default(now())
+    id          Int       @id @default(autoincrement())
+    name        String
+    image       String    @default("")
+    books       Book[]
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt @default(now())
 }
 
 model Author {
-    id   Int    @id @default(autoincrement())
-    name String
-    deathYear String?
-    birthYear String
-    description String
-    litPeriod String
-    totalBooks Int
-    authorImage String @default("")
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt @default(now())
+    id           Int       @id @default(autoincrement())
+    name         String
+    deathYear    String?
+    birthYear    String
+    description  String
+    litPeriod    String
+    totalBooks   Int
+    authorImage  String    @default("")
+    books        Book[]
+    createdAt    DateTime  @default(now())
+    updatedAt    DateTime  @updatedAt @default(now())
 }
