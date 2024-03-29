@@ -24,23 +24,30 @@ const GlobalPagination: FC<IGlobalPaginationProps> = ({
     handleFetchNextPage,
     handleFetchPreviousPage,
 }: IGlobalPaginationProps) => {
+    console.log(page);
     if (nextCursor)
         return (
             <div className='mt-5'>
                 <Pagination className='mt-5'>
                     <PaginationContent className='flex flex-wrap'>
-                        <PaginationItem>
-                            {nextCursor < 0 || nextCursor === 0}
-
-                            <PaginationPrevious
-                                aria-disabled={
-                                    nextCursor < 0 || nextCursor === 0
-                                }
-                                href='#'
-                                onClick={handleFetchPreviousPage}
-                                disabled={nextCursor <= 0}
-                            />
-                        </PaginationItem>
+                        {page <= 0 ? (
+                            <PaginationItem>
+                                <PaginationPrevious
+                                    style={{
+                                        pointerEvents: 'none',
+                                    }}
+                                    href='#'
+                                    onClick={handleFetchPreviousPage}
+                                />
+                            </PaginationItem>
+                        ) : (
+                            <PaginationItem>
+                                <PaginationPrevious
+                                    href='#'
+                                    onClick={handleFetchPreviousPage}
+                                />
+                            </PaginationItem>
+                        )}
                         <PaginationItem>
                             <PaginationLink href='#'>{page + 1}</PaginationLink>
                         </PaginationItem>
