@@ -11,7 +11,7 @@ datasource db {
 }
 
 model Book {
-    id           Int     @id @default(autoincrement())
+    id           Int       @id @default(autoincrement())
     name         String
     description  String
     image        String
@@ -20,15 +20,17 @@ model Book {
     pages        Int
     isAvaiable   Boolean
     itemsInStock Int
-    categoryNmae String  @default("ABC")
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt @default(now())
+    category     Category  @relation(fields: [categoryId], references: [id])
+    categoryId   Int      
+    createdAt    DateTime  @default(now())
+    updatedAt    DateTime  @updatedAt @default(now())
 }
 
 model Category {
-    id          Int    @id @default(autoincrement())
+    id          Int      @id @default(autoincrement())
     name        String
     description String
+    books       Book[]
     createdAt   DateTime @default(now())
     updatedAt   DateTime @updatedAt @default(now())
 }
