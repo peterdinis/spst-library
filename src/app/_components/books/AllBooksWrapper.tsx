@@ -12,7 +12,7 @@ const AllBooksWrapper: FC = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [page, setPage] = useState(0);
 
-    const limit = 2 as const;
+    const limit = 10 as const;
 
     const {
         data: paginatedData,

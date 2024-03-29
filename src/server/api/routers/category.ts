@@ -55,4 +55,34 @@ export const categoryRouter = createTRPCRouter({
 
             return addNewCategory;
         }),
+
+    paginatedCategories: publicProcedure
+        .input(
+            z.object({
+                limit: z.number(),
+                cursor: z.number().optional(),
+                skip: z.number().optional(),
+            }),
+        )
+        .query(async ({ ctx, input }) => {
+            const { limit, skip, cursor } = input;
+            const items = await ctx.db.category.findMany({
+                take: limit + 1,
+                cursor: cursor ? { id: cursor } : undefined,
+                skip: skip,
+                orderBy: {
+                    id: 'asc',
+                },
+            });
+
+            let nextCursor = undefined;
+            if (items.length > limit) {
+                const nextItem = items.pop();
+                nextCursor = nextItem?.id;
+            }
+            return {
+                items,
+                nextCursor,
+            };
+        }),
 });
