@@ -1,4 +1,4 @@
-'use client';
+"use client"
 
 import { FC, useState } from 'react';
 import Header from '../shared/Header';
@@ -42,7 +42,16 @@ const AllBooksWrapper: FC = () => {
         );
     }
 
-    const toShow = paginatedData?.pages[page]?.items;
+    // Vyhľadávanie kníh na základe searchTerm
+    let filteredBooks = paginatedData?.pages[page]?.items;
+    if (searchTerm.trim() !== '') {
+        filteredBooks = filteredBooks?.filter((book: any) =>
+            book.name.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+    }
+
+    const toShow = filteredBooks;
+
     const nextCursor = paginatedData?.pages[page]?.nextCursor;
 
     const handleFetchNextPage = async () => {
