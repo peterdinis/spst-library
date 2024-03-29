@@ -29,7 +29,7 @@ const AllBooksWrapper: FC = () => {
         },
     );
 
-    console.log("PD", paginatedData);
+    console.log('PD', paginatedData);
 
     if (isFetchingNextPage || paginatedLoading) {
         return <Loader2 className='h-8 w-8 animate-spin' />;
@@ -79,7 +79,8 @@ const AllBooksWrapper: FC = () => {
             )}
 
             <div className='mx-auto mt-5 grid gap-8 overflow-x-auto pt-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-                {!paginatedLoading && toShow &&
+                {!paginatedLoading &&
+                    toShow &&
                     toShow.map((filteredItem: any) => (
                         <GlobalCard
                             key={filteredItem.id}
