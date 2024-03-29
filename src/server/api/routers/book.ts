@@ -53,7 +53,7 @@ export const bookRouter = createTRPCRouter({
             let nextCursor = undefined;
             if (items.length > limit) {
                 const nextItem = items.pop();
-                nextCursor = nextItem!.id;
+                nextCursor = nextItem?.id;
             }
             return {
                 items,

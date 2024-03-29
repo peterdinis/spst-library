@@ -20,11 +20,9 @@ interface IGlobalPaginationProps {
 
 const GlobalPagination: FC<IGlobalPaginationProps> = ({
     page,
-    nextCursor,
     handleFetchNextPage,
     handleFetchPreviousPage,
 }: IGlobalPaginationProps) => {
-    if (nextCursor)
         return (
             <div className='mt-5'>
                 <Pagination className='mt-5'>
