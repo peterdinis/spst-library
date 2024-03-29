@@ -29,18 +29,16 @@ const AllBooksWrapper: FC = () => {
         },
     );
 
-    console.log("PD", paginatedData);
-
     if (isFetchingNextPage || paginatedLoading) {
         return <Loader2 className='h-8 w-8 animate-spin' />;
     }
 
     if (paginatedError) {
         return (
-            <>
+            <div className='flex justify-center align-top mt-6'>
                 <Ghost className='h-8 w-8 animate-bounce' />{' '}
                 <span className='font-bold'>Knihy neboli nájdené</span>
-            </>
+            </div>
         );
     }
 
@@ -79,7 +77,8 @@ const AllBooksWrapper: FC = () => {
             )}
 
             <div className='mx-auto mt-5 grid gap-8 overflow-x-auto pt-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-                {!paginatedLoading && toShow &&
+                {!paginatedLoading &&
+                    toShow &&
                     toShow.map((filteredItem: any) => (
                         <GlobalCard
                             key={filteredItem.id}
@@ -95,7 +94,7 @@ const AllBooksWrapper: FC = () => {
             <GlobalPagination
                 handleFetchNextPage={handleFetchNextPage}
                 page={page}
-                nextCursor={nextCursor}
+                nextCursor={nextCursor as unknown as number}
                 handleFetchPreviousPage={handleFetchPreviousPage}
             />
         </>
