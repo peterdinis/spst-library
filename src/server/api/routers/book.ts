@@ -43,8 +43,7 @@ export const bookRouter = createTRPCRouter({
             const { limit, skip, cursor } = input;
             const items = await ctx.db.book.findMany({
                 take: limit + 1,
-                skip: skip,
-                cursor: cursor,
+                // cursor: cursor,
                 orderBy: {
                     id: 'asc',
                 },

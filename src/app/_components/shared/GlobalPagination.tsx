@@ -1,4 +1,6 @@
-import { FC } from 'react';
+"use client"
+
+import { FC} from 'react';
 import {
     Pagination,
     PaginationContent,
@@ -11,7 +13,7 @@ import {
 
 interface IGlobalPaginationProps {
     page: number;
-    nextCursor: any;
+    nextCursor: number;
     handleFetchPreviousPage: (...args: unknown[]) => void;
     handleFetchNextPage: (...args: unknown[]) => void;
 }
@@ -22,20 +24,24 @@ const GlobalPagination: FC<IGlobalPaginationProps> = ({
     handleFetchNextPage,
     handleFetchPreviousPage,
 }: IGlobalPaginationProps) => {
+
+    if(nextCursor)
     return (
         <div className='mt-5'>
             <Pagination className='mt-5'>
                 <PaginationContent className='flex flex-wrap'>
-                    {nextCursor && (
-                        <PaginationItem>
-                            <PaginationPrevious
-                                href='#'
-                                onClick={handleFetchPreviousPage}
-                            />
-                        </PaginationItem>
-                    )}
                     <PaginationItem>
-                        <PaginationLink href='#'>{page}</PaginationLink>
+                    {nextCursor < 0 || nextCursor === 0}
+
+                        <PaginationPrevious
+                            aria-disabled={nextCursor < 0 || nextCursor === 0}
+                            href='#'
+                            onClick={handleFetchPreviousPage}
+                            disabled={nextCursor <= 0}
+                        />
+                    </PaginationItem>
+                    <PaginationItem>
+                        <PaginationLink href='#'>{page + 1}</PaginationLink>
                     </PaginationItem>
                     <PaginationItem>
                         <PaginationEllipsis />
