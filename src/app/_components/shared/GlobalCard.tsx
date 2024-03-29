@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Link from 'next/link';
 import { Button } from '~/components/ui/button';
 import { IGlobalCardType } from '~/app/types/sharedTypes';
-import { CardDescription, CardFooter, CardHeader } from '~/components/ui/card';
+import { CardDescription, CardHeader, CardFooter } from '~/components/ui/card';
 
 const GlobalCard: FC<IGlobalCardType> = ({
     name,
