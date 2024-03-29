@@ -1,8 +1,8 @@
-import { NextPage } from "next";
-import AuthorInfo from "~/app/_components/authors/AuthorInfo";
+import { NextPage } from 'next';
+import AuthorInfo from '~/app/_components/authors/AuthorInfo';
 
 const AuthorDetailPage: NextPage = () => {
-    return <AuthorInfo />
-}
+    return <AuthorInfo />;
+};
 
 export default AuthorDetailPage;
