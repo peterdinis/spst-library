@@ -2,7 +2,6 @@ import { FC } from 'react';
 import Link from 'next/link';
 import { Button } from '~/components/ui/button';
 import { IGlobalCardType } from '~/app/types/sharedTypes';
-import { CardDescription, CardFooter, CardHeader } from '~/components/ui/card';
 
 const GlobalCard: FC<IGlobalCardType> = ({
     name,
@@ -25,23 +24,21 @@ const GlobalCard: FC<IGlobalCardType> = ({
                 <></>
             )}
             <div className='z-50 w-72 px-4 py-3'>
-                <CardHeader className='mr-3 text-lg uppercase text-gray-400 font-bold'>
+                <span className='mr-3 text-lg uppercase text-gray-400'>
                     {name}
-                </CardHeader>
+                </span>
                 {!description ? (
                     <></>
                 ) : (
-                    <CardDescription className='block truncate text-sm font-bold capitalize text-black'>
+                    <p className='block truncate text-sm font-bold capitalize text-black'>
                         {description}
-                    </CardDescription>
+                    </p>
                 )}
-                <CardFooter>
                 <div className='flex items-center p-4'>
                     <Button variant={'default'} size={'lg'}>
                         <Link href={`/${linkName}/${id}`}>Detail</Link>
                     </Button>
                 </div>
-                </CardFooter>
             </div>
         </div>
     );
