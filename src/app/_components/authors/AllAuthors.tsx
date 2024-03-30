@@ -60,7 +60,7 @@ const AllAuthors: FC = () => {
             <div className='mt-5'>
                 <form>
                     <Input
-                        placeholder='Hľadaj knihu...'
+                        placeholder='Hľadaj spisovateľa/ku...'
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
