@@ -25,7 +25,7 @@ const AuthorInfo: FC = () => {
         return (
             <GlobalErrorComponent
                 statusCode='404'
-                message='Kniha pod týmto id neexistuje'
+                message='Spisovateľ / ka  pod týmto id neexistuje'
             />
         );
     }
