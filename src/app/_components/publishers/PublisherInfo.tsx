@@ -18,6 +18,8 @@ const PublisherInfo: FC = () => {
             id: Number(id),
         });
 
+    console.log('D', data);
+
     if (isLoading) {
         return <Loader2 className='animate-spin' />;
     }
@@ -54,7 +56,7 @@ const PublisherInfo: FC = () => {
                                         </h1>
                                     </div>
                                     <div>
-                                        <h1 className='title-font mb-1 mt-5 text-4xl font-medium text-gray-900'>
+                                        <div className='title-font mb-1 mt-5 text-4xl font-medium text-gray-900'>
                                             <span className='font-bold'>
                                                 Knihy
                                             </span>
@@ -63,8 +65,68 @@ const PublisherInfo: FC = () => {
                                                 data.books.map((item) => {
                                                     return <>{item.name}</>;
                                                 })}
-                                        </h1>
+                                        </div>
                                     </div>
+                                    <div className='mb-4 mt-3 text-2xl font-light leading-relaxed text-gray-800'>
+                                        <div className='font-bold'>
+                                            Krátky popis:{' '}
+                                        </div>
+                                        <LongText
+                                            text={
+                                                data &&
+                                                (data.description as unknown as string)
+                                            }
+                                            maxLength={30}
+                                        />
+                                    </div>
+                                    <p className='mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800'>
+                                        <span className='font-bold'>
+                                            Dátum založenia
+                                        </span>
+                                        :{' '}
+                                        {
+                                            format(
+                                                data &&
+                                                    (data.createdDated as any),
+                                                'dd-MM-yyyy',
+                                            ) as unknown as string
+                                        }
+                                    </p>
+                                    <p className='mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800'>
+                                        <span className='font-bold'>
+                                            Riaditeľ
+                                        </span>
+                                        : {data && data.bossName}
+                                    </p>
+
+                                    {data && data.isActive === true ? (
+                                        <p className='mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800'>
+                                            <span className='font-bold'>
+                                                Vydavateľstvo je:
+                                            </span>
+                                            :{' '}
+                                            <span className='text-green-500'>
+                                                Aktívne
+                                            </span>
+                                        </p>
+                                    ) : (
+                                        <p className='mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800'>
+                                            <span className='font-bold'>
+                                                Vydavateľstvo je:
+                                            </span>
+                                            :{' '}
+                                            <span className='text-red-500'>
+                                                Neaktívne:{' '}
+                                                {
+                                                    format(
+                                                        data &&
+                                                            (data.endDate as any),
+                                                        'dd-MM-yyyy',
+                                                    ) as unknown as string
+                                                }
+                                            </span>
+                                        </p>
+                                    )}
                                     <hr className='mt-6' />
                                     <div className='flex'>
                                         <Button

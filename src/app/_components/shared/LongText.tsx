@@ -25,7 +25,7 @@ const LongText: FC<ILongTextProps> = ({ text, maxLength }: ILongTextProps) => {
         'hover:text-blue-700',
         'transition-colors',
         'duration-300',
-        'mt-2',
+        'mt-4',
         'text-sm',
     );
 
