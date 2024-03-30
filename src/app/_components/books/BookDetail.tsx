@@ -66,12 +66,12 @@ const BookDetail: FC = () => {
                                             maxLength={30}
                                         />
                                     </div>
-                                    <p className='mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800'>
+                                    {/* <p className='mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800'>
                                         <span className='font-bold'>
                                             Autor / ka
                                         </span>
                                         : {data && data?.authorName}
-                                    </p>
+                                    </p> */}
                                     <p className='mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800'>
                                         <span className='font-bold'> Rok</span>:
                                         {data &&
