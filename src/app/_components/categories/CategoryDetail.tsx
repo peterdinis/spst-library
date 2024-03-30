@@ -56,7 +56,9 @@ const CategoryDetail: FC = () => {
                     <dd className='mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0'>
                         {data &&data.books.map((item) => {
                             return (
-                                <>{item.name}</>
+                                <>
+                                    {item.name}
+                                </>
                             )
                         })}
                     </dd>
