@@ -21,7 +21,9 @@ export const bookRouter = createTRPCRouter({
                 },
 
                 include: {
-                    category: true
+                    category: true,
+                    author: true,
+                    publisher: true
                 }
             });
 

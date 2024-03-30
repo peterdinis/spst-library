@@ -23,6 +23,9 @@ export const categoryRouter = createTRPCRouter({
                 where: {
                     id: input.id,
                 },
+                include: {
+                    books: true
+                }
             });
 
             if (!findOneCategory) {
