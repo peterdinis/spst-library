@@ -23,8 +23,8 @@ export const bookRouter = createTRPCRouter({
                 include: {
                     category: true,
                     author: true,
-                    publisher: true
-                }
+                    publisher: true,
+                },
             });
 
             if (!findOneBook) {
