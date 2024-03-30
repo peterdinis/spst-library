@@ -7,7 +7,6 @@ import {
     CardContent,
     CardFooter,
 } from '~/components/ui/card';
-import { Avatar, AvatarImage } from '~/components/ui/avatar';
 import { User } from 'lucide-react';
 
 function RefreshCcwIcon(
