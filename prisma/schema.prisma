@@ -42,6 +42,9 @@ model Publisher {
     id          Int       @id @default(autoincrement())
     name        String
     image       String    @default("")
+    description String    @default("")
+    createdDated DateTime @default(now())
+    isActive    Boolean
     books       Book[]
     createdAt   DateTime  @default(now())
     updatedAt   DateTime  @updatedAt @default(now())
