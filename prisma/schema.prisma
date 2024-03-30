@@ -65,3 +65,9 @@ model Author {
     createdAt    DateTime  @default(now())
     updatedAt    DateTime  @updatedAt @default(now())
 }
+
+enum AuthRole {
+    TEACHER
+    STUDENT
+    ADMIN
+}
