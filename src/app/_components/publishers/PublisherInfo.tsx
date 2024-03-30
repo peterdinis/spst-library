@@ -12,10 +12,11 @@ import Link from 'next/link';
 import LongText from '../shared/LongText';
 
 const PublisherInfo: FC = () => {
-    const {id} = useParams();
-    const { data, isLoading, isError } = api.publisher.fetchPublisherById.useQuery({
-        id: Number(id),
-    });
+    const { id } = useParams();
+    const { data, isLoading, isError } =
+        api.publisher.fetchPublisherById.useQuery({
+            id: Number(id),
+        });
 
     if (isLoading) {
         return <Loader2 className='animate-spin' />;
@@ -57,13 +58,11 @@ const PublisherInfo: FC = () => {
                                             <span className='font-bold'>
                                                 Knihy
                                             </span>
-                                            : {data && data.books.map((item) => {
-                                                return (
-                                                    <>
-                                                        {item.name}
-                                                    </>
-                                                )
-                                            })}
+                                            :{' '}
+                                            {data &&
+                                                data.books.map((item) => {
+                                                    return <>{item.name}</>;
+                                                })}
                                         </h1>
                                     </div>
                                     <hr className='mt-6' />
@@ -86,7 +85,7 @@ const PublisherInfo: FC = () => {
                 </>
             ) : null}
         </>
-    )
+    );
 };
 
 export default PublisherInfo;

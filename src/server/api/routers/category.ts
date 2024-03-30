@@ -6,8 +6,8 @@ export const categoryRouter = createTRPCRouter({
     fetchCategories: publicProcedure.query(async ({ ctx }) => {
         const categories = await ctx.db.category.findMany({
             include: {
-                books: true
-            }
+                books: true,
+            },
         });
         return categories;
     }),
@@ -24,8 +24,8 @@ export const categoryRouter = createTRPCRouter({
                     id: input.id,
                 },
                 include: {
-                    books: true
-                }
+                    books: true,
+                },
             });
 
             if (!findOneCategory) {

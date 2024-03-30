@@ -12,7 +12,7 @@ import Link from 'next/link';
 import LongText from '../shared/LongText';
 
 const AuthorInfo: FC = () => {
-    const {id} = useParams();
+    const { id } = useParams();
     const { data, isLoading, isError } = api.author.fetchAuthorById.useQuery({
         id: Number(id),
     });
@@ -68,45 +68,67 @@ const AuthorInfo: FC = () => {
                                         <span className='font-bold'>
                                             Dátum narodenia
                                         </span>
-                                        : {format(data && data.birthYear as any, 'dd-MM-yyyy') as unknown as string}
+                                        :{' '}
+                                        {
+                                            format(
+                                                data && (data.birthYear as any),
+                                                'dd-MM-yyyy',
+                                            ) as unknown as string
+                                        }
                                     </p>
                                     <p className='mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800'>
                                         <span className='font-bold'>
                                             Literárne obdobie
                                         </span>
-                                        : {data &&data.litPeriod}
+                                        : {data && data.litPeriod}
                                     </p>
                                     <p className='mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800'>
-                                        <span className='font-bold'> Počet napisaných kníh</span>:
-                                        {data && data.totalBooks}
+                                        <span className='font-bold'>
+                                            {' '}
+                                            Počet napisaných kníh
+                                        </span>
+                                        :{data && data.totalBooks}
                                     </p>
                                     <p className='mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800'>
-                                        <span className='font-bold'> Názvy autorových kníh</span>:
-                                        {data && data.books.map((item) => {
-                                            return (
-                                                <span className="ml-3 break-words">
-                                                    {item.name}
-                                                </span>
-                                            )
-                                        })}
+                                        <span className='font-bold'>
+                                            {' '}
+                                            Názvy autorových kníh
+                                        </span>
+                                        :
+                                        {data &&
+                                            data.books.map((item) => {
+                                                return (
+                                                    <span className='ml-3 break-words'>
+                                                        {item.name}
+                                                    </span>
+                                                );
+                                            })}
                                     </p>
                                     {data && data.deathYear ? (
                                         <>
-                                        <p className='mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800'>
-                                        <span className='font-bold'>
-                                            {' '}
-                                            Dátum úmrtia
-                                        </span>
-                                        : {format(data && data.deathYear as any, 'dd-MM-yyyy') as unknown as string}
-                                    </p>
+                                            <p className='mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800'>
+                                                <span className='font-bold'>
+                                                    {' '}
+                                                    Dátum úmrtia
+                                                </span>
+                                                :{' '}
+                                                {
+                                                    format(
+                                                        data &&
+                                                            (data.deathYear as any),
+                                                        'dd-MM-yyyy',
+                                                    ) as unknown as string
+                                                }
+                                            </p>
                                         </>
-                                    ): (
+                                    ) : (
                                         <p className='mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800'>
-                                        <span className='font-bold text-green-500'>
-                                            {' '}
-                                            Spisovateľ / Spisovateľka je nažive
-                                        </span>
-                                    </p>
+                                            <span className='font-bold text-green-500'>
+                                                {' '}
+                                                Spisovateľ / Spisovateľka je
+                                                nažive
+                                            </span>
+                                        </p>
                                     )}
                                     <hr className='mt-6' />
                                     <div className='flex'>
@@ -128,7 +150,7 @@ const AuthorInfo: FC = () => {
                 </>
             ) : null}
         </>
-    )
+    );
 };
 
 export default AuthorInfo;
