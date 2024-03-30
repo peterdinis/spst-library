@@ -1,6 +1,6 @@
 'use client';
 
-import { FC} from 'react';
+import { FC } from 'react';
 import { useParams } from 'next/navigation';
 import { api } from '~/trpc/react';
 import { Loader2 } from 'lucide-react';
@@ -54,13 +54,10 @@ const CategoryDetail: FC = () => {
                         Knihy ktoré májú danú kategóriu
                     </dt>
                     <dd className='mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0'>
-                        {data &&data.books.map((item) => {
-                            return (
-                                <>
-                                    {item.name}
-                                </>
-                            )
-                        })}
+                        {data &&
+                            data.books.map((item) => {
+                                return <>{item.name}</>;
+                            })}
                     </dd>
                 </div>
 
