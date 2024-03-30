@@ -40,10 +40,7 @@ const ProfileWrapper: FC = () => {
             <div className='lg:grid-cols-profile grid gap-6 lg:gap-10'>
                 <div className='space-y-2'>
                     <div className='flex items-center space-x-4 lg:space-x-6'>
-                        <Avatar className='h-12 w-12 lg:h-20 lg:w-20'>
-                            <AvatarImage alt='Avatar' src={<User />} />
-                            <div>AD</div>
-                        </Avatar>
+                        <User />
                         <div className='space-y-1'>
                             <h1 className='text-2xl font-bold'>Alice Davis</h1>
                             <dl className='grid grid-cols-2 gap-1 text-sm lg:grid-cols-3 lg:gap-2'>
