@@ -70,7 +70,13 @@ const BookDetail: FC = () => {
                                         <span className='font-bold'>
                                             Autor / ka
                                         </span>
-                                        : {data && data?.authorName}
+                                        : {data && data?.author?.name}
+                                    </p>
+                                    <p className='mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800'>
+                                        <span className='font-bold'>
+                                            Kategória
+                                        </span>
+                                        : {data && data?.category?.name}
                                     </p>
                                     <p className='mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800'>
                                         <span className='font-bold'> Rok</span>:
