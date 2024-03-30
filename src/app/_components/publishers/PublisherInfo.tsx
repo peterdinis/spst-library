@@ -54,7 +54,7 @@ const PublisherInfo: FC = () => {
                                         </h1>
                                     </div>
                                     <div>
-                                        <h1 className='title-font mb-1 mt-5 text-4xl font-medium text-gray-900'>
+                                        <div className='title-font mb-1 mt-5 text-4xl font-medium text-gray-900'>
                                             <span className='font-bold'>
                                                 Knihy
                                             </span>
@@ -63,7 +63,16 @@ const PublisherInfo: FC = () => {
                                                 data.books.map((item) => {
                                                     return <>{item.name}</>;
                                                 })}
-                                        </h1>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div className='title-font mb-1 mt-5 text-4xl font-medium text-gray-900'>
+                                            <span className='font-bold'>
+                                                Krátky popis
+                                            </span>
+                                            :{' '}
+                                            <LongText text={data && data.description} maxLength={100} />
+                                        </div>
                                     </div>
                                     <hr className='mt-6' />
                                     <div className='flex'>
