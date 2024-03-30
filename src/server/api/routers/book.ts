@@ -19,6 +19,12 @@ export const bookRouter = createTRPCRouter({
                 where: {
                     id: input.id,
                 },
+
+                include: {
+                    category: true,
+                    author: true,
+                    publisher: true
+                }
             });
 
             if (!findOneBook) {
