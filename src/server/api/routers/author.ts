@@ -19,6 +19,9 @@ export const authorRouter = createTRPCRouter({
                 where: {
                     id: input.id,
                 },
+                include: {
+                    books: true
+                }
             });
 
             if (!findOneAuthor) {
