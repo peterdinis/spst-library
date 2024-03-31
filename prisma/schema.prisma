@@ -90,6 +90,16 @@ model Teacher {
     updatedAt DateTime @default(now()) @updatedAt
 }
 
+model Booking {
+    id        Int      @id @default(autoincrement())
+    bookName  String
+    borrowedDays DateTime
+    isBorrowed Boolean
+    isReturned Boolean
+    isExtended Boolean? // Predlženie knihy
+    borrowerEmail String
+}
+
 enum AuthRole {
     TEACHER
     STUDENT
