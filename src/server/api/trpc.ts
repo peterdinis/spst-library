@@ -83,16 +83,3 @@ export const createTRPCRouter = t.router;
  * are logged in.
  */
 export const publicProcedure = t.procedure;
-
-export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
-	if (!ctx.db.session || !ctx.db.user) {
-		throw new TRPCError({ code: "UNAUTHORIZED" });
-	}
-	return next({
-		ctx: {
-			// infers the `session` and `user` as non-nullable
-			session: { ...ctx.db.session },
-			user: { ...ctx.db.user },
-		},
-	});
-});
