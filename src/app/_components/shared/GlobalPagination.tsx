@@ -40,7 +40,10 @@ const GlobalPagination: FC<IGlobalPaginationProps> = ({
 						</PaginationItem>
 					) : (
 						<PaginationItem>
-							<PaginationPrevious href="#" onClick={handleFetchPreviousPage} />
+							<PaginationPrevious
+								href="#"
+								onClick={handleFetchPreviousPage}
+							/>
 						</PaginationItem>
 					)}
 					<PaginationItem>

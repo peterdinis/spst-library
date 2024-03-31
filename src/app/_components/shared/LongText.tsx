@@ -36,7 +36,9 @@ const LongText: FC<ILongTextProps> = ({ text, maxLength }: ILongTextProps) => {
 	return (
 		<div>
 			<span className={textClass}>
-				{isExpanded ? text : `${text.substring(0, maxLength).trim()}...`}
+				{isExpanded
+					? text
+					: `${text.substring(0, maxLength).trim()}...`}
 			</span>
 			<Button
 				variant={"link"}

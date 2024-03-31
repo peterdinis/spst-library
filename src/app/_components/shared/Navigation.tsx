@@ -14,7 +14,9 @@ const Navigation: FC = () => {
 				<div>
 					<div className="flex items-center justify-between py-3 md:block md:py-5">
 						<Link href="/">
-							<h2 className="text-xl font-bold text-black">SPŠT Knižnica</h2>
+							<h2 className="text-xl font-bold text-black">
+								SPŠT Knižnica
+							</h2>
 						</Link>
 						<div className="md:hidden">
 							<button

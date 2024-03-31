@@ -50,7 +50,8 @@ const Services: FC = () => {
 								tabIndex={0}
 								className="pt-5 text-center text-lg font-medium leading-6 text-gray-800 focus:outline-none"
 							>
-								<School2 className="h-6 w-6" /> V škole vyzdhvineš
+								<School2 className="h-6 w-6" /> V škole
+								vyzdhvineš
 							</h4>
 						</motion.div>
 						<motion.div

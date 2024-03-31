@@ -20,7 +20,9 @@ const AuthorSelect: FC = () => {
 		return (
 			<div className="mt-6 flex justify-center align-top">
 				<Ghost className="h-8 w-8 animate-bounce" />{" "}
-				<span className="font-bold">Žiadny spisovatelia neboli nájdený</span>
+				<span className="font-bold">
+					Žiadny spisovatelia neboli nájdený
+				</span>
 			</div>
 		);
 	}

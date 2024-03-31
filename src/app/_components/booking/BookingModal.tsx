@@ -54,7 +54,9 @@ const BookingModal: FC = () => {
 								<Input type="date" placeholder="Od" />
 							</div>
 							<div className="mt-8">
-								<Button onClick={handleBooking}>Požičať knihu</Button>
+								<Button onClick={handleBooking}>
+									Požičať knihu
+								</Button>
 							</div>
 						</form>
 					</DialogDescription>

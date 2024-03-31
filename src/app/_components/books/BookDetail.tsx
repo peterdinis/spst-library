@@ -48,43 +48,67 @@ const BookDetail: FC = () => {
 								<div className="mt-6 w-full lg:mt-0 lg:w-1/2 lg:py-6 lg:pl-10">
 									<div>
 										<h1 className="title-font mb-1 text-4xl font-medium text-gray-900">
-											<span className="font-bold">Názov</span>:{" "}
-											{data && data.name}{" "}
+											<span className="font-bold">
+												Názov
+											</span>
+											: {data && data.name}{" "}
 										</h1>
 									</div>
 									<div className="mb-4 mt-3 text-2xl font-light leading-relaxed text-gray-800">
-										<div className="font-bold">Krátky popis: </div>
+										<div className="font-bold">
+											Krátky popis:{" "}
+										</div>
 										<LongText
-											text={data && (data.description as unknown as string)}
+											text={
+												data &&
+												(data.description as unknown as string)
+											}
 											maxLength={30}
 										/>
 									</div>
 									<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800">
-										<span className="font-bold">Autor / ka</span>:{" "}
-										{data && data?.author?.name}
+										<span className="font-bold">
+											Autor / ka
+										</span>
+										: {data && data?.author?.name}
 									</p>
 									<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800">
-										<span className="font-bold">Kategória</span>:{" "}
-										{data && data?.category?.name}
+										<span className="font-bold">
+											Kategória
+										</span>
+										: {data && data?.category?.name}
 									</p>
 									<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800">
 										<span className="font-bold"> Rok</span>:
-										{data && format(data.year, "dd-MM-yyyy")}
+										{data &&
+											format(data.year, "dd-MM-yyyy")}
 									</p>
 									<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800">
-										<span className="font-bold"> Počet Strán</span>:{" "}
-										{data && data.pages}
+										<span className="font-bold">
+											{" "}
+											Počet Strán
+										</span>
+										: {data && data.pages}
 									</p>
 									<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800">
-										<span className="font-bold">Počet Kusov</span>:{" "}
-										{data && data.itemsInStock}
+										<span className="font-bold">
+											Počet Kusov
+										</span>
+										: {data && data.itemsInStock}
 									</p>
 
 									<div>
 										<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed">
-											<span className="font-bold"> Kniha je:</span>{" "}
-											{data && data.isAvaiable !== true ? (
-												<Badge variant={"destructive"} className="text-sm">
+											<span className="font-bold">
+												{" "}
+												Kniha je:
+											</span>{" "}
+											{data &&
+											data.isAvaiable !== true ? (
+												<Badge
+													variant={"destructive"}
+													className="text-sm"
+												>
 													Nedostupná
 												</Badge>
 											) : (
@@ -101,8 +125,14 @@ const BookDetail: FC = () => {
 
 									<hr className="mt-6" />
 									<div className="flex">
-										<Button variant={"default"} size={"lg"} className="mt-5">
-											<Link href="/books">Návrat na knihy</Link>
+										<Button
+											variant={"default"}
+											size={"lg"}
+											className="mt-5"
+										>
+											<Link href="/books">
+												Návrat na knihy
+											</Link>
 										</Button>
 										<Button
 											variant={"secondary"}

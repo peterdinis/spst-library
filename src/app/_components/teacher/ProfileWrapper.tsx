@@ -93,11 +93,18 @@ const ProfileWrapper: FC = () => {
 											<td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
 												F. Scott Fitzgerald
 											</td>
-											<td className="px-4 py-4">2024-04-30</td>
+											<td className="px-4 py-4">
+												2024-04-30
+											</td>
 											<td className="px-4 py-4 text-right">
-												<Button className="h-8 w-8" size="icon">
+												<Button
+													className="h-8 w-8"
+													size="icon"
+												>
 													<RefreshCcwIcon className="h-4 w-4" />
-													<span className="sr-only">Renew</span>
+													<span className="sr-only">
+														Renew
+													</span>
 												</Button>
 											</td>
 										</tr>
@@ -117,11 +124,18 @@ const ProfileWrapper: FC = () => {
 											<td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
 												Harper Lee
 											</td>
-											<td className="px-4 py-4">2024-04-30</td>
+											<td className="px-4 py-4">
+												2024-04-30
+											</td>
 											<td className="px-4 py-4 text-right">
-												<Button className="h-8 w-8" size="icon">
+												<Button
+													className="h-8 w-8"
+													size="icon"
+												>
 													<RefreshCcwIcon className="h-4 w-4" />
-													<span className="sr-only">Renew</span>
+													<span className="sr-only">
+														Renew
+													</span>
 												</Button>
 											</td>
 										</tr>
@@ -141,11 +155,18 @@ const ProfileWrapper: FC = () => {
 											<td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
 												J.D. Salinger
 											</td>
-											<td className="px-4 py-4">2024-04-30</td>
+											<td className="px-4 py-4">
+												2024-04-30
+											</td>
 											<td className="px-4 py-4 text-right">
-												<Button className="h-8 w-8" size="icon">
+												<Button
+													className="h-8 w-8"
+													size="icon"
+												>
 													<RefreshCcwIcon className="h-4 w-4" />
-													<span className="sr-only">Renew</span>
+													<span className="sr-only">
+														Renew
+													</span>
 												</Button>
 											</td>
 										</tr>
@@ -187,7 +208,9 @@ const ProfileWrapper: FC = () => {
 									</Link>
 									<CardFooter className="p-4">
 										<div className="text-xs">
-											<time dateTime="2023-12-17">Dec 17, 2023</time>
+											<time dateTime="2023-12-17">
+												Dec 17, 2023
+											</time>
 										</div>
 									</CardFooter>
 								</Card>
@@ -218,7 +241,9 @@ const ProfileWrapper: FC = () => {
 									</Link>
 									<CardFooter className="p-4">
 										<div className="text-xs">
-											<time dateTime="2023-12-17">Dec 17, 2023</time>
+											<time dateTime="2023-12-17">
+												Dec 17, 2023
+											</time>
 										</div>
 									</CardFooter>
 								</Card>
@@ -249,7 +274,9 @@ const ProfileWrapper: FC = () => {
 									</Link>
 									<CardFooter className="p-4">
 										<div className="text-xs">
-											<time dateTime="2023-12-17">Dec 17, 2023</time>
+											<time dateTime="2023-12-17">
+												Dec 17, 2023
+											</time>
 										</div>
 									</CardFooter>
 								</Card>
