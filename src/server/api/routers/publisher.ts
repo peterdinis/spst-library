@@ -63,4 +63,36 @@ export const publisherRouter = createTRPCRouter({
                 nextCursor,
             };
         }),
+
+        createPublisher: publicProcedure
+        .input(
+            z.object({
+                name: z.string().min(5),
+                image: z.string().min(5),
+                description: z.string().min(5),
+                bossName: z.string().min(5),
+                isActive: z.boolean(),
+                createdDated: z.string()
+            }),
+        ).mutation(async({ctx, input}) => {
+            const addNewPublisher = await ctx.db.publisher.create({
+                data: {
+                    name: input.name,
+                    image: input.image,
+                    description: input.description,
+                    bossName: input.bossName,
+                    isActive: input.isActive,
+                    createdDated: input.createdDated
+                }
+            })
+
+            if(!addNewPublisher) {
+                throw new TRPCError({
+                    message: "Can not created publisher",
+                    code: "BAD_REQUEST"
+                })
+            }
+
+            return addNewPublisher;
+        })
 });

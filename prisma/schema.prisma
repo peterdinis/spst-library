@@ -20,13 +20,13 @@ model Book {
     isAvaiable   Boolean
     itemsInStock Int
     category     Category  @relation(fields: [categoryId], references: [id])
-    categoryId   Int      
+    categoryId   Int
     publisher    Publisher @relation(fields: [publisherId], references: [id])
     author       Author    @relation(fields: [authorId], references: [id])
     authorId     Int
-    publisherId  Int     
+    publisherId  Int
     createdAt    DateTime  @default(now())
-    updatedAt    DateTime  @updatedAt @default(now())
+    updatedAt    DateTime  @default(now()) @updatedAt
 }
 
 model Category {
@@ -35,33 +35,63 @@ model Category {
     description String
     books       Book[]
     createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt @default(now())
+    updatedAt   DateTime @default(now()) @updatedAt
 }
 
 model Publisher {
-    id          Int       @id @default(autoincrement())
-    name        String
-    image       String    @default("")
-    description String    @default("")
-    createdDated DateTime @default(now())
-    endDate     DateTime? // Ak vydavateľstvo nie je už aktívne
-    isActive    Boolean   @default(true)
-    books       Book[]
-    bossName    String    @default("")
-    createdAt   DateTime  @default(now())
-    updatedAt   DateTime  @updatedAt @default(now())
+    id           Int       @id @default(autoincrement())
+    name         String
+    image        String    @default("")
+    description  String    @default("")
+    createdDated DateTime  @default(now())
+    endDate      DateTime? // Ak vydavateľstvo nie je už aktívne
+    isActive     Boolean   @default(true)
+    books        Book[]
+    bossName     String    @default("")
+    createdAt    DateTime  @default(now())
+    updatedAt    DateTime  @default(now()) @updatedAt
 }
 
 model Author {
-    id           Int       @id @default(autoincrement())
-    name         String
-    deathYear    String?
-    birthYear    String
-    description  String
-    litPeriod    String
-    totalBooks   Int
-    authorImage  String    @default("")
-    books        Book[]
-    createdAt    DateTime  @default(now())
-    updatedAt    DateTime  @updatedAt @default(now())
+    id          Int      @id @default(autoincrement())
+    name        String
+    deathYear   String?
+    birthYear   String
+    description String
+    litPeriod   String
+    totalBooks  Int
+    authorImage String   @default("")
+    books       Book[]
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @default(now()) @updatedAt
+}
+
+model Student {
+    id        Int      @id @default(autoincrement())
+    name      String
+    lastName  String
+    email     String
+    password  String
+    isActive  Boolean  @default(true)
+    role      AuthRole @default(STUDENT)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @default(now()) @updatedAt
+}
+
+model Teacher {
+    id        Int      @id @default(autoincrement())
+    name      String
+    lastName  String
+    email     String
+    password  String
+    isActive  Boolean  @default(true)
+    role      AuthRole @default(TEACHER)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @default(now()) @updatedAt
+}
+
+enum AuthRole {
+    TEACHER
+    STUDENT
+    ADMIN
 }
