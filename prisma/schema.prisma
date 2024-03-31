@@ -101,6 +101,17 @@ model Session {
     teacher   Teacher  @relation(fields: [teacherId], references: [id], onDelete: Cascade)
 }
 
+model Booking {
+    id            Int      @id @default(autoincrement())
+    bookName      String
+    from          DateTime
+    to            DateTime
+    isBorrowed    Boolean
+    isReturned    Boolean
+    isExtended    Boolean? // Predlženie knihy
+    borrowerEmail String
+}
+
 enum AuthRole {
     TEACHER
     STUDENT
