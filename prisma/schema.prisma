@@ -76,6 +76,7 @@ model Student {
     role      AuthRole @default(STUDENT)
     createdAt DateTime @default(now())
     updatedAt DateTime @default(now()) @updatedAt
+    sessions  Session[]
 }
 
 model Teacher {
@@ -88,6 +89,16 @@ model Teacher {
     role      AuthRole @default(TEACHER)
     createdAt DateTime @default(now())
     updatedAt DateTime @default(now()) @updatedAt
+    sessions  Session[]
+}
+
+model Session {
+    id        String   @id
+    studentId Int
+    expiresAt DateTime
+    student   Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+    teacherId Int
+    teacher   Teacher  @relation(fields: [teacherId], references: [id], onDelete: Cascade)
 }
 
 enum AuthRole {
