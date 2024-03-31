@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import { FC } from 'react';
 import Header from '../shared/Header';
@@ -20,12 +20,45 @@ const RegisterForm: FC = () => {
                                 className='text-grey-darker mb-2 block text-sm font-bold'
                                 htmlFor='password'
                             >
+                                Meno
+                            </label>
+                            <input
+                                className='passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow'
+                                id='name'
+                                type='text'
+                                name='name'
+                                autoFocus
+                                placeholder='Meno'
+                            />
+                        </div>
+                        <div className='mb-2'>
+                            <label
+                                className='text-grey-darker mb-2 block text-sm font-bold'
+                                htmlFor='password'
+                            >
+                                Priezvisko
+                            </label>
+                            <input
+                                className='passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow'
+                                id='lastName'
+                                type='text'
+                                name='lastName'
+                                autoFocus
+                                placeholder='Priezvisko'
+                            />
+                        </div>
+                        <div className='mb-2'>
+                            <label
+                                className='text-grey-darker mb-2 block text-sm font-bold'
+                                htmlFor='password'
+                            >
                                 Email
                             </label>
                             <input
                                 className='passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow'
                                 id='Email'
-                                type='text'
+                                type='email'
+                                name='email'
                                 autoFocus
                                 placeholder='Email'
                             />
@@ -42,6 +75,7 @@ const RegisterForm: FC = () => {
                                 className='border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow'
                                 id='Heslo'
                                 type='password'
+                                name='password'
                                 autoFocus
                                 autoComplete='current-password'
                                 placeholder='********************************************'
