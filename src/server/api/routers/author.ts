@@ -63,4 +63,35 @@ export const authorRouter = createTRPCRouter({
                 nextCursor,
             };
         }),
+
+        createNewAuthor: publicProcedure.input(z.object({
+            name: z.string().min(5),
+            deathYear: z.string().optional(),
+            birthYear: z.string().min(5),
+            description: z.string().min(5),
+            litPeriod: z.string().min(5),
+            totalBooks: z.number(),
+            authorImage: z.string().min(5),
+        })).mutation(async({ctx, input}) => {
+            const addAuthor = await ctx.db.author.create({
+                data: {
+                    name: input.name,
+                    deathYear: input.deathYear,
+                    birthYear: input.birthYear,
+                    description: input.description,
+                    litPeriod: input.litPeriod,
+                    totalBooks: input.totalBooks,
+                    authorImage: input.authorImage
+                }
+            });
+
+            if(!addAuthor) {
+                throw new TRPCError({
+                    message: "Could not create author",
+                    code: "BAD_REQUEST"
+                })
+            }
+
+            return addAuthor;
+        })
 });
