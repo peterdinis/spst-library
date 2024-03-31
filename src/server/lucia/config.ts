@@ -2,19 +2,22 @@ import { PrismaAdapter } from "@lucia-auth/adapter-prisma";
 import { db } from "../db";
 import { Lucia, TimeSpan } from "lucia";
 import { env } from "~/env";
+import { User } from "@prisma/client";
 
 const adapter = new PrismaAdapter(db.session, db.user);
 
 export const lucia = new Lucia(adapter, {
-    getSessionAttributes: (/* attributes */) => {
-        return {};
+    getSessionAttributes: () => {
+        return {}
       },
       getUserAttributes: (attributes: any) => {
         return {
           id: attributes.id,
+          name: attributes.name,
+          lastName: attributes.lastName,
           email: attributes.email,
-          emailVerified: attributes.emailVerified,
-          avatar: attributes.avatar,
+          password: attributes.password,
+          isActive: attributes.isActive,
           createdAt: attributes.createdAt,
           updatedAt: attributes.updatedAt,
         };
@@ -29,3 +32,15 @@ export const lucia = new Lucia(adapter, {
         },
       },
 })
+
+declare module "lucia" {
+    interface Register {
+      Lucia: typeof lucia;
+      DatabaseSessionAttributes: DatabaseSessionAttributes;
+      DatabaseUserAttributes: DatabaseUserAttributes;
+    }
+  }
+  
+  interface DatabaseSessionAttributes {}
+  interface DatabaseUserAttributes extends Omit<User, "hashedPassword"> {}
+  
