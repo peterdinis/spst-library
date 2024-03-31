@@ -66,7 +66,7 @@ model Author {
     updatedAt   DateTime @default(now()) @updatedAt
 }
 
-model Student {
+model User {
     id        Int      @id @default(autoincrement())
     name      String
     lastName  String
@@ -76,18 +76,14 @@ model Student {
     role      AuthRole @default(STUDENT)
     createdAt DateTime @default(now())
     updatedAt DateTime @default(now()) @updatedAt
+    sessions  Session[]
 }
 
-model Teacher {
-    id        Int      @id @default(autoincrement())
-    name      String
-    lastName  String
-    email     String
-    password  String
-    isActive  Boolean  @default(true)
-    role      AuthRole @default(TEACHER)
-    createdAt DateTime @default(now())
-    updatedAt DateTime @default(now()) @updatedAt
+model Session {
+    id        String   @id
+    userId Int
+    expiresAt DateTime
+    user User  @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Booking {
