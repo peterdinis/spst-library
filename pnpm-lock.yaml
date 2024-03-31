@@ -8,6 +8,9 @@ dependencies:
   '@hookform/resolvers':
     specifier: ^3.3.4
     version: 3.3.4(react-hook-form@7.51.1)
+  '@lucia-auth/adapter-prisma':
+    specifier: ^4.0.1
+    version: 4.0.1(@prisma/client@5.11.0)(lucia@3.1.1)
   '@prisma/client':
     specifier: ^5.10.2
     version: 5.11.0(prisma@5.11.0)
@@ -347,6 +350,16 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
+
+  /@lucia-auth/adapter-prisma@4.0.1(@prisma/client@5.11.0)(lucia@3.1.1):
+    resolution: {integrity: sha512-3SztRhj1RAHbbhI/0aB7YC5zl6Z6aktPhkWpn2CHhiB03B9x/+A+M6pqJuAt1usU8PzkjVilgRPhrPymMar66A==}
+    peerDependencies:
+      '@prisma/client': ^4.2.0 || ^5.0.0
+      lucia: 3.x
+    dependencies:
+      '@prisma/client': 5.11.0(prisma@5.11.0)
+      lucia: 3.1.1
+    dev: false
 
   /@napi-rs/wasm-runtime@0.1.2:
     resolution: {integrity: sha512-8JuczewTFIZ/XIjHQ+YlQUydHvlKx2hkcxtuGwh+t/t5zWyZct6YG4+xjHcq8xyc/e7FmFwf42Zj2YgICwmlvA==}
