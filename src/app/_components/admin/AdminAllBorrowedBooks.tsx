@@ -1,9 +1,7 @@
-import { FC } from "react";
+import { FC } from 'react';
 
 const AdminAllBorrowedBooks: FC = () => {
-    return (
-        <></>
-    )
-}
+    return <></>;
+};
 
 export default AdminAllBorrowedBooks;
