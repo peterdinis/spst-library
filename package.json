@@ -3,6 +3,10 @@
     "version": "0.3.0",
     "private": true,
     "type": "module",
+    "author": {
+        "name": "Peter Dinis",
+        "email": "pdinis1@gmail.com"
+    },
     "scripts": {
         "build": "next build",
         "db:push": "prisma db push",
