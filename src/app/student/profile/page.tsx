@@ -4,9 +4,9 @@ import { validateRequest } from "~/server/lucia/validate-request";
 import { studentRedirects } from "~/server/utils";
 
 export default async function ProfilePage() {
-	const {user} = await validateRequest();
+	const { user } = await validateRequest();
 
-	if(!user) redirect(studentRedirects.toLogin);
+	if (!user) redirect(studentRedirects.toLogin);
 
-	return <ProfileWrapper profileData={user} />
+	return <ProfileWrapper profileData={user} />;
 }

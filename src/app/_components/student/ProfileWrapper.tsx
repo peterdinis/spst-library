@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { FC, JSX, SVGProps } from "react";
 import Link from "next/link";
@@ -41,19 +41,21 @@ interface IProfileWrapperProps {
 	profileData: any;
 }
 
-const ProfileWrapper: FC<IProfileWrapperProps> = ({profileData}: IProfileWrapperProps) => {
-	
-	const {toast} = useToast();
-	
+const ProfileWrapper: FC<IProfileWrapperProps> = ({
+	profileData,
+}: IProfileWrapperProps) => {
+	console.log(profileData);
+
+	const { toast } = useToast();
+
 	const logoutFromApp = () => {
 		logout();
 		toast({
 			title: "Odhlásenie bolo úspešné",
 			className: "bg-green-500",
-			duration: 2000
-		})
-	}
-
+			duration: 2000,
+		});
+	};
 
 	return (
 		<>
