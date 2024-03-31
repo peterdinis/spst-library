@@ -113,7 +113,7 @@ export async function signup(
 
 	const createNewStudent = await db.user.create({
 		data: {
-			id: userId as unknown as number,
+			id: userId,
 			email,
 			name,
 			lastName,
