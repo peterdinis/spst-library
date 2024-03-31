@@ -64,7 +64,7 @@ export const publisherRouter = createTRPCRouter({
             };
         }),
 
-        createPublisher: publicProcedure
+    createPublisher: publicProcedure
         .input(
             z.object({
                 name: z.string().min(5),
@@ -72,9 +72,10 @@ export const publisherRouter = createTRPCRouter({
                 description: z.string().min(5),
                 bossName: z.string().min(5),
                 isActive: z.boolean(),
-                createdDated: z.string()
+                createdDated: z.string(),
             }),
-        ).mutation(async({ctx, input}) => {
+        )
+        .mutation(async ({ ctx, input }) => {
             const addNewPublisher = await ctx.db.publisher.create({
                 data: {
                     name: input.name,
@@ -82,17 +83,17 @@ export const publisherRouter = createTRPCRouter({
                     description: input.description,
                     bossName: input.bossName,
                     isActive: input.isActive,
-                    createdDated: input.createdDated
-                }
-            })
+                    createdDated: input.createdDated,
+                },
+            });
 
-            if(!addNewPublisher) {
+            if (!addNewPublisher) {
                 throw new TRPCError({
-                    message: "Can not created publisher",
-                    code: "BAD_REQUEST"
-                })
+                    message: 'Can not created publisher',
+                    code: 'BAD_REQUEST',
+                });
             }
 
             return addNewPublisher;
-        })
+        }),
 });
