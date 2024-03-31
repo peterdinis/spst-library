@@ -5,9 +5,8 @@ import { studentRedirects } from "~/server/utils";
 
 export default async function SignupPage() {
 	const { user } = await validateRequest();
-  
+
 	if (user) redirect(studentRedirects.toLogin);
-  
+
 	return <RegisterForm />;
-  }
-  
+}
