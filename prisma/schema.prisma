@@ -91,12 +91,13 @@ model Teacher {
 }
 
 model Booking {
-    id        Int      @id @default(autoincrement())
-    bookName  String
-    borrowedDays DateTime
-    isBorrowed Boolean
-    isReturned Boolean
-    isExtended Boolean? // Predlženie knihy
+    id            Int      @id @default(autoincrement())
+    bookName      String
+    from          DateTime
+    to            DateTime
+    isBorrowed    Boolean
+    isReturned    Boolean
+    isExtended    Boolean? // Predlženie knihy
     borrowerEmail String
 }
 
