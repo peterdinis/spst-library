@@ -1,3 +1,5 @@
+"use client"
+
 import { FC } from "react";
 import Header from "../shared/Header";
 import Link from "next/link";

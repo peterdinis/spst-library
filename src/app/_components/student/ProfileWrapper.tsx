@@ -1,6 +1,9 @@
+"use client"
+
 import { FC, JSX, SVGProps } from "react";
 import Link from "next/link";
 import { Button } from "~/components/ui/button";
+import { logout } from "~/server/lucia/actions/studentActions";
 import {
 	Card,
 	CardHeader,
@@ -8,6 +11,7 @@ import {
 	CardFooter,
 } from "~/components/ui/card";
 import { User } from "lucide-react";
+import { useToast } from "~/components/ui/use-toast";
 
 function RefreshCcwIcon(
 	props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>,
@@ -34,6 +38,19 @@ function RefreshCcwIcon(
 }
 
 const ProfileWrapper: FC = () => {
+	
+	const {toast} = useToast();
+	
+	const logoutFromApp = () => {
+		logout();
+		toast({
+			title: "Odhlásenie bolo úspešné",
+			className: "bg-green-500",
+			duration: 2000
+		})
+	}
+
+
 	return (
 		<>
 			<div className="lg:grid-cols-profile grid gap-6 lg:gap-10">
@@ -49,6 +66,7 @@ const ProfileWrapper: FC = () => {
 								<div className="font-medium">3</div>
 							</dl>
 						</div>
+						<Button onClick={logoutFromApp}>Odhlásenie</Button>
 					</div>
 				</div>
 				<Card>
