@@ -1,8 +1,8 @@
-import { NextPage } from 'next';
-import PublisherInfo from '~/app/_components/publishers/PublisherInfo';
+import { NextPage } from "next";
+import PublisherInfo from "~/app/_components/publishers/PublisherInfo";
 
 const PublisherDetailPage: NextPage = () => {
-    return <PublisherInfo />;
+	return <PublisherInfo />;
 };
 
 export default PublisherDetailPage;
