@@ -49,8 +49,6 @@
         "react": "18.2.0",
         "react-day-picker": "^8.10.0",
         "react-dom": "18.2.0",
-        "react-hook-form": "^7.51.1",
-        "react-lazy-load-image-component": "^1.6.0",
         "react-quill": "^2.0.0",
         "scroll-to-top": "^1.1.0",
         "server-only": "^0.0.1",

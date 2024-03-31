@@ -1,8 +1,14 @@
+"use client"
+
 import { FC } from 'react';
 import Header from '../shared/Header';
 import Link from 'next/link';
+import { useFormState } from 'react-dom';
+import { signup } from '~/server/lucia/actions/studentActions';
 
 const RegisterForm: FC = () => {
+    const [state, formAction] = useFormState(signup, null);
+
     return (
         <>
             <Header text='Registrácia žiak' />
