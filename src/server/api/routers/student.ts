@@ -1,4 +1,5 @@
-import { createTRPCRouter } from '../trpc';
-import z from 'zod';
+import { createTRPCRouter, protectedProcedure } from '../trpc';
 
-export const studentRouter = createTRPCRouter({});
+export const studentRouter = createTRPCRouter({
+    returnUser: protectedProcedure.query(({ ctx }) => ctx.user),
+});
