@@ -8,5 +8,5 @@ export default async function ProfilePage() {
 
 	if(!user) redirect(studentRedirects.toLogin);
 
-	return <ProfileWrapper />
+	return <ProfileWrapper profileData={user} />
 }

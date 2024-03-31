@@ -37,7 +37,11 @@ function RefreshCcwIcon(
 	);
 }
 
-const ProfileWrapper: FC = () => {
+interface IProfileWrapperProps {
+	profileData: any;
+}
+
+const ProfileWrapper: FC<IProfileWrapperProps> = ({profileData}: IProfileWrapperProps) => {
 	
 	const {toast} = useToast();
 	
