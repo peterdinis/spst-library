@@ -1,9 +1,7 @@
 import { FC } from "react";
 
 const CreateAuthor: FC = () => {
-    return (
-        <>rrr</>
-    )
-}
+	return <>rrr</>;
+};
 
 export default CreateAuthor;

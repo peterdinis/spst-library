@@ -1,25 +1,25 @@
-import { FC } from 'react';
+import { FC } from "react";
 import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from '~/components/ui/select';
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from "~/components/ui/select";
 
 const CategorySelect: FC = () => {
-    return (
-        <Select>
-            <SelectTrigger className='w-[180px]'>
-                <SelectValue placeholder='Theme' />
-            </SelectTrigger>
-            <SelectContent>
-                <SelectItem value='light'>Light</SelectItem>
-                <SelectItem value='dark'>Dark</SelectItem>
-                <SelectItem value='system'>System</SelectItem>
-            </SelectContent>
-        </Select>
-    );
+	return (
+		<Select>
+			<SelectTrigger className="w-[180px]">
+				<SelectValue placeholder="Theme" />
+			</SelectTrigger>
+			<SelectContent>
+				<SelectItem value="light">Light</SelectItem>
+				<SelectItem value="dark">Dark</SelectItem>
+				<SelectItem value="system">System</SelectItem>
+			</SelectContent>
+		</Select>
+	);
 };
 
 export default CategorySelect;

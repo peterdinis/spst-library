@@ -1,8 +1,12 @@
-import { NextPage } from 'next';
-import RegisterForm from '~/app/_components/student/RegisterForm';
+import { redirect } from "next/navigation";
+import RegisterForm from "~/app/_components/student/RegisterForm";
+import { validateRequest } from "~/server/lucia/validate-request";
+import { studentRedirects } from "~/server/utils";
 
-const StudentRegisterPage: NextPage = () => {
-    return <RegisterForm />;
-};
+export default async function SignupPage() {
+	const { user } = await validateRequest();
 
-export default StudentRegisterPage;
+	if (user) redirect(studentRedirects.toLogin);
+
+	return <RegisterForm />;
+}

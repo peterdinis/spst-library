@@ -66,8 +66,8 @@ model Author {
     updatedAt   DateTime @default(now()) @updatedAt
 }
 
-model Student {
-    id        Int      @id @default(autoincrement())
+model User {
+    id        String   @id @default(uuid())
     name      String
     lastName  String
     email     String
@@ -76,18 +76,25 @@ model Student {
     role      AuthRole @default(STUDENT)
     createdAt DateTime @default(now())
     updatedAt DateTime @default(now()) @updatedAt
+    sessions  Session[]
 }
 
-model Teacher {
-    id        Int      @id @default(autoincrement())
-    name      String
-    lastName  String
-    email     String
-    password  String
-    isActive  Boolean  @default(true)
-    role      AuthRole @default(TEACHER)
-    createdAt DateTime @default(now())
-    updatedAt DateTime @default(now()) @updatedAt
+model Session {
+    id        String   @id
+    userId    String
+    expiresAt DateTime
+    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Booking {
+    id            Int      @id @default(autoincrement())
+    bookName      String
+    from          DateTime
+    to            DateTime
+    isBorrowed    Boolean
+    isReturned    Boolean
+    isExtended    Boolean? // Predlženie knihy
+    borrowerEmail String
 }
 
 enum AuthRole {
