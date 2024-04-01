@@ -48,7 +48,7 @@ const AllBooksWrapper: FC = () => {
             book.name.toLowerCase().includes(searchTerm.toLowerCase())
         );
     }
-
+ 
     const toShow = filteredBooks;
 
     const nextCursor = paginatedData?.pages[page]?.nextCursor;
