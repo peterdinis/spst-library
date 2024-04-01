@@ -1,8 +1,7 @@
-import { BookType } from "./bookTypes";
-
-type GlobalExtendedProps = {
+export type IGlobalCardType = {
+	name: string;
+	description: string;
+	id: number | string;
 	linkName: string;
 	image?: string;
-};
-
-export type IGlobalCardType = GlobalExtendedProps & BookType;
+}
