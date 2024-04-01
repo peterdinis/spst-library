@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { FC, JSX, SVGProps } from "react";
 import Link from "next/link";
@@ -37,19 +37,27 @@ function RefreshCcwIcon(
 	);
 }
 
-const ProfileWrapper: FC = () => {
-	
-	const {toast} = useToast();
-	
+interface IProfileWrapperProps {
+	profileData: any;
+}
+
+const ProfileWrapper: FC<IProfileWrapperProps> = ({
+	profileData,
+}: IProfileWrapperProps) => {
+	console.log(profileData);
+
+	const { toast } = useToast();
+
 	const logoutFromApp = () => {
 		logout();
 		toast({
 			title: "Odhlásenie bolo úspešné",
 			className: "bg-green-500",
-			duration: 2000
-		})
-	}
+			duration: 2000,
+		});
+	};
 
+	console.log(profileData);
 
 	return (
 		<>
@@ -58,7 +66,7 @@ const ProfileWrapper: FC = () => {
 					<div className="flex items-center space-x-4 lg:space-x-6">
 						<User />
 						<div className="space-y-1">
-							<h1 className="text-2xl font-bold">Alice Davis</h1>
+							<h1 className="text-2xl font-bold">{profileData.name} {profileData.lastName}</h1>
 							<dl className="grid grid-cols-2 gap-1 text-sm lg:grid-cols-3 lg:gap-2">
 								<div>Grade</div>
 								<div className="font-medium">7th</div>
