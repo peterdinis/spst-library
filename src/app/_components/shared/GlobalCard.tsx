@@ -1,10 +1,10 @@
 import { FC } from "react";
 import Link from "next/link";
 import { Button } from "~/components/ui/button";
-import { IGlobalCardType } from "~/app/types/sharedTypes";
 import { CardDescription, CardHeader, CardFooter } from "~/components/ui/card";
+import { IGlobalCardProps } from "~/app/types/sharedTypes";
 
-const GlobalCard: FC<IGlobalCardType> = ({
+const GlobalCard: FC<IGlobalCardProps> = ({
 	name,
 	description,
 	id,

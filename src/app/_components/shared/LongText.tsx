@@ -3,11 +3,7 @@
 import { FC, useState } from "react";
 import classNames from "classnames";
 import { Button } from "~/components/ui/button";
-
-interface ILongTextProps {
-	text: any;
-	maxLength: number;
-}
+import { ILongTextProps } from "~/app/types/sharedTypes";
 
 const LongText: FC<ILongTextProps> = ({ text, maxLength }: ILongTextProps) => {
 	const [isExpanded, setIsExpanded] = useState(false);

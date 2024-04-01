@@ -1,6 +1,7 @@
 "use client";
 
 import { FC } from "react";
+import { IGlobalPaginationProps } from "~/app/types/sharedTypes";
 import {
 	Pagination,
 	PaginationContent,
@@ -10,13 +11,6 @@ import {
 	PaginationEllipsis,
 	PaginationNext,
 } from "~/components/ui/pagination";
-
-interface IGlobalPaginationProps {
-	page: number;
-	nextCursor: number;
-	handleFetchPreviousPage: (...args: unknown[]) => void;
-	handleFetchNextPage: (...args: unknown[]) => void;
-}
 
 const GlobalPagination: FC<IGlobalPaginationProps> = ({
 	page,
