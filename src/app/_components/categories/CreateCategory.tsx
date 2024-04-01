@@ -9,7 +9,6 @@ import { api } from "~/trpc/react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "~/components/ui/use-toast";
-import AuthorSelect from "../authors/AuthorSelect";
 
 type CreateCategorySchema = z.infer<typeof addCategorySchema>;
 
@@ -42,6 +41,7 @@ const CreateCategory: FC = () => {
 	const onSubmit: SubmitHandler<CreateCategorySchema> = async (
 		data: CreateCategorySchema,
 	) => {
+		console.log("D", data);
 		await addCategoryMut.mutateAsync({
 			name: data.name,
 			description: data.description,
@@ -71,15 +71,6 @@ const CreateCategory: FC = () => {
 						placeholder="Popis kategórie"
 						{...form.register("description", { required: true })}
 					/>
-				</div>
-				<div className="group relative z-0 mb-6">
-					{/* <input
-                        type='text'
-                        className='peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600'
-                        placeholder='Popis kategórie'
-                        {...form.register('description', { required: true })}
-                    /> */}
-					<AuthorSelect />
 				</div>
 				<div className="flex justify-center align-top">
 					<Button variant={"default"} size={"lg"}>
