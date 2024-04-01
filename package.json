@@ -15,7 +15,7 @@
 		"postinstall": "prisma generate",
 		"lint": "next lint",
 		"start": "next start",
-		"format": "npm biome format . --write"
+		"format": "npx @biomejs/biome format .--write"
 	},
 	"dependencies": {
 		"@hookform/resolvers": "^3.3.4",
