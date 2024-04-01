@@ -1,8 +1,5 @@
 import { FC } from "react";
-
-interface IHeaderProps {
-	text: string;
-}
+import { IHeaderProps } from "~/app/types/sharedTypes";
 
 const Header: FC<IHeaderProps> = ({ text }: IHeaderProps) => {
 	return (

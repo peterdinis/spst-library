@@ -14,11 +14,7 @@ import {
 import { studentRedirects } from "../../utils";
 import { validateRequest } from "../validate-request";
 import { TRPCError } from "@trpc/server";
-
-export interface ActionResponse<T> {
-	fieldError?: Partial<Record<keyof T, string | undefined>>;
-	formError?: string;
-}
+import { ActionResponse } from "~/app/types/sharedTypes";
 
 export async function login(
 	_: any,
