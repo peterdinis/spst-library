@@ -66,7 +66,9 @@ const ProfileWrapper: FC<IProfileWrapperProps> = ({
 					<div className="flex items-center space-x-4 lg:space-x-6">
 						<User />
 						<div className="space-y-1">
-							<h1 className="text-2xl font-bold">{profileData.name} {profileData.lastName}</h1>
+							<h1 className="text-2xl font-bold">
+								{profileData.name} {profileData.lastName}
+							</h1>
 							<dl className="grid grid-cols-2 gap-1 text-sm lg:grid-cols-3 lg:gap-2">
 								<div>Grade</div>
 								<div className="font-medium">7th</div>

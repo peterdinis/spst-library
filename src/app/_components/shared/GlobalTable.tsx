@@ -1,7 +1,6 @@
 "use client";
 
 import {
-	ColumnDef,
 	flexRender,
 	getCoreRowModel,
 	useReactTable,
@@ -15,11 +14,7 @@ import {
 	TableRow,
 } from "~/components/ui/table";
 import { Ghost } from "lucide-react";
-
-interface DataTableProps<TData, TValue> {
-	columns: ColumnDef<TData, TValue>[];
-	data: TData[];
-}
+import { DataTableProps } from "~/app/types/sharedTypes";
 
 export function DataTable<TData, TValue>({
 	columns,

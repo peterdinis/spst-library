@@ -1,4 +1,6 @@
-export interface IGlobalCardProps{
+import { ColumnDef } from "@tanstack/react-table";
+
+export interface IGlobalCardProps {
 	name: string;
 	description: string;
 	id: number | string;
@@ -11,7 +13,6 @@ export interface IGlobalErrorProps {
 	message: string;
 }
 
-
 export interface IGlobalPaginationProps {
 	page: number;
 	nextCursor: number;
@@ -22,4 +23,13 @@ export interface IGlobalPaginationProps {
 export interface ILongTextProps {
 	text: string;
 	maxLength: number;
+}
+
+export interface DataTableProps<TData, TValue> {
+	columns: ColumnDef<TData, TValue>[];
+	data: TData[];
+}
+
+export interface IHeaderProps {
+	text: string;
 }

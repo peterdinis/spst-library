@@ -27,12 +27,12 @@ export default async function NavigationItems() {
 				</li>
 			) : (
 				<> */}
-					<li className="text-xl text-black">
-						<Link href="/student/login">Žiak</Link>
-					</li>
-					<li className="text-xl text-black">
-						<Link href="/teacher/login">Učiteľ</Link>
-					</li>
+			<li className="text-xl text-black">
+				<Link href="/student/login">Žiak</Link>
+			</li>
+			<li className="text-xl text-black">
+				<Link href="/teacher/login">Učiteľ</Link>
+			</li>
 			{/* 	</>
 			)} */}
 		</>
