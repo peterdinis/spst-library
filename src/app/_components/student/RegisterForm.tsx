@@ -9,6 +9,10 @@ import { signup } from "~/server/lucia/actions/studentActions";
 const RegisterForm: FC = () => {
 	const [state, formAction] = useFormState(signup, null);
 
+	console.log("S", state);
+	console.log("FA", formAction);
+
+	
 	return (
 		<>
 			<Header text="Registrácia žiak" />
