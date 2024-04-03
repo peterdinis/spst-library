@@ -26,10 +26,10 @@ import { db } from "~/server/db";
  * @see https://trpc.io/docs/server/context
  */
 export const createTRPCContext = async (opts: { headers: Headers }) => {
-  return {
-    db,
-    ...opts,
-  };
+	return {
+		db,
+		...opts,
+	};
 };
 
 /**
@@ -40,17 +40,19 @@ export const createTRPCContext = async (opts: { headers: Headers }) => {
  * errors on the backend.
  */
 const t = initTRPC.context<typeof createTRPCContext>().create({
-  transformer: superjson,
-  errorFormatter({ shape, error }) {
-    return {
-      ...shape,
-      data: {
-        ...shape.data,
-        zodError:
-          error.cause instanceof ZodError ? error.cause.flatten() : null,
-      },
-    };
-  },
+	transformer: superjson,
+	errorFormatter({ shape, error }) {
+		return {
+			...shape,
+			data: {
+				...shape.data,
+				zodError:
+					error.cause instanceof ZodError
+						? error.cause.flatten()
+						: null,
+			},
+		};
+	},
 });
 
 /**
@@ -84,49 +86,49 @@ export const createTRPCRouter = t.router;
 export const publicProcedure = t.procedure;
 
 export const protectedProcedure = t.procedure.use(async ({ ctx, next }) => {
-  if (!ctx.db.session || !ctx.db.user) {
-    throw new TRPCError({ code: "UNAUTHORIZED" });
-  }
+	if (!ctx.db.session || !ctx.db.user) {
+		throw new TRPCError({ code: "UNAUTHORIZED" });
+	}
 
-  const findUser = await ctx.db.user.findFirst({
-    where: {
-      role: "STUDENT",
-    },
-  });
+	const findUser = await ctx.db.user.findFirst({
+		where: {
+			role: "STUDENT",
+		},
+	});
 
-  if (findUser) {
-    throw new TRPCError({ code: "UNAUTHORIZED" });
-  }
+	if (findUser) {
+		throw new TRPCError({ code: "UNAUTHORIZED" });
+	}
 
-  return next({
-    ctx: {
-      // infers the `session` and `user` as non-nullable
-      session: { ...ctx.db.session },
-      user: { ...ctx.db.user },
-    },
-  });
+	return next({
+		ctx: {
+			// infers the `session` and `user` as non-nullable
+			session: { ...ctx.db.session },
+			user: { ...ctx.db.user },
+		},
+	});
 });
 
 export const studentProtectedProcedure = t.procedure.use(({ ctx, next }) => {
-  if (!ctx.db.session || !ctx.db.user) {
-    throw new TRPCError({ code: "UNAUTHORIZED" });
-  }
+	if (!ctx.db.session || !ctx.db.user) {
+		throw new TRPCError({ code: "UNAUTHORIZED" });
+	}
 
-  const findUser = ctx.db.user.findFirst({
-    where: {
-      role: "STUDENT",
-    },
-  });
+	const findUser = ctx.db.user.findFirst({
+		where: {
+			role: "STUDENT",
+		},
+	});
 
-  if(!findUser) {
-	throw new TRPCError({ code: "UNAUTHORIZED" });
-  }
+	if (!findUser) {
+		throw new TRPCError({ code: "UNAUTHORIZED" });
+	}
 
-  return next({
-    ctx: {
-      // infers the `session` and `user` as non-nullable
-      session: { ...ctx.db.session },
-      user: { ...ctx.db.user },
-    },
-  });
+	return next({
+		ctx: {
+			// infers the `session` and `user` as non-nullable
+			session: { ...ctx.db.session },
+			user: { ...ctx.db.user },
+		},
+	});
 });
