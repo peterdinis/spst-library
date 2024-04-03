@@ -85,18 +85,43 @@ export const createTRPCRouter = t.router;
  */
 export const publicProcedure = t.procedure;
 
-export const protectedProcedure = t.procedure.use(async ({ ctx, next }) => {
+export const studentProtectedProcedure = t.procedure.use(async ({ ctx, next }) => {
 	if (!ctx.db.session || !ctx.db.user) {
 	  throw new TRPCError({ code: "UNAUTHORIZED" });
 	};
 
-	const findUser = ctx.db.user.findFirst({
+	const findUser = await ctx.db.user.findFirst({
 		where: {
 			role: "STUDENT"
 		}
 	})
 
-	if(await findUser) {
+	if(findUser) {
+		throw new TRPCError({ code: "UNAUTHORIZED" });
+	}
+
+	return next({
+	  ctx: {
+		// infers the `session` and `user` as non-nullable
+		session: { ...ctx.db.session },
+		user: { ...ctx.db.user },
+	  },
+	});
+  });
+  
+
+export const protectedProcedure = t.procedure.use(async ({ ctx, next }) => {
+	if (!ctx.db.session || !ctx.db.user) {
+	  throw new TRPCError({ code: "UNAUTHORIZED" });
+	};
+
+	const findUser = await ctx.db.user.findFirst({
+		where: {
+			role: "STUDENT"
+		}
+	})
+
+	if(findUser) {
 		throw new TRPCError({ code: "UNAUTHORIZED" });
 	}
 
