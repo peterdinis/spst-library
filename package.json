@@ -1,6 +1,6 @@
 {
 	"name": "spst-kniznica",
-	"version": "0.3.0",
+	"version": "0.4.0",
 	"private": true,
 	"type": "module",
 	"author": {
@@ -9,7 +9,7 @@
 	},
 	"scripts": {
 		"build": "next build",
-		"dev": "next dev",
+		"dev": "next dev --turbo",
 		"lint": "next lint",
 		"start": "next start",
 		"format": "npx @biomejs/biome format . --write"
