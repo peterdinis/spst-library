@@ -43,7 +43,7 @@ export async function login(
 
 	if (!existingUser) {
 		return {
-			formError: "Incorrect email or password",
+			formError: "User not found",
 		};
 	}
 
