@@ -11,10 +11,10 @@ import {
 	SignupInput,
 	signupSchema,
 } from "../../validators/auth";
-import { studentRedirects } from "../../utils";
 import { validateRequest } from "../validate-request";
 import { TRPCError } from "@trpc/server";
 import { ActionResponse } from "~/app/types/sharedTypes";
+import { adminRedirects } from "~/server/utils";
 
 export async function login(
 	_: any,
@@ -70,7 +70,7 @@ export async function login(
 		sessionCookie.value,
 		sessionCookie.attributes,
 	);
-	return redirect(studentRedirects.afterLogin);
+	return redirect(adminRedirects.afterLogin);
 }
 
 export async function signup(
@@ -132,7 +132,7 @@ export async function signup(
 		sessionCookie.value,
 		sessionCookie.attributes,
 	);
-	return redirect(studentRedirects.toLogin);
+	return redirect(adminRedirects.toLogin);
 }
 
 export async function logout(): Promise<{ error: string } | void> {
