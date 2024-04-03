@@ -6,15 +6,18 @@ import { logout } from "~/server/lucia/actions/studentActions";
 import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import { useToast } from "~/components/ui/use-toast";
 import { Input } from "~/components/ui/input";
+import { IProfileData } from "~/app/types/authTypes";
 
 interface IProfileWrapperProps {
-	profileData: any;
+	profileData: IProfileData;
 }
 
 const ProfileWrapper: FC<IProfileWrapperProps> = ({
 	profileData,
 }: IProfileWrapperProps) => {
 	const { toast } = useToast();
+
+	console.log("ProfileD", profileData);
 
 	const logoutFromApp = () => {
 		logout();
@@ -61,7 +64,7 @@ const ProfileWrapper: FC<IProfileWrapperProps> = ({
 									<label className="text-sm font-medium leading-none">
 										Rola
 									</label>
-									<p>{profileData.role}</p>
+									<p className="font-bold">Študent</p>
 								</div>
 							</div>
 						</CardContent>
