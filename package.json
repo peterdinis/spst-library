@@ -2,7 +2,6 @@
 	"name": "spst-kniznica",
 	"version": "0.5.0",
 	"private": true,
-	"type": "module",
 	"author": {
 		"name": "Peter Dinis",
 		"email": "pdinis1@gmail.com"
@@ -12,7 +11,8 @@
 		"dev": "next dev --turbo",
 		"lint": "next lint",
 		"start": "next start",
-		"format": "npx @biomejs/biome format . --write"
+		"format": "npx @biomejs/biome format . --write",
+		"seed": "ts-node prisma/seed.ts"
 	},
 	"dependencies": {
 		"@hookform/resolvers": "^3.3.4",
@@ -65,6 +65,7 @@
 		"postcss": "^8.4.34",
 		"prisma": "^5.12.0",
 		"tailwindcss": "^3.4.1",
+		"ts-node": "^10.9.2",
 		"typescript": "^5.4.2"
 	}
 }
