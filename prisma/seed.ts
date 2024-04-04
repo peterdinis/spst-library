@@ -42,7 +42,7 @@ async function main() {
       description: 'Author of the Harry Potter series.',
       litPeriod: 'Contemporary',
       totalBooks: 7,
-      authorImage: 'image-url',
+      authorImage: 'https://picsum.photos/200/300',
     },
   });
 
@@ -54,7 +54,7 @@ async function main() {
       description: 'Author of 1984 and Animal Farm.',
       litPeriod: 'Modernism',
       totalBooks: 6,
-      authorImage: 'image-url',
+      authorImage: 'https://picsum.photos/200/300',
     },
   });
 
@@ -86,7 +86,7 @@ async function main() {
     data: {
       name: 'Harry Potter and the Sorcerer\'s Stone',
       description: 'First book in the Harry Potter series.',
-      image: 'image-url',
+      image: 'https://picsum.photos/200/300',
       year: 1997,
       pages: 320,
       isAvaiable: true,
@@ -101,7 +101,7 @@ async function main() {
     data: {
       name: '1984',
       description: 'Dystopian novel by George Orwell.',
-      image: 'image-url',
+      image: 'https://picsum.photos/200/300',
       year: 1949,
       pages: 328,
       isAvaiable: true,
