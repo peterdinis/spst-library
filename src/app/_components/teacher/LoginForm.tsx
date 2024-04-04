@@ -1,15 +1,15 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useState } from "react";
 import Header from "../shared/Header";
 import Link from "next/link";
 import { useFormState } from "react-dom";
 import { login } from "~/server/lucia/actions/teacherActions";
+import { Eye, EyeOff } from "lucide-react";
 
-const LoginForm: FC = () => {
+const RegisterForm: FC = () => {
 	const [state, formAction] = useFormState(login, null);
-
-	console.log(state);
+	const [showPassword, setShowPassword] = useState(false);
 
 	return (
 		<>
@@ -22,15 +22,47 @@ const LoginForm: FC = () => {
 								className="text-grey-darker mb-2 block text-sm font-bold"
 								htmlFor="password"
 							>
+								Meno
+							</label>
+							<input
+								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
+								id="name"
+								type="text"
+								name="name"
+								autoFocus
+								placeholder="Meno"
+							/>
+						</div>
+						<div className="mb-2">
+							<label
+								className="text-grey-darker mb-2 block text-sm font-bold"
+								htmlFor="password"
+							>
+								Priezvisko
+							</label>
+							<input
+								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
+								id="lastName"
+								type="text"
+								name="lastName"
+								autoFocus
+								placeholder="Priezvisko"
+							/>
+						</div>
+						<div className="mb-2">
+							<label
+								className="text-grey-darker mb-2 block text-sm font-bold"
+								htmlFor="password"
+							>
 								Email
 							</label>
 							<input
 								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
 								id="Email"
 								type="email"
+								name="email"
 								autoFocus
 								placeholder="Email"
-								name="email"
 							/>
 						</div>
 
@@ -41,16 +73,27 @@ const LoginForm: FC = () => {
 							>
 								Heslo
 							</label>
-							<input
-								className="border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
-								id="Heslo"
-								type="password"
-								autoFocus
-								autoComplete="current-password"
-								name="password"
-								placeholder="********************************************"
-							/>
+							<div className="relative">
+								<input
+									className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
+									id="password"
+									type={showPassword ? "text" : "password"}
+									name="password"
+									autoFocus
+									autoComplete="current-password"
+									placeholder="********************************************"
+								/>
+								<button
+									className="absolute inset-y-0 right-0 flex items-center px-4 bg-transparent text-gray-500 focus:outline-none"
+									onClick={() =>
+										setShowPassword(!showPassword)
+									}
+								>
+									{showPassword ? <EyeOff /> : <Eye />}
+								</button>
+							</div>
 						</div>
+
 						{state?.fieldError ? (
 							<ul className="list-disc space-y-1 rounded-lg border bg-destructive/10 p-2 text-[0.8rem] font-medium text-destructive">
 								{Object.values(state.fieldError).map((err) => (
@@ -87,4 +130,4 @@ const LoginForm: FC = () => {
 	);
 };
 
-export default LoginForm;
+export default RegisterForm;
