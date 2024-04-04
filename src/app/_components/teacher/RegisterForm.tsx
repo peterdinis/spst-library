@@ -4,7 +4,7 @@ import { FC, useState } from "react";
 import Header from "../shared/Header";
 import Link from "next/link";
 import { useFormState } from "react-dom";
-import { signup } from "~/server/lucia/actions/studentActions";
+import { signup } from "~/server/lucia/actions/teacherActions";
 import {Eye, EyeOff} from "lucide-react";
 
 const RegisterForm: FC = () => {
