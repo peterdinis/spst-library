@@ -5,7 +5,7 @@ import Header from "../shared/Header";
 import Link from "next/link";
 import { useFormState } from "react-dom";
 import { login } from "~/server/lucia/actions/studentActions";
-import {Eye, EyeOff} from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 
 const RegisterForm: FC = () => {
 	const [state, formAction] = useFormState(login, null);
@@ -74,22 +74,24 @@ const RegisterForm: FC = () => {
 								Heslo
 							</label>
 							<div className="relative">
-                                <input
-                                    className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
-                                    id="password"
-                                    type={showPassword ? "text" : "password"}
-                                    name="password"
-                                    autoFocus
-                                    autoComplete="current-password"
-                                    placeholder="********************************************"
-                                />
-                                <button
-                                    className="absolute inset-y-0 right-0 flex items-center px-4 bg-transparent text-gray-500 focus:outline-none"
-                                    onClick={() => setShowPassword(!showPassword)}
-                                >
-                                    {showPassword ? <EyeOff /> : <Eye />}
-                                </button>
-                            </div>
+								<input
+									className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
+									id="password"
+									type={showPassword ? "text" : "password"}
+									name="password"
+									autoFocus
+									autoComplete="current-password"
+									placeholder="********************************************"
+								/>
+								<button
+									className="absolute inset-y-0 right-0 flex items-center px-4 bg-transparent text-gray-500 focus:outline-none"
+									onClick={() =>
+										setShowPassword(!showPassword)
+									}
+								>
+									{showPassword ? <EyeOff /> : <Eye />}
+								</button>
+							</div>
 						</div>
 
 						{state?.fieldError ? (
