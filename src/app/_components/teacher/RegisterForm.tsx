@@ -1,13 +1,15 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useState } from "react";
 import Header from "../shared/Header";
 import Link from "next/link";
 import { useFormState } from "react-dom";
-import { signup } from "~/server/lucia/actions/teacherActions";
+import { signup } from "~/server/lucia/actions/studentActions";
+import {Eye, EyeOff} from "lucide-react";
 
 const RegisterForm: FC = () => {
 	const [state, formAction] = useFormState(signup, null);
+	const [showPassword, setShowPassword] = useState(false);
 
 	return (
 		<>
@@ -71,15 +73,23 @@ const RegisterForm: FC = () => {
 							>
 								Heslo
 							</label>
-							<input
-								className="border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
-								id="Heslo"
-								type="password"
-								name="password"
-								autoFocus
-								autoComplete="current-password"
-								placeholder="********************************************"
-							/>
+							<div className="relative">
+                                <input
+                                    className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
+                                    id="password"
+                                    type={showPassword ? "text" : "password"}
+                                    name="password"
+                                    autoFocus
+                                    autoComplete="current-password"
+                                    placeholder="********************************************"
+                                />
+                                <button
+                                    className="absolute inset-y-0 right-0 flex items-center px-4 bg-transparent text-gray-500 focus:outline-none"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                >
+                                    {showPassword ? <EyeOff /> : <Eye />}
+                                </button>
+                            </div>
 						</div>
 
 						{state?.fieldError ? (
