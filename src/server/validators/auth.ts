@@ -4,7 +4,7 @@ export const signupSchema = z.object({
 	name: z.string().min(5),
 	lastName: z.string().min(5),
 	email: z.string().email("Zadajte správny a valídny email"),
-	password: z.string().min(1, "Zadajte valídneho heslo.").max(255),
+	password: z.string().min(1, "Zadajte valídne heslo.").max(255),
 });
 export type SignupInput = z.infer<typeof signupSchema>;
 
