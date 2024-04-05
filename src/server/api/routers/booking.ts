@@ -61,7 +61,8 @@ export const bookingRouter = createTRPCRouter({
 			};
 		}),
 
-	createTeacherBooking: protectedProcedure.input().mutation(async({ctx, input} => {
+		//TODO: Later
+	/* createTeacherBooking: protectedProcedure.input().mutation(async({ctx, input} => {
 
 	})),
 
@@ -75,5 +76,5 @@ export const bookingRouter = createTRPCRouter({
 
 	returnStudentBooking: studentProtectedProcedure.input().mutation(async({ctx, input} => {
 
-	})),
+	})), */
 });
