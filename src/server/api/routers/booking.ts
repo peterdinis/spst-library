@@ -1,5 +1,5 @@
 import { TRPCError } from "@trpc/server";
-import { createTRPCRouter, publicProcedure } from "../trpc";
+import { createTRPCRouter, protectedProcedure, publicProcedure, studentProtectedProcedure } from "../trpc";
 import z from "zod";
 
 export const bookingRouter = createTRPCRouter({
@@ -60,4 +60,20 @@ export const bookingRouter = createTRPCRouter({
 				nextCursor,
 			};
 		}),
+
+	createTeacherBooking: protectedProcedure.input().mutation(async({ctx, input} => {
+
+	})),
+
+	createStudentBooking: studentProtectedProcedure.input().mutation(async({ctx, input} => {
+
+	})),
+
+	returnTeacherBooking: protectedProcedure.input().mutation(async({ctx, input} => {
+
+	})),
+
+	returnStudentBooking: studentProtectedProcedure.input().mutation(async({ctx, input} => {
+
+	})),
 });
