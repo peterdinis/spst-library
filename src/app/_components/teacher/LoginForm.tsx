@@ -6,15 +6,25 @@ import Link from "next/link";
 import { useFormState } from "react-dom";
 import { login } from "~/server/lucia/actions/teacherActions";
 import { Eye, EyeOff } from "lucide-react";
+import { useToast } from "~/components/ui/use-toast";
 
 const RegisterForm: FC = () => {
 	const [state, formAction] = useFormState(login, null);
 	const [showPassword, setShowPassword] = useState(false);
+	const {toast} = useToast();
 
+	const handleLoginSubmit = (e: any) => {
+		formAction(e);
+		toast({
+			title: "Prihlásenie bolo úspešné",
+			duration: 2000,
+			className: "bg-green-500 text-white"
+		})
+	}
 	return (
 		<>
 			<Header text="Prihlásenie učiteľ" />
-			<form action={formAction}>
+			<form onSubmit={handleLoginSubmit}>
 				<div className="mb-4 flex flex-col rounded bg-white px-8 pb-8 pt-6 shadow-md">
 					<div className="mb-4">
 						<div className="mb-2">
