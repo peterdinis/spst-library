@@ -31,7 +31,6 @@ const CreateCategory: FC = () => {
 	});
 
 	const onSubmit = async (data: any) => {
-		console.log("D", data);
 		await addCategoryMut.mutateAsync({
 			name: data.name,
 			description: data.description,
