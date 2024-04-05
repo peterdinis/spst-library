@@ -138,7 +138,7 @@ export async function signup(
 export async function logout(): Promise<{ error: string } | void> {
 	const { session } = await validateRequest();
 	if (!session) {
-		return {
+		return { 
 			error: "Session nebola nájdená",
 		};
 	}
