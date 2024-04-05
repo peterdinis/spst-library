@@ -1,14 +1,19 @@
 import { TRPCError } from "@trpc/server";
-import { createTRPCRouter, protectedProcedure, publicProcedure, studentProtectedProcedure } from "../trpc";
+import {
+	createTRPCRouter,
+	protectedProcedure,
+	publicProcedure,
+	studentProtectedProcedure,
+} from "../trpc";
 import z from "zod";
 
 export const bookingRouter = createTRPCRouter({
-    displayAllBooking: publicProcedure.query(async({ctx}) => {
-        const allBorrowedBooks = await ctx.db.booking.findMany({});
-        return allBorrowedBooks;
-    }),
+	displayAllBooking: publicProcedure.query(async ({ ctx }) => {
+		const allBorrowedBooks = await ctx.db.booking.findMany({});
+		return allBorrowedBooks;
+	}),
 
-    fetchBookingById: publicProcedure
+	fetchBookingById: publicProcedure
 		.input(
 			z.object({
 				id: z.number(),
@@ -61,7 +66,7 @@ export const bookingRouter = createTRPCRouter({
 			};
 		}),
 
-		//TODO: Later
+	//TODO: Later
 	/* createTeacherBooking: protectedProcedure.input().mutation(async({ctx, input} => {
 
 	})),
