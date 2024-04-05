@@ -11,14 +11,21 @@ import { useToast } from "~/components/ui/use-toast";
 const RegisterForm: FC = () => {
 	const [state, formAction] = useFormState(signup, null);
 	const [showPassword, setShowPassword] = useState(false);
-	const [registered, setRegistered] = useState(false);
+	const {toast} = useToast();
+
+	const handleRegisterSubmit = (e: any) => {
+		formAction(e);
+		toast({
+			title: "Registrácia bola úspešená",
+			duration: 2000,
+			className: "bg-green-500 text-white"
+		})
+	}
 
 	return (
 		<>
 			<Header text="Registrácia žiak" />
-			<form action={formAction} onSubmit={() => {
-				console.log("Skuska");
-			}}>
+			<form onSubmit={handleRegisterSubmit}>
 				<div className="mb-4 flex flex-col rounded bg-white px-8 pb-8 pt-6 shadow-md">
 					<div className="mb-4">
 						<div className="mb-2">
