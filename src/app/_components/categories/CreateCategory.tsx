@@ -6,12 +6,14 @@ import { Button } from "~/components/ui/button";
 import { api } from "~/trpc/react";
 import { useForm } from "react-hook-form";
 import { useToast } from "~/components/ui/use-toast";
+import { useRouter } from "next/navigation";
+import { Router } from "lucide-react";
 
 const CreateCategory: FC = () => {
 	const { toast } = useToast();
 
 	const { register, handleSubmit, reset } = useForm();
-
+	const router = useRouter();
 	const addCategoryMut = api.category.createCategory.useMutation({
 		onSuccess: () => {
 			toast({
@@ -19,6 +21,7 @@ const CreateCategory: FC = () => {
 				duration: 2000,
 				className: "bg-green-500 text-white",
 			});
+			router.push("/categories");
 		},
 
 		onError: () => {
