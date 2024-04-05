@@ -4,6 +4,7 @@ import { FC } from "react";
 import Header from "../shared/Header";
 import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
+import AppEditor from "../shared/AppEditor";
 
 const CreateBookForm: FC = () => {
 	return (
@@ -17,9 +18,9 @@ const CreateBookForm: FC = () => {
 						placeholder="Meno Knihy"
 					/>
 				</div>
-				{/* <div className="group relative z-0 mb-6">
-					<Editor />
-				</div> */}
+				<div className="group relative z-0 mb-6">
+					<AppEditor />
+				</div>
 				<div className="group relative z-0 mb-6">
 					<Input
 						type="text"
