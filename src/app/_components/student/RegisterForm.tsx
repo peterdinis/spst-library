@@ -6,15 +6,19 @@ import Link from "next/link";
 import { useFormState } from "react-dom";
 import { signup } from "~/server/lucia/actions/studentActions";
 import { Eye, EyeOff } from "lucide-react";
+import { useToast } from "~/components/ui/use-toast";
 
 const RegisterForm: FC = () => {
 	const [state, formAction] = useFormState(signup, null);
 	const [showPassword, setShowPassword] = useState(false);
+	const [registered, setRegistered] = useState(false);
 
 	return (
 		<>
 			<Header text="Registrácia žiak" />
-			<form action={formAction}>
+			<form action={formAction} onSubmit={() => {
+				console.log("Skuska");
+			}}>
 				<div className="mb-4 flex flex-col rounded bg-white px-8 pb-8 pt-6 shadow-md">
 					<div className="mb-4">
 						<div className="mb-2">

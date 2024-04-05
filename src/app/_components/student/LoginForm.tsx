@@ -117,7 +117,7 @@ const RegisterForm: FC = () => {
 							<div>
 								<Link
 									className="text-blue hover:text-blue-darker mt-4 inline-block align-baseline text-2xl font-bold"
-									href="/teacher/login"
+									href="/student/register"
 								>
 									Registrácia
 								</Link>
