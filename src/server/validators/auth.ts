@@ -10,9 +10,6 @@ export type SignupInput = z.infer<typeof signupSchema>;
 
 export const loginSchema = z.object({
 	email: z.string().email("Zadajte správny a valídny email."),
-	password: z
-		.string()
-		.min(8, "Heslo musí mať miminálne 8 znakov")
-		.max(255),
+	password: z.string().min(8, "Heslo musí mať miminálne 8 znakov").max(255),
 });
 export type LoginInput = z.infer<typeof loginSchema>;

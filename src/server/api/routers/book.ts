@@ -56,51 +56,55 @@ export const bookRouter = createTRPCRouter({
 				},
 			});
 
-            let nextCursor = undefined;
-            if (items.length > limit) {
-                const nextItem = items.pop();
-                nextCursor = nextItem?.id;
-            }
-            return {
-                items,
-                nextCursor,
-            };
-        }),
+			let nextCursor = undefined;
+			if (items.length > limit) {
+				const nextItem = items.pop();
+				nextCursor = nextItem?.id;
+			}
+			return {
+				items,
+				nextCursor,
+			};
+		}),
 
-    createNewBook: publicProcedure.input(z.object({
-        name: z.string().min(5),
-        description: z.string().min(5),
-        image: z.string().min(5),
-        year: z.number(),
-        pages: z.number(),
-        isAvaiable: z.boolean(),
-        categoryId: z.number(),
-        authorId: z.number(),
-        itemsInStock: z.number(),
-        publisherId: z.number(),
-    })).mutation(async({ctx, input}) => {
-        const newBook = await ctx.db.book.create({
-            data: {
-                name: input.name,
-                description: input.description,
-                image: input.image,
-                year: input.year,
-                pages: input.pages,
-                isAvaiable: input.isAvaiable,
-                categoryId: input.categoryId,
-                publisherId: input.publisherId,
-                authorId: input.authorId,
-                itemsInStock: input.itemsInStock
-            }
-        });
+	createNewBook: publicProcedure
+		.input(
+			z.object({
+				name: z.string().min(5),
+				description: z.string().min(5),
+				image: z.string().min(5),
+				year: z.number(),
+				pages: z.number(),
+				isAvaiable: z.boolean(),
+				categoryId: z.number(),
+				authorId: z.number(),
+				itemsInStock: z.number(),
+				publisherId: z.number(),
+			}),
+		)
+		.mutation(async ({ ctx, input }) => {
+			const newBook = await ctx.db.book.create({
+				data: {
+					name: input.name,
+					description: input.description,
+					image: input.image,
+					year: input.year,
+					pages: input.pages,
+					isAvaiable: input.isAvaiable,
+					categoryId: input.categoryId,
+					publisherId: input.publisherId,
+					authorId: input.authorId,
+					itemsInStock: input.itemsInStock,
+				},
+			});
 
-        if(!newBook) {
-            throw new TRPCError({
-                message: "Could not create new book",
-                code: "BAD_REQUEST"
-            })
-        }
+			if (!newBook) {
+				throw new TRPCError({
+					message: "Could not create new book",
+					code: "BAD_REQUEST",
+				});
+			}
 
-        return newBook;
-    })
+			return newBook;
+		}),
 });
