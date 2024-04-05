@@ -2,7 +2,6 @@
 
 import { FC } from "react";
 import Header from "../shared/Header";
-import Editor from "../shared/Editor";
 import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
 
@@ -18,9 +17,9 @@ const CreateBookForm: FC = () => {
 						placeholder="Meno Knihy"
 					/>
 				</div>
-				<div className="group relative z-0 mb-6">
+				{/* <div className="group relative z-0 mb-6">
 					<Editor />
-				</div>
+				</div> */}
 				<div className="group relative z-0 mb-6">
 					<Input
 						type="text"

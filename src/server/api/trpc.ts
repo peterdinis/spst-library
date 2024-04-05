@@ -9,6 +9,7 @@
 import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
+import type { User } from "@prisma/client";
 
 import { db } from "~/server/db";
 
@@ -83,3 +84,51 @@ export const createTRPCRouter = t.router;
  * are logged in.
  */
 export const publicProcedure = t.procedure;
+
+export const protectedProcedure = t.procedure.use(async ({ ctx, next }) => {
+	if (!ctx.db.session || !ctx.db.user) {
+		throw new TRPCError({ code: "UNAUTHORIZED" });
+	}
+
+	const findUser = await ctx.db.user.findFirst({
+		where: {
+			role: "STUDENT",
+		},
+	});
+
+	if (findUser) {
+		throw new TRPCError({ code: "UNAUTHORIZED" });
+	}
+
+	return next({
+		ctx: {
+			// infers the `session` and `user` as non-nullable
+			session: { ...ctx.db.session },
+			user: { ...ctx.db.user },
+		},
+	});
+});
+
+export const studentProtectedProcedure = t.procedure.use(({ ctx, next }) => {
+	if (!ctx.db.session || !ctx.db.user) {
+		throw new TRPCError({ code: "UNAUTHORIZED" });
+	}
+
+	const findUser = ctx.db.user.findFirst({
+		where: {
+			role: "STUDENT",
+		},
+	});
+
+	if (!findUser) {
+		throw new TRPCError({ code: "UNAUTHORIZED" });
+	}
+
+	return next({
+		ctx: {
+			// infers the `session` and `user` as non-nullable
+			session: { ...ctx.db.session },
+			user: { ...ctx.db.user },
+		},
+	});
+});

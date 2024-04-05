@@ -43,13 +43,13 @@ export async function login(
 
 	if (!existingUser) {
 		return {
-			formError: "Incorrect email or password",
+			formError: "Používateľ nebol nájdený",
 		};
 	}
 
 	if (!existingUser || !existingUser?.password) {
 		return {
-			formError: "Incorrect email or password",
+			formError: "Zlé heslo alebo email",
 		};
 	}
 
@@ -59,7 +59,7 @@ export async function login(
 	);
 	if (!validPassword) {
 		return {
-			formError: "Incorrect email or password",
+			formError: "Heslo nie je správne",
 		};
 	}
 
@@ -100,7 +100,7 @@ export async function signup(
 
 	if (existingUser) {
 		return {
-			formError: "Cannot create account with that email",
+			formError: "Nepodarilo sa vytvoriť účet s týmto emailom",
 		};
 	}
 
@@ -121,7 +121,7 @@ export async function signup(
 	if (!createNewStudent) {
 		throw new TRPCError({
 			code: "BAD_REQUEST",
-			message: "Could not create new student",
+			message: "Nepodarilo sa vytvoriť nového používateľa",
 		});
 	}
 
@@ -139,7 +139,7 @@ export async function logout(): Promise<{ error: string } | void> {
 	const { session } = await validateRequest();
 	if (!session) {
 		return {
-			error: "No session found",
+			error: "Session nebola nájdená",
 		};
 	}
 	await lucia.invalidateSession(session.id);
