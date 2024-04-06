@@ -1,9 +1,14 @@
 import { create } from "zustand";
 
+interface ITeacherStoreData {
+	role: string;
+	email: string;
+}
+
 interface TeacherStore {
 	teacher: any;
 	getTeacher: () => void;
-	setTeacher: (teacher: unknown) => void;
+	setTeacher: (teacher: ITeacherStoreData) => void;
 }
 
 export const useTeacherStore = create<TeacherStore>((set) => ({
