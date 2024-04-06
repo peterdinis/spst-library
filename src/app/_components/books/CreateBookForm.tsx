@@ -21,9 +21,6 @@ const CreateBookForm: FC = () => {
 					/>
 				</div>
 				<div className="group relative z-0 mb-6">
-					<AppEditor />
-				</div>
-				<div className="group relative z-0 mb-6">
 					<Input
 						type="text"
 						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
@@ -72,6 +69,10 @@ const CreateBookForm: FC = () => {
 						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
 						placeholder="Kategória"
 					/>
+				</div>
+
+				<div className="group relative z-0 mb-6">
+					<AppEditor />
 				</div>
 
 				<div className="flex justify-center align-top">
