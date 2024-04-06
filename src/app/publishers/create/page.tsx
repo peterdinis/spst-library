@@ -2,7 +2,7 @@ import { NextPage } from "next";
 import CreatePublisher from "~/app/_components/publishers/CreatePublisher";
 
 const CreatePublisherPage: NextPage = () => {
-    return <CreatePublisher />
-}
+	return <CreatePublisher />;
+};
 
 export default CreatePublisherPage;
