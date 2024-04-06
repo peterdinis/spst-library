@@ -4,7 +4,9 @@ import { FC } from "react";
 import Header from "../shared/Header";
 import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
-import AppEditor from "../shared/AppEditor";
+import dynamic from "next/dynamic";
+
+const AppEditor = dynamic(() => import("../shared/AppEditor"), { ssr: false });
 
 const CreateBookForm: FC = () => {
 	return (
@@ -19,7 +21,6 @@ const CreateBookForm: FC = () => {
 					/>
 				</div>
 				<div className="group relative z-0 mb-6">
-					rrr
 					<AppEditor />
 				</div>
 				<div className="group relative z-0 mb-6">
