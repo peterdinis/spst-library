@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from "react";
 import QuillEditor from "react-quill";
-
 import "react-quill/dist/quill.snow.css";
 
 const Editor = () => {
@@ -12,7 +11,7 @@ const Editor = () => {
 		() => ({
 			toolbar: {
 				container: [
-					[{ header: [2, 3, 4, false] }],
+					[{ header: [1, 2, 3, 4, false] }],
 					["bold", "italic", "underline", "blockquote"],
 					[{ color: [] }],
 					[
@@ -28,6 +27,12 @@ const Editor = () => {
 			clipboard: {
 				matchVisual: true,
 			},
+
+			history: {
+				delay: 2000,
+				maxStack: 500,
+				userOnly: true
+			  },
 		}),
 		[],
 	);
@@ -52,7 +57,7 @@ const Editor = () => {
 		<div>
 			<QuillEditor
 				theme="snow"
-				value={value}
+				value={"Krátky popis"}
 				formats={formats}
 				modules={modules}
 				onChange={(value) => setValue(value)}
