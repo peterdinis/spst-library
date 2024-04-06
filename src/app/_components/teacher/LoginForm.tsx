@@ -11,16 +11,16 @@ import { useToast } from "~/components/ui/use-toast";
 const RegisterForm: FC = () => {
 	const [state, formAction] = useFormState(login, null);
 	const [showPassword, setShowPassword] = useState(false);
-	const {toast} = useToast();
+	const { toast } = useToast();
 
 	const handleLoginSubmit = (e: any) => {
 		formAction(e);
 		toast({
 			title: "Prihlásenie bolo úspešné",
 			duration: 2000,
-			className: "bg-green-500 text-white"
-		})
-	}
+			className: "bg-green-500 text-white",
+		});
+	};
 	return (
 		<>
 			<Header text="Prihlásenie učiteľ" />
