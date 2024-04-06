@@ -31,8 +31,8 @@ const Editor = () => {
 			history: {
 				delay: 2000,
 				maxStack: 500,
-				userOnly: true
-			  },
+				userOnly: true,
+			},
 		}),
 		[],
 	);
