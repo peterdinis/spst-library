@@ -28,6 +28,12 @@ const Editor = () => {
 			clipboard: {
 				matchVisual: true,
 			},
+
+			history: {
+				delay: 2000,
+				maxStack: 500,
+				userOnly: true
+			  },
 		}),
 		[],
 	);
