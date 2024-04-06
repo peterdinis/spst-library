@@ -7,7 +7,6 @@ import { api } from "~/trpc/react";
 import { useForm } from "react-hook-form";
 import { useToast } from "~/components/ui/use-toast";
 import { useRouter } from "next/navigation";
-import { Router } from "lucide-react";
 
 const CreateAuthor: FC = () => {
 	const { toast } = useToast();
