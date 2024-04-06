@@ -57,7 +57,7 @@ const Editor = () => {
 		<div>
 			<QuillEditor
 				theme="snow"
-				value={"Kráky popis"}
+				value={"Krátky popis"}
 				formats={formats}
 				modules={modules}
 				onChange={(value) => setValue(value)}
