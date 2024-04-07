@@ -113,7 +113,7 @@ const CreateAuthor: FC = () => {
 				</div>
 				<div className="flex justify-center align-top">
 					<Button variant={"default"} size={"lg"}>
-						Pridaj novú kategóiu
+						Pridaj nového spisovateľa/ku
 					</Button>
 				</div>
 			</form>
