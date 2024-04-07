@@ -61,7 +61,7 @@ const BookDetail: FC = () => {
 										<LongText
 											text={
 												data &&
-												(data.description as unknown as string)
+												(data.description!)
 											}
 											maxLength={30}
 										/>

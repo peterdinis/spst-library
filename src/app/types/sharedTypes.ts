@@ -21,7 +21,7 @@ export interface IGlobalPaginationProps {
 }
 
 export interface ILongTextProps {
-	text: string;
+	text: any;
 	maxLength: number;
 }
 
