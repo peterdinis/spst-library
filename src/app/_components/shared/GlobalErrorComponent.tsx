@@ -8,7 +8,7 @@ const GlobalErrorComponent: FC<IGlobalErrorProps> = ({
 }) => {
 	return (
 		<main className="flex h-screen w-full flex-col items-center justify-center">
-			<h1 className="text-9xl font-extrabold tracking-widest text-black">
+			<h1 className="text-9xl font-extrabold tracking-widest text-balance text-black">
 				{statusCode}
 			</h1>
 			<div className="mt-4px-2 absolute rotate-12 rounded bg-[#FF6A3D] text-sm">

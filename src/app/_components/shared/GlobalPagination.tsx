@@ -8,7 +8,6 @@ import {
 	PaginationItem,
 	PaginationPrevious,
 	PaginationLink,
-	PaginationEllipsis,
 	PaginationNext,
 } from "~/components/ui/pagination";
 
@@ -42,9 +41,6 @@ const GlobalPagination: FC<IGlobalPaginationProps> = ({
 					)}
 					<PaginationItem>
 						<PaginationLink href="#">{page + 1}</PaginationLink>
-					</PaginationItem>
-					<PaginationItem>
-						<PaginationEllipsis />
 					</PaginationItem>
 					<PaginationItem>
 						<PaginationNext
