@@ -13,7 +13,7 @@ const CreateAuthor: FC = () => {
 
 	const { register, handleSubmit, reset } = useForm();
 	const router = useRouter();
-	const addCategoryMut = api.author.createNewAuthor.useMutation({
+	const addAuthorMut = api.author.createNewAuthor.useMutation({
 		onSuccess: () => {
 			toast({
 				title: "Nová kategória bola vytvorená",
@@ -25,7 +25,7 @@ const CreateAuthor: FC = () => {
 
 		onError: () => {
 			toast({
-				title: "Nová kategória nebola vytvorená",
+				title: "Nový spisovateľ bol vytvorený",
 				duration: 2000,
 				className: "bg-red-500 text-white",
 			});
@@ -33,16 +33,21 @@ const CreateAuthor: FC = () => {
 	});
 
 	const onSubmit = async (data: any) => {
-		/* await addCategoryMut.mutateAsync({
+		await addAuthorMut.mutateAsync({
 			name: data.name,
 			description: data.description,
-		}); */
+			deathYear: data.deathYear || null,
+			birthYear: data.birthYear,
+			litPeriod: data.litPeriod,
+			authorImage: data.authorImage,
+			totalBooks: Number(data.totalBooks),
+		});
 		reset();
 	};
 
 	return (
 		<>
-			<Header text="Tvorba novej kategórie" />
+			<Header text="Vytvorenie nového spisovateľa/ky" />
 			<form
 				onSubmit={handleSubmit(onSubmit)}
 				className="mx-auto mt-10 max-w-2xl"
@@ -51,7 +56,7 @@ const CreateAuthor: FC = () => {
 					<input
 						type="text"
 						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
-						placeholder="Meno kategórie"
+						placeholder="Meno"
 						{...register("name", { required: true })}
 					/>
 				</div>
@@ -59,7 +64,7 @@ const CreateAuthor: FC = () => {
 					<input
 						type="text"
 						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
-						placeholder="Popis kategórie"
+						placeholder="Krátky popis"
 						{...register("description", { required: true })}
 					/>
 				</div>
