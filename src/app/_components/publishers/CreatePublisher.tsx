@@ -74,43 +74,32 @@ const CreatePublisher: FC = () => {
 					<input
 						type="text"
 						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
-						placeholder="Rok úmrtia"
-						{...register("deathYear", { required: true })}
-					/>
-				</div>
-				<div className="group relative z-0 mb-6">
-					<input
-						type="text"
-						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
-						placeholder="Dátum narodenia"
-						{...register("birthYear", { required: true })}
-					/>
-				</div>
-				<div className="group relative z-0 mb-6">
-					<input
-						type="text"
-						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
-						placeholder="Literárne obdobie"
-						{...register("litPeriod", { required: true })}
-					/>
-				</div>
-				<div className="group relative z-0 mb-6">
-					<input
-						type="text"
-						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
 						placeholder="Obrázok"
-						{...register("authorImage", { required: true })}
+						{...register("image", { required: true })}
+					/>
+				</div>
+				<div className="group relative z-0 mb-6">
+					<input
+						type="date"
+						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
+						placeholder="Dátum vytvorenia"
+						{...register("createdDated", { required: true, valueAsDate: true })}
+					/>
+				</div>
+				<div className="group relative z-0 mb-6">
+					<input
+						type="checkbox"
+						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
+						placeholder="Je akítnve"
+						{...register("isActive", { required: true })}
 					/>
 				</div>
 				<div className="group relative z-0 mb-6">
 					<input
 						type="text"
 						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
-						placeholder="Počet kníh"
-						{...register("totalBooks", {
-							required: true,
-							valueAsNumber: true,
-						})}
+						placeholder="Riaditeľ/ka"
+						{...register("boossName", { required: true })}
 					/>
 				</div>
 				<div className="flex justify-center align-top">
