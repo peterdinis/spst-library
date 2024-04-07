@@ -16,7 +16,7 @@ const CreateAuthor: FC = () => {
 	const addAuthorMut = api.author.createNewAuthor.useMutation({
 		onSuccess: () => {
 			toast({
-				title: "Nová kategória bola vytvorená",
+				title: "Bol pridaný/á nový/á spisovateľ/ka",
 				duration: 2000,
 				className: "bg-green-500 text-white",
 			});
@@ -25,7 +25,7 @@ const CreateAuthor: FC = () => {
 
 		onError: () => {
 			toast({
-				title: "Nový spisovateľ bol vytvorený",
+				title: "Nepodarilo sa vytvoriť spisovateľa/ku",
 				duration: 2000,
 				className: "bg-red-500 text-white",
 			});
