@@ -57,10 +57,7 @@ const AuthorInfo: FC = () => {
 											Krátky popis:{" "}
 										</div>
 										<LongText
-											text={
-												data &&
-												(data.description as unknown as string)
-											}
+											text={data?.description!}
 											maxLength={30}
 										/>
 									</div>
