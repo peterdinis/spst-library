@@ -94,6 +94,7 @@ const RegisterForm: FC = () => {
 									placeholder="********************************************"
 								/>
 								<button
+									type="button"
 									className="absolute inset-y-0 right-0 flex items-center px-4 bg-transparent text-gray-500 focus:outline-none"
 									onClick={() =>
 										setShowPassword(!showPassword)
