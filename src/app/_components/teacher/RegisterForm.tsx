@@ -101,7 +101,7 @@ const RegisterForm: FC = () => {
 										setShowPassword(!showPassword)
 									}
 								>
-									{showPassword ? <EyeOff /> : <Eye />}
+									{showPassword ? <Eye /> : <EyeOff />}
 								</button>
 							</div>
 						</div>
