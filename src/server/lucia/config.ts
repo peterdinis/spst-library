@@ -10,7 +10,7 @@ export const lucia = new Lucia(adapter, {
 	getSessionAttributes: () => {
 		return {};
 	},
-	getUserAttributes: (attributes: any) => {
+	getUserAttributes: (attributes) => {
 		return {
 			id: attributes.id,
 			name: attributes.name,
