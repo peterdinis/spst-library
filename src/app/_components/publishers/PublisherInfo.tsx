@@ -72,10 +72,7 @@ const PublisherInfo: FC = () => {
 											Krátky popis:{" "}
 										</div>
 										<LongText
-											text={
-												data &&
-												(data.description as unknown as string)
-											}
+											text={data?.description!}
 											maxLength={30}
 										/>
 									</div>
@@ -86,10 +83,9 @@ const PublisherInfo: FC = () => {
 										:{" "}
 										{
 											format(
-												data &&
-													(data.createdDated as any),
+												data?.createdDated!,
 												"dd-MM-yyyy",
-											) as unknown as string
+											)
 										}
 									</p>
 									<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800">
@@ -119,8 +115,7 @@ const PublisherInfo: FC = () => {
 												Neaktívne:{" "}
 												{
 													format(
-														data &&
-															(data.endDate as any),
+														data?.endDate!,
 														"dd-MM-yyyy",
 													) as unknown as string
 												}

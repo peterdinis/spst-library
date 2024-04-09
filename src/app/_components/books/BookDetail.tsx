@@ -60,8 +60,7 @@ const BookDetail: FC = () => {
 										</div>
 										<LongText
 											text={
-												data &&
-												(data.description!)
+												data?.description!
 											}
 											maxLength={30}
 										/>

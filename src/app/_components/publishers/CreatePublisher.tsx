@@ -4,7 +4,7 @@ import { FC } from "react";
 import Header from "../shared/Header";
 import { Button } from "~/components/ui/button";
 import { api } from "~/trpc/react";
-import {useForm} from "react-hook-form";
+import {useForm, FieldValues} from "react-hook-form";
 import { useToast } from "~/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import {format} from "date-fns";
@@ -36,7 +36,7 @@ const CreatePublisher: FC = () => {
 	});
 
 
-	const onSubmit = async(data: any) => {
+	const onSubmit = async(data: FieldValues) => {
 		await addPublisherMut.mutateAsync({
 			name: data.name,
 			image: data.image,

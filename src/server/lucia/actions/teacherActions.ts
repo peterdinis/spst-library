@@ -17,7 +17,7 @@ import { ActionResponse } from "~/app/types/sharedTypes";
 import { teacherRedirects } from "~/server/utils";
 
 export async function login(
-	_: any,
+	_: unknown,
 	formData: FormData,
 ): Promise<ActionResponse<LoginInput>> {
 	const obj = Object.fromEntries(formData.entries());
@@ -74,7 +74,7 @@ export async function login(
 }
 
 export async function signup(
-	_: any,
+	_: unknown,
 	formData: FormData,
 ): Promise<ActionResponse<SignupInput>> {
 	const obj = Object.fromEntries(formData.entries());
