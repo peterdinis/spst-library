@@ -4,10 +4,9 @@ import { FC } from "react";
 import Header from "../shared/Header";
 import { Button } from "~/components/ui/button";
 import { api } from "~/trpc/react";
-import { useForm } from "react-hook-form";
+import { useForm, FieldValues } from "react-hook-form";
 import { useToast } from "~/components/ui/use-toast";
 import { useRouter } from "next/navigation";
-import { Router } from "lucide-react";
 
 const CreateCategory: FC = () => {
 	const { toast } = useToast();
@@ -33,7 +32,7 @@ const CreateCategory: FC = () => {
 		},
 	});
 
-	const onSubmit = async (data: any) => {
+	const onSubmit = async (data: FieldValues) => {
 		await addCategoryMut.mutateAsync({
 			name: data.name,
 			description: data.description,

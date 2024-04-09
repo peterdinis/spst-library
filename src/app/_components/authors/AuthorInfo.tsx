@@ -57,10 +57,7 @@ const AuthorInfo: FC = () => {
 											Krátky popis:{" "}
 										</div>
 										<LongText
-											text={
-												data &&
-												(data.description as unknown as string)
-											}
+											text={data?.description!}
 											maxLength={30}
 										/>
 									</div>
@@ -71,9 +68,9 @@ const AuthorInfo: FC = () => {
 										:{" "}
 										{
 											format(
-												data && (data.birthYear as any),
+												data?.birthYear!,
 												"dd-MM-yyyy",
-											) as unknown as string
+											)
 										}
 									</p>
 									<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800">
@@ -114,8 +111,7 @@ const AuthorInfo: FC = () => {
 												:{" "}
 												{
 													format(
-														data &&
-															(data.deathYear as any),
+														data && data.deathYear!,
 														"dd-MM-yyyy",
 													) as unknown as string
 												}

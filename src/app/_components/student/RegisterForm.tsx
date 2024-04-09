@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useState, FormEvent } from "react";
 import Header from "../shared/Header";
 import Link from "next/link";
 import { useFormState } from "react-dom";
@@ -13,8 +13,9 @@ const RegisterForm: FC = () => {
 	const [showPassword, setShowPassword] = useState(false);
 	const { toast } = useToast();
 
-	const handleRegisterSubmit = (e: any) => {
-		formAction(e);
+	const handleRegisterSubmit = (e: FormEvent<HTMLFormElement>) => {
+		const formData = new FormData(e.currentTarget);
+		formAction(formData);
 		toast({
 			title: "Registrácia bola úspešená",
 			duration: 2000,
