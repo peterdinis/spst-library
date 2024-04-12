@@ -15,6 +15,7 @@ import { validateRequest } from "../validate-request";
 import { TRPCError } from "@trpc/server";
 import { ActionResponse } from "~/app/types/sharedTypes";
 import { adminRedirects } from "~/server/utils";
+import { ADMIN } from "../constants";
 
 export async function login(
 	_: unknown,
@@ -107,21 +108,21 @@ export async function signup(
 	const userId = generateId(21);
 	const hashedPassword = await new Scrypt().hash(password);
 
-	const createNewStudent = await db.user.create({
+	const createNewAdmin = await db.user.create({
 		data: {
 			id: userId,
 			email,
 			name,
 			lastName,
 			password: hashedPassword,
-			role: "ADMIN",
+			role: ADMIN,
 		},
 	});
 
-	if (!createNewStudent) {
+	if (!createNewAdmin) {
 		throw new TRPCError({
 			code: "BAD_REQUEST",
-			message: "Could not create new student",
+			message: "Nepodarilo sa vytvoriť admin účet",
 		});
 	}
 

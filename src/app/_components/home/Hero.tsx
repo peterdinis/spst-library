@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import schollImage from "../../../../public/img/school.png";
 import { Button } from "~/components/ui/button";
+import ConfettiWrapper from "../shared/ConfettiWrapper";
 
 const Hero: FC = () => {
 	return (

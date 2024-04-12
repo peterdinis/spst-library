@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
 import { FC } from "react";
 import Header from "../shared/Header";
 import { Button } from "~/components/ui/button";
 import { api } from "~/trpc/react";
-import {useForm, FieldValues} from "react-hook-form";
+import { useForm, FieldValues } from "react-hook-form";
 import { useToast } from "~/components/ui/use-toast";
 import { useRouter } from "next/navigation";
-import {format} from "date-fns";
+import { format } from "date-fns";
 
 const CreatePublisher: FC = () => {
-	const {toast} = useToast();
+	const { toast } = useToast();
 
-	const {register, handleSubmit, reset} = useForm();
-	
+	const { register, handleSubmit, reset } = useForm();
+
 	const router = useRouter();
 
 	const addPublisherMut = api.publisher.createPublisher.useMutation({
@@ -35,17 +35,16 @@ const CreatePublisher: FC = () => {
 		},
 	});
 
-
-	const onSubmit = async(data: FieldValues) => {
+	const onSubmit = async (data: FieldValues) => {
 		await addPublisherMut.mutateAsync({
 			name: data.name,
 			image: data.image,
 			description: data.description,
-			createdDated: format(data.createdDated, 'dd-MM-yyyy'),
+			createdDated: format(data.createdDated, "dd-MM-yyyy"),
 			isActive: data.isActive,
 			bossName: data.bossName,
-		})
-	}
+		});
+	};
 
 	return (
 		<>
@@ -83,7 +82,10 @@ const CreatePublisher: FC = () => {
 						type="date"
 						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
 						placeholder="Dátum vytvorenia"
-						{...register("createdDated", { required: true, valueAsDate: true })}
+						{...register("createdDated", {
+							required: true,
+							valueAsDate: true,
+						})}
 					/>
 				</div>
 				<div className="group relative z-0 mb-6">
