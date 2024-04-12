@@ -2,7 +2,7 @@
 	"name": "spst-kniznica",
 	"version": "0.7.0",
 	"private": true,
-	
+	"type": "module",
 	"author": {
 		"name": "Peter Dinis",
 		"email": "pdinis1@gmail.com"
