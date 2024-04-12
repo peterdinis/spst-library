@@ -2,124 +2,107 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
-	// Create categories
-	const category1 = await prisma.category.create({
-		data: {
-			name: "Fantasy",
-			description: "Books in the fantasy genre.",
-		},
-	});
+    // Create categories
+    const categories = [];
+    for (let i = 0; i < 6; i++) {
+        const category = await prisma.category.create({
+            data: {
+                name: `Category ${i + 1}`,
+                description: `Description for category ${i + 1}.`,
+            },
+        });
+        categories.push(category);
+    }
 
-	const category2 = await prisma.category.create({
-		data: {
-			name: "Science Fiction",
-			description: "Books in the science fiction genre.",
-		},
-	});
+    // Create publishers
+    const publishers = [];
+    for (let i = 0; i < 6; i++) {
+        const publisher = await prisma.publisher.create({
+            data: {
+                name: `Publisher ${i + 1}`,
+                description: `Description for publisher ${i + 1}.`,
+                isActive: true,
+            },
+        });
+        publishers.push(publisher);
+    }
 
-	// Create publishers
-	const publisher1 = await prisma.publisher.create({
-		data: {
-			name: "Penguin Random House",
-			description: "One of the largest book publishers.",
-			isActive: true,
-		},
-	});
+    // Create authors
+    const authors = [];
+    for (let i = 0; i < 6; i++) {
+        const author = await prisma.author.create({
+            data: {
+                name: `Author ${i + 1}`,
+                birthYear: "19XX",
+                description: `Description for author ${i + 1}.`,
+                litPeriod: "Period",
+                totalBooks: 5,
+                authorImage: "https://picsum.photos/200/300",
+            },
+        });
+        authors.push(author);
+    }
 
-	const publisher2 = await prisma.publisher.create({
-		data: {
-			name: "HarperCollins",
-			description: "A leading global publisher.",
-			isActive: true,
-		},
-	});
+    // Create users - STUDENT
+    const students = [];
+    for (let i = 0; i < 6; i++) {
+        const student = await prisma.user.create({
+            data: {
+                name: `Student ${i + 1}`,
+                lastName: "Doe",
+                email: `student${i + 1}@example.com`,
+                password: "password123",
+                isActive: true,
+                role: "STUDENT",
+            },
+        });
+        students.push(student);
+    }
 
-	// Create authors
-	const author1 = await prisma.author.create({
-		data: {
-			name: "J.K. Rowling",
-			birthYear: "1965",
-			description: "Author of the Harry Potter series.",
-			litPeriod: "Contemporary",
-			totalBooks: 7,
-			authorImage: "https://picsum.photos/200/300",
-		},
-	});
+    // Create users - TEACHER
+    const teachers = [];
+    for (let i = 0; i < 6; i++) {
+        const teacher = await prisma.user.create({
+            data: {
+                name: `Teacher ${i + 1}`,
+                lastName: "Smith",
+                email: `teacher${i + 1}@example.com`,
+                password: "password123",
+                isActive: true,
+                role: "TEACHER",
+            },
+        });
+        teachers.push(teacher);
+    }
 
-	const author2 = await prisma.author.create({
-		data: {
-			name: "George Orwell",
-			birthYear: "1903",
-			deathYear: "1950",
-			description: "Author of 1984 and Animal Farm.",
-			litPeriod: "Modernism",
-			totalBooks: 6,
-			authorImage: "https://picsum.photos/200/300",
-		},
-	});
+    // Create books
+    const books = [];
+    for (let i = 0; i < 6; i++) {
+        const book = await prisma.book.create({
+            data: {
+                name: `Book ${i + 1}`,
+                description: `Description for book ${i + 1}.`,
+                image: "https://picsum.photos/200/300",
+                year: 2000 + i,
+                pages: 300 + i,
+                isAvaiable: true,
+                itemsInStock: 10 + i,
+                categoryId: categories[i % 6]!.id,
+                publisherId: publishers[i % 6]!.id,
+                authorId: authors[i % 6]!.id,
+            },
+        });
+        books.push(book);
+    }
 
-	// Create users
-	const user1 = await prisma.user.create({
-		data: {
-			name: "John",
-			lastName: "Doe",
-			email: "john@example.com",
-			password: "password123",
-			isActive: true,
-			role: "STUDENT",
-		},
-	});
-
-	const user2 = await prisma.user.create({
-		data: {
-			name: "Jane",
-			lastName: "Smith",
-			email: "jane@example.com",
-			password: "password456",
-			isActive: true,
-			role: "TEACHER",
-		},
-	});
-
-	// Create books
-	const book1 = await prisma.book.create({
-		data: {
-			name: "Harry Potter and the Sorcerer's Stone",
-			description: "First book in the Harry Potter series.",
-			image: "https://picsum.photos/200/300",
-			year: 1997,
-			pages: 320,
-			isAvaiable: true,
-			itemsInStock: 10,
-			categoryId: category1.id,
-			publisherId: publisher1.id,
-			authorId: author1.id,
-		},
-	});
-
-	const book2 = await prisma.book.create({
-		data: {
-			name: "1984",
-			description: "Dystopian novel by George Orwell.",
-			image: "https://picsum.photos/200/300",
-			year: 1949,
-			pages: 328,
-			isAvaiable: true,
-			itemsInStock: 5,
-			categoryId: category2.id,
-			publisherId: publisher2.id,
-			authorId: author2.id,
-		},
-	});
-
-	console.log("Seed data populated successfully!");
+    console.log("Seed data populated successfully!");
 }
 
 main()
-	.catch((e) => {
-		console.error(e);
-		process.exit(1);
-	})
-	.finally(async () => {
-		await prisma.$disconnect();
-	});
+    .catch((e) => {
+        console.error(e);
+        process.exit(1);
+    })
+    .finally(async () => {
+        await prisma.$disconnect();
+    });
