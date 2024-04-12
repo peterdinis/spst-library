@@ -15,6 +15,7 @@ import { validateRequest } from "../validate-request";
 import { TRPCError } from "@trpc/server";
 import { ActionResponse } from "~/app/types/sharedTypes";
 import { teacherRedirects } from "~/server/utils";
+import { TEACHER } from "../constants";
 
 export async function login(
 	_: unknown,
@@ -107,18 +108,18 @@ export async function signup(
 	const userId = generateId(21);
 	const hashedPassword = await new Scrypt().hash(password);
 
-	const createNewStudent = await db.user.create({
+	const createNewTeacher = await db.user.create({
 		data: {
 			id: userId,
 			email,
 			name,
 			lastName,
 			password: hashedPassword,
-			role: "TEACHER",
+			role: TEACHER,
 		},
 	});
 
-	if (!createNewStudent) {
+	if (!createNewTeacher) {
 		throw new TRPCError({
 			code: "BAD_REQUEST",
 			message: "Nepodarilo sa vytvoriť nového používateľa",
