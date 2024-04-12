@@ -66,12 +66,7 @@ const AuthorInfo: FC = () => {
 											Dátum narodenia
 										</span>
 										:{" "}
-										{
-											format(
-												data?.birthYear!,
-												"dd-MM-yyyy",
-											)
-										}
+										{format(data?.birthYear!, "dd-MM-yyyy")}
 									</p>
 									<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800">
 										<span className="font-bold">

@@ -22,7 +22,7 @@ const BookingModal: FC = () => {
 		setOpen(!open);
 	};
 
-	const handleBooking = (e: { preventDefault: () => void; }) => {
+	const handleBooking = (e: { preventDefault: () => void }) => {
 		e.preventDefault();
 		toast({
 			title: "Kniha bola úpsešné požičaná",
