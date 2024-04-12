@@ -5,6 +5,8 @@ import Header from "../shared/Header";
 import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
 import dynamic from "next/dynamic";
+import AuthorSelect from "../authors/AuthorSelect";
+import CategorySelect from "../categories/CategorySelect";
 
 const AppEditor = dynamic(() => import("../shared/AppEditor"), { ssr: false });
 
@@ -29,11 +31,7 @@ const CreateBookForm: FC = () => {
 				</div>
 				{/* Select shadcn ui neskôr */}
 				<div className="group relative z-0 mb-6">
-					<Input
-						type="text"
-						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
-						placeholder="Meno autora"
-					/>
+					<AuthorSelect />
 				</div>
 				<div className="group relative z-0 mb-6">
 					<Input
@@ -64,11 +62,7 @@ const CreateBookForm: FC = () => {
 					/>
 				</div>
 				<div className="group relative z-0 mb-6">
-					<Input
-						type="text"
-						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
-						placeholder="Kategória"
-					/>
+					<CategorySelect />
 				</div>
 
 				<div className="group relative z-0 mb-6">
