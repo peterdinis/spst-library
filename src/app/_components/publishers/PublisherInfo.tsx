@@ -81,12 +81,10 @@ const PublisherInfo: FC = () => {
 											Dátum založenia
 										</span>
 										:{" "}
-										{
-											format(
-												data?.createdDated!,
-												"dd-MM-yyyy",
-											)
-										}
+										{format(
+											data?.createdDated!,
+											"dd-MM-yyyy",
+										)}
 									</p>
 									<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800">
 										<span className="font-bold">

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import schollImage from "../../../../public/img/school.png";
 import { Button } from "~/components/ui/button";
+import ConfettiWrapper from "../shared/ConfettiWrapper";
 
 const Hero: FC = () => {
 	return (
@@ -17,6 +18,7 @@ const Hero: FC = () => {
 					<h2 className="py-4 text-center text-lg text-gray-700 md:w-8/12 md:py-8 md:text-left lg:text-2xl">
 						<q>Knihy sú jedinečne prenosné kúzlo - Stephen King</q>
 					</h2>
+					<ConfettiWrapper />
 					<div className="flex justify-center sm:block md:block">
 						<Button size="default" variant={"default"}>
 							<Link href="/books">Zobraziť všekty knihy</Link>

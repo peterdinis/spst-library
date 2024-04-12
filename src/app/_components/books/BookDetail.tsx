@@ -59,9 +59,7 @@ const BookDetail: FC = () => {
 											Krátky popis:{" "}
 										</div>
 										<LongText
-											text={
-												data?.description!
-											}
+											text={data?.description!}
 											maxLength={30}
 										/>
 									</div>
