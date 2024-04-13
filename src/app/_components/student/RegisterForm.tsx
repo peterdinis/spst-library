@@ -14,6 +14,7 @@ const RegisterForm: FC = () => {
 	const { toast } = useToast();
 
 	const handleRegisterSubmit = (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
 		const formData = new FormData(e.currentTarget);
 		formAction(formData);
 		toast({
