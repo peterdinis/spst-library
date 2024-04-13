@@ -1,18 +1,33 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useState, FormEvent } from "react";
 import Header from "../shared/Header";
 import Link from "next/link";
 import { useFormState } from "react-dom";
 import { signup } from "~/server/lucia/actions/adminActions";
+import { Eye, EyeOff } from "lucide-react";
+import { useToast } from "~/components/ui/use-toast";
 
 const RegisterForm: FC = () => {
 	const [state, formAction] = useFormState(signup, null);
+	const [showPassword, setShowPassword] = useState(false);
+	const { toast } = useToast();
+
+	const handleRegisterSubmit = (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		const formData = new FormData(e.currentTarget);
+		formAction(formData);
+		toast({
+			title: "Registrácia bola úspešená",
+			duration: 2000,
+			className: "bg-green-500 text-white",
+		});
+	};
 
 	return (
 		<>
 			<Header text="Registrácia admin" />
-			<form action={formAction}>
+			<form onSubmit={handleRegisterSubmit}>
 				<div className="mb-4 flex flex-col rounded bg-white px-8 pb-8 pt-6 shadow-md">
 					<div className="mb-4">
 						<div className="mb-2">
@@ -71,15 +86,26 @@ const RegisterForm: FC = () => {
 							>
 								Heslo
 							</label>
-							<input
-								className="border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
-								id="Heslo"
-								type="password"
-								name="password"
-								autoFocus
-								autoComplete="current-password"
-								placeholder="********************************************"
-							/>
+							<div className="relative">
+								<input
+									className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
+									id="password"
+									type={showPassword ? "text" : "password"}
+									name="password"
+									autoFocus
+									autoComplete="current-password"
+									placeholder="********************************************"
+								/>
+								<button
+									type="button"
+									className="absolute inset-y-0 right-0 flex items-center px-4 bg-transparent text-gray-500 focus:outline-none"
+									onClick={() =>
+										setShowPassword(!showPassword)
+									}
+								>
+									{showPassword ? <Eye /> : <EyeOff />}
+								</button>
+							</div>
 						</div>
 
 						{state?.fieldError ? (
