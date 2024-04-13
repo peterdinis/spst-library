@@ -10,7 +10,7 @@ const DashboardLinks: FC = () => {
 			>
 				Všetky knihy
 			</Link>
-			<Link href="/admin/categories">Všetky kategŕoie</Link>
+			<Link href="/admin/categories">Všetky kategórie</Link>
 			<Link href="/admin/publishers">Všetky vydavateľstvá</Link>
 			<Link href="/admin/authors">Všetci spisovatelia</Link>
 			<Link href="/admin/students">Všetci študenti</Link>
