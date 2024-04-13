@@ -1,8 +1,12 @@
-import { NextPage } from "next";
-import ProfileWrapper from "~/app/_components/teacher/ProfileWrapper";
+import { redirect } from "next/navigation";
+import ProfileWrapper from "~/app/_components/student/ProfileWrapper";
+import { validateRequest } from "~/server/lucia/validate-request";
+import { teacherRedirects } from "~/server/utils";
 
-const TeacherProfilePage: NextPage = () => {
-	return <ProfileWrapper />;
-};
+export default async function ProfilePage() {
+	const { user } = await validateRequest();
 
-export default TeacherProfilePage;
+	if (!user) redirect(teacherRedirects.toLogin);
+
+	return <ProfileWrapper profileData={user} />;
+}
