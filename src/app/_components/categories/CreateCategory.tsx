@@ -9,7 +9,12 @@ import { useRouter } from "next/navigation";
 const CreateCategory: FC = () => {
 	const { toast } = useToast();
 
-	const { register, handleSubmit, reset, formState: { errors } } = useForm(); // Pridáme errors sem
+	const {
+		register,
+		handleSubmit,
+		reset,
+		formState: { errors },
+	} = useForm(); // Pridáme errors sem
 	const router = useRouter();
 	const addCategoryMut = api.category.createCategory.useMutation({
 		onSuccess: () => {
@@ -50,16 +55,20 @@ const CreateCategory: FC = () => {
 						type="text"
 						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
 						placeholder="Meno kategórie"
-						{...register("name", { 
+						{...register("name", {
 							required: true,
 							minLength: 5, // Mala byť minLength namiesto min
 						})}
 					/>
 					{errors.name && errors.name.type === "required" && (
-						<span className="text-red-500">Meno kategórie je povinné</span>
+						<span className="text-red-500">
+							Meno kategórie je povinné
+						</span>
 					)}
 					{errors.name && errors.name.type === "minLength" && (
-						<span className="text-red-500">Meno kategórie musí mať minimálne 5 znakov</span>
+						<span className="text-red-500">
+							Meno kategórie musí mať minimálne 5 znakov
+						</span>
 					)}
 				</div>
 				<div className="group relative z-0 mb-6">
@@ -67,14 +76,23 @@ const CreateCategory: FC = () => {
 						type="text"
 						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
 						placeholder="Popis kategórie"
-						{...register("description", { required: true, minLength: 5 })}
+						{...register("description", {
+							required: true,
+							minLength: 5,
+						})}
 					/>
-					{errors.description && errors.description.type === "required" && (
-						<span className="text-red-500">Popis kategórie je povinný</span>
-					)}
-					{errors.description && errors.description.type === "minLength" && (
-						<span className="text-red-500">Popis kategórie musí mať minimálne 5 znakov</span>
-					)}
+					{errors.description &&
+						errors.description.type === "required" && (
+							<span className="text-red-500">
+								Popis kategórie je povinný
+							</span>
+						)}
+					{errors.description &&
+						errors.description.type === "minLength" && (
+							<span className="text-red-500">
+								Popis kategórie musí mať minimálne 5 znakov
+							</span>
+						)}
 				</div>
 				<div className="flex justify-center align-top">
 					<Button variant={"default"} size={"lg"}>
