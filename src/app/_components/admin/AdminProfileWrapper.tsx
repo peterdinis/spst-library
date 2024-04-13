@@ -36,45 +36,35 @@ const AdminProfileWrapper: FC<IProfileWrapperProps> = ({
             <div className="grid gap-6">
               <Card>
                 <CardHeader>
-                  <CardTitle>Project Name</CardTitle>
+                  <CardTitle>Všetky knihy</CardTitle>
                   <CardDescription>
-                    Used to identify your project in the dashboard.
+                    Počet všetkých kníh je: 100
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <form>
-                    <Input placeholder="Project Name" />
-                  </form>
-                </CardContent>
-                <CardFooter className="border-t p-6">
-                  <Button>Save</Button>
-                </CardFooter>
               </Card>
               <Card>
-                <CardHeader>
-                  <CardTitle>Root Directory</CardTitle>
+              <CardHeader>
+                  <CardTitle>Počet zaregistrovaných študentov</CardTitle>
                   <CardDescription>
-                    The directory within your project, in which your code is
-                    located.
+                    Počet zaregistrovaných študentov je: 100
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <form className="flex flex-col gap-4">
-                    <Input placeholder="Project Name" />
-                    <div className="flex items-center space-x-2">
-                      <Checkbox defaultChecked id="include" />
-                      <label
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                        htmlFor="include"
-                      >
-                        Include files from outside of the Root Directory
-                      </label>
-                    </div>
-                  </form>
-                </CardContent>
-                <CardFooter className="border-t p-6">
-                  <Button>Save</Button>
-                </CardFooter>
+              </Card>
+              <Card>
+              <CardHeader>
+                  <CardTitle>Počet zaregistrovaných učiteľov</CardTitle>
+                  <CardDescription>
+                    Počet zaregistrovaných učiteľov je: 100
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+              <Card>
+              <CardHeader>
+                  <CardTitle>Počet požičaných kníh je</CardTitle>
+                  <CardDescription>
+                    Počet požičaných kníh je: 100
+                  </CardDescription>
+                </CardHeader>
               </Card>
             </div>
           </div>
