@@ -10,12 +10,42 @@ const DashboardLinks: FC = () => {
 			>
 				Všetky knihy
 			</Link>
-			<Link href="/admin/categories">Všetky kategórie</Link>
-			<Link href="/admin/publishers">Všetky vydavateľstvá</Link>
-			<Link href="/admin/authors">Všetci spisovatelia</Link>
-			<Link href="/admin/students">Všetci študenti</Link>
-			<Link href="/admin/teachers">Všetci učitelia</Link>
-			<Link href="/admin/bookings">Všetky objednávky</Link>
+			<Link
+				className="font-semibold text-gray-900 dark:text-gray-50"
+				href="/admin/categories"
+			>
+				Všetky kategórie
+			</Link>
+			<Link
+				className="font-semibold text-gray-900 dark:text-gray-50"
+				href="/admin/publishers"
+			>
+				Všetky vydavateľstvá
+			</Link>
+			<Link
+				className="font-semibold text-gray-900 dark:text-gray-50"
+				href="/admin/authors"
+			>
+				Všetci spisovatelia
+			</Link>
+			<Link
+				className="font-semibold text-gray-900 dark:text-gray-50"
+				href="/admin/students"
+			>
+				Všetci študenti
+			</Link>
+			<Link
+				className="font-semibold text-gray-900 dark:text-gray-50"
+				href="/admin/teachers"
+			>
+				Všetci učitelia
+			</Link>
+			<Link
+				className="font-semibold text-gray-900 dark:text-gray-50"
+				href="/admin/bookings"
+			>
+				Všetky objednávky
+			</Link>
 		</nav>
 	);
 };
