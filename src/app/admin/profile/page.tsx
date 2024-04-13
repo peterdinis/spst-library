@@ -6,7 +6,7 @@ import { adminRedirects} from "~/server/utils";
 export default async function ProfilePage() {
 	const { user } = await validateRequest();
 
-	/* if (!user) redirect(adminRedirects.toLogin); */
+	if (!user) redirect(adminRedirects.toLogin);
 
 	return <AdminProfileWrapper profileData={user} />;
 }
