@@ -14,6 +14,7 @@ const LoginForm: FC = () => {
 	const { toast } = useToast();
 
 	const handleLoginSubmit = (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
 		const formData = new FormData(e.currentTarget);
 		formAction(formData);
 		toast({
