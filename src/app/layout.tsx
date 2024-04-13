@@ -5,6 +5,7 @@ import { TRPCReactProvider } from "~/trpc/react";
 import Navigation from "./_components/shared/Navigation";
 import { Toaster } from "~/components/ui/toaster";
 import { Metadata } from "next";
+import ScrollToTop from "./_components/shared/ScrollToTop";
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -34,6 +35,7 @@ export default function RootLayout({
 					<Navigation />
 					{children}
 					<Toaster />
+					<ScrollToTop />
 				</TRPCReactProvider>
 			</body>
 		</html>
