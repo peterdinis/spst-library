@@ -27,7 +27,7 @@ export interface ILongTextProps {
 
 export interface DataTableProps<TData, TValue> {
 	columns: ColumnDef<TData, TValue>[];
-	data: TData[];
+	data: any; // TODO: Fix later
 }
 
 export interface IHeaderProps {
