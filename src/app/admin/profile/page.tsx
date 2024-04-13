@@ -1,8 +1,12 @@
-import { NextPage } from "next";
+import { redirect } from "next/navigation";
 import AdminProfileWrapper from "~/app/_components/admin/AdminProfileWrapper";
+import { validateRequest } from "~/server/lucia/validate-request";
+import { adminRedirects} from "~/server/utils";
 
-const ProfileAdminPage: NextPage = () => {
-	return <AdminProfileWrapper />;
-};
+export default async function ProfilePage() {
+	const { user } = await validateRequest();
 
-export default ProfileAdminPage;
+	if (!user) redirect(adminRedirects.toLogin);
+
+	return <AdminProfileWrapper profileData={user} />;
+}
