@@ -12,7 +12,7 @@ import {
 	TableBody,
 	TableCell,
 	TableHead,
-	TableHeader,
+TableHeader,
 	TableRow,
 } from "~/components/ui/table";
 import { Ghost } from "lucide-react";
@@ -97,7 +97,7 @@ export function DataTable<TData, TValue>({
 				</TableBody>
 			</Table>
 			<Pagination>
-				<PaginationContent>
+				<PaginationContent className="flex flex-wrap">
 					<PaginationItem>
 						<button
 							onClick={() =>
