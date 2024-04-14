@@ -12,3 +12,8 @@ export interface IAuthor {
     books?: IBook;
     
 }
+
+export interface SelectAuthor {
+    id: number;
+    name: string;
+}

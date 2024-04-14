@@ -35,10 +35,11 @@ const CategorySelect: FC = () => {
 				</SelectTrigger>
 				<SelectContent>
 					{data &&
-						data.map((item) => {
+						data.map((item: any) => {
 							return (
 								<SelectItem
-									value={item.name} // TODO: Premyslieť ako podľa id-čka vybrať daného autora
+								key={item.id}
+								value={item.id.toString()}
 								>
 									{item.name}
 								</SelectItem>

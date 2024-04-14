@@ -1,5 +1,6 @@
 import { Loader2, Ghost } from "lucide-react";
 import { FC } from "react";
+import { SelectAuthor } from "~/app/types/authorTypes";
 import {
 	Select,
 	SelectContent,
@@ -35,12 +36,13 @@ const AuthorSelect: FC = () => {
 				</SelectTrigger>
 				<SelectContent>
 					{data &&
-						data.map((item) => {
+						data.map((author: SelectAuthor) => {
 							return (
 								<SelectItem
-									value={item.name} // TODO: Premyslieť ako podľa id-čka vybrať daného autora
+									key={author.id}
+									value={author.id.toString()}
 								>
-									{item.name}
+									{author.name}
 								</SelectItem>
 							);
 						})}
