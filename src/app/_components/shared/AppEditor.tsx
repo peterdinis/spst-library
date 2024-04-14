@@ -57,7 +57,7 @@ const AppEditor = () => {
 		<div>
 			<QuillEditor
 				theme="snow"
-				value={"Krátky popis"}
+				value={value}
 				formats={formats}
 				modules={modules}
 				onChange={(value) => setValue(value)}
@@ -66,4 +66,4 @@ const AppEditor = () => {
 	);
 };
 
-export default AppEditor
+export default AppEditor;

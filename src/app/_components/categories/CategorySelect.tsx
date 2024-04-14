@@ -10,7 +10,8 @@ import {
 import { api } from "~/trpc/react";
 
 const CategorySelect: FC = () => {
-	const { data, isLoading, isError } = api.category.fetchCategories.useQuery();
+	const { data, isLoading, isError } =
+		api.category.fetchCategories.useQuery();
 
 	if (isLoading) {
 		return <Loader2 className="h-8 w-8 animate-spin" />;
@@ -38,8 +39,8 @@ const CategorySelect: FC = () => {
 						data.map((item: any) => {
 							return (
 								<SelectItem
-								key={item.id}
-								value={item.id.toString()}
+									key={item.id}
+									value={item.id.toString()}
 								>
 									{item.name}
 								</SelectItem>
