@@ -29,7 +29,6 @@ const CreateBookForm: FC = () => {
 						placeholder="Obrázok"
 					/>
 				</div>
-				{/* Select shadcn ui neskôr */}
 				<div className="group relative z-0 mb-6">
 					<AuthorSelect />
 				</div>
