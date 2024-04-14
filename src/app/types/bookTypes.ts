@@ -1,4 +1,6 @@
+import { IAuthor } from "./authorTypes";
 import { Category } from "./categoryTypes";
+import { Publisher } from "./publisherTypes";
 
 export interface IBook {
     id: number;
@@ -10,6 +12,6 @@ export interface IBook {
     isAvaiable: boolean;
     itemsInStock: number;
     category: Category;
-    publisher: any;
-    author: any;
+    publisher: Publisher;
+    author: IAuthor;
 }
