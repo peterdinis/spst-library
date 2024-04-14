@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Loader2 } from "lucide-react";
 import { FC } from "react";
@@ -9,14 +9,20 @@ import { DataTable } from "../shared/GlobalTable";
 import { columns } from "./columns/categoryColumns";
 
 const AdminAllCategories: FC = () => {
-	const {data, isLoading, isError} = api.category.fetchCategories.useQuery();
+	const { data, isLoading, isError } =
+		api.category.fetchCategories.useQuery();
 
-	if(isLoading) {
-		return <Loader2 className="animate-bounce w-8 h-8" /> 
+	if (isLoading) {
+		return <Loader2 className="animate-bounce w-8 h-8" />;
 	}
 
-	if(isError) {
-		return <GlobalErrorComponent statusCode="404" message="Kategórie nenájdené" />
+	if (isError) {
+		return (
+			<GlobalErrorComponent
+				statusCode="404"
+				message="Kategórie nenájdené"
+			/>
+		);
 	}
 
 	return (
@@ -24,7 +30,7 @@ const AdminAllCategories: FC = () => {
 			<Header text="Zoznam všetkých kategórií" />
 			<DataTable columns={columns} data={data} />
 		</div>
-	)
+	);
 };
 
 export default AdminAllCategories;
