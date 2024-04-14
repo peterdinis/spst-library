@@ -16,7 +16,7 @@ export default async function NavigationItems() {
 				<Link href="/publishers">Vydavateľstvá</Link>
 			</li>
 			<li className="text-xl text-black">
-				<Link href="/authors">Spistovatelia</Link>
+				<Link href="/authors">Spisovatelia</Link>
 			</li>
 			<li className="text-xl text-black">
 				<Link href="/student/login">Žiak</Link>
