@@ -15,7 +15,7 @@ model Book {
     name         String
     description  String
     image        String
-    year         Int
+    year         String
     pages        Int
     isAvaiable   Boolean
     itemsInStock Int

@@ -1,7 +1,12 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { Category } from "~/app/types/categoryTypes";
+
+export type Category = {
+	id: string;
+	name: string;
+	description: string;
+};
 
 export const columns: ColumnDef<Category>[] = [
 	{
