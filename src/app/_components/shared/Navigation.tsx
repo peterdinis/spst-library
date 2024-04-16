@@ -9,7 +9,7 @@ const Navigation: FC = () => {
 	const [navbar, setNavbar] = useState<Boolean>(false);
 
 	return (
-		<nav className="w-full bg-white">
+		<nav className="w-full bg-white dark:bg-background">
 			<div className="mx-auto justify-between px-4 md:flex md:items-center md:px-8 lg:max-w-7xl">
 				<div>
 					<div className="flex items-center justify-between py-3 md:block md:py-5">
