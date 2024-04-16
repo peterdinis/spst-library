@@ -1,6 +1,10 @@
-import Link from "next/link";
+"use client"
 
-export default async function NavigationItems() {
+import Link from "next/link";
+import ThemeButton from "./ThemeButton";
+import { FC } from "react";
+
+const NavigationItems: FC = () => {
 	return (
 		<>
 			<li className="text-xl text-black">
@@ -24,6 +28,11 @@ export default async function NavigationItems() {
 			<li className="text-xl text-black">
 				<Link href="/teacher/login">Učiteľ</Link>
 			</li>
+			<li className="text-xl text-black">
+				<ThemeButton />
+			</li>
 		</>
 	);
 }
+
+export default NavigationItems;
