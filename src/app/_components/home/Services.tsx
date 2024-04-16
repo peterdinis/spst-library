@@ -18,7 +18,7 @@ const Services: FC = () => {
 
 	return (
 		<div className="overflow-y-hidden">
-			<div className="bg-gray-100 py-12 dark:bg-background">
+			<div className="bg-gray-100 py-12 dark:bg-card">
 				<div className="max-w-8xl container mx-auto">
 					<motion.div
 						tabIndex={0}
