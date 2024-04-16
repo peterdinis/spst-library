@@ -30,7 +30,7 @@ const CategoryDetail: FC = () => {
 	}
 
 	return (
-		<>
+		<div className="dark:bg-background">
 			<Header text="Detail kategórie" />
 			<div className="mt-6 overflow-hidden bg-white shadow sm:rounded-lg">
 				<div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -65,7 +65,7 @@ const CategoryDetail: FC = () => {
 					<Link href="/categories">Späť na kategórie</Link>
 				</Button>
 			</div>
-		</>
+		</div>
 	);
 };
 
