@@ -12,7 +12,7 @@ const LongText: FC<ILongTextProps> = ({ text, maxLength }: ILongTextProps) => {
 		setIsExpanded(!isExpanded);
 	};
 
-	const textClass = classNames("text-sm", "text-gray-800", {
+	const textClass = classNames("text-sm", "text-gray-800", "dark:text-blue-50", {
 		truncate: !isExpanded,
 	});
 
