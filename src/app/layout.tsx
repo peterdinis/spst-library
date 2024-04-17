@@ -6,6 +6,7 @@ import Navigation from "./_components/shared/Navigation";
 import { Toaster } from "~/components/ui/toaster";
 import { Metadata } from "next";
 import ScrollToTop from "./_components/shared/ScrollToTop";
+import ThemeProvider from "./_components/shared/ThemeProvider";
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -32,10 +33,12 @@ export default function RootLayout({
 		<html lang="en">
 			<body className={`font-sans ${inter.variable}`}>
 				<TRPCReactProvider>
-					<Navigation />
-					{children}
-					<Toaster />
-					<ScrollToTop />
+					<ThemeProvider attribute="class">
+						<Navigation />
+						{children}
+						<Toaster />
+						<ScrollToTop />
+					</ThemeProvider>
 				</TRPCReactProvider>
 			</body>
 		</html>

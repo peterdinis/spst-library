@@ -31,7 +31,7 @@ const GlobalCard: FC<IGlobalCardProps> = ({
 				{!description ? (
 					<></>
 				) : (
-					<CardDescription className="block truncate text-sm font-bold capitalize text-black">
+					<CardDescription className="block dark:text-blue-50 truncate text-sm font-bold capitalize text-black">
 						{description}
 					</CardDescription>
 				)}
