@@ -17,6 +17,8 @@ import {
 import { useToast } from "~/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import { api } from "~/trpc/react";
+import TooltipHelper from "../shared/TooltipHelper";
+import PublisherSelect from "../publishers/PublisherSelect";
 
 const AppEditor = dynamic(() => import("../shared/AppEditor"), { ssr: false });
 
@@ -93,6 +95,7 @@ const CreateBookForm: FC = () => {
 						})}
 					/>
 				</div>
+				<TooltipHelper tooltipHeader="Výber autora" tooltipText="Vyberte autora/ku pre knihu" />
 				<div className="group relative z-0 mb-6">
 					<AuthorSelect />
 				</div>
@@ -119,16 +122,7 @@ const CreateBookForm: FC = () => {
 						})}
 					/>
 				</div>
-				<TooltipProvider>
-					<Tooltip>
-						<TooltipTrigger>Je kniha dostupná</TooltipTrigger>
-						<TooltipContent>
-							<p className="font-bold text-gray-800 p-2 text-lg">
-								Ak áno kliknúť na checkbox ak nie nerobiť tu nič
-							</p>
-						</TooltipContent>
-					</Tooltip>
-				</TooltipProvider>
+			    <TooltipHelper tooltipHeader="Je kniha dostupná" tooltipText="Ak áno kliknúť na checkbox. Ak nie nerobiť nič" />
 				<div className="group relative z-0 mb-6">
 					<Input
 						type="checkbox"
@@ -151,21 +145,17 @@ const CreateBookForm: FC = () => {
 						})}
 					/>
 				</div>
+				<TooltipHelper tooltipHeader="Výber kategórie" tooltipText="Výber kategórie pre knihu" />
 				<div className="group relative z-0 mb-6">
 					<CategorySelect />
 				</div>
 
-				<TooltipProvider>
-					<Tooltip>
-						<TooltipTrigger>Krátke info</TooltipTrigger>
-						<TooltipContent>
-							<p className="font-bold text-gray-800 p-2 text-lg">
-								V tomto editore môžte napísať krátke informácie
-								o knihe. Max 200 riadkov
-							</p>
-						</TooltipContent>
-					</Tooltip>
-				</TooltipProvider>
+				<TooltipHelper tooltipHeader="Výber vydavateľstva" tooltipText="Výberte vydavateľstvo pre knihu" />
+				<div className="group relative z-0 mb-6">
+					<PublisherSelect />
+				</div>
+
+				<TooltipHelper tooltipHeader="Krátke info" tooltipText="Napíšte krátke info o knihe. Max 100 znakov" />
 				<div className="group relative z-0 mb-6">
 					<AppEditor />
 				</div>

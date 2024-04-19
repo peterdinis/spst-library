@@ -9,7 +9,7 @@ import {
 } from "~/components/ui/select";
 import { api } from "~/trpc/react";
 
-const CategorySelect: FC = () => {
+const PublisherSelect: FC = () => {
 	const { data, isLoading, isError } =
 		api.publisher.fetchPublishers.useQuery();
 
@@ -52,4 +52,4 @@ const CategorySelect: FC = () => {
 	);
 };
 
-export default CategorySelect;
+export default PublisherSelect;
