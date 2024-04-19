@@ -8,6 +8,7 @@ import { Metadata } from "next";
 import ScrollToTop from "./_components/shared/ScrollToTop";
 import ThemeProvider from "./_components/shared/ThemeProvider";
 import PHPProvider from "./_components/shared/PostHogProvider";
+import CookieBanner from "./_components/shared/CookieBanner";
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -38,6 +39,7 @@ export default function RootLayout({
 						<PHPProvider>
 							<Navigation />
 							{children}
+							{/* <CookieBanner /> */}
 							<Toaster />
 							<ScrollToTop />
 						</PHPProvider>
