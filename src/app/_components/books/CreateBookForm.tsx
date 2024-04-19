@@ -68,14 +68,18 @@ const CreateBookForm: FC = () => {
 	};
 
 	return (
-		<>
+		<div>
 			<Header text="Tvorba novej knihy" />
-			<form className="mx-auto mt-10 max-w-2xl">
+			<form onSubmit={handleSubmit(onSubmit)} className="mx-auto mt-10 max-w-2xl">
 				<div className="group relative z-0 mb-6">
 					<Input
 						type="text"
 						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
 						placeholder="Meno Knihy"
+						{...register("name", {
+							required: true,
+							minLength: 5, // Mala byť minLength namiesto min
+						})}
 					/>
 				</div>
 				<div className="group relative z-0 mb-6">
@@ -83,6 +87,10 @@ const CreateBookForm: FC = () => {
 						type="text"
 						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
 						placeholder="Obrázok"
+						{...register("image", {
+							required: true,
+							minLength: 5, // Mala byť minLength namiesto min
+						})}
 					/>
 				</div>
 				<div className="group relative z-0 mb-6">
@@ -93,6 +101,10 @@ const CreateBookForm: FC = () => {
 						type="text"
 						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
 						placeholder="Rok"
+						{...register("year", {
+							valueAsDate: true,
+							required: true,
+						})}
 					/>
 				</div>
 				<div className="group relative z-0 mb-6">
@@ -100,13 +112,31 @@ const CreateBookForm: FC = () => {
 						type="text"
 						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
 						placeholder="Počet strán"
+						{...register("pages", {
+							valueAsNumber: true,
+							required: true,
+							minLength: 5, // Mala byť minLength namiesto min
+						})}
 					/>
 				</div>
+				<TooltipProvider>
+					<Tooltip>
+						<TooltipTrigger>Je kniha dostupná</TooltipTrigger>
+						<TooltipContent>
+							<p className="font-bold text-gray-800 p-2 text-lg">
+								Ak áno kliknúť na checkbox ak nie nerobiť tu nič
+							</p>
+						</TooltipContent>
+					</Tooltip>
+				</TooltipProvider>
 				<div className="group relative z-0 mb-6">
 					<Input
-						type="text"
+						type="checkbox"
 						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
-						placeholder="Dostupná"
+						{...register("isAvaiable", {
+							required: true,
+							minLength: 5, // Mala byť minLength namiesto min
+						})}
 					/>
 				</div>
 				<div className="group relative z-0 mb-6">
@@ -114,6 +144,11 @@ const CreateBookForm: FC = () => {
 						type="text"
 						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
 						placeholder="Počet kusov"
+						{...register("itemsInStock", {
+							valueAsNumber: true,
+							required: true,
+							minLength: 5, // Mala byť minLength namiesto min
+						})}
 					/>
 				</div>
 				<div className="group relative z-0 mb-6">
@@ -141,7 +176,7 @@ const CreateBookForm: FC = () => {
 					</Button>
 				</div>
 			</form>
-		</>
+		</div>
 	);
 };
 
