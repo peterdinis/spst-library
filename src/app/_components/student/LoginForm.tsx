@@ -28,7 +28,7 @@ const LoginForm: FC = () => {
 		<>
 			<Header text="Prihlásenie žiak" />
 			<form onSubmit={handleLoginSubmit}>
-				<div className="mb-4 flex flex-col rounded bg-white px-8 pb-8 pt-6 shadow-md">
+				<div className="mb-4 flex flex-col rounded dark:bg-card mt-6 bg-white px-8 pb-8 pt-6 shadow-md">
 					<div className="mb-4">
 						<div className="mb-2">
 							<label

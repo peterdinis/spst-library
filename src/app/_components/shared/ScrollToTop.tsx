@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { FC, useState, useEffect } from "react";
 import { ChevronUp } from "lucide-react";

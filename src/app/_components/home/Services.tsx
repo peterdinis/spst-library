@@ -18,7 +18,7 @@ const Services: FC = () => {
 
 	return (
 		<div className="overflow-y-hidden">
-			<div className="bg-gray-100 py-12">
+			<div className="bg-gray-100 py-12 dark:bg-card">
 				<div className="max-w-8xl container mx-auto">
 					<motion.div
 						tabIndex={0}
@@ -35,7 +35,7 @@ const Services: FC = () => {
 						>
 							<h4
 								tabIndex={0}
-								className="pt-5 text-center text-lg font-medium leading-6 text-gray-800 focus:outline-none"
+								className="pt-5 dark:text-blue-50  text-center text-lg font-medium leading-6 text-gray-800 focus:outline-none"
 							>
 								<Home className="h-6 w-6" /> Doma Objednáš
 							</h4>
@@ -48,7 +48,7 @@ const Services: FC = () => {
 						>
 							<h4
 								tabIndex={0}
-								className="pt-5 text-center text-lg font-medium leading-6 text-gray-800 focus:outline-none"
+								className="pt-5 dark:text-blue-50  text-center text-lg font-medium leading-6 text-gray-800 focus:outline-none"
 							>
 								<School2 className="h-6 w-6" /> V škole
 								vyzdhvineš
@@ -62,7 +62,7 @@ const Services: FC = () => {
 						>
 							<h4
 								tabIndex={0}
-								className="pt-5 text-center text-lg font-medium leading-6 text-gray-800 focus:outline-none"
+								className="pt-5 dark:text-blue-50  text-center text-lg font-medium leading-6 text-gray-800 focus:outline-none"
 							>
 								Ľahké že ? 👀
 							</h4>
