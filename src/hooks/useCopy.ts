@@ -1,33 +1,42 @@
-"use client"
+"use client";
 
-import { useCallback, useState } from 'react'
-import { useToast } from '~/components/ui/use-toast'
+import { useCallback, useState } from "react";
+import { useToast } from "~/components/ui/use-toast";
 
-type CopiedValue = string | null
+type CopiedValue = string | null;
 
-type CopyFn = (text: string) => Promise<boolean>
+type CopyFn = (text: string) => Promise<boolean>;
 
 export function useCopyToClipboard(): [CopiedValue, CopyFn] {
-  const [copiedText, setCopiedText] = useState<CopiedValue>(null);
-  
-  const copy: CopyFn = useCallback(async text => {
-    if (!navigator?.clipboard) {
-      console.warn('Clipboard not supported')
-      return false
-    }
+	const [copiedText, setCopiedText] = useState<CopiedValue>(null);
+	const { toast } = useToast();
+	const copy: CopyFn = useCallback(async (text) => {
+		if (!navigator?.clipboard) {
+			console.warn("Clipboard not supported");
+			return false;
+		}
 
-    // Try to save to clipboard then save it in the state if worked
-    try {
-      await navigator.clipboard.writeText(text)
-      setCopiedText(text)
-      return true
-    } catch (error) {
-      console.warn('Copy failed', error);
-      
-      setCopiedText(null)
-      return false
-    }
-  }, [])
+		// Try to save to clipboard then save it in the state if worked
+		try {
+			await navigator.clipboard.writeText(text);
+			setCopiedText(text);
+			toast({
+				title: "Skopirovaná hodnota",
+				duration: 1500,
+				className: "bg-green-500 text-blue-50",
+			});
+			return true;
+		} catch (error) {
+			toast({
+				title: "Hodnotu sa nepodarilo skopírovať",
+				duration: 1500,
+				className: "bg-red-500 text-blue-50",
+			});
 
-  return [copiedText, copy]
+			setCopiedText(null);
+			return false;
+		}
+	}, []);
+
+	return [copiedText, copy];
 }

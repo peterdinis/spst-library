@@ -16,7 +16,7 @@ const Hero: FC = () => {
 					</h1>
 					<h2 className="py-4 text-center text-lg dark:text-blue-50  text-gray-700 md:w-8/12 md:py-8 md:text-left lg:text-2xl">
 						<q>Knihy sú jedinečne prenosné kúzlo - Stephen King</q>
-				</h2>
+					</h2>
 					<div className="flex justify-center sm:block md:block">
 						<Button size="default" variant={"default"}>
 							<Link href="/books">Zobraziť všekty knihy</Link>

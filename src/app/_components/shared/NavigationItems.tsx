@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 import ThemeButton from "./ThemeButton";
@@ -33,6 +33,6 @@ const NavigationItems: FC = () => {
 			</li>
 		</>
 	);
-}
+};
 
 export default NavigationItems;
