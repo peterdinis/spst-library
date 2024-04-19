@@ -66,4 +66,4 @@ const AppEditor = () => {
 	);
 };
 
-export default AppEditor
+export default AppEditor;

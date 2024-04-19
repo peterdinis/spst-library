@@ -4,7 +4,7 @@ import { FC } from "react";
 import Header from "../shared/Header";
 import { useParams } from "next/navigation";
 import { api } from "~/trpc/react";
-import { Loader2 } from "lucide-react";
+import { Copy, Loader2 } from "lucide-react";
 import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import { format } from "date-fns";
 import { Button } from "~/components/ui/button";
@@ -12,9 +12,11 @@ import Link from "next/link";
 import BookingModal from "../booking/BookingModal";
 import { Badge } from "~/components/ui/badge";
 import LongText from "../shared/LongText";
+import { useCopyToClipboard } from "~/hooks/useCopy";
 
 const BookDetail: FC = () => {
 	const { id } = useParams();
+	const [_, copy] = useCopyToClipboard();
 	const { data, isLoading, isError } = api.book.fetchBookById.useQuery({
 		id: Number(id),
 	});
@@ -52,6 +54,12 @@ const BookDetail: FC = () => {
 												Názov
 											</span>
 											: {data && data.name}{" "}
+											<Copy
+												className="transform scale-10"
+												onClick={() =>
+													copy(data?.name!)
+												}
+											/>
 										</h1>
 									</div>
 									<div className="mb-4 mt-3 text-2xl font-light leading-relaxed dark:text-blue-50 text-gray-800">

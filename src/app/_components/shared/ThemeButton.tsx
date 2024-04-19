@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -8,7 +8,7 @@ const ThemeButton: FC = () => {
 	const [mounted, setMounted] = useState(false);
 	const [isActive, setIsActive] = useState(false);
 	const { resolvedTheme, setTheme } = useTheme();
-    
+
 	const toggleTheme = () => {
 		setTheme(resolvedTheme === "light" ? "dark" : "light");
 		setIsActive(!isActive);
@@ -33,10 +33,10 @@ const ThemeButton: FC = () => {
 				id="toggleBtnTheme"
 				className={` bg-white
         absolute  w-6 h-6 rounded-full shadow-customShadow-md ${
-					isActive
-						? " transition-transform translate-x-0"
-						: " transition-transform translate-x-8"
-				}`}
+			isActive
+				? " transition-transform translate-x-0"
+				: " transition-transform translate-x-8"
+		}`}
 			></div>
 			<Sun className="fill-white ml-auto w-[15px] h-[15px]"></Sun>
 		</div>
