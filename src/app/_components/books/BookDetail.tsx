@@ -4,7 +4,7 @@ import { FC } from "react";
 import Header from "../shared/Header";
 import { useParams } from "next/navigation";
 import { api } from "~/trpc/react";
-import { Loader2 } from "lucide-react";
+import { Copy, Loader2 } from "lucide-react";
 import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import { format } from "date-fns";
 import { Button } from "~/components/ui/button";
@@ -12,9 +12,11 @@ import Link from "next/link";
 import BookingModal from "../booking/BookingModal";
 import { Badge } from "~/components/ui/badge";
 import LongText from "../shared/LongText";
+import { useCopyToClipboard } from "~/hooks/useCopy";
 
 const BookDetail: FC = () => {
 	const { id } = useParams();
+	const [_, copy] = useCopyToClipboard();
 	const { data, isLoading, isError } = api.book.fetchBookById.useQuery({
 		id: Number(id),
 	});
@@ -37,7 +39,7 @@ const BookDetail: FC = () => {
 			<Header text="Detail knihy" />
 			{!isLoading ? (
 				<>
-					<section className="body-font mt-2 overflow-hidden bg-white text-gray-700">
+					<section className="body-font mt-2 overflow-hidden dark:bg-background bg-white text-gray-700">
 						<div className="container mx-auto px-5 py-12">
 							<div className="mx-auto flex flex-wrap lg:w-4/5">
 								<img
@@ -47,14 +49,20 @@ const BookDetail: FC = () => {
 								/>
 								<div className="mt-6 w-full lg:mt-0 lg:w-1/2 lg:py-6 lg:pl-10">
 									<div>
-										<h1 className="title-font mb-1 text-4xl font-medium text-gray-900">
+										<h1 className="title-font mb-1 text-4xl font-medium dark:text-blue-50 text-gray-900">
 											<span className="font-bold">
 												Názov
 											</span>
 											: {data && data.name}{" "}
+											<Copy
+												className="transform scale-10"
+												onClick={() =>
+													copy(data?.name!)
+												}
+											/>
 										</h1>
 									</div>
-									<div className="mb-4 mt-3 text-2xl font-light leading-relaxed text-gray-800">
+									<div className="mb-4 mt-3 text-2xl font-light leading-relaxed dark:text-blue-50 text-gray-800">
 										<div className="font-bold">
 											Krátky popis:{" "}
 										</div>
@@ -63,31 +71,31 @@ const BookDetail: FC = () => {
 											maxLength={30}
 										/>
 									</div>
-									<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800">
+									<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed dark:text-blue-50 text-gray-800">
 										<span className="font-bold">
 											Autor / ka
 										</span>
 										: {data && data?.author?.name}
 									</p>
-									<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800">
+									<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed dark:text-blue-50 text-gray-800">
 										<span className="font-bold">
 											Kategória
 										</span>
 										: {data && data?.category?.name}
 									</p>
-									<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800">
+									<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed dark:text-blue-50 text-gray-800">
 										<span className="font-bold"> Rok</span>:
 										{data &&
 											format(data.year, "dd-MM-yyyy")}
 									</p>
-									<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800">
+									<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed dark:text-blue-50 text-gray-800">
 										<span className="font-bold">
 											{" "}
 											Počet Strán
 										</span>
 										: {data && data.pages}
 									</p>
-									<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800">
+									<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed dark:text-blue-50 text-gray-800">
 										<span className="font-bold">
 											Počet Kusov
 										</span>
@@ -95,7 +103,7 @@ const BookDetail: FC = () => {
 									</p>
 
 									<div>
-										<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed">
+										<p className="mb-4 mt-3 text-2xl font-light dark:text-blue-50  leading-relaxed">
 											<span className="font-bold">
 												{" "}
 												Kniha je:

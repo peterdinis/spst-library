@@ -38,7 +38,7 @@ const PublisherInfo: FC = () => {
 			<Header text="Detail o vydavateľstve" />
 			{!isLoading ? (
 				<>
-					<section className="body-font mt-2 overflow-hidden bg-white text-gray-700">
+					<section className="body-font mt-2 overflow-hidden dark:bg-background text-gray-700">
 						<div className="container mx-auto px-5 py-12">
 							<div className="mx-auto flex flex-wrap lg:w-4/5">
 								<img
@@ -48,7 +48,7 @@ const PublisherInfo: FC = () => {
 								/>
 								<div className="mt-6 w-full lg:mt-0 lg:w-1/2 lg:py-6 lg:pl-10">
 									<div>
-										<h1 className="title-font mb-1 text-4xl font-medium text-gray-900">
+										<h1 className="title-font mb-1 text-4xl font-medium dark:text-blue-50 text-gray-900">
 											<span className="font-bold">
 												Názov
 											</span>
@@ -56,7 +56,7 @@ const PublisherInfo: FC = () => {
 										</h1>
 									</div>
 									<div>
-										<div className="title-font mb-1 mt-5 text-4xl font-medium text-gray-900">
+										<div className="title-font mb-1 mt-5 text-4xl font-medium dark:text-blue-50 text-gray-900">
 											<span className="font-bold">
 												Knihy
 											</span>
@@ -67,7 +67,7 @@ const PublisherInfo: FC = () => {
 												})}
 										</div>
 									</div>
-									<div className="mb-4 mt-3 text-2xl font-light leading-relaxed text-gray-800">
+									<div className="mb-4 mt-3 text-2xl font-light leading-relaxed dark:text-blue-50 text-gray-800">
 										<div className="font-bold">
 											Krátky popis:{" "}
 										</div>
@@ -76,7 +76,7 @@ const PublisherInfo: FC = () => {
 											maxLength={30}
 										/>
 									</div>
-									<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800">
+									<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed dark:text-blue-50 text-gray-800">
 										<span className="font-bold">
 											Dátum založenia
 										</span>
@@ -86,7 +86,7 @@ const PublisherInfo: FC = () => {
 											"dd-MM-yyyy",
 										)}
 									</p>
-									<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800">
+									<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed dark:text-blue-50 text-gray-800">
 										<span className="font-bold">
 											Riaditeľ
 										</span>
@@ -94,7 +94,7 @@ const PublisherInfo: FC = () => {
 									</p>
 
 									{data && data.isActive === true ? (
-										<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800">
+										<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed dark:text-blue-50 text-gray-800">
 											<span className="font-bold">
 												Vydavateľstvo je:
 											</span>
@@ -104,7 +104,7 @@ const PublisherInfo: FC = () => {
 											</span>
 										</p>
 									) : (
-										<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed text-gray-800">
+										<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed dark:text-blue-50 text-gray-800">
 											<span className="font-bold">
 												Vydavateľstvo je:
 											</span>

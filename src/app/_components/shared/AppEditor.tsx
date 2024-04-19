@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import QuillEditor from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
-const Editor = () => {
+const AppEditor = () => {
 	const [value, setValue] = useState("");
 
 	const modules = useMemo(
@@ -66,4 +66,4 @@ const Editor = () => {
 	);
 };
 
-export default Editor;
+export default AppEditor;
