@@ -1,14 +1,15 @@
 "use client"
 
 import { useCallback, useState } from 'react'
+import { useToast } from '~/components/ui/use-toast'
 
 type CopiedValue = string | null
 
 type CopyFn = (text: string) => Promise<boolean>
 
 export function useCopyToClipboard(): [CopiedValue, CopyFn] {
-  const [copiedText, setCopiedText] = useState<CopiedValue>(null)
-
+  const [copiedText, setCopiedText] = useState<CopiedValue>(null);
+  
   const copy: CopyFn = useCallback(async text => {
     if (!navigator?.clipboard) {
       console.warn('Clipboard not supported')
@@ -21,7 +22,8 @@ export function useCopyToClipboard(): [CopiedValue, CopyFn] {
       setCopiedText(text)
       return true
     } catch (error) {
-      console.warn('Copy failed', error)
+      console.warn('Copy failed', error);
+      
       setCopiedText(null)
       return false
     }
