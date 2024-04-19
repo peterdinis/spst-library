@@ -28,7 +28,7 @@ const RegisterForm: FC = () => {
 		<>
 			<Header text="Registrácia žiak" />
 			<form onSubmit={handleRegisterSubmit}>
-				<div className="mb-4 flex flex-col rounded bg-white dark:bg-background px-8 pb-8 pt-6 shadow-md">
+				<div className="mb-4 flex flex-col rounded mt-6 bg-white dark:bg-card px-8 pb-8 pt-6 shadow-md">
 					<div className="mb-4">
 						<div className="mb-2">
 							<label
