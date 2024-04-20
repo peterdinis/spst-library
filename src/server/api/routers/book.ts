@@ -156,4 +156,41 @@ export const bookRouter = createTRPCRouter({
 
 				return updateBook;
 			}),
+
+			deleteBook: publicProcedure
+			.input(
+				z.object({
+					id: z.number(),
+				}),
+			)
+			.mutation(async ({ ctx, input }) => {
+				const findOneBookById = await ctx.db.book.findUnique({
+					where: {
+						id: input.id
+					}
+				})
+
+				if(!findOneBookById) {
+					throw new TRPCError({
+						message: "Book with this id does not exists",
+						code: "BAD_REQUEST",
+					});
+				}
+
+				const deleteOneBook =await ctx.db.book.delete({
+					where: {
+						id: findOneBookById.id
+					},
+				})
+				if(!deleteOneBook){
+					throw new TRPCError({
+						message: "Update failed",
+						code: "BAD_REQUEST",
+					});
+				}
+
+				/* TODO After delete book delete book in category author and publisher */
+
+				return deleteOneBook;
+			}),
 });

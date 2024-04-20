@@ -92,4 +92,21 @@ export const categoryRouter = createTRPCRouter({
 				nextCursor,
 			};
 		}),
+
+		updateCategory: publicProcedure
+		.input(
+			z.object({
+				id: z.number(),
+				name: z.string().optional(),
+				description: z.string().optional(),
+			}),
+		)
+		.mutation(async ({ ctx, input }) => {
+			const findOneCategory = await ctx.db.category.findUnique({
+				where: {
+					id: input.id
+				}
+			})
+		}),
+
 });
