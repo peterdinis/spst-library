@@ -1,3 +1,3 @@
 import { createTRPCRouter } from "../trpc";
 
-export const adminRouter = createTRPCRouter({ });
+export const adminRouter = createTRPCRouter({});

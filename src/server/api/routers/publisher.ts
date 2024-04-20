@@ -97,8 +97,7 @@ export const publisherRouter = createTRPCRouter({
 			return addNewPublisher;
 		}),
 
-
-		updatePublsher: publicProcedure
+	updatePublsher: publicProcedure
 		.input(
 			z.object({
 				id: z.number(),
@@ -126,12 +125,12 @@ export const publisherRouter = createTRPCRouter({
 
 			const updateOnePublisher = await ctx.db.publisher.update({
 				where: {
-					id: findOnePublisher.id
+					id: findOnePublisher.id,
 				},
 				data: {
-					...input
-				}
-			})
+					...input,
+				},
+			});
 
 			return updateOnePublisher;
 		}),
