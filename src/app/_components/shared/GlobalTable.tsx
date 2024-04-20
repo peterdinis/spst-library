@@ -23,7 +23,7 @@ export function DataTable<TData, TValue>({
 	data,
 }: DataTableProps<TData, TValue>) {
 	const [pageIndex, setPageIndex] = useState(0);
-	const [pageSize, setPageSize] = useState(10);
+	const [pageSize, _] = useState(10);
 
 	const table = useReactTable({
 		data,
@@ -83,7 +83,7 @@ export function DataTable<TData, TValue>({
 								className="h-24 text-center"
 							>
 								<Ghost className="h-8 w-8 mx-auto" />
-								No results.
+								Nič nebolo nájdené
 							</TableCell>
 						</TableRow>
 					)}
