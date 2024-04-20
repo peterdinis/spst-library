@@ -189,8 +189,6 @@ export const bookRouter = createTRPCRouter({
 					});
 				}
 
-				/* TODO After delete book delete book in category author and publisher */
-
 				return deleteOneBook;
 			}),
 });
