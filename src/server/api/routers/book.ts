@@ -73,7 +73,7 @@ export const bookRouter = createTRPCRouter({
 				name: z.string().min(5),
 				description: z.string().min(5),
 				image: z.string().min(5),
-				year: z.number(),
+				year: z.string(),
 				pages: z.number(),
 				isAvaiable: z.boolean(),
 				categoryId: z.number(),
