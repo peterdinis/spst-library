@@ -1,9 +1,7 @@
 import { TRPCError } from "@trpc/server";
 import {
 	createTRPCRouter,
-	protectedProcedure,
 	publicProcedure,
-	studentProtectedProcedure,
 } from "../trpc";
 import z from "zod";
 

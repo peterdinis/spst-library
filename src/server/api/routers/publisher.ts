@@ -96,4 +96,85 @@ export const publisherRouter = createTRPCRouter({
 
 			return addNewPublisher;
 		}),
+
+	updatePublsher: publicProcedure
+		.input(
+			z.object({
+				id: z.number(),
+				name: z.string().optional(),
+				image: z.string().optional(),
+				description: z.string().optional(),
+				bossName: z.string().optional(),
+				isActive: z.boolean(),
+				createdDated: z.string(),
+			}),
+		)
+		.mutation(async ({ ctx, input }) => {
+			const findOnePublisher = await ctx.db.publisher.findUnique({
+				where: {
+					id: input.id,
+				},
+			});
+
+			if (!findOnePublisher) {
+				throw new TRPCError({
+					message: "Publisher with this is not found",
+					code: "NOT_FOUND",
+				});
+			}
+
+			const updateOnePublisher = await ctx.db.publisher.update({
+				where: {
+					id: findOnePublisher.id,
+				},
+				data: {
+					...input,
+				},
+			});
+
+			if(!updateOnePublisher) {
+				throw new TRPCError({
+					message: "Update publisher failed",
+					code: "NOT_FOUND",
+				});
+			}
+
+			return updateOnePublisher;
+		}),
+
+		deletePublisher: publicProcedure
+		.input(
+			z.object({
+				id: z.number(),
+			}),
+		)
+		.mutation(async ({ ctx, input }) => {
+			const findOnePublisher = await ctx.db.publisher.findUnique({
+				where: {
+					id: input.id,
+				},
+			});
+
+			if (!findOnePublisher) {
+				throw new TRPCError({
+					message: "Publisher with this is not found",
+					code: "NOT_FOUND",
+				});
+			}
+
+			const deleteOnePublisher = await ctx.db.publisher.delete({
+				where: {
+					id: findOnePublisher.id,
+				},
+			});
+
+			if(!deleteOnePublisher) {
+				throw new TRPCError({
+					message: "Delete publisher failed",
+					code: "NOT_FOUND",
+				});
+			}
+
+			return deleteOnePublisher;
+		}),
 });
