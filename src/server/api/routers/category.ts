@@ -92,4 +92,66 @@ export const categoryRouter = createTRPCRouter({
 				nextCursor,
 			};
 		}),
+
+		updateCategory: publicProcedure
+		.input(
+			z.object({
+				id: z.number(),
+				name: z.string().optional(),
+				description: z.string().optional(),
+			}),
+		)
+		.mutation(async ({ ctx, input }) => {
+			const findOneCategory = await ctx.db.category.findUnique({
+				where: {
+					id: input.id
+				}
+			});
+
+			if (!findOneCategory) {
+				throw new TRPCError({
+					message: "Category with this is not found",
+					code: "NOT_FOUND",
+				});
+			}
+
+			const updateOneCategory = await ctx.db.category.update({
+				where: {
+					id: findOneCategory.id
+				},
+				data: {
+					...input
+				}
+			});
+
+			return updateOneCategory;
+		}),
+		deleteCategory: publicProcedure
+		.input(
+			z.object({
+				id: z.number(),
+			}),
+		)
+		.mutation(async ({ ctx, input }) => {
+			const findOneCategory = await ctx.db.category.findUnique({
+				where: {
+					id: input.id
+				}
+			});
+
+			if (!findOneCategory) {
+				throw new TRPCError({
+					message: "Category with this is not found",
+					code: "NOT_FOUND",
+				});
+			}
+
+			const deleteOneCategory = await ctx.db.category.delete({
+				where: {
+					id: findOneCategory.id
+				},
+			});
+
+			return deleteOneCategory;
+		}),
 });
