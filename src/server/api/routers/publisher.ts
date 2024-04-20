@@ -96,4 +96,43 @@ export const publisherRouter = createTRPCRouter({
 
 			return addNewPublisher;
 		}),
+
+
+		updatePublsher: publicProcedure
+		.input(
+			z.object({
+				id: z.number(),
+				name: z.string().optional(),
+				image: z.string().optional(),
+				description: z.string().optional(),
+				bossName: z.string().optional(),
+				isActive: z.boolean(),
+				createdDated: z.string(),
+			}),
+		)
+		.mutation(async ({ ctx, input }) => {
+			const findOnePublisher = await ctx.db.publisher.findUnique({
+				where: {
+					id: input.id,
+				},
+			});
+
+			if (!findOnePublisher) {
+				throw new TRPCError({
+					message: "Publisher with this is not found",
+					code: "NOT_FOUND",
+				});
+			}
+
+			const updateOnePublisher = await ctx.db.publisher.update({
+				where: {
+					id: findOnePublisher.id
+				},
+				data: {
+					...input
+				}
+			})
+
+			return updateOnePublisher;
+		}),
 });
