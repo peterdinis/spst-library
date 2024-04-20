@@ -152,6 +152,13 @@ export const categoryRouter = createTRPCRouter({
 				},
 			});
 
+			if(!deleteOneCategory) {
+				throw new TRPCError({
+					message: "Failed to delete category",
+					code: "NOT_FOUND",
+				});
+			}
+
 			return deleteOneCategory;
 		}),
 });

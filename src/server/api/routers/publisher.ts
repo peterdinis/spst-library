@@ -132,6 +132,49 @@ export const publisherRouter = createTRPCRouter({
 				},
 			});
 
+			if(!updateOnePublisher) {
+				throw new TRPCError({
+					message: "Update publisher failed",
+					code: "NOT_FOUND",
+				});
+			}
+
 			return updateOnePublisher;
+		}),
+
+		deletePublisher: publicProcedure
+		.input(
+			z.object({
+				id: z.number(),
+			}),
+		)
+		.mutation(async ({ ctx, input }) => {
+			const findOnePublisher = await ctx.db.publisher.findUnique({
+				where: {
+					id: input.id,
+				},
+			});
+
+			if (!findOnePublisher) {
+				throw new TRPCError({
+					message: "Publisher with this is not found",
+					code: "NOT_FOUND",
+				});
+			}
+
+			const deleteOnePublisher = await ctx.db.publisher.delete({
+				where: {
+					id: findOnePublisher.id,
+				},
+			});
+
+			if(!deleteOnePublisher) {
+				throw new TRPCError({
+					message: "Delete publisher failed",
+					code: "NOT_FOUND",
+				});
+			}
+
+			return deleteOnePublisher;
 		}),
 });
