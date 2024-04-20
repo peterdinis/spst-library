@@ -98,4 +98,80 @@ export const authorRouter = createTRPCRouter({
 
 			return addAuthor;
 		}),
+	updateAuthor: publicProcedure
+		.input(
+			z.object({
+				id: z.number(),
+				name: z.string().optional(),
+				deathYear: z.string().optional(),
+				birthYear: z.string().optional(),
+				description: z.string().optional(),
+				litPeriod: z.string().optional(),
+				totalBooks: z.number().optional(),
+				authorImage: z.string().optional(),
+			}),
+		)
+		.mutation(async ({ ctx, input }) => {
+			const findOneAuthor = await ctx.db.author.findUnique({
+				where: {
+					id: input.id,
+				},
+				include: {
+					books: true,
+				},
+			});
+
+			if (!findOneAuthor) {
+				throw new TRPCError({
+					message: "Author with this is not found",
+					code: "NOT_FOUND",
+				});
+			}
+
+			const updateAuthor = await ctx.db.author.update({
+				where: {
+					id: findOneAuthor.id,
+				},
+				data: {
+					...input,
+				},
+			});
+
+			return updateAuthor;
+		}),
+
+	deleteAuthor: publicProcedure
+		.input(
+			z.object({
+				id: z.number(),
+			}),
+		)
+		.mutation(async ({ ctx, input }) => {
+			const findOneAuthorById = await ctx.db.author.findUnique({
+				where: {
+					id: input.id,
+				},
+			});
+
+			if (!findOneAuthorById) {
+				throw new TRPCError({
+					message: "Author with this id does not exists",
+					code: "BAD_REQUEST",
+				});
+			}
+
+			const deleteOneAuthor = await ctx.db.author.delete({
+				where: {
+					id: findOneAuthorById.id,
+				},
+			});
+			if (!deleteOneAuthor) {
+				throw new TRPCError({
+					message: "Delete failed",
+					code: "BAD_REQUEST",
+				});
+			}
+
+			return deleteOneAuthor;
+		}),
 });
