@@ -1,3 +1,3 @@
 import { createTRPCRouter } from "../trpc";
 
-export const studentRouter = createTRPCRouter({ });
+export const studentRouter = createTRPCRouter({});

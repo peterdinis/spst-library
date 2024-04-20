@@ -108,87 +108,87 @@ export const bookRouter = createTRPCRouter({
 			return newBook;
 		}),
 
-		updateBook: publicProcedure
-			.input(
-				z.object({
-					id: z.number(),
-					name: z.string().optional(),
-					description: z.string().optional(),
-					image: z.string().optional(),
-					year: z.string().optional(),
-					pages: z.number().optional(),
-					isAvaiable: z.boolean().optional(),
-					categoryId: z.number().optional(),
-					authorId: z.number().optional(),
-					itemsInStock: z.number().optional(),
-					publisherId: z.number().optional(),
-				}),
-			)
-			.mutation(async ({ ctx, input }) => {
-				const findOneBookById = await ctx.db.book.findUnique({
-					where: {
-						id: input.id
-					}
-				})
-
-				if(!findOneBookById) {
-					throw new TRPCError({
-						message: "Book with this id does not exists",
-						code: "BAD_REQUEST",
-					});
-				}
-
-				const updateBook =await ctx.db.book.update({
-					where: {
-						id: findOneBookById.id
-					},
-					data: {
-						...input
-					}
-				})
-
-				if(!updateBook){
-					throw new TRPCError({
-						message: "Update failed",
-						code: "BAD_REQUEST",
-					});
-				}
-
-				return updateBook;
+	updateBook: publicProcedure
+		.input(
+			z.object({
+				id: z.number(),
+				name: z.string().optional(),
+				description: z.string().optional(),
+				image: z.string().optional(),
+				year: z.string().optional(),
+				pages: z.number().optional(),
+				isAvaiable: z.boolean().optional(),
+				categoryId: z.number().optional(),
+				authorId: z.number().optional(),
+				itemsInStock: z.number().optional(),
+				publisherId: z.number().optional(),
 			}),
+		)
+		.mutation(async ({ ctx, input }) => {
+			const findOneBookById = await ctx.db.book.findUnique({
+				where: {
+					id: input.id,
+				},
+			});
 
-			deleteBook: publicProcedure
-			.input(
-				z.object({
-					id: z.number(),
-				}),
-			)
-			.mutation(async ({ ctx, input }) => {
-				const findOneBookById = await ctx.db.book.findUnique({
-					where: {
-						id: input.id
-					}
-				})
+			if (!findOneBookById) {
+				throw new TRPCError({
+					message: "Book with this id does not exists",
+					code: "BAD_REQUEST",
+				});
+			}
 
-				if(!findOneBookById) {
-					throw new TRPCError({
-						message: "Book with this id does not exists",
-						code: "BAD_REQUEST",
-					});
-				}
+			const updateBook = await ctx.db.book.update({
+				where: {
+					id: findOneBookById.id,
+				},
+				data: {
+					...input,
+				},
+			});
 
-				const deleteOneBook =await ctx.db.book.delete({
-					where: {
-						id: findOneBookById.id
-					},
-				})
-				if(!deleteOneBook){
-					throw new TRPCError({
-						message: "Update failed",
-						code: "BAD_REQUEST",
-					});
-				}
+			if (!updateBook) {
+				throw new TRPCError({
+					message: "Update failed",
+					code: "BAD_REQUEST",
+				});
+			}
 
-				return deleteOneBook;
+			return updateBook;
+		}),
+
+	deleteBook: publicProcedure
+		.input(
+			z.object({
+				id: z.number(),
 			}),
+		)
+		.mutation(async ({ ctx, input }) => {
+			const findOneBookById = await ctx.db.book.findUnique({
+				where: {
+					id: input.id,
+				},
+			});
+
+			if (!findOneBookById) {
+				throw new TRPCError({
+					message: "Book with this id does not exists",
+					code: "BAD_REQUEST",
+				});
+			}
+
+			const deleteOneBook = await ctx.db.book.delete({
+				where: {
+					id: findOneBookById.id,
+				},
+			});
+			if (!deleteOneBook) {
+				throw new TRPCError({
+					message: "Update failed",
+					code: "BAD_REQUEST",
+				});
+			}
+
+			return deleteOneBook;
+		}),
 });

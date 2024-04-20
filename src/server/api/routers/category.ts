@@ -93,7 +93,7 @@ export const categoryRouter = createTRPCRouter({
 			};
 		}),
 
-		updateCategory: publicProcedure
+	updateCategory: publicProcedure
 		.input(
 			z.object({
 				id: z.number(),
@@ -104,8 +104,8 @@ export const categoryRouter = createTRPCRouter({
 		.mutation(async ({ ctx, input }) => {
 			const findOneCategory = await ctx.db.category.findUnique({
 				where: {
-					id: input.id
-				}
+					id: input.id,
+				},
 			});
 
 			if (!findOneCategory) {
@@ -117,16 +117,16 @@ export const categoryRouter = createTRPCRouter({
 
 			const updateOneCategory = await ctx.db.category.update({
 				where: {
-					id: findOneCategory.id
+					id: findOneCategory.id,
 				},
 				data: {
-					...input
-				}
+					...input,
+				},
 			});
 
 			return updateOneCategory;
 		}),
-		deleteCategory: publicProcedure
+	deleteCategory: publicProcedure
 		.input(
 			z.object({
 				id: z.number(),
@@ -135,8 +135,8 @@ export const categoryRouter = createTRPCRouter({
 		.mutation(async ({ ctx, input }) => {
 			const findOneCategory = await ctx.db.category.findUnique({
 				where: {
-					id: input.id
-				}
+					id: input.id,
+				},
 			});
 
 			if (!findOneCategory) {
@@ -148,7 +148,7 @@ export const categoryRouter = createTRPCRouter({
 
 			const deleteOneCategory = await ctx.db.category.delete({
 				where: {
-					id: findOneCategory.id
+					id: findOneCategory.id,
 				},
 			});
 
