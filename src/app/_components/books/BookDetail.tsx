@@ -14,6 +14,7 @@ import { Badge } from "~/components/ui/badge";
 import LongText from "../shared/LongText";
 import { useCopyToClipboard } from "~/hooks/useCopy";
 import SheetHelper from "../shared/SheetHelper";
+import BookSheets from "./BookSheets";
 
 const BookDetail: FC = () => {
 	const { id } = useParams();
@@ -150,19 +151,7 @@ const BookDetail: FC = () => {
 									</div>
 									<br />
 									<hr />
-									<div className="flex mt-5">
-										<SheetHelper variantProp="default" title={"Upraviť knihu"} secondTitle={"Upraviť knihu"}>
-											UPRAV
-										</SheetHelper>
-										<div className="ml-4">
-										<SheetHelper variantProp="outline" title="Zmazať knihu" secondTitle="Chcete zmazať knihu">
-											<span className="mt-2 font-bold text-xl">Chcte zmazať knihu: {data &&data.name}</span>
-											<div className="p-5 mt-5">
-												<Button variant={"destructive"} size={"lg"}>Zmazať</Button>
-											</div>
-										</SheetHelper>
-										</div>
-									</div>
+									<BookSheets name={data?.name!} />
 								</div>
 							</div>
 						</div>
