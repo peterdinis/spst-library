@@ -20,7 +20,7 @@ const AdminAllPublishers: FC = () => {
 		return (
 			<GlobalErrorComponent
 				statusCode="404"
-				message="Kategórie nenájdené"
+				message="Vydavateľstvá neboli nájdené"
 			/>
 		);
 	}

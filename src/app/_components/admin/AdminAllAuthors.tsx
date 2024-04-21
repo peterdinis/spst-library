@@ -20,7 +20,7 @@ const AdminAllAuthors: FC = () => {
 		return (
 			<GlobalErrorComponent
 				statusCode="404"
-				message="Kategórie nenájdené"
+				message="Spisovatelia neboli nájdení"
 			/>
 		);
 	}
