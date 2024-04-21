@@ -64,20 +64,15 @@ export const bookingRouter = createTRPCRouter({
 			};
 		}),
 
-	//TODO: Later
-	/* createTeacherBooking: protectedProcedure.input().mutation(async({ctx, input} => {
+	createBooking: publicProcedure.mutation(async({ctx, input}) => {
 
-	})),
+	}),
 
-	createStudentBooking: studentProtectedProcedure.input().mutation(async({ctx, input} => {
+	returnBooking: publicProcedure.mutation(async({ctx, input}) => {
 
-	})),
+	}),
+	
+	extendedBooking: publicProcedure.mutation(async({ctx, input}) => {
 
-	returnTeacherBooking: protectedProcedure.input().mutation(async({ctx, input} => {
-
-	})),
-
-	returnStudentBooking: studentProtectedProcedure.input().mutation(async({ctx, input} => {
-
-	})), */
+	}),
 });
