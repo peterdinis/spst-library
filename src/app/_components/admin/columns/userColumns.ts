@@ -1,41 +1,42 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
+import { Role } from "~/app/types/authTypes";
 
-export type Book = {
+export type User = {
 	id: string;
 	name: string;
-	description: string;
-	isAvaiable: boolean;
-	itemsInStock: number;
+	lastName: string;
+	email: string;
+	role: Role;
 };
 
-export const columns: ColumnDef<Book>[] = [
+export const columns: ColumnDef<User>[] = [
 	{
 		accessorKey: "id",
 		header: "Id",
 	},
 	{
 		accessorKey: "name",
-		header: "Meno knihy",
+		header: "Meno",
 		enableSorting: true,
 		enableGlobalFilter: true,
 	},
 	{
-		accessorKey: "description",
-		header: "Popis knihy",
+		accessorKey: "lastName",
+		header: "Priezvisko",
 		enableSorting: true,
 		enableGlobalFilter: true,
 	},
 	{
-		accessorKey: "isAvaiable",
-		header: "Je dostupná",
+		accessorKey: "email",
+		header: "Email",
 		enableSorting: true,
 		enableGlobalFilter: true,
 	},
 	{
-		accessorKey: "itemsInStock",
-		header: "Počet kusov",
+		accessorKey: "role",
+		header: "Rola",
 		enableSorting: true,
 		enableGlobalFilter: true,
 	},

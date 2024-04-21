@@ -8,3 +8,10 @@ export interface IProfileData {
 	name: string;
 	updatedAt: string | Date;
 }
+
+
+export enum Role {
+	STUDENT,
+	TEACHER,
+	ADMIN
+}
