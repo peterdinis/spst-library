@@ -23,7 +23,7 @@ export function DataTable<TData, TValue>({
 	data,
 }: DataTableProps<TData, TValue>) {
 	const [pageIndex, setPageIndex] = useState(0);
-	const [pageSize, setPageSize] = useState(10);
+	const [pageSize, _] = useState(10);
 
 	const table = useReactTable({
 		data,
@@ -83,21 +83,21 @@ export function DataTable<TData, TValue>({
 								className="h-24 text-center"
 							>
 								<Ghost className="h-8 w-8 mx-auto" />
-								No results.
+								Nič nebolo nájdené
 							</TableCell>
 						</TableRow>
 					)}
 				</TableBody>
 			</Table>
 			<div className="mt-5">
-				<div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
+				<div className="flex items-center justify-between border-t border-gray-200 dark:bg-background px-4 py-3 sm:px-6">
 					<div className="flex flex-1 justify-between sm:hidden">
 						<button
 							onClick={() =>
 								setPageIndex(Math.max(0, pageIndex - 1))
 							}
 							disabled={pageIndex === 0}
-							className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+							className="relative inline-flex items-center rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
 						>
 							Previous
 						</button>
@@ -111,15 +111,15 @@ export function DataTable<TData, TValue>({
 								)
 							}
 							disabled={pageIndex >= table.getPageCount() - 1}
-							className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+							className="relative ml-3 inline-flex items-center rounded-md border border-gray-300  px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
 						>
 							Next
 						</button>
 					</div>
 					<div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
 						<div>
-							<p className="text-sm text-gray-700">
-								Stánka <span className="font-medium">1</span> z{" "}
+							<p className="text-sm dark:text-blue-50 text-gray-700">
+								Stránka <span className="font-medium">1</span> z{" "}
 								<span className="font-medium">10</span>
 							</p>
 						</div>
@@ -144,7 +144,7 @@ export function DataTable<TData, TValue>({
 								<a
 									href="#"
 									aria-current="page"
-									className="relative z-10 inline-flex items-center  px-4 py-2 text-sm font-semibold text-black focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+									className="relative z-10 dark:text-blue-50 inline-flex items-center  px-4 py-2 text-sm font-semibold text-black focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 								>
 									{pageIndex + 1}
 								</a>
