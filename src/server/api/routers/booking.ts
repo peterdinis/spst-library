@@ -4,6 +4,7 @@ import {
 	publicProcedure,
 } from "../trpc";
 import z from "zod";
+import {format} from "date-fns";
 
 export const bookingRouter = createTRPCRouter({
 	displayAllBooking: publicProcedure.query(async ({ ctx }) => {
@@ -64,8 +65,60 @@ export const bookingRouter = createTRPCRouter({
 			};
 		}),
 
-	createBooking: publicProcedure.mutation(async({ctx, input}) => {
+	createBooking: publicProcedure.input(z.object({
+		bookName: z.string(),
+		from: z.date(),
+		to: z.date(),
+		borrowerEmail: z.string()
+	})).mutation(async({ctx, input}) => {
+		const findOneBook = await ctx.db.book.findFirst({
+			where: {
+				name: input.bookName,
+				AND: {
+					NOT: {
+						isAvaiable: false
+					}
+				}
+			},
+		});
 
+		if(!findOneBook) {
+			throw new TRPCError({
+				message: "Can not borrowed book",
+				code: "FORBIDDEN",
+			});
+		};
+
+		const borrowedSpecificBook = await ctx.db.booking.create({
+			data: {
+				borrowerEmail: input.borrowerEmail,
+				bookName: findOneBook.name,
+				from: format(input.from, "dd-MM-yyyy"),
+				to: format(input.to, "dd-MM-yyyy"),
+				isBorrowed: true,
+				isReturned: false,
+				isExtended: false
+			}
+		});
+
+		await ctx.db.book.update({
+			where: {
+				id: findOneBook.id
+			},
+			data: {
+				isAvaiable: false
+			}
+		})
+
+
+		if(!borrowedSpecificBook) {
+			throw new TRPCError({
+				message: "Something went wrong",
+				code: "BAD_REQUEST",
+			});
+		}
+
+		return borrowedSpecificBook;
 	}),
 
 	returnBooking: publicProcedure.mutation(async({ctx, input}) => {
