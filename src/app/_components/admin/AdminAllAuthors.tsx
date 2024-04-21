@@ -6,7 +6,7 @@ import { api } from "~/trpc/react";
 import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import Header from "../shared/Header";
 import { DataTable } from "../shared/GlobalTable";
-import { columns } from "./columns/publisherColumns";
+import { columns } from "./columns/authorColumns";
 
 const AdminAllAuthors: FC = () => {
 	const { data, isLoading, isError } =
