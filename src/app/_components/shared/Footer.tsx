@@ -28,7 +28,7 @@ const Footer: FC = () => {
 						<div className="text-blueGray-500 py-1 text-sm font-semibold">
 							<a
 								href="https://www.spsbj.sk/"
-								className="text-blueGray-500 text-2xl hover:text-gray-800"
+								className="text-blueGray-500 text-2xl"
 							>
 								<motion.span
 									className="inline-block"
