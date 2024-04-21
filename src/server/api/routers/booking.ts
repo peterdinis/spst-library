@@ -121,11 +121,69 @@ export const bookingRouter = createTRPCRouter({
 		return borrowedSpecificBook;
 	}),
 
-	returnBooking: publicProcedure.mutation(async({ctx, input}) => {
+	returnBooking: publicProcedure.input(z.object({
+		bookName: z.string(),
+		from: z.date(),
+		to: z.date(),
+		borrowerEmail: z.string()
+	})).mutation(async({ctx, input}) => {
+		const findBookToReturn = await ctx.db.booking.findFirst({
+			where: {
+				bookName: input.bookName
+			}
+		});
 
+		const removeBookFromUserBooking = await ctx.db.user.delete({
+			where: {
+				id: String(findBookToReturn?.id)
+			}
+		});
+
+		if(!removeBookFromUserBooking) {
+			throw new TRPCError({
+				message: "Book with this id does not exists in user",
+				code: "BAD_REQUEST",
+			});
+		}
+
+		await ctx.db.book.update({
+			where: {
+				id: removeBookFromUserBooking?.id as unknown as number
+			}, 
+
+			data: {
+				isAvaiable: true
+			}
+		})
 	}),
 	
-	extendedBooking: publicProcedure.mutation(async({ctx, input}) => {
+	extendedBooking: publicProcedure.input(z.object({
+		bookName: z.string(),
+		to: z.date(),
+		borrowerEmail: z.string()
+	})).mutation(async({ctx, input}) => {
+		const findBookToReturn = await ctx.db.booking.findFirst({
+			where: {
+				bookName: input.bookName
+			}
+		});
 
+		if(!findBookToReturn) {
+			throw new TRPCError({
+				message: "Book with this id does not exists in user",
+				code: "BAD_REQUEST",
+			});
+		}
+
+		const extendSpecificBook = await ctx.db.booking.update({
+			where: {
+				id: findBookToReturn.id
+			},
+			data: {
+				to: input.to
+			}
+		});
+
+		return extendSpecificBook;
 	}),
 });
