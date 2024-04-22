@@ -1,12 +1,15 @@
 import { FC } from "react";
 import { Button } from "~/components/ui/button";
 import SheetHelper from "../shared/SheetHelper";
+import { Input } from "~/components/ui/input";
+import { Book } from "@prisma/client";
 
 interface IBookSheetsProps {
   name: string;
+  data: Book;
 }
 
-const BookSheets: FC<IBookSheetsProps> = ({ name }: IBookSheetsProps) => {
+const BookSheets: FC<IBookSheetsProps> = ({ name, data }: IBookSheetsProps) => {
   return (
     <div className="flex mt-5">
       <SheetHelper
@@ -17,6 +20,20 @@ const BookSheets: FC<IBookSheetsProps> = ({ name }: IBookSheetsProps) => {
         <span className="mt-2 font-bold text-xl">
             Uprava knihy: {name}
           </span>
+        <div>
+          <form>
+
+              {/* TODO: Update later */}
+              <Input type="text" className="mt-5" placeholder="Meno" value={data?.name} />
+              <Input type="text" className="mt-5" placeholder="Popis" value={data?.description} />
+              <Input type="text" className="mt-5" placeholder="Obrázok" value={data?.image} />
+              <Input type="text" className="mt-5" placeholder="Rok" value={data?.year} />
+              <Input type="checkbox" className="mt-5" value={data?.isAvaiable as any} />
+              <Input type="text" className="mt-5" placeholder="Počet kusov" value={data?.itemsInStock} />
+
+              <Button className="mt-6" variant={"secondary"} size={"lg"}>Upraviť knihu</Button>
+          </form>
+        </div>
       </SheetHelper>
       <div className="ml-4">
         <SheetHelper

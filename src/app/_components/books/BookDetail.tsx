@@ -13,8 +13,8 @@ import BookingModal from "../booking/BookingModal";
 import { Badge } from "~/components/ui/badge";
 import LongText from "../shared/LongText";
 import { useCopyToClipboard } from "~/hooks/useCopy";
-import SheetHelper from "../shared/SheetHelper";
 import BookSheets from "./BookSheets";
+import { Book } from "@prisma/client";
 
 const BookDetail: FC = () => {
 	const { id } = useParams();
@@ -151,7 +151,7 @@ const BookDetail: FC = () => {
 									</div>
 									<br />
 									<hr />
-									<BookSheets name={data?.name!} />
+									<BookSheets data={data as unknown as Book} name={data?.name!} />
 								</div>
 							</div>
 						</div>
