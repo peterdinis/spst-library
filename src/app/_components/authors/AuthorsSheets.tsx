@@ -2,30 +2,30 @@ import { FC } from "react";
 import { Button } from "~/components/ui/button";
 import SheetHelper from "../shared/SheetHelper";
 
-interface ICategorySheetsProps {
+interface IAuthorSheetsProps {
   name: string;
 }
 
-const CategorySheets: FC<ICategorySheetsProps> = ({ name }: ICategorySheetsProps) => {
+const AuthorSheets: FC<IAuthorSheetsProps> = ({ name }: IAuthorSheetsProps) => {
   return (
     <div className="flex mt-5">
       <SheetHelper
         variantProp="default"
-        title={"Upraviť kategóriu"}
-        secondTitle={"Upraviť kategóriu"}
+        title={"Upraviť autorka/ku"}
+        secondTitle={"Upraviť autorka/ku"}
       >
         <span className="mt-2 font-bold text-xl">
-            Uprava kategórie: {name}
+            Uprava autorka/ky: {name}
           </span>
       </SheetHelper>
       <div className="ml-4">
         <SheetHelper
           variantProp="outline"
-          title="Zmazať kategóriu"
-          secondTitle="Chcete zmazať kategóriu"
+          title="Zmazať autorka/ku"
+          secondTitle="Chcete zmazať autorka/ku"
         >
           <span className="mt-2 font-bold text-xl">
-            Chcte zmazať kategóriu: {name}
+            Chcte zmazať autorka/ku: {name}
           </span>
           <div className="p-5 mt-5">
             <Button variant={"destructive"} size={"lg"}>
@@ -38,4 +38,4 @@ const CategorySheets: FC<ICategorySheetsProps> = ({ name }: ICategorySheetsProps
   );
 };
 
-export default CategorySheets;
+export default AuthorSheets;

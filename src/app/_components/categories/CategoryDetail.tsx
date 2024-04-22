@@ -8,6 +8,8 @@ import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import Link from "next/link";
 import { Button } from "~/components/ui/button";
 import Header from "../shared/Header";
+import CategorySheets from "./CategorySheets";
+import { Category } from "@prisma/client";
 
 const CategoryDetail: FC = () => {
 	const { id } = useParams();
@@ -65,6 +67,8 @@ const CategoryDetail: FC = () => {
 					<Link href="/categories">Späť na kategórie</Link>
 				</Button>
 			</div>
+
+			<CategorySheets data={data as unknown as Category} name={data?.name!} />
 		</>
 	);
 };

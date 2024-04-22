@@ -1,12 +1,14 @@
 import { FC } from "react";
 import { Button } from "~/components/ui/button";
 import SheetHelper from "../shared/SheetHelper";
+import { Category } from "@prisma/client";
 
 interface ICategorySheetsProps {
   name: string;
+  data: Category;
 }
 
-const CategorySheets: FC<ICategorySheetsProps> = ({ name }: ICategorySheetsProps) => {
+const CategorySheets: FC<ICategorySheetsProps> = ({ name, data }: ICategorySheetsProps) => {
   return (
     <div className="flex mt-5">
       <SheetHelper
