@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Button } from "~/components/ui/button";
 import SheetHelper from "../shared/SheetHelper";
 import { Category } from "@prisma/client";
+import { Input } from "~/components/ui/input";
 
 interface ICategorySheetsProps {
 	name: string;
@@ -22,6 +23,30 @@ const CategorySheets: FC<ICategorySheetsProps> = ({
 				<span className="mt-2 font-bold text-xl">
 					Uprava kategórie: {name}
 				</span>
+				<div>
+					<form>
+						<Input
+							type="text"
+							className="mt-5"
+							placeholder="Meno"
+							value={data?.name}
+						/>
+						<Input
+							type="text"
+							className="mt-5"
+							placeholder="Popis"
+							value={data?.description}
+						/>
+
+						<Button
+							className="mt-6"
+							variant={"secondary"}
+							size={"lg"}
+						>
+							Upraviť kategóriu
+						</Button>
+					</form>
+				</div>
 			</SheetHelper>
 			<div className="ml-4">
 				<SheetHelper

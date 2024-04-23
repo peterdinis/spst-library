@@ -1,12 +1,14 @@
 import { FC } from "react";
 import { Button } from "~/components/ui/button";
 import SheetHelper from "../shared/SheetHelper";
+import { Author } from "@prisma/client";
 
 interface IAuthorSheetsProps {
 	name: string;
+	data: Author;
 }
 
-const AuthorSheets: FC<IAuthorSheetsProps> = ({ name }: IAuthorSheetsProps) => {
+const AuthorSheets: FC<IAuthorSheetsProps> = ({ name, data }: IAuthorSheetsProps) => {
 	return (
 		<div className="flex mt-5">
 			<SheetHelper
