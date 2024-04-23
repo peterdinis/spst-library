@@ -68,7 +68,10 @@ const CategoryDetail: FC = () => {
 				</Button>
 			</div>
 
-			<CategorySheets data={data as unknown as Category} name={data?.name!} />
+			<CategorySheets
+				data={data as unknown as Category}
+				name={data?.name!}
+			/>
 		</>
 	);
 };

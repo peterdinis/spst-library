@@ -6,7 +6,7 @@ export type Author = {
 	id: string;
 	name: string;
 	description: string;
-    totalBooks: number;
+	totalBooks: number;
 };
 
 export const columns: ColumnDef<Author>[] = [
@@ -26,7 +26,7 @@ export const columns: ColumnDef<Author>[] = [
 		enableSorting: true,
 		enableGlobalFilter: true,
 	},
-    {
+	{
 		accessorKey: "totalBooks",
 		header: "Celkový počet kníh",
 		enableSorting: true,

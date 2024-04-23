@@ -6,10 +6,10 @@ export type Publisher = {
 	id: string;
 	bookName: string;
 	from: string | Date;
-    to: string | Date
-    isReturned: boolean;
-    isExtended: boolean;
-    borrowerEmail: string;
+	to: string | Date;
+	isReturned: boolean;
+	isExtended: boolean;
+	borrowerEmail: string;
 };
 
 export const columns: ColumnDef<Publisher>[] = [

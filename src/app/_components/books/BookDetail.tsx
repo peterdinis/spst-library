@@ -151,7 +151,10 @@ const BookDetail: FC = () => {
 									</div>
 									<br />
 									<hr />
-									<BookSheets data={data as unknown as Book} name={data?.name!} />
+									<BookSheets
+										data={data as unknown as Book}
+										name={data?.name!}
+									/>
 								</div>
 							</div>
 						</div>
