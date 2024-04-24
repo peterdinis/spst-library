@@ -73,7 +73,7 @@ model User {
     email     String
     password  String
     isActive  Boolean  @default(true)
-    role      AuthRole @default(STUDENT)
+    appRole   AuthRole @default(STUDENT)
     createdAt DateTime @default(now())
     updatedAt DateTime @default(now()) @updatedAt
     sessions  Session[]
