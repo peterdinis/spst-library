@@ -115,7 +115,7 @@ export async function signup(
 			name,
 			lastName,
 			password: hashedPassword,
-			role: TEACHER,
+			appRole: TEACHER,
 		},
 	});
 
