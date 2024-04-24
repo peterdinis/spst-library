@@ -73,7 +73,9 @@ model User {
     email     String
     password  String
     isActive  Boolean  @default(true)
-    appRole   AuthRole @default(STUDENT)
+    isStudent Boolean  @default(false)
+    isTeacher Boolean  @default(false)
+    isAdmin   Boolean  @default(false)
     createdAt DateTime @default(now())
     updatedAt DateTime @default(now()) @updatedAt
     sessions  Session[]
@@ -95,10 +97,4 @@ model Booking {
     isReturned    Boolean
     isExtended    Boolean? // Predlženie knihy
     borrowerEmail String
-}
-
-enum AuthRole {
-    TEACHER
-    STUDENT
-    ADMIN
 }
