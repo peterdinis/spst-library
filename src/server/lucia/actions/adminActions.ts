@@ -15,7 +15,6 @@ import { validateRequest } from "../validate-request";
 import { TRPCError } from "@trpc/server";
 import { ActionResponse } from "~/app/types/sharedTypes";
 import { adminRedirects } from "~/server/utils";
-import { ADMIN } from "../constants";
 
 export async function login(
 	_: unknown,
