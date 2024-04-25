@@ -115,7 +115,10 @@ export async function signup(
 			name,
 			lastName,
 			password: hashedPassword,
-			appRole: TEACHER,
+			isTeacher: true,
+			isActive: true,
+			isStudent: false,
+			isAdmin: false
 		},
 	});
 
