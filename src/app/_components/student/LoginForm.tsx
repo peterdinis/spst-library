@@ -16,7 +16,9 @@ const LoginForm: FC = () => {
 	const handleLoginSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const formData = new FormData(e.currentTarget);
-		formAction(formData);
+		/* formAction(formData); */
+		console.log("S", state);
+		console.log("FM", formData);
 		toast({
 			title: "Prihlásenie bolo úspešné",
 			duration: 2000,
