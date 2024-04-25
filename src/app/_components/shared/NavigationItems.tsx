@@ -3,8 +3,13 @@
 import Link from "next/link";
 import ThemeButton from "./ThemeButton";
 import { FC } from "react";
+import { api } from "~/trpc/react";
 
 const NavigationItems: FC = () => {
+	const {data, isLoading, isError} = api.student.get.useQuery();
+
+	console.log("D", data, "L", isLoading, "E", isError);
+	
 	return (
 		<>
 			<li className="text-xl dark:text-blue-50  text-black">
