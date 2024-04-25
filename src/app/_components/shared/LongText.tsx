@@ -13,7 +13,7 @@ const LongText: FC<ILongTextProps> = ({ text, maxLength }: ILongTextProps) => {
 	};
 
 	const textClass = classNames(
-		"text-sm",
+		"text-xl",
 		"text-gray-800",
 		"dark:text-blue-50",
 		{
