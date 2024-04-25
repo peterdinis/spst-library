@@ -4,6 +4,7 @@ export interface IProfileData {
 	id: string;
 	isActive: boolean;
 	lastName: string;
+	isStudent: boolean;
 	password: string;
 	name: string;
 	updatedAt: string | Date;

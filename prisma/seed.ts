@@ -53,7 +53,7 @@ async function main() {
 				email: `student${i + 1}@example.com`,
 				password: "password123",
 				isActive: true,
-				role: "STUDENT",
+				appRole: "STUDENT",
 			},
 		});
 		students.push(student);
@@ -69,7 +69,7 @@ async function main() {
 				email: `teacher${i + 1}@example.com`,
 				password: "password123",
 				isActive: true,
-				role: "TEACHER",
+				appRole: "TEACHER",
 			},
 		});
 		teachers.push(teacher);
@@ -83,7 +83,7 @@ async function main() {
 				name: `Book ${i + 1}`,
 				description: `Description for book ${i + 1}.`,
 				image: "https://picsum.photos/200/300",
-				year: 2000 + i,
+				year: "2001",
 				pages: 300 + i,
 				isAvaiable: true,
 				itemsInStock: 10 + i,

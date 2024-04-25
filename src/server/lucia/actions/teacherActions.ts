@@ -15,7 +15,6 @@ import { validateRequest } from "../validate-request";
 import { TRPCError } from "@trpc/server";
 import { ActionResponse } from "~/app/types/sharedTypes";
 import { teacherRedirects } from "~/server/utils";
-import { TEACHER } from "../constants";
 
 export async function login(
 	_: unknown,
@@ -115,7 +114,10 @@ export async function signup(
 			name,
 			lastName,
 			password: hashedPassword,
-			role: TEACHER,
+			isTeacher: true,
+			isActive: true,
+			isStudent: false,
+			isAdmin: false
 		},
 	});
 

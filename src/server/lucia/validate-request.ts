@@ -1,10 +1,11 @@
 import { cache } from "react";
 import { cookies } from "next/headers";
-import type { Session, User } from "lucia";
+import { Session } from "lucia";
 import { lucia } from "./config";
+import { User } from "@prisma/client";
 
 export const uncachedValidateRequest = async (): Promise<
-	{ user: User; session: Session } | { user: null; session: null }
+	{ user: User | any; session: Session } | { user: null; session: null }
 > => {
 	const sessionId = cookies().get(lucia.sessionCookieName)?.value ?? null;
 	if (!sessionId) {
