@@ -72,10 +72,7 @@ model User {
     lastName  String
     email     String
     password  String
-    isActive  Boolean  @default(true)
-    isStudent Boolean  @default(true)
-    isTeacher Boolean  @default(true)
-    isAdmin   Boolean  @default(true)
+    role      String  @default("TEACHER")
     createdAt DateTime @default(now())
     updatedAt DateTime @default(now()) @updatedAt
     sessions  Session[]
