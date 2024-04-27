@@ -11,7 +11,7 @@ import {
 	SignupInput,
 	signupSchema,
 } from "../../validators/auth";
-import { validateRequest } from "../validate-request";
+import { teacherValidateRequest } from "../validate-request";
 import { TRPCError } from "@trpc/server";
 import { ActionResponse } from "~/app/types/sharedTypes";
 import { teacherRedirects } from "~/server/utils";
@@ -35,7 +35,7 @@ export async function login(
 
 	const { email, password } = parsed.data;
 
-	const existingUser = await db.user.findFirst({
+	const existingUser = await db.teacher.findFirst({
 		where: {
 			email,
 		},
@@ -92,7 +92,7 @@ export async function signup(
 
 	const { email, password, name, lastName } = parsed.data;
 
-	const existingUser = await db.user.findFirst({
+	const existingUser = await db.teacher.findFirst({
 		where: {
 			email,
 		},
@@ -107,17 +107,13 @@ export async function signup(
 	const userId = generateId(21);
 	const hashedPassword = await new Scrypt().hash(password);
 
-	const createNewTeacher = await db.user.create({
+	const createNewTeacher = await db.teacher.create({
 		data: {
 			id: userId,
 			email,
 			name,
 			lastName,
 			password: hashedPassword,
-			isTeacher: true,
-			isActive: true,
-			isStudent: false,
-			isAdmin: false
 		},
 	});
 
@@ -139,7 +135,7 @@ export async function signup(
 }
 
 export async function logout(): Promise<{ error: string } | void> {
-	const { session } = await validateRequest();
+	const { session } = await teacherValidateRequest();
 	if (!session) {
 		return {
 			error: "Session nebola nájdená",

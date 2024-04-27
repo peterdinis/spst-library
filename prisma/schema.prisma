@@ -66,23 +66,58 @@ model Author {
     updatedAt   DateTime @default(now()) @updatedAt
 }
 
-model User {
+model Student {
     id        String   @id @default(uuid())
     name      String
     lastName  String
     email     String
     password  String
-    role      String  @default("TEACHER")
     createdAt DateTime @default(now())
     updatedAt DateTime @default(now()) @updatedAt
-    sessions  Session[]
+    sessions  StudentSession[]
 }
 
-model Session {
+model StudentSession {
     id        String   @id
     userId    String
     expiresAt DateTime
-    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    user      Student     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Teacher {
+    id        String   @id @default(uuid())
+    name      String
+    lastName  String
+    email     String
+    password  String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @default(now()) @updatedAt
+    sessions  TeacherSession[]
+}
+
+model TeacherSession {
+    id        String   @id
+    userId    String
+    expiresAt DateTime
+    user      Teacher     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Admin {
+    id        String   @id @default(uuid())
+    name      String
+    lastName  String
+    email     String
+    password  String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @default(now()) @updatedAt
+    sessions  AdminSession[]
+}
+
+model AdminSession {
+    id        String   @id
+    userId    String
+    expiresAt DateTime
+    user      Admin     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Booking {

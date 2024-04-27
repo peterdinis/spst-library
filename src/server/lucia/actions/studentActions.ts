@@ -12,10 +12,9 @@ import {
 	signupSchema,
 } from "../../validators/auth";
 import { studentRedirects } from "../../utils";
-import { validateRequest } from "../validate-request";
 import { TRPCError } from "@trpc/server";
 import { ActionResponse } from "~/app/types/sharedTypes";
-import { STUDENT } from "../constants";
+import { studentValidateRequest } from "../validate-request";
 
 export async function login(
 	_: unknown,
@@ -36,7 +35,7 @@ export async function login(
 
 	const { email, password } = parsed.data;
 
-	const existingUser = await db.user.findFirst({
+	const existingUser = await db.student.findFirst({
 		where: {
 			email,
 		},
@@ -93,7 +92,7 @@ export async function signup(
 
 	const { email, password, name, lastName } = parsed.data;
 
-	const existingUser = await db.user.findFirst({
+	const existingUser = await db.student.findFirst({
 		where: {
 			email,
 		},
@@ -108,14 +107,13 @@ export async function signup(
 	const userId = generateId(21);
 	const hashedPassword = await new Scrypt().hash(password);
 
-	const createNewStudent = await db.user.create({
+	const createNewStudent = await db.student.create({
 		data: {
 			id: userId,
 			email,
 			name,
 			lastName,
 			password: hashedPassword,
-			role: STUDENT
 		},
 	});
 
@@ -124,7 +122,7 @@ export async function signup(
 			code: "BAD_REQUEST",
 			message: "Nepodarilo sa vytvoriť nového používateľa",
 		});
-	}
+	} 
 
 	const session = await lucia.createSession(userId, {});
 	const sessionCookie = lucia.createSessionCookie(session.id);
@@ -137,7 +135,7 @@ export async function signup(
 }
 
 export async function logout(): Promise<{ error: string } | void> {
-	const { session } = await validateRequest();
+	const { session } = await studentValidateRequest();
 	if (!session) {
 		return {
 			error: "Session nebola nájdená",
