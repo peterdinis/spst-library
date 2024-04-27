@@ -9,7 +9,6 @@
 import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
-import type { User } from "@prisma/client";
 
 import { db } from "~/server/db";
 
