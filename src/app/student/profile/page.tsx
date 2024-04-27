@@ -5,7 +5,6 @@ import { studentRedirects } from "~/server/utils";
 
 export default async function ProfilePage() {
 	const { user } = await validateRequest();
-
 	if (!user) redirect(studentRedirects.toLogin);
 
 	return <ProfileWrapper profileData={user} />;
