@@ -11,10 +11,10 @@ import {
 	SignupInput,
 	signupSchema,
 } from "../../validators/auth";
-import { validateRequest } from "../validate-request";
 import { TRPCError } from "@trpc/server";
 import { ActionResponse } from "~/app/types/sharedTypes";
 import { adminRedirects } from "~/server/utils";
+import { adminValidateRequest } from "../validate-request";
 
 export async function login(
 	_: unknown,
@@ -135,7 +135,7 @@ export async function signup(
 }
 
 export async function logout(): Promise<{ error: string } | void> {
-	const { session } = await validateRequest();
+	const { session } = await adminValidateRequest();
 	if (!session) {
 		return {
 			error: "No session found",
