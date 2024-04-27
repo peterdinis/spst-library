@@ -13,23 +13,58 @@ import {
 } from "~/components/ui/dialog";
 import { Input } from "~/components/ui/input";
 import { useToast } from "~/components/ui/use-toast";
+import {useForm, FieldValues} from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { api } from "~/trpc/react";
 
 const BookingModal: FC = () => {
 	const [open, setOpen] = useState(false);
 	const { toast } = useToast();
+	const {
+		register,
+		handleSubmit,
+		reset,
+		formState: { errors },
+	} = useForm(); 
+	const router = useRouter();
 
 	const handleOpenDialog = () => {
 		setOpen(!open);
 	};
 
-	const handleBooking = (e: { preventDefault: () => void }) => {
+	/* const handleBooking = (e: { preventDefault: () => void }) => {
 		e.preventDefault();
 		toast({
 			title: "Kniha bola úpsešné požičaná",
 			duration: 2000,
 			className: "bg-green-500",
 		});
-	};
+	}; */
+
+	const newBookingRequest = api.booking.createBooking.useMutation({
+	    onSuccess: () => {
+			toast({
+				title: "Kniha bola úpsešné požičaná",
+				duration: 2000,
+				className: "bg-green-500",
+			});
+			
+		},
+
+		onError: () => {
+			toast({
+				title: "Knihu sa požičať nepodarilo",
+				duration: 2000,
+				className: "bg-red-500",
+			});
+		}
+	});
+
+	const onSubmit = async(data: FieldValues) => {
+		await newBookingRequest.mutateAsync({
+			
+		})
+	}
 
 	return (
 		<Dialog open={open} onOpenChange={handleOpenDialog}>
@@ -54,7 +89,7 @@ const BookingModal: FC = () => {
 								<Input type="date" placeholder="Od" />
 							</div>
 							<div className="mt-8">
-								<Button onClick={handleBooking}>
+								<Button>
 									Požičať knihu
 								</Button>
 							</div>

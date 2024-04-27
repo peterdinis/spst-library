@@ -14,7 +14,7 @@ const CreateCategory: FC = () => {
 		handleSubmit,
 		reset,
 		formState: { errors },
-	} = useForm(); // Pridáme errors sem
+	} = useForm(); 
 	const router = useRouter();
 	const addCategoryMut = api.category.createCategory.useMutation({
 		onSuccess: () => {
