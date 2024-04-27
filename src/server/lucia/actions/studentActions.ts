@@ -12,9 +12,9 @@ import {
 	signupSchema,
 } from "../../validators/auth";
 import { studentRedirects } from "../../utils";
-import { validateRequest } from "../validate-request";
 import { TRPCError } from "@trpc/server";
 import { ActionResponse } from "~/app/types/sharedTypes";
+import { studentValidateRequest } from "../validate-request";
 
 export async function login(
 	_: unknown,
@@ -135,7 +135,7 @@ export async function signup(
 }
 
 export async function logout(): Promise<{ error: string } | void> {
-	const { session } = await validateRequest();
+	const { session } = await studentValidateRequest();
 	if (!session) {
 		return {
 			error: "Session nebola nájdená",

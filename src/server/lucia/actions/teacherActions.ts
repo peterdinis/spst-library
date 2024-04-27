@@ -11,7 +11,7 @@ import {
 	SignupInput,
 	signupSchema,
 } from "../../validators/auth";
-import { validateRequest } from "../validate-request";
+import { teacherValidateRequest } from "../validate-request";
 import { TRPCError } from "@trpc/server";
 import { ActionResponse } from "~/app/types/sharedTypes";
 import { teacherRedirects } from "~/server/utils";
@@ -135,7 +135,7 @@ export async function signup(
 }
 
 export async function logout(): Promise<{ error: string } | void> {
-	const { session } = await validateRequest();
+	const { session } = await teacherValidateRequest();
 	if (!session) {
 		return {
 			error: "Session nebola nájdená",
