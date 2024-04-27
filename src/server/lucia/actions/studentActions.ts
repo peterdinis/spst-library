@@ -15,7 +15,6 @@ import { studentRedirects } from "../../utils";
 import { validateRequest } from "../validate-request";
 import { TRPCError } from "@trpc/server";
 import { ActionResponse } from "~/app/types/sharedTypes";
-import { STUDENT } from "../constants";
 
 export async function login(
 	_: unknown,
