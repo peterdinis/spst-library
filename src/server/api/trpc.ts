@@ -83,3 +83,44 @@ export const createTRPCRouter = t.router;
  * are logged in.
  */
 export const publicProcedure = t.procedure;
+
+export const studentProtectedProcedure = t.procedure.use(({ ctx, next }) => {
+	if (!ctx.db.studentSession || !ctx.db.student) {
+	  throw new TRPCError({ code: "UNAUTHORIZED" });
+	}
+	return next({
+	  ctx: {
+		// infers the `session` and `user` as non-nullable
+		session: { ...ctx.db.studentSession },
+		user: { ...ctx.db.student },
+	  },
+	});
+  });
+
+
+  export const teacherProtectedProcedure = t.procedure.use(({ ctx, next }) => {
+	if (!ctx.db.teacherSession|| !ctx.db.teacher) {
+	  throw new TRPCError({ code: "UNAUTHORIZED" });
+	}
+	return next({
+	  ctx: {
+		// infers the `session` and `user` as non-nullable
+		session: { ...ctx.db.teacherSession},
+		user: { ...ctx.db.teacher },
+	  },
+	});
+  });
+
+
+  export const adminProtectedProcedure = t.procedure.use(({ ctx, next }) => {
+	if (!ctx.db.adminSession|| !ctx.db.admin) {
+	  throw new TRPCError({ code: "UNAUTHORIZED" });
+	}
+	return next({
+	  ctx: {
+		// infers the `session` and `user` as non-nullable
+		session: { ...ctx.db.adminSession},
+		user: { ...ctx.db.admin },
+	  },
+	});
+  });
