@@ -36,7 +36,7 @@ export async function login(
 
 	const { email, password } = parsed.data;
 
-	const existingUser = await db.user.findFirst({
+	const existingUser = await db.student.findFirst({
 		where: {
 			email,
 		},
@@ -93,7 +93,7 @@ export async function signup(
 
 	const { email, password, name, lastName } = parsed.data;
 
-	const existingUser = await db.user.findFirst({
+	const existingUser = await db.student.findFirst({
 		where: {
 			email,
 		},
@@ -108,14 +108,13 @@ export async function signup(
 	const userId = generateId(21);
 	const hashedPassword = await new Scrypt().hash(password);
 
-	const createNewStudent = await db.user.create({
+	const createNewStudent = await db.student.create({
 		data: {
 			id: userId,
 			email,
 			name,
 			lastName,
 			password: hashedPassword,
-			role: STUDENT
 		},
 	});
 
