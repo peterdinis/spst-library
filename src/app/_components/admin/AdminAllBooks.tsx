@@ -9,8 +9,7 @@ import { DataTable } from "../shared/GlobalTable";
 import { columns } from "./columns/bookColumns";
 
 const AdminAllBooks: FC = () => {
-	const { data, isLoading, isError } =
-		api.book.fetchBooks.useQuery();
+	const { data, isLoading, isError } = api.book.fetchBooks.useQuery();
 
 	if (isLoading) {
 		return <Loader2 className="animate-bounce w-8 h-8" />;

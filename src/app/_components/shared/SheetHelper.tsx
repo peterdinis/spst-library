@@ -25,9 +25,7 @@ const SheetHelper: FC<ISheetHelperProps> = ({
 			<SheetContent>
 				<SheetHeader>
 					<SheetTitle>{secondTitle}</SheetTitle>
-					<SheetDescription>
-                        {children}
-					</SheetDescription>
+					<SheetDescription>{children}</SheetDescription>
 				</SheetHeader>
 			</SheetContent>
 		</Sheet>
