@@ -34,5 +34,30 @@ export const studentRouter = createTRPCRouter({
         return createNewStudent;
     }),
 
+    loginUser: publicProcedure.input(z.object({
+        name: z.string(),
+        lastName: z.string(),
+        email: z.string(),
+        password: z.string(),
+        isActive: z.boolean(),
+        hasAdminRights: z.boolean(),
+        role: z.string()
+    })).mutation(async ({input}) => {
+        const dataForStudent = {
+            name: input.name,
+            lastName: input.name,
+            email: input.email,
+            password: input.password,
+        }
+        const loginNewStudent = await axios.post(process.env.NEXT_PUBLIC_AUTH_API + "/users/login", dataForStudent);
 
+        if(!loginNewStudent) {
+            throw new TRPCError({
+                message: "Nastala chyba pri prihlasovaní",
+                code: "BAD_REQUEST"
+            })
+        }
+
+        return loginNewStudent;
+    }),
 });
