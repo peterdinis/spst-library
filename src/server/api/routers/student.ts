@@ -13,7 +13,7 @@ export const studentRouter = createTRPCRouter({
         hasAdminRights: z.boolean(),
         role: z.string()
     })).mutation(async ({input}) => {
-        const dataForStudent = {
+        const createNewStudent = await axios.post(process.env.NEXT_PUBLIC_AUTH_API + "/users", {
             name: input.name,
             lastName: input.name,
             email: input.email,
@@ -21,8 +21,7 @@ export const studentRouter = createTRPCRouter({
             isActive: input.isActive,
             hasAdminRights: input.hasAdminRights,
             role: input.role
-        }
-        const createNewStudent = await axios.post(process.env.NEXT_PUBLIC_AUTH_API + "/users", dataForStudent);
+        });
 
         if(!createNewStudent) {
             throw new TRPCError({

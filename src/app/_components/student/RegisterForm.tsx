@@ -13,7 +13,6 @@ const RegisterForm: FC = () => {
 	const {
 		register,
 		handleSubmit,
-		reset,
 		formState: { errors },
 	} = useForm();
 	const [showPassword, setShowPassword] = useState(false);
@@ -54,7 +53,7 @@ const RegisterForm: FC = () => {
 	return (
 		<>
 			<Header text="Registrácia žiak" />
-			<form onSubmit={onStudentSubmit}>
+			<form onSubmit={handleSubmit(onStudentSubmit)}>
 				<div className="mb-4 flex flex-col rounded mt-6 bg-white dark:bg-card px-8 pb-8 pt-6 shadow-md">
 					<div className="mb-4">
 						<div className="mb-2">
