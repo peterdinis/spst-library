@@ -18,9 +18,9 @@ export const studentRouter = createTRPCRouter({
             lastName: input.name,
             email: input.email,
             password: input.password,
-            isActive: true,
-            hasAdminRights: false,
-            role: "STUDENT"
+            isActive: input.isActive,
+            hasAdminRights: input.hasAdminRights,
+            role: input.role
         }
         const createNewStudent = await axios.post(process.env.NEXT_PUBLIC_AUTH_API + "/users", dataForStudent);
 
