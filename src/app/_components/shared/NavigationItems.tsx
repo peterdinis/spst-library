@@ -6,13 +6,12 @@ import { FC } from "react";
 import { api } from "~/trpc/react";
 
 const NavigationItems: FC = () => {
+	const { data, isLoading, isError } = api.student.get.useQuery();
 
-	const {data, isLoading, isError} = api.student.get.useQuery();
-
-	if(data) {
+	if (data) {
 		console.log("D", data);
 	}
-	
+
 	return (
 		<>
 			<li className="text-xl dark:text-blue-50  text-black">

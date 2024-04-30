@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import ProfileWrapper from "~/app/_components/student/ProfileWrapper";
-import { studentValidateRequest} from "~/server/lucia/validate-request";
+import { studentValidateRequest } from "~/server/lucia/validate-request";
 import { studentRedirects } from "~/server/utils";
 
 export default async function ProfilePage() {

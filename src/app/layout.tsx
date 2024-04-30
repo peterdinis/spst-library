@@ -1,6 +1,6 @@
 import "~/styles/globals.css";
 
-import { Fira_Code} from "next/font/google";
+import { Fira_Code } from "next/font/google";
 import { TRPCReactProvider } from "~/trpc/react";
 import Navigation from "./_components/shared/Navigation";
 import { Toaster } from "~/components/ui/toaster";
