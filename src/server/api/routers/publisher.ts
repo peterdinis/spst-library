@@ -132,7 +132,7 @@ export const publisherRouter = createTRPCRouter({
 				},
 			});
 
-			if(!updateOnePublisher) {
+			if (!updateOnePublisher) {
 				throw new TRPCError({
 					message: "Update publisher failed",
 					code: "NOT_FOUND",
@@ -142,7 +142,7 @@ export const publisherRouter = createTRPCRouter({
 			return updateOnePublisher;
 		}),
 
-		deletePublisher: publicProcedure
+	deletePublisher: publicProcedure
 		.input(
 			z.object({
 				id: z.number(),
@@ -168,7 +168,7 @@ export const publisherRouter = createTRPCRouter({
 				},
 			});
 
-			if(!deleteOnePublisher) {
+			if (!deleteOnePublisher) {
 				throw new TRPCError({
 					message: "Delete publisher failed",
 					code: "NOT_FOUND",

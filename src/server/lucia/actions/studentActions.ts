@@ -122,7 +122,7 @@ export async function signup(
 			code: "BAD_REQUEST",
 			message: "Nepodarilo sa vytvoriť nového používateľa",
 		});
-	} 
+	}
 
 	const session = await lucia.createSession(userId, {});
 	const sessionCookie = lucia.createSessionCookie(session.id);
