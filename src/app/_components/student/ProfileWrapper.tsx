@@ -1,6 +1,6 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Button } from "~/components/ui/button";
 import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import { useToast } from "~/components/ui/use-toast";
@@ -10,7 +10,7 @@ import { Input } from "~/components/ui/input";
 const ProfileWrapper: FC = ({
 }) => {
 	const { toast } = useToast();
-
+	const [isEditable, setIsEditable] = useState(false);
 	const logoutFromApp = () => {
 		toast({
 			title: "Odhlásenie bolo úspešné",
@@ -58,7 +58,11 @@ const ProfileWrapper: FC = ({
 							</div>
 						</CardContent>
 					</Card>
+
 					<Card>
+					<Button className="pt-4 ml-4 mt-8" variant={"link"} type="button" onClick={() => setIsEditable(!isEditable)}>
+                        {isEditable ? 'Zrušiť' : 'Upraviť profil'}
+                    </Button>
 						<CardHeader>
 							<h2 className="text-xl font-bold">Contact</h2>
 							<p className="text-sm font-medium leading-none text-gray-500 dark:text-gray-400">
@@ -77,6 +81,7 @@ const ProfileWrapper: FC = ({
 									<Input
 										defaultValue="Alice Smith"
 										id="name"
+										readOnly={!isEditable}
 									/>
 								</div>
 								<div className="space-y-2">
@@ -89,6 +94,7 @@ const ProfileWrapper: FC = ({
 									<Input
 										defaultValue="alice.smith@example.com"
 										id="email"
+										readOnly={!isEditable}
 									/>
 								</div>
 								<div className="space-y-2">
@@ -104,15 +110,17 @@ const ProfileWrapper: FC = ({
 									<label
 										className="text-sm font-medium leading-none"
 										htmlFor="address"
+										
 									>
 										Address
 									</label>
-									<Input id="address" placeholder="Address" />
+									<Input readOnly={!isEditable} id="address" placeholder="Address" />
 								</div>
 								<Button type="submit">Save</Button>
 							</form>
 						</CardContent>
 					</Card>
+
 				</div>
 				<div className="space-y-6">
 					<Card>
