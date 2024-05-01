@@ -9,6 +9,7 @@ import { useForm, FieldValues } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import { ILoginType } from "~/app/types/authTypes";
 
 const LoginForm: FC = () => {
 	const { register, handleSubmit } = useForm();
@@ -16,11 +17,11 @@ const LoginForm: FC = () => {
 	const { toast } = useToast();
 	const router = useRouter();
 
-	const loginStudentMut = useMutation({
-		mutationKey: ["loginStudent"],
-		mutationFn: async (data: any) => {
+	const loginTeacherMut = useMutation({
+		mutationKey: ["loginTeacher"],
+		mutationFn: async (data: ILoginType) => {
 			return await axios.post(
-				process.env.NEXT_PUBLIC_AUTH_API + "auth/login",
+				process.env.NEXT_PUBLIC_AUTH_API + "auth/users/login",
 				data,
 			);
 		},
@@ -44,7 +45,7 @@ const LoginForm: FC = () => {
 	});
 
 	const onStudentSubmit = async (data: FieldValues) => {
-		await loginStudentMut.mutateAsync({
+		await loginTeacherMut.mutateAsync({
 			name: data.name,
 			lastName: data.lastName,
 			email: data.email,
@@ -90,6 +91,7 @@ const LoginForm: FC = () => {
 									required: true,
 									minLength: 5,
 								})}
+								placeholder="Priezvisko"
 							/>
 						</div>
 						<div className="mb-2">
@@ -107,6 +109,7 @@ const LoginForm: FC = () => {
 									required: true,
 									minLength: 5,
 								})}
+								placeholder="Email"
 							/>
 						</div>
 

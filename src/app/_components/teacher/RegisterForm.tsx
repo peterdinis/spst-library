@@ -9,6 +9,8 @@ import { useForm, FieldValues } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import { TEACHER } from "~/server/constants";
+import { IRegisterType } from "~/app/types/authTypes";
 
 const RegisterForm: FC = () => {
 	const { register, handleSubmit } = useForm();
@@ -16,6 +18,12 @@ const RegisterForm: FC = () => {
 	const { toast } = useToast();
 	const router = useRouter();
 
+<<<<<<< HEAD
+	const addNewTeacherMut = useMutation({
+		mutationKey: ["registerTeacher"],
+		mutationFn: async (data: IRegisterType) => {
+			return await axios.post(process.env.NEXT_PUBLIC_AUTH_API + "auth/register", data)
+=======
 	const addNewStudentMut = useMutation({
 		mutationKey: ["registerStudent"],
 		mutationFn: async (data: any) => {
@@ -23,14 +31,21 @@ const RegisterForm: FC = () => {
 				process.env.NEXT_PUBLIC_AUTH_API + "auth/register",
 				data,
 			);
+>>>>>>> main
 		},
 		onSuccess: () => {
 			toast({
 				title: "Registrácia bola úspešná",
 				duration: 2000,
+<<<<<<< HEAD
+				className: "bg-green-500 text-white"
+			})
+			router.push("/teacher/login");
+=======
 				className: "bg-green-500 text-white",
 			});
 			router.push("/student/login");
+>>>>>>> main
 		},
 
 		onError: () => {
@@ -42,17 +57,30 @@ const RegisterForm: FC = () => {
 		},
 	});
 
+<<<<<<< HEAD
+
+	const onStudentSubmit = async(data: FieldValues) => {
+		await addNewTeacherMut.mutateAsync({
+=======
 	const onStudentSubmit = async (data: FieldValues) => {
 		await addNewStudentMut.mutateAsync({
+>>>>>>> main
 			name: data.name,
 			lastName: data.lastName,
 			email: data.email,
 			password: data.password,
 			isActive: true,
+<<<<<<< HEAD
+            hasAdminRights: false,
+            role: TEACHER
+		})
+	}
+=======
 			hasAdminRights: false,
 			role: "TEACHER",
 		});
 	};
+>>>>>>> main
 	return (
 		<>
 			<Header text="Registrácia učiteľ" />
@@ -73,7 +101,7 @@ const RegisterForm: FC = () => {
 								placeholder="Meno"
 								{...register("name", {
 									required: true,
-									minLength: 5, // Mala byť minLength namiesto min
+									minLength: 5,
 								})}
 							/>
 						</div>
@@ -90,8 +118,9 @@ const RegisterForm: FC = () => {
 								type="text"
 								{...register("lastName", {
 									required: true,
-									minLength: 5, // Mala byť minLength namiesto min
+									minLength: 5,
 								})}
+								placeholder="Priezvisko"
 							/>
 						</div>
 						<div className="mb-2">
@@ -107,8 +136,9 @@ const RegisterForm: FC = () => {
 								type="email"
 								{...register("email", {
 									required: true,
-									minLength: 5, // Mala byť minLength namiesto min
+									minLength: 5,
 								})}
+								placeholder="Email"
 							/>
 						</div>
 

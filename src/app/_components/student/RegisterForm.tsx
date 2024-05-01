@@ -9,6 +9,8 @@ import { useForm, FieldValues } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import { STUDENT } from "~/server/constants";
+import { IRegisterType } from "~/app/types/authTypes";
 
 const RegisterForm: FC = () => {
 	const { register, handleSubmit } = useForm();
@@ -18,11 +20,8 @@ const RegisterForm: FC = () => {
 
 	const addNewStudentMut = useMutation({
 		mutationKey: ["registerStudent"],
-		mutationFn: async (data: any) => {
-			return await axios.post(
-				process.env.NEXT_PUBLIC_AUTH_API + "auth/register",
-				data,
-			);
+		mutationFn: async (data: IRegisterType) => {
+			return await axios.post(process.env.NEXT_PUBLIC_AUTH_API + "auth/register", data)
 		},
 		onSuccess: () => {
 			toast({
@@ -73,7 +72,7 @@ const RegisterForm: FC = () => {
 								placeholder="Meno"
 								{...register("name", {
 									required: true,
-									minLength: 5, // Mala byť minLength namiesto min
+									minLength: 5,
 								})}
 							/>
 						</div>
@@ -90,8 +89,9 @@ const RegisterForm: FC = () => {
 								type="text"
 								{...register("lastName", {
 									required: true,
-									minLength: 5, // Mala byť minLength namiesto min
+									minLength: 5,
 								})}
+								placeholder="Priezvisko"
 							/>
 						</div>
 						<div className="mb-2">
@@ -107,8 +107,9 @@ const RegisterForm: FC = () => {
 								type="email"
 								{...register("email", {
 									required: true,
-									minLength: 5, // Mala byť minLength namiesto min
+									minLength: 5,
 								})}
+								placeholder="Email"
 							/>
 						</div>
 
@@ -126,7 +127,7 @@ const RegisterForm: FC = () => {
 									type={showPassword ? "text" : "password"}
 									{...register("password", {
 										required: true,
-										minLength: 5, // Mala byť minLength namiesto min
+										minLength: 5,
 									})}
 									autoFocus
 									autoComplete="current-password"

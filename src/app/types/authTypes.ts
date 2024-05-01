@@ -10,8 +10,14 @@ export interface IProfileData {
 	updatedAt: string | Date;
 }
 
-export enum Role {
-	STUDENT,
-	TEACHER,
-	ADMIN,
+export interface IRegisterType {
+	name: string;
+	lastName: string;
+	email: string;
+	password: string;
+	isActive: boolean;
+	hasAdminRights: boolean;
+	role: string;
 }
+
+export type ILoginType = Pick<IRegisterType, 'name' | 'lastName' | 'email' | 'password'>

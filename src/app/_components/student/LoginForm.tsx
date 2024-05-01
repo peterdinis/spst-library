@@ -9,6 +9,8 @@ import { useForm, FieldValues } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import { ILoginType } from "~/app/types/authTypes";
+import Cookie from "js-cookie";
 
 const LoginForm: FC = () => {
 	const { register, handleSubmit } = useForm();
@@ -18,14 +20,11 @@ const LoginForm: FC = () => {
 
 	const loginStudentMut = useMutation({
 		mutationKey: ["loginStudent"],
-		mutationFn: async (data: any) => {
-			return await axios.post(
-				process.env.NEXT_PUBLIC_AUTH_API + "auth/login",
-				data,
-			);
+		mutationFn: async (data: ILoginType) => {
+			return await axios.post(process.env.NEXT_PUBLIC_AUTH_API + "auth/users/login", data)
 		},
 		onSuccess: (data) => {
-			console.log(data);
+			Cookie.set("studentD", JSON.stringify(data?.data?.user))
 			toast({
 				title: "Prihlásenie bolo úspešné",
 				duration: 2000,
@@ -90,6 +89,7 @@ const LoginForm: FC = () => {
 									required: true,
 									minLength: 5,
 								})}
+								placeholder="Priezvisko"
 							/>
 						</div>
 						<div className="mb-2">
@@ -107,6 +107,7 @@ const LoginForm: FC = () => {
 									required: true,
 									minLength: 5,
 								})}
+								placeholder="Email"
 							/>
 						</div>
 
