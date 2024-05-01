@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import ProfileWrapper from "~/app/_components/student/ProfileWrapper";
+import ProfileWrapper from "~/app/_components/student/profile/ProfileWrapper";
 import { studentValidateRequest } from "~/server/lucia/validate-request";
 import { teacherRedirects } from "~/server/utils";
 
