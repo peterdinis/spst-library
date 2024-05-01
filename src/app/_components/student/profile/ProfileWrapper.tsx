@@ -1,6 +1,6 @@
 "use client";
 
-import { FC} from "react";
+import { FC } from "react";
 import { Button } from "~/components/ui/button";
 import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import { useToast } from "~/components/ui/use-toast";
@@ -9,14 +9,12 @@ import Settings from "./Settings";
 import Cookie from "js-cookie";
 import { useRouter } from "next/navigation";
 
-const ProfileWrapper: FC = ({
-}) => {
+const ProfileWrapper: FC = ({}) => {
 	const { toast } = useToast();
 	const router = useRouter();
 	const studentCookie = JSON.parse(Cookie.get("studentD") as any);
 
 	console.log("Student Cookie", studentCookie);
-
 
 	const logoutFromApp = () => {
 		Cookie.remove("studentD");
@@ -54,7 +52,6 @@ const ProfileWrapper: FC = ({
 					</Card>
 
 					<Settings />
-
 				</div>
 				<BorrowedBooks />
 			</div>
