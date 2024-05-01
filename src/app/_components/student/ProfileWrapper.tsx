@@ -42,20 +42,6 @@ const ProfileWrapper: FC = ({
 									</Button>
 								</div>
 							</div>
-							<div className="grid grid-cols-1 md:grid-cols-2 md:gap-4">
-								<div className="space-y-2">
-									<label className="text-sm font-medium leading-none">
-										rrr - rrr
-									</label>
-									<p>kokotisko@gmail.com</p>
-								</div>
-								<div className="space-y-2">
-									<label className="text-sm font-medium leading-none">
-										Rola
-									</label>
-									<p className="font-bold">Študent</p>
-								</div>
-							</div>
 						</CardContent>
 					</Card>
 
@@ -104,7 +90,7 @@ const ProfileWrapper: FC = ({
 									>
 										Phone
 									</label>
-									<Input id="phone" placeholder="Phone" />
+									<Input readOnly={!isEditable} id="phone" placeholder="Phone" />
 								</div>
 								<div className="space-y-2">
 									<label
