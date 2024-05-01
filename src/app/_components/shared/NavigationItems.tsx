@@ -5,7 +5,6 @@ import ThemeButton from "./ThemeButton";
 import { FC } from "react";
 
 const NavigationItems: FC = () => {
-	
 	return (
 		<>
 			<li className="text-xl dark:text-blue-50  text-black">

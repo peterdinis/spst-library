@@ -1,11 +1,11 @@
 "use client";
 
-import { FC, useState} from "react";
+import { FC, useState } from "react";
 import Header from "../shared/Header";
 import Link from "next/link";
 import { Eye, EyeOff } from "lucide-react";
 import { useToast } from "~/components/ui/use-toast";
-import {useForm, FieldValues} from "react-hook-form";
+import { useForm, FieldValues } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
@@ -13,26 +13,39 @@ import { TEACHER } from "~/server/constants";
 import { IRegisterType } from "~/app/types/authTypes";
 
 const RegisterForm: FC = () => {
-	const {
-		register,
-		handleSubmit,
-	} = useForm();
+	const { register, handleSubmit } = useForm();
 	const [showPassword, setShowPassword] = useState(false);
 	const { toast } = useToast();
 	const router = useRouter();
 
+<<<<<<< HEAD
 	const addNewTeacherMut = useMutation({
 		mutationKey: ["registerTeacher"],
 		mutationFn: async (data: IRegisterType) => {
 			return await axios.post(process.env.NEXT_PUBLIC_AUTH_API + "auth/register", data)
+=======
+	const addNewStudentMut = useMutation({
+		mutationKey: ["registerStudent"],
+		mutationFn: async (data: any) => {
+			return await axios.post(
+				process.env.NEXT_PUBLIC_AUTH_API + "auth/register",
+				data,
+			);
+>>>>>>> main
 		},
 		onSuccess: () => {
 			toast({
 				title: "Registrácia bola úspešná",
 				duration: 2000,
+<<<<<<< HEAD
 				className: "bg-green-500 text-white"
 			})
 			router.push("/teacher/login");
+=======
+				className: "bg-green-500 text-white",
+			});
+			router.push("/student/login");
+>>>>>>> main
 		},
 
 		onError: () => {
@@ -41,21 +54,33 @@ const RegisterForm: FC = () => {
 				duration: 2000,
 				className: "bg-red-500 text-white",
 			});
-		}, 
-	})
+		},
+	});
 
+<<<<<<< HEAD
 
 	const onStudentSubmit = async(data: FieldValues) => {
 		await addNewTeacherMut.mutateAsync({
+=======
+	const onStudentSubmit = async (data: FieldValues) => {
+		await addNewStudentMut.mutateAsync({
+>>>>>>> main
 			name: data.name,
 			lastName: data.lastName,
 			email: data.email,
 			password: data.password,
 			isActive: true,
+<<<<<<< HEAD
             hasAdminRights: false,
             role: TEACHER
 		})
 	}
+=======
+			hasAdminRights: false,
+			role: "TEACHER",
+		});
+	};
+>>>>>>> main
 	return (
 		<>
 			<Header text="Registrácia učiteľ" />
