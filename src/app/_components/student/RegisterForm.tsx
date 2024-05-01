@@ -75,7 +75,7 @@ const RegisterForm: FC = () => {
 								placeholder="Meno"
 								{...register("name", {
 									required: true,
-									minLength: 5, // Mala byť minLength namiesto min
+									minLength: 5,
 								})}
 							/>
 						</div>
@@ -92,8 +92,9 @@ const RegisterForm: FC = () => {
 								type="text"
 								{...register("lastName", {
 									required: true,
-									minLength: 5, // Mala byť minLength namiesto min
+									minLength: 5,
 								})}
+								placeholder="Priezvisko"
 							/>
 						</div>
 						<div className="mb-2">
@@ -109,8 +110,9 @@ const RegisterForm: FC = () => {
 								type="email"
 								{...register("email", {
 									required: true,
-									minLength: 5, // Mala byť minLength namiesto min
+									minLength: 5,
 								})}
+								placeholder="Email"
 							/>
 						</div>
 
@@ -128,7 +130,7 @@ const RegisterForm: FC = () => {
 									type={showPassword ? "text" : "password"}
 									{...register("password", {
 										required: true,
-										minLength: 5, // Mala byť minLength namiesto min
+										minLength: 5,
 									})}
 									autoFocus
 									autoComplete="current-password"

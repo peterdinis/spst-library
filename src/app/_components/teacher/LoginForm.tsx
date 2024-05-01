@@ -91,6 +91,7 @@ const LoginForm: FC = () => {
 									required: true,
 									minLength: 5,
 								})}
+								placeholder="Priezvisko"
 							/>
 						</div>
 						<div className="mb-2">
@@ -108,6 +109,7 @@ const LoginForm: FC = () => {
 									required: true,
 									minLength: 5,
 								})}
+								placeholder="Email"
 							/>
 						</div>
 
