@@ -19,8 +19,8 @@ const RegisterForm: FC = () => {
 	const { toast } = useToast();
 	const router = useRouter();
 
-	const addNewStudentMut = useMutation({
-		mutationKey: ["registerStudent"],
+	const addNewTeacherMut = useMutation({
+		mutationKey: ["registerTeacher"],
 		mutationFn: async (data: any) => {
 			return await axios.post(process.env.NEXT_PUBLIC_AUTH_API + "auth/register", data)
 		},
@@ -30,7 +30,7 @@ const RegisterForm: FC = () => {
 				duration: 2000,
 				className: "bg-green-500 text-white"
 			})
-			router.push("/student/login");
+			router.push("/teacher/login");
 		},
 
 		onError: () => {
@@ -44,7 +44,7 @@ const RegisterForm: FC = () => {
 
 
 	const onStudentSubmit = async(data: FieldValues) => {
-		await addNewStudentMut.mutateAsync({
+		await addNewTeacherMut.mutateAsync({
 			name: data.name,
 			lastName: data.lastName,
 			email: data.email,

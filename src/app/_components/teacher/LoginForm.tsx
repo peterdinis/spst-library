@@ -19,8 +19,8 @@ const LoginForm: FC = () => {
 	const { toast } = useToast();
 	const router = useRouter();
 
-	const loginStudentMut = useMutation({
-		mutationKey: ["loginStudent"],
+	const loginTeacherMut = useMutation({
+		mutationKey: ["loginTeacher"],
 		mutationFn: async (data: any) => {
 			return await axios.post(process.env.NEXT_PUBLIC_AUTH_API + "auth/login", data)
 		},
@@ -31,7 +31,7 @@ const LoginForm: FC = () => {
 				duration: 2000,
 				className: "bg-green-500 text-white"
 			})
-			router.push("/student/profile");
+			router.push("/teacher/profile");
 		},
 
 		onError: () => {
@@ -45,7 +45,7 @@ const LoginForm: FC = () => {
 
 
 	const onStudentSubmit = async(data: FieldValues) => {
-		await loginStudentMut.mutateAsync({
+		await loginTeacherMut.mutateAsync({
 			name: data.name,
 			lastName: data.lastName,
 			email: data.email,
