@@ -9,6 +9,7 @@ import {useForm, FieldValues} from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import { STUDENT } from "~/server/lucia/constants";
 
 const RegisterForm: FC = () => {
 	const {
@@ -51,7 +52,7 @@ const RegisterForm: FC = () => {
 			password: data.password,
 			isActive: true,
             hasAdminRights: false,
-            role: "STUDENT"
+            role: STUDENT
 		})
 	}
 	return (
