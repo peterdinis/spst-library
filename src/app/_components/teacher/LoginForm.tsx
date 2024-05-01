@@ -9,6 +9,7 @@ import {useForm, FieldValues} from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import { ILoginType } from "~/app/types/authTypes";
 
 const LoginForm: FC = () => {
 	const {
@@ -21,7 +22,7 @@ const LoginForm: FC = () => {
 
 	const loginTeacherMut = useMutation({
 		mutationKey: ["loginTeacher"],
-		mutationFn: async (data: any) => {
+		mutationFn: async (data: ILoginType) => {
 			return await axios.post(process.env.NEXT_PUBLIC_AUTH_API + "auth/login", data)
 		},
 		onSuccess: (data) => {

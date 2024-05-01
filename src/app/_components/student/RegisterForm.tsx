@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { STUDENT } from "~/server/lucia/constants";
+import { IRegisterType } from "~/app/types/authTypes";
 
 const RegisterForm: FC = () => {
 	const {
@@ -22,7 +23,7 @@ const RegisterForm: FC = () => {
 
 	const addNewStudentMut = useMutation({
 		mutationKey: ["registerStudent"],
-		mutationFn: async (data: any) => {
+		mutationFn: async (data: IRegisterType) => {
 			return await axios.post(process.env.NEXT_PUBLIC_AUTH_API + "auth/register", data)
 		},
 		onSuccess: () => {
