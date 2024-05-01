@@ -23,7 +23,7 @@ const LoginForm: FC = () => {
 	const loginTeacherMut = useMutation({
 		mutationKey: ["loginTeacher"],
 		mutationFn: async (data: ILoginType) => {
-			return await axios.post(process.env.NEXT_PUBLIC_AUTH_API + "auth/login", data)
+			return await axios.post(process.env.NEXT_PUBLIC_AUTH_API + "auth/users/login", data)
 		},
 		onSuccess: (data) => {
 			console.log(data);
