@@ -12,8 +12,8 @@ const NavigationItems: FC = () => {
         if (cookieValue) {
             studentCookie = JSON.parse(cookieValue);
         }
-    } catch (error) {
-        console.error("Error parsing student cookie:", error);
+    } catch (error: any) {
+        throw new Error("error", error);
     }
 
     return (
