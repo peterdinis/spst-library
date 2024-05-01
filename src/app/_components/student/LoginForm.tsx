@@ -1,20 +1,17 @@
 "use client";
 
-import { FC, useState} from "react";
+import { FC, useState } from "react";
 import Header from "../shared/Header";
 import Link from "next/link";
 import { Eye, EyeOff } from "lucide-react";
 import { useToast } from "~/components/ui/use-toast";
-import {useForm, FieldValues} from "react-hook-form";
+import { useForm, FieldValues } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 
 const LoginForm: FC = () => {
-	const {
-		register,
-		handleSubmit,
-	} = useForm();
+	const { register, handleSubmit } = useForm();
 	const [showPassword, setShowPassword] = useState(false);
 	const { toast } = useToast();
 	const router = useRouter();
@@ -22,15 +19,18 @@ const LoginForm: FC = () => {
 	const loginStudentMut = useMutation({
 		mutationKey: ["loginStudent"],
 		mutationFn: async (data: any) => {
-			return await axios.post(process.env.NEXT_PUBLIC_AUTH_API + "auth/login", data)
+			return await axios.post(
+				process.env.NEXT_PUBLIC_AUTH_API + "auth/login",
+				data,
+			);
 		},
 		onSuccess: (data) => {
 			console.log(data);
 			toast({
 				title: "Prihlásenie bolo úspešné",
 				duration: 2000,
-				className: "bg-green-500 text-white"
-			})
+				className: "bg-green-500 text-white",
+			});
 			router.push("/student/profile");
 		},
 
@@ -40,18 +40,17 @@ const LoginForm: FC = () => {
 				duration: 2000,
 				className: "bg-red-500 text-white",
 			});
-		}, 
-	})
+		},
+	});
 
-
-	const onStudentSubmit = async(data: FieldValues) => {
+	const onStudentSubmit = async (data: FieldValues) => {
 		await loginStudentMut.mutateAsync({
 			name: data.name,
 			lastName: data.lastName,
 			email: data.email,
 			password: data.password,
-		})
-	}
+		});
+	};
 	return (
 		<>
 			<Header text="Prihlásenie žiak" />
