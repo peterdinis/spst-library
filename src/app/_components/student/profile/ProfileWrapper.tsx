@@ -27,6 +27,15 @@ const ProfileWrapper: FC = ({
 		});
 		router.push("/student/login");
 	};
+
+	let studentData = null;
+    try {
+        if (studentCookie) {
+            studentData = JSON.parse(studentCookie);
+        }
+    } catch (error) {
+        console.error("Error parsing student cookie:", error);
+    }
 	return (
 		<>
 			<div className="grid md:grid-cols-2 md:gap-6">
