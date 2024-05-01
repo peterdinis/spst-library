@@ -9,7 +9,7 @@ import {useForm, FieldValues} from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import { STUDENT } from "~/server/lucia/constants";
+import { STUDENT } from "~/server/constants";
 import { IRegisterType } from "~/app/types/authTypes";
 
 const RegisterForm: FC = () => {
