@@ -14,7 +14,6 @@ const RegisterForm: FC = () => {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
 	} = useForm();
 	const [showPassword, setShowPassword] = useState(false);
 	const { toast } = useToast();
