@@ -2,25 +2,16 @@
 
 import { FC } from "react";
 import { Button } from "~/components/ui/button";
-import { logout } from "~/server/lucia/actions/studentActions";
 import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import { useToast } from "~/components/ui/use-toast";
 import { Input } from "~/components/ui/input";
-import { IProfileData } from "~/app/types/authTypes";
 
-interface IProfileWrapperProps {
-	profileData: IProfileData;
-}
 
-const ProfileWrapper: FC<IProfileWrapperProps> = ({
-	profileData,
-}: IProfileWrapperProps) => {
+const ProfileWrapper: FC = ({
+}) => {
 	const { toast } = useToast();
 
-	console.log("ProfileD", profileData);
-
 	const logoutFromApp = () => {
-		logout();
 		toast({
 			title: "Odhlásenie bolo úspešné",
 			className: "bg-green-500",
@@ -40,8 +31,7 @@ const ProfileWrapper: FC<IProfileWrapperProps> = ({
 							<div className="flex items-center space-x-4">
 								<div className="space-y-1.5">
 									<h3 className="text-lg font-bold leading-none">
-										{profileData.name}{" "}
-										{profileData.lastName}
+										rrrr
 									</h3>
 									<Button
 										onClick={logoutFromApp}
@@ -55,10 +45,9 @@ const ProfileWrapper: FC<IProfileWrapperProps> = ({
 							<div className="grid grid-cols-1 md:grid-cols-2 md:gap-4">
 								<div className="space-y-2">
 									<label className="text-sm font-medium leading-none">
-										{profileData.name}{" "}
-										{profileData.lastName}
+										rrr - rrr
 									</label>
-									<p>{profileData.email}</p>
+									<p>kokotisko@gmail.com</p>
 								</div>
 								<div className="space-y-2">
 									<label className="text-sm font-medium leading-none">
