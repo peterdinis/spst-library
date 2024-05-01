@@ -1,5 +1,3 @@
-import { createTRPCRouter, protectedProcedure } from "../trpc";
+import { createTRPCRouter } from "../trpc";
 
-export const teacherRouter = createTRPCRouter({
-    get: protectedProcedure.query(({ ctx }) => ctx.user),
-});
+export const teacherRouter = createTRPCRouter({});

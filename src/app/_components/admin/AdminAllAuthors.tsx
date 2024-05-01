@@ -9,8 +9,7 @@ import { DataTable } from "../shared/GlobalTable";
 import { columns } from "./columns/authorColumns";
 
 const AdminAllAuthors: FC = () => {
-	const { data, isLoading, isError } =
-		api.author.fetchAuthors.useQuery();
+	const { data, isLoading, isError } = api.author.fetchAuthors.useQuery();
 
 	if (isLoading) {
 		return <Loader2 className="animate-bounce w-8 h-8" />;
