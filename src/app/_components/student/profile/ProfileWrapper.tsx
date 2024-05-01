@@ -6,19 +6,27 @@ import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import { useToast } from "~/components/ui/use-toast";
 import BorrowedBooks from "./BorrowedBooks";
 import Settings from "./Settings";
-
+import Cookie from "js-cookie";
+import { useRouter } from "next/navigation";
 
 const ProfileWrapper: FC = ({
 }) => {
 	const { toast } = useToast();
+	const router = useRouter();
+	const studentCookie = JSON.parse(Cookie.get("studentD") as any);
+
+	console.log("Student Cookie", studentCookie);
+
+
 	const logoutFromApp = () => {
+		Cookie.remove("studentD");
 		toast({
 			title: "Odhlásenie bolo úspešné",
 			className: "bg-green-500",
 			duration: 2000,
 		});
+		router.push("/student/login");
 	};
-
 	return (
 		<>
 			<div className="grid md:grid-cols-2 md:gap-6">
