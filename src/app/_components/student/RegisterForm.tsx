@@ -5,9 +5,10 @@ import Header from "../shared/Header";
 import Link from "next/link";
 import { Eye, EyeOff } from "lucide-react";
 import { useToast } from "~/components/ui/use-toast";
-import {useForm, FieldValues} from "react-hook-form"
-import { api } from "~/trpc/react";
+import {useForm, FieldValues} from "react-hook-form";
 import { useRouter } from "next/navigation";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
 
 const RegisterForm: FC = () => {
 	const {
@@ -19,7 +20,11 @@ const RegisterForm: FC = () => {
 	const { toast } = useToast();
 	const router = useRouter();
 
-	const addNewStudentMut = api.student.registerUser.useMutation({
+	const addNewStudentMut = useMutation({
+		mutationKey: ["registerStudent"],
+		mutationFn: async (data: any) => {
+			return await axios.post("http://localhost:4000/auth/users", data)
+		},
 		onSuccess: () => {
 			toast({
 				title: "Registrácia bola úspešná",
@@ -35,8 +40,8 @@ const RegisterForm: FC = () => {
 				duration: 2000,
 				className: "bg-red-500 text-white",
 			});
-		},
-	});
+		}, 
+	})
 
 
 	const onStudentSubmit = async(data: FieldValues) => {
