@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { TEACHER } from "~/server/lucia/constants";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
@@ -12,3 +13,8 @@ export const teacherRouter = createTRPCRouter({
 		return allTeachers;
 	}),
 });
+=======
+import { createTRPCRouter } from "../trpc";
+
+export const teacherRouter = createTRPCRouter({});
+>>>>>>> main

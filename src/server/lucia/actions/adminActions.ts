@@ -11,10 +11,10 @@ import {
 	SignupInput,
 	signupSchema,
 } from "../../validators/auth";
-import { validateRequest } from "../validate-request";
 import { TRPCError } from "@trpc/server";
 import { ActionResponse } from "~/app/types/sharedTypes";
 import { adminRedirects } from "~/server/utils";
+import { adminValidateRequest } from "../validate-request";
 
 export async function login(
 	_: unknown,
@@ -35,7 +35,7 @@ export async function login(
 
 	const { email, password } = parsed.data;
 
-	const existingUser = await db.user.findFirst({
+	const existingUser = await db.admin.findFirst({
 		where: {
 			email,
 		},
@@ -92,7 +92,7 @@ export async function signup(
 
 	const { email, password, name, lastName } = parsed.data;
 
-	const existingUser = await db.user.findFirst({
+	const existingUser = await db.admin.findFirst({
 		where: {
 			email,
 		},
@@ -107,17 +107,13 @@ export async function signup(
 	const userId = generateId(21);
 	const hashedPassword = await new Scrypt().hash(password);
 
-	const createNewAdmin = await db.user.create({
+	const createNewAdmin = await db.admin.create({
 		data: {
 			id: userId,
 			email,
 			name,
 			lastName,
 			password: hashedPassword,
-			isActive: true,
-			isAdmin: true,
-			isTeacher: false,
-			isStudent: false
 		},
 	});
 
@@ -139,7 +135,7 @@ export async function signup(
 }
 
 export async function logout(): Promise<{ error: string } | void> {
-	const { session } = await validateRequest();
+	const { session } = await adminValidateRequest();
 	if (!session) {
 		return {
 			error: "No session found",

@@ -41,9 +41,7 @@ const SheetHelper: FC<ISheetHelperProps> = ({
 			</SheetTrigger>
 			<SheetContent>
 				<SheetHeader>
-					<SheetTitle className="text-2xl p-5 font-bold">
-						{secondTitle}
-					</SheetTitle>
+					<SheetTitle>{secondTitle}</SheetTitle>
 					<SheetDescription>{children}</SheetDescription>
 				</SheetHeader>
 			</SheetContent>

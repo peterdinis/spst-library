@@ -66,28 +66,6 @@ model Author {
     updatedAt   DateTime @default(now()) @updatedAt
 }
 
-model User {
-    id        String   @id @default(uuid())
-    name      String
-    lastName  String
-    email     String
-    password  String
-    isActive  Boolean  @default(true)
-    isStudent Boolean  @default(false)
-    isTeacher Boolean  @default(false)
-    isAdmin   Boolean  @default(false)
-    createdAt DateTime @default(now())
-    updatedAt DateTime @default(now()) @updatedAt
-    sessions  Session[]
-}
-
-model Session {
-    id        String   @id
-    userId    String
-    expiresAt DateTime
-    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
 model Booking {
     id            Int      @id @default(autoincrement())
     bookName      String
