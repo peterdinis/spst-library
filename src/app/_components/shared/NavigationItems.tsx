@@ -3,8 +3,10 @@
 import Link from "next/link";
 import ThemeButton from "./ThemeButton";
 import { FC } from "react";
+import Cookie from "js-cookie";
 
 const NavigationItems: FC = () => {
+	const studentCookie = JSON.parse(Cookie.get("studentD") as any);
 	return (
 		<>
 			<li className="text-xl dark:text-blue-50  text-black">
@@ -22,12 +24,22 @@ const NavigationItems: FC = () => {
 			<li className="text-xl dark:text-blue-50  text-black">
 				<Link href="/authors">Spisovatelia</Link>
 			</li>
-			<li className="text-xl dark:text-blue-50 text-black">
+			{studentCookie ? (
+				<>
+<li className="text-xl dark:text-blue-50 text-black">
+				<Link href="/student/profile">Študent profil</Link>
+			</li>
+				</>
+			): (
+				<>
+<li className="text-xl dark:text-blue-50 text-black">
 				<Link href="/student/login">Žiak</Link>
 			</li>
 			<li className="text-xl dark:text-blue-50 text-black">
 				<Link href="/teacher/login">Učiteľ</Link>
 			</li>
+				</>
+			)}
 			<li className="text-xl text-black">
 				<ThemeButton />
 			</li>
