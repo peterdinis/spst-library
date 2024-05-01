@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { ILoginType } from "~/app/types/authTypes";
+import Cookie from "js-cookie";
 
 const LoginForm: FC = () => {
 	const { register, handleSubmit } = useForm();
@@ -26,13 +27,13 @@ const LoginForm: FC = () => {
 			);
 		},
 		onSuccess: (data) => {
-			console.log(data);
+			Cookie.set("teacherD", JSON.stringify(data?.data?.user))
 			toast({
 				title: "Prihlásenie bolo úspešné",
 				duration: 2000,
 				className: "bg-green-500 text-white",
 			});
-			router.push("/student/profile");
+			router.push("/teacher/profile");
 		},
 
 		onError: () => {
