@@ -24,10 +24,7 @@ const NavigationItems: FC = () => {
 			<li className="text-xl dark:text-blue-50  text-black">
 				<Link href="/authors">Spisovatelia</Link>
 			</li>
-			<li className="text-xl dark:text-blue-50  text-black">
-				<MenuDropdown />
-			</li>
-<li className="text-xl dark:text-blue-50 text-black">
+			<li className="text-xl dark:text-blue-50 text-black">
 				<Link href="/student/login">Žiak</Link>
 			</li>
 			<li className="text-xl dark:text-blue-50 text-black">

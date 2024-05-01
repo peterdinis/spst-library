@@ -21,10 +21,13 @@ const LoginForm: FC = () => {
 	const loginStudentMut = useMutation({
 		mutationKey: ["loginStudent"],
 		mutationFn: async (data: ILoginType) => {
-			return await axios.post(process.env.NEXT_PUBLIC_AUTH_API + "auth/users/login", data)
+			return await axios.post(
+				process.env.NEXT_PUBLIC_AUTH_API + "auth/users/login",
+				data,
+			);
 		},
 		onSuccess: (data) => {
-			Cookie.set("studentD", JSON.stringify(data?.data?.user))
+			Cookie.set("studentD", JSON.stringify(data?.data?.user));
 			toast({
 				title: "Prihlásenie bolo úspešné",
 				duration: 2000,

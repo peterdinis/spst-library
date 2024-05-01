@@ -21,7 +21,10 @@ const RegisterForm: FC = () => {
 	const addNewStudentMut = useMutation({
 		mutationKey: ["registerStudent"],
 		mutationFn: async (data: IRegisterType) => {
-			return await axios.post(process.env.NEXT_PUBLIC_AUTH_API + "auth/register", data)
+			return await axios.post(
+				process.env.NEXT_PUBLIC_AUTH_API + "auth/register",
+				data,
+			);
 		},
 		onSuccess: () => {
 			toast({
