@@ -21,3 +21,5 @@ export interface IRegisterType {
 }
 
 export type ILoginType = Pick<IRegisterType, 'name' | 'lastName' | 'email' | 'password'>
+
+export interface ICookieAuthType extends IRegisterType {}
