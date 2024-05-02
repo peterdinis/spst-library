@@ -10,6 +10,8 @@ import { format } from "date-fns";
 import { Button } from "~/components/ui/button";
 import Link from "next/link";
 import LongText from "../shared/LongText";
+import AuthorSheets from "./AuthorsSheets";
+import { Author } from "@prisma/client";
 
 const AuthorInfo: FC = () => {
 	const { id } = useParams();
@@ -134,6 +136,8 @@ const AuthorInfo: FC = () => {
 										</Button>
 									</div>
 									<br />
+									<hr />
+									<AuthorSheets name={data?.name!} data={data as unknown as Author} />
 								</div>
 							</div>
 						</div>
