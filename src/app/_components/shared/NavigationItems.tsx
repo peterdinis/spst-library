@@ -8,9 +8,11 @@ import MenuDropdown from "./MenuDropdown";
 import Cookie from "js-cookie";
 import { useRouter } from "next/navigation";
 import { useToast } from "~/components/ui/use-toast";
+import useTeacherCookie from "~/hooks/useTeacherCookie";
 
 const NavigationItems: FC = () => {
     const studentCookie = useStudentCookie();
+    const teacherCookie = useTeacherCookie();
     const router = useRouter();
     const {toast} = useToast();
 
