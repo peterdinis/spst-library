@@ -22,14 +22,20 @@ const ProfileWrapper: FC = ({}) => {
 							<div className="flex items-center space-x-4">
 								<div className="space-y-1.5">
 									<h3 className="text-lg font-bold leading-none">
-										{studentCookie?.name + " " + studentCookie?.lastName}
+										{studentCookie?.name +
+											" " +
+											studentCookie?.lastName}
 									</h3>
 								</div>
 							</div>
 						</CardContent>
 					</Card>
 
-					<Settings studentCookie={studentCookie as unknown as ICookieAuthType} />
+					<Settings
+						studentCookie={
+							studentCookie as unknown as ICookieAuthType
+						}
+					/>
 				</div>
 				<BorrowedBooks />
 			</div>

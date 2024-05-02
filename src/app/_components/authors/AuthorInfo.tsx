@@ -137,7 +137,10 @@ const AuthorInfo: FC = () => {
 									</div>
 									<br />
 									<hr />
-									<AuthorSheets name={data?.name!} data={data as unknown as Author} />
+									<AuthorSheets
+										name={data?.name!}
+										data={data as unknown as Author}
+									/>
 								</div>
 							</div>
 						</div>

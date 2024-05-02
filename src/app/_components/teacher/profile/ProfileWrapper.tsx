@@ -7,8 +7,7 @@ import Settings from "./Settings";
 import { ICookieAuthType } from "~/app/types/authTypes";
 import BorrowedBooks from "./BorrowedBooks";
 
-const ProfileWrapper: FC = ({
-}) => {
+const ProfileWrapper: FC = ({}) => {
 	const teacherCookie = useTeacherCookie();
 
 	return (
@@ -23,13 +22,19 @@ const ProfileWrapper: FC = ({
 							<div className="flex items-center space-x-4">
 								<div className="space-y-1.5">
 									<h3 className="text-lg font-bold leading-none">
-									{teacherCookie?.name + " " + teacherCookie?.lastName}
+										{teacherCookie?.name +
+											" " +
+											teacherCookie?.lastName}
 									</h3>
 								</div>
 							</div>
 						</CardContent>
 					</Card>
-					<Settings teacherCookie={teacherCookie as unknown as ICookieAuthType} />
+					<Settings
+						teacherCookie={
+							teacherCookie as unknown as ICookieAuthType
+						}
+					/>
 				</div>
 				<BorrowedBooks />
 			</div>
