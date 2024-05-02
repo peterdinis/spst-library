@@ -7,10 +7,12 @@ import useStudentCookie from "~/hooks/useStudentCookie";
 import MenuDropdown from "./MenuDropdown";
 import Cookie from "js-cookie";
 import { useRouter } from "next/navigation";
+import { useToast } from "~/components/ui/use-toast";
 
 const NavigationItems: FC = () => {
     const studentCookie = useStudentCookie();
     const router = useRouter();
+    const {toast} = useToast();
 
     return (
         <>
@@ -34,6 +36,11 @@ const NavigationItems: FC = () => {
                     <MenuDropdown profileLink={"/student/profile"} logoutFn={() => {
                         Cookie.remove("studentD");
                         router.push("/student/login");
+                        toast({
+                            title: "Odhlásenie bolo úspešné",
+                            className: "bg-green-500 text-blue-50",
+                            duration: 2000
+                        })
                     }} />
                 </li>
             ) : (
