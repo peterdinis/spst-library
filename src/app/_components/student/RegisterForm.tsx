@@ -69,7 +69,7 @@ const RegisterForm: FC = () => {
 								Meno
 							</label>
 							<input
-								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
+								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 dark:text-black shadow"
 								id="name"
 								type="text"
 								placeholder="Meno"
@@ -87,7 +87,7 @@ const RegisterForm: FC = () => {
 								Priezvisko
 							</label>
 							<input
-								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
+								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 dark:text-black shadow"
 								id="lastName"
 								type="text"
 								{...register("lastName", {
@@ -105,7 +105,7 @@ const RegisterForm: FC = () => {
 								Email
 							</label>
 							<input
-								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
+								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 dark:text-black shadow"
 								id="Email"
 								type="email"
 								{...register("email", {
@@ -125,7 +125,7 @@ const RegisterForm: FC = () => {
 							</label>
 							<div className="relative">
 								<input
-									className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
+									className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 dark:text-black shadow"
 									id="password"
 									type={showPassword ? "text" : "password"}
 									{...register("password", {

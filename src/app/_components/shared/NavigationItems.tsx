@@ -3,18 +3,10 @@
 import Link from "next/link";
 import ThemeButton from "./ThemeButton";
 import { FC } from "react";
-import Cookie from "js-cookie";
+import useStudentCookie from "~/hooks/useStudentCookie";
 
 const NavigationItems: FC = () => {
-    let studentCookie = null;
-    try {
-        const cookieValue = Cookie.get("studentD");
-        if (cookieValue) {
-            studentCookie = JSON.parse(cookieValue);
-        }
-    } catch (error: any) {
-        throw new Error("error", error);
-    }
+    const studentCookie = useStudentCookie();
 
     return (
         <>
