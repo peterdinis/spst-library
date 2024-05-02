@@ -10,7 +10,7 @@ interface IStettingProps {
 	teacherCookie: ICookieAuthType;
 }
 
-const Settings: FC<IStettingProps> = ({teacherCookie}: IStettingProps) => {
+const Settings: FC<IStettingProps> = ({ teacherCookie }: IStettingProps) => {
 	const [isEditable, setIsEditable] = useState(false);
 	return (
 		<Card>

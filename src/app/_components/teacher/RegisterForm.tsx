@@ -21,14 +21,17 @@ const RegisterForm: FC = () => {
 	const addNewTeacherMut = useMutation({
 		mutationKey: ["registerTeacher"],
 		mutationFn: async (data: IRegisterType) => {
-			return await axios.post(process.env.NEXT_PUBLIC_AUTH_API + "auth/register", data)
+			return await axios.post(
+				process.env.NEXT_PUBLIC_AUTH_API + "auth/register",
+				data,
+			);
 		},
 		onSuccess: () => {
 			toast({
 				title: "Registrácia bola úspešná",
 				duration: 2000,
-				className: "bg-green-500 text-white"
-			})
+				className: "bg-green-500 text-white",
+			});
 			router.push("/teacher/login");
 		},
 
@@ -41,18 +44,17 @@ const RegisterForm: FC = () => {
 		},
 	});
 
-
-	const onStudentSubmit = async(data: FieldValues) => {
+	const onStudentSubmit = async (data: FieldValues) => {
 		await addNewTeacherMut.mutateAsync({
 			name: data.name,
 			lastName: data.lastName,
 			email: data.email,
 			password: data.password,
 			isActive: true,
-            hasAdminRights: false,
-            role: "TEACHER"
-		})
-	}
+			hasAdminRights: false,
+			role: "TEACHER",
+		});
+	};
 	return (
 		<>
 			<Header text="Registrácia učiteľ" />

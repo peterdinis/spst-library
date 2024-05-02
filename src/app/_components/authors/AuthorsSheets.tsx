@@ -8,7 +8,10 @@ interface IAuthorSheetsProps {
 	data: Author;
 }
 
-const AuthorSheets: FC<IAuthorSheetsProps> = ({ name, data }: IAuthorSheetsProps) => {
+const AuthorSheets: FC<IAuthorSheetsProps> = ({
+	name,
+	data,
+}: IAuthorSheetsProps) => {
 	return (
 		<div className="flex mt-5">
 			<SheetHelper

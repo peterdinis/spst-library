@@ -1,32 +1,35 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from 'react';
-import Cookie from 'js-cookie';
-import { ICookieAuthType } from '~/app/types/authTypes';
+import { useState, useEffect } from "react";
+import Cookie from "js-cookie";
+import { ICookieAuthType } from "~/app/types/authTypes";
 
 const useStudentCookie = (): ICookieAuthType | null => {
-    const [studentCookie, setStudentCookie] = useState<ICookieAuthType | null>(null);
+	const [studentCookie, setStudentCookie] = useState<ICookieAuthType | null>(
+		null,
+	);
 
-    useEffect(() => {
-        const fetchStudentCookie = () => {
-            try {
-                const cookieValue = Cookie.get('studentD');
-                if (cookieValue) {
-                    const parsedCookie = JSON.parse(cookieValue) as ICookieAuthType;
-                    setStudentCookie(parsedCookie);
-                }
-            } catch (error) {
-                console.error('Error parsing student cookie:', error);
-            }
-        };
+	useEffect(() => {
+		const fetchStudentCookie = () => {
+			try {
+				const cookieValue = Cookie.get("studentD");
+				if (cookieValue) {
+					const parsedCookie = JSON.parse(
+						cookieValue,
+					) as ICookieAuthType;
+					setStudentCookie(parsedCookie);
+				}
+			} catch (error) {
+				console.error("Error parsing student cookie:", error);
+			}
+		};
 
-        fetchStudentCookie();
+		fetchStudentCookie();
 
-        return () => {
-        };
-    }, []);
+		return () => {};
+	}, []);
 
-    return studentCookie;
+	return studentCookie;
 };
 
 export default useStudentCookie;

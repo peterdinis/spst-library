@@ -27,7 +27,7 @@ const LoginForm: FC = () => {
 			);
 		},
 		onSuccess: (data) => {
-			Cookie.set("teacherD", JSON.stringify(data?.data?.user))
+			Cookie.set("teacherD", JSON.stringify(data?.data?.user));
 			toast({
 				title: "Prihlásenie bolo úspešné",
 				duration: 2000,
