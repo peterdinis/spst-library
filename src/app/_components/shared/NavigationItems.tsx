@@ -4,11 +4,13 @@ import Link from "next/link";
 import ThemeButton from "./ThemeButton";
 import { FC } from "react";
 import useStudentCookie from "~/hooks/useStudentCookie";
+import MenuDropdown from "./MenuDropdown";
+import Cookie from "js-cookie";
+import { useRouter } from "next/navigation";
 
 const NavigationItems: FC = () => {
     const studentCookie = useStudentCookie();
-
-    console.log("StudentCookie", studentCookie);
+    const router = useRouter();
 
     return (
         <>
@@ -29,7 +31,10 @@ const NavigationItems: FC = () => {
             </li>
             {studentCookie ? (
                 <li className="text-xl dark:text-blue-50 text-black">
-                    <Link href="/student/profile">Študent profil</Link>
+                    <MenuDropdown profileLink={"/student/profile"} logoutFn={() => {
+                        Cookie.remove("studentD");
+                        router.push("/student/login");
+                    }} />
                 </li>
             ) : (
                 <>

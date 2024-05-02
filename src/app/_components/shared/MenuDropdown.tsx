@@ -15,8 +15,8 @@ import {
 } from "~/components/ui/dropdown-menu";
 
 interface IMenuDropdownProps {
-	profileLink?: string;
-	logoutFn?: (...args: unknown[]) => void | Function;
+	profileLink: string;
+	logoutFn: (...args: unknown[]) => void | Function;
 	children?: ReactNode;
 }
 
