@@ -8,9 +8,11 @@ import MenuDropdown from "./MenuDropdown";
 import Cookie from "js-cookie";
 import { useRouter } from "next/navigation";
 import { useToast } from "~/components/ui/use-toast";
+import useTeacherCookie from "~/hooks/useTeacherCookie";
 
 const NavigationItems: FC = () => {
     const studentCookie = useStudentCookie();
+    const teacherCookie = useTeacherCookie();
     const router = useRouter();
     const {toast} = useToast();
 
@@ -31,6 +33,28 @@ const NavigationItems: FC = () => {
             <li className="text-xl dark:text-blue-50 text-black">
                 <Link href="/authors">Spisovatelia</Link>
             </li>
+            {teacherCookie ? (
+                <li className="text-xl dark:text-blue-50 text-black">
+                    <MenuDropdown profileLink={"/teacher/profile"} logoutFn={() => {
+                        Cookie.remove("teacherD");
+                        router.push("/teacher/login");
+                        toast({
+                            title: "Odhlásenie bolo úspešné",
+                            className: "bg-green-500 text-blue-50",
+                            duration: 2000
+                        })
+                    }} />
+                </li>
+            ) : (
+                <>
+                    <li className="text-xl dark:text-blue-50 text-black">
+                        <Link href="/student/login">Žiak</Link>
+                    </li>
+                    <li className="text-xl dark:text-blue-50 text-black">
+                        <Link href="/teacher/login">Učiteľ</Link>
+                    </li>
+                </>
+            )}
             {studentCookie ? (
                 <li className="text-xl dark:text-blue-50 text-black">
                     <MenuDropdown profileLink={"/student/profile"} logoutFn={() => {
