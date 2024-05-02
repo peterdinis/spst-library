@@ -39,7 +39,7 @@ const ProfileWrapper: FC = ({}) => {
 							<div className="flex items-center space-x-4">
 								<div className="space-y-1.5">
 									<h3 className="text-lg font-bold leading-none">
-										rrrr
+										{studentCookie?.name + " " + studentCookie?.lastName}
 									</h3>
 									<Button
 										onClick={logoutFromApp}
