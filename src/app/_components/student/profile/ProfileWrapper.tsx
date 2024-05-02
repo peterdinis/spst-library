@@ -8,13 +8,13 @@ import BorrowedBooks from "./BorrowedBooks";
 import Settings from "./Settings";
 import Cookie from "js-cookie";
 import { useRouter } from "next/navigation";
+import useStudentCookie from "~/hooks/useStudentCookie";
+import { ICookieAuthType } from "~/app/types/authTypes";
 
 const ProfileWrapper: FC = ({}) => {
 	const { toast } = useToast();
 	const router = useRouter();
-	const studentCookie = JSON.parse(Cookie.get("studentD") as any);
-
-	console.log("Student Cookie", studentCookie);
+	const studentCookie = useStudentCookie();
 
 	const logoutFromApp = () => {
 		Cookie.remove("studentD");
@@ -25,6 +25,7 @@ const ProfileWrapper: FC = ({}) => {
 		});
 		router.push("/student/login");
 	};
+
 	return (
 		<>
 			<div className="grid md:grid-cols-2 md:gap-6">
@@ -37,7 +38,7 @@ const ProfileWrapper: FC = ({}) => {
 							<div className="flex items-center space-x-4">
 								<div className="space-y-1.5">
 									<h3 className="text-lg font-bold leading-none">
-										rrrr
+										{studentCookie?.name + " " + studentCookie?.lastName}
 									</h3>
 									<Button
 										onClick={logoutFromApp}
@@ -51,7 +52,7 @@ const ProfileWrapper: FC = ({}) => {
 						</CardContent>
 					</Card>
 
-					<Settings />
+					<Settings studentCookie={studentCookie as unknown as ICookieAuthType} />
 				</div>
 				<BorrowedBooks />
 			</div>

@@ -33,7 +33,7 @@ const LoginForm: FC = () => {
 				duration: 2000,
 				className: "bg-green-500 text-white",
 			});
-			router.push("/student/profile");
+			window.location.replace("/student/profile");
 		},
 
 		onError: () => {
@@ -67,7 +67,7 @@ const LoginForm: FC = () => {
 								Meno
 							</label>
 							<input
-								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
+								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 dark:text-black shadow"
 								id="name"
 								type="text"
 								placeholder="Meno"
@@ -85,7 +85,7 @@ const LoginForm: FC = () => {
 								Priezvisko
 							</label>
 							<input
-								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
+								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 dark:text-black shadow"
 								id="lastName"
 								type="text"
 								{...register("lastName", {
@@ -103,7 +103,7 @@ const LoginForm: FC = () => {
 								Email
 							</label>
 							<input
-								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
+								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 dark:text-black shadow"
 								id="Email"
 								type="email"
 								{...register("email", {
@@ -123,7 +123,7 @@ const LoginForm: FC = () => {
 							</label>
 							<div className="relative">
 								<input
-									className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
+									className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 dark:text-black shadow"
 									id="password"
 									type={showPassword ? "text" : "password"}
 									{...register("password", {

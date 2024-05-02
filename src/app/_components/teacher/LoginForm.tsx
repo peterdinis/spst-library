@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { ILoginType } from "~/app/types/authTypes";
+import Cookie from "js-cookie";
 
 const LoginForm: FC = () => {
 	const { register, handleSubmit } = useForm();
@@ -26,13 +27,13 @@ const LoginForm: FC = () => {
 			);
 		},
 		onSuccess: (data) => {
-			console.log(data);
+			Cookie.set("teacherD", JSON.stringify(data?.data?.user))
 			toast({
 				title: "Prihlásenie bolo úspešné",
 				duration: 2000,
 				className: "bg-green-500 text-white",
 			});
-			router.push("/student/profile");
+			router.push("/teacher/profile");
 		},
 
 		onError: () => {
@@ -66,7 +67,7 @@ const LoginForm: FC = () => {
 								Meno
 							</label>
 							<input
-								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
+								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 dark:text-black shadow"
 								id="name"
 								type="text"
 								placeholder="Meno"
@@ -84,7 +85,7 @@ const LoginForm: FC = () => {
 								Priezvisko
 							</label>
 							<input
-								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
+								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 dark:text-black shadow"
 								id="lastName"
 								type="text"
 								{...register("lastName", {
@@ -102,7 +103,7 @@ const LoginForm: FC = () => {
 								Email
 							</label>
 							<input
-								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
+								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 dark:text-black shadow"
 								id="Email"
 								type="email"
 								{...register("email", {
@@ -122,7 +123,7 @@ const LoginForm: FC = () => {
 							</label>
 							<div className="relative">
 								<input
-									className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
+									className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 dark:text-black shadow"
 									id="password"
 									type={showPassword ? "text" : "password"}
 									{...register("password", {

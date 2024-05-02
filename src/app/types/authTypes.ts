@@ -20,7 +20,6 @@ export interface IRegisterType {
 	role: string;
 }
 
-export type ILoginType = Pick<
-	IRegisterType,
-	"name" | "lastName" | "email" | "password"
->;
+export type ILoginType = Pick<IRegisterType, 'name' | 'lastName' | 'email' | 'password'>
+
+export interface ICookieAuthType extends IRegisterType {}

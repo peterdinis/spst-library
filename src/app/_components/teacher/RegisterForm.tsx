@@ -18,34 +18,18 @@ const RegisterForm: FC = () => {
 	const { toast } = useToast();
 	const router = useRouter();
 
-<<<<<<< HEAD
 	const addNewTeacherMut = useMutation({
 		mutationKey: ["registerTeacher"],
 		mutationFn: async (data: IRegisterType) => {
 			return await axios.post(process.env.NEXT_PUBLIC_AUTH_API + "auth/register", data)
-=======
-	const addNewStudentMut = useMutation({
-		mutationKey: ["registerStudent"],
-		mutationFn: async (data: any) => {
-			return await axios.post(
-				process.env.NEXT_PUBLIC_AUTH_API + "auth/register",
-				data,
-			);
->>>>>>> main
 		},
 		onSuccess: () => {
 			toast({
 				title: "Registrácia bola úspešná",
 				duration: 2000,
-<<<<<<< HEAD
 				className: "bg-green-500 text-white"
 			})
 			router.push("/teacher/login");
-=======
-				className: "bg-green-500 text-white",
-			});
-			router.push("/student/login");
->>>>>>> main
 		},
 
 		onError: () => {
@@ -57,30 +41,18 @@ const RegisterForm: FC = () => {
 		},
 	});
 
-<<<<<<< HEAD
 
 	const onStudentSubmit = async(data: FieldValues) => {
 		await addNewTeacherMut.mutateAsync({
-=======
-	const onStudentSubmit = async (data: FieldValues) => {
-		await addNewStudentMut.mutateAsync({
->>>>>>> main
 			name: data.name,
 			lastName: data.lastName,
 			email: data.email,
 			password: data.password,
 			isActive: true,
-<<<<<<< HEAD
             hasAdminRights: false,
-            role: TEACHER
+            role: "TEACHER"
 		})
 	}
-=======
-			hasAdminRights: false,
-			role: "TEACHER",
-		});
-	};
->>>>>>> main
 	return (
 		<>
 			<Header text="Registrácia učiteľ" />
@@ -95,7 +67,7 @@ const RegisterForm: FC = () => {
 								Meno
 							</label>
 							<input
-								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
+								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 dark:text-black shadow"
 								id="name"
 								type="text"
 								placeholder="Meno"
@@ -113,7 +85,7 @@ const RegisterForm: FC = () => {
 								Priezvisko
 							</label>
 							<input
-								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
+								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 dark:text-black shadow"
 								id="lastName"
 								type="text"
 								{...register("lastName", {
@@ -131,7 +103,7 @@ const RegisterForm: FC = () => {
 								Email
 							</label>
 							<input
-								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
+								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 dark:text-black shadow"
 								id="Email"
 								type="email"
 								{...register("email", {
@@ -151,7 +123,7 @@ const RegisterForm: FC = () => {
 							</label>
 							<div className="relative">
 								<input
-									className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
+									className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 dark:text-black shadow"
 									id="password"
 									type={showPassword ? "text" : "password"}
 									{...register("password", {
