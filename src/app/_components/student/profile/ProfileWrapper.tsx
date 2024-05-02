@@ -9,13 +9,12 @@ import Settings from "./Settings";
 import Cookie from "js-cookie";
 import { useRouter } from "next/navigation";
 import useStudentCookie from "~/hooks/useStudentCookie";
+import { ICookieAuthType } from "~/app/types/authTypes";
 
 const ProfileWrapper: FC = ({}) => {
 	const { toast } = useToast();
 	const router = useRouter();
 	const studentCookie = useStudentCookie();
-
-	console.log("Student cookie", studentCookie);
 
 	const logoutFromApp = () => {
 		Cookie.remove("studentD");
@@ -53,7 +52,7 @@ const ProfileWrapper: FC = ({}) => {
 						</CardContent>
 					</Card>
 
-					<Settings />
+					<Settings studentCookie={studentCookie as unknown as ICookieAuthType} />
 				</div>
 				<BorrowedBooks />
 			</div>

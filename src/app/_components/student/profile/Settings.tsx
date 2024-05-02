@@ -1,11 +1,16 @@
 "use client";
 
 import { FC, useState } from "react";
+import { ICookieAuthType } from "~/app/types/authTypes";
 import { Button } from "~/components/ui/button";
 import { Card, CardHeader, CardContent } from "~/components/ui/card";
 import { Input } from "~/components/ui/input";
 
-const Settings: FC = () => {
+interface IStettingProps {
+	studentCookie: ICookieAuthType;
+}
+
+const Settings: FC<IStettingProps> = ({studentCookie}: IStettingProps) => {
 	const [isEditable, setIsEditable] = useState(false);
 	return (
 		<Card>
@@ -18,10 +23,7 @@ const Settings: FC = () => {
 				{isEditable ? "Zrušiť" : "Upraviť profil"}
 			</Button>
 			<CardHeader>
-				<h2 className="text-xl font-bold">Contact</h2>
-				<p className="text-sm font-medium leading-none text-gray-500 dark:text-gray-400">
-					Your contact information
-				</p>
+				<h2 className="text-xl font-bold">Môj profil</h2>
 			</CardHeader>
 			<CardContent>
 				<form className="space-y-4">
@@ -30,12 +32,13 @@ const Settings: FC = () => {
 							className="text-sm font-medium leading-none"
 							htmlFor="name"
 						>
-							Name
+							Meno
 						</label>
 						<Input
 							defaultValue="Alice Smith"
 							id="name"
 							readOnly={!isEditable}
+							value={studentCookie?.name}
 						/>
 					</div>
 					<div className="space-y-2">
@@ -49,35 +52,38 @@ const Settings: FC = () => {
 							defaultValue="alice.smith@example.com"
 							id="email"
 							readOnly={!isEditable}
+							value={studentCookie?.email}
 						/>
 					</div>
 					<div className="space-y-2">
 						<label
 							className="text-sm font-medium leading-none"
-							htmlFor="phone"
+							htmlFor="priezvisko"
 						>
-							Phone
+							Priezvisko
 						</label>
 						<Input
 							readOnly={!isEditable}
-							id="phone"
-							placeholder="Phone"
+							id="priezvisko"
+							placeholder="Priezvisko"
+							value={studentCookie?.lastName}
 						/>
 					</div>
 					<div className="space-y-2">
 						<label
 							className="text-sm font-medium leading-none"
-							htmlFor="address"
+							htmlFor="priezvisko"
 						>
-							Address
+							Priezvisko
 						</label>
 						<Input
 							readOnly={!isEditable}
-							id="address"
-							placeholder="Address"
+							id="priezvisko"
+							placeholder="Priezvisko"
+							value={studentCookie?.lastName}
 						/>
 					</div>
-					<Button type="submit">Save</Button>
+					<Button type="submit">Uložiť</Button>
 				</form>
 			</CardContent>
 		</Card>
