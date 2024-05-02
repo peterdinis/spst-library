@@ -2,11 +2,11 @@ import { FC } from "react";
 import { Button } from "~/components/ui/button";
 import SheetHelper from "../shared/SheetHelper";
 
-interface IPublisherProps {
+interface IPublisherSheetProps {
 	name: string;
 }
 
-const Publisher: FC<IPublisherProps> = ({ name }: IPublisherProps) => {
+const PublisherSheets: FC<IPublisherSheetProps> = ({ name }: IPublisherSheetProps) => {
 	return (
 		<div className="flex mt-5">
 			<SheetHelper
@@ -38,4 +38,4 @@ const Publisher: FC<IPublisherProps> = ({ name }: IPublisherProps) => {
 	);
 };
 
-export default Publisher;
+export default PublisherSheets;
