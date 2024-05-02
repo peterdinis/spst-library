@@ -8,13 +8,14 @@ import BorrowedBooks from "./BorrowedBooks";
 import Settings from "./Settings";
 import Cookie from "js-cookie";
 import { useRouter } from "next/navigation";
+import useStudentCookie from "~/hooks/useStudentCookie";
 
 const ProfileWrapper: FC = ({}) => {
 	const { toast } = useToast();
 	const router = useRouter();
-	const studentCookie = JSON.parse(Cookie.get("studentD") as any);
+	const studentCookie = useStudentCookie();
 
-	console.log("Student Cookie", studentCookie);
+	console.log("Student cookie", studentCookie);
 
 	const logoutFromApp = () => {
 		Cookie.remove("studentD");
@@ -26,14 +27,6 @@ const ProfileWrapper: FC = ({}) => {
 		router.push("/student/login");
 	};
 
-	let studentData = null;
-    try {
-        if (studentCookie) {
-            studentData = JSON.parse(studentCookie);
-        }
-    } catch (error) {
-        console.error("Error parsing student cookie:", error);
-    }
 	return (
 		<>
 			<div className="grid md:grid-cols-2 md:gap-6">

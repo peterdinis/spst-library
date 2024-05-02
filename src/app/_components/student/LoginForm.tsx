@@ -33,7 +33,7 @@ const LoginForm: FC = () => {
 				duration: 2000,
 				className: "bg-green-500 text-white",
 			});
-			router.push("/student/profile");
+			window.location.replace("/student/profile");
 		},
 
 		onError: () => {

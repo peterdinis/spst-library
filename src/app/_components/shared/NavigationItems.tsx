@@ -8,6 +8,8 @@ import useStudentCookie from "~/hooks/useStudentCookie";
 const NavigationItems: FC = () => {
     const studentCookie = useStudentCookie();
 
+    console.log("StudentCookie", studentCookie);
+
     return (
         <>
             <li className="text-xl dark:text-blue-50 text-black">
