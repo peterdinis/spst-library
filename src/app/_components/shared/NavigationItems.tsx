@@ -33,6 +33,28 @@ const NavigationItems: FC = () => {
             <li className="text-xl dark:text-blue-50 text-black">
                 <Link href="/authors">Spisovatelia</Link>
             </li>
+            {teacherCookie ? (
+                <li className="text-xl dark:text-blue-50 text-black">
+                    <MenuDropdown profileLink={"/teacher/profile"} logoutFn={() => {
+                        Cookie.remove("teacherD");
+                        router.push("/teacher/login");
+                        toast({
+                            title: "Odhlásenie bolo úspešné",
+                            className: "bg-green-500 text-blue-50",
+                            duration: 2000
+                        })
+                    }} />
+                </li>
+            ) : (
+                <>
+                    <li className="text-xl dark:text-blue-50 text-black">
+                        <Link href="/student/login">Žiak</Link>
+                    </li>
+                    <li className="text-xl dark:text-blue-50 text-black">
+                        <Link href="/teacher/login">Učiteľ</Link>
+                    </li>
+                </>
+            )}
             {studentCookie ? (
                 <li className="text-xl dark:text-blue-50 text-black">
                     <MenuDropdown profileLink={"/student/profile"} logoutFn={() => {
