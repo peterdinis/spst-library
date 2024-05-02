@@ -1,30 +1,14 @@
 "use client";
 
 import { FC } from "react";
-import { Button } from "~/components/ui/button";
 import { Card, CardContent, CardHeader } from "~/components/ui/card";
-import { useToast } from "~/components/ui/use-toast";
 import BorrowedBooks from "./BorrowedBooks";
 import Settings from "./Settings";
-import Cookie from "js-cookie";
-import { useRouter } from "next/navigation";
 import useStudentCookie from "~/hooks/useStudentCookie";
 import { ICookieAuthType } from "~/app/types/authTypes";
 
 const ProfileWrapper: FC = ({}) => {
-	const { toast } = useToast();
-	const router = useRouter();
 	const studentCookie = useStudentCookie();
-
-	const logoutFromApp = () => {
-		Cookie.remove("studentD");
-		toast({
-			title: "Odhlásenie bolo úspešné",
-			className: "bg-green-500",
-			duration: 2000,
-		});
-		router.push("/student/login");
-	};
 
 	return (
 		<>
@@ -40,13 +24,6 @@ const ProfileWrapper: FC = ({}) => {
 									<h3 className="text-lg font-bold leading-none">
 										{studentCookie?.name + " " + studentCookie?.lastName}
 									</h3>
-									<Button
-										onClick={logoutFromApp}
-										className="mt-4"
-										size="sm"
-									>
-										Odhlásiť
-									</Button>
 								</div>
 							</div>
 						</CardContent>

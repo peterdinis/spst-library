@@ -7,10 +7,10 @@ import { Card, CardHeader, CardContent } from "~/components/ui/card";
 import { Input } from "~/components/ui/input";
 
 interface IStettingProps {
-	studentCookie: ICookieAuthType;
+	teacherCookie: ICookieAuthType;
 }
 
-const Settings: FC<IStettingProps> = ({studentCookie}: IStettingProps) => {
+const Settings: FC<IStettingProps> = ({teacherCookie}: IStettingProps) => {
 	const [isEditable, setIsEditable] = useState(false);
 	return (
 		<Card>
@@ -38,7 +38,7 @@ const Settings: FC<IStettingProps> = ({studentCookie}: IStettingProps) => {
 							defaultValue="Alice Smith"
 							id="name"
 							readOnly={!isEditable}
-							value={studentCookie?.name}
+							value={teacherCookie?.name}
 						/>
 					</div>
 					<div className="space-y-2">
@@ -52,7 +52,7 @@ const Settings: FC<IStettingProps> = ({studentCookie}: IStettingProps) => {
 							defaultValue="alice.smith@example.com"
 							id="email"
 							readOnly={!isEditable}
-							value={studentCookie?.email}
+							value={teacherCookie?.email}
 						/>
 					</div>
 					<div className="space-y-2">
@@ -66,7 +66,7 @@ const Settings: FC<IStettingProps> = ({studentCookie}: IStettingProps) => {
 							readOnly={!isEditable}
 							id="priezvisko"
 							placeholder="Priezvisko"
-							value={studentCookie?.lastName}
+							value={teacherCookie?.lastName}
 						/>
 					</div>
 					<div className="space-y-2">
@@ -80,7 +80,7 @@ const Settings: FC<IStettingProps> = ({studentCookie}: IStettingProps) => {
 							readOnly={!isEditable}
 							id="priezvisko"
 							placeholder="Priezvisko"
-							value={studentCookie?.lastName}
+							value={teacherCookie?.lastName}
 						/>
 					</div>
 					<Button type="submit">Uložiť</Button>
