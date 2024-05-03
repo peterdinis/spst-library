@@ -10,11 +10,11 @@ export const bookingRouter = createTRPCRouter({
 	}),
 
 	displayingMyBooking: publicProcedure.input(z.object({
-		borrowerEmail: z.string()
+		userEmail: z.string()
 	})).query(async({ctx, input}) => {
 		const allMyBooks = await ctx.db.booking.findMany({
 			where: {
-				borrowerEmail: input.borrowerEmail
+				userEmail: input.userEmail
 			}
 		});
 
@@ -87,7 +87,7 @@ export const bookingRouter = createTRPCRouter({
 				bookName: z.string(),
 				from: z.date(),
 				to: z.date(),
-				borrowerEmail: z.string(),
+				userEmail: z.string(),
 			}),
 		)
 		.mutation(async ({ ctx, input }) => {
@@ -111,7 +111,7 @@ export const bookingRouter = createTRPCRouter({
 
 			const borrowedSpecificBook = await ctx.db.booking.create({
 				data: {
-					borrowerEmail: input.borrowerEmail,
+					userEmail: input.userEmail,
 					bookName: findOneBook.name,
 					from: format(input.from, "dd-MM-yyyy"),
 					to: format(input.to, "dd-MM-yyyy"),

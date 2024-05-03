@@ -56,7 +56,7 @@ const BookingModal: FC = () => {
       bookName: data.bookName,
       from: data.from,
       to: data.to,
-      borrowerEmail: data.borrowerEmail,
+      userEmail: data.userEmail,
     });
   };
 
@@ -102,7 +102,7 @@ const BookingModal: FC = () => {
               <div className="mt-4">
                 <Input
                   type="text"
-                  {...(register("borrowerEmail"),
+                  {...(register("userEmail"),
                   {
                     required: true,
                   })}

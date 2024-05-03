@@ -74,5 +74,5 @@ model Booking {
     isBorrowed    Boolean
     isReturned    Boolean
     isExtended    Boolean? // Predlženie knihy
-    borrowerEmail String
+    userEmail     String
 }
