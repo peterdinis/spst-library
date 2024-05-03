@@ -10,15 +10,18 @@ import { format } from "date-fns";
 import { Button } from "~/components/ui/button";
 import Link from "next/link";
 import LongText from "../shared/LongText";
+import useTeacherCookie from "~/hooks/useTeacherCookie";
+import useAdminCookie from "~/hooks/useAdminCookie";
+import PublisherSheets from "./PublisherSheets";
 
 const PublisherInfo: FC = () => {
 	const { id } = useParams();
+	const teacherCookie = useTeacherCookie();
+	const adminCookie = useAdminCookie();
 	const { data, isLoading, isError } =
 		api.publisher.fetchPublisherById.useQuery({
 			id: Number(id),
 		});
-
-	console.log("D", data);
 
 	if (isLoading) {
 		return <Loader2 className="animate-spin" />;
@@ -133,6 +136,18 @@ const PublisherInfo: FC = () => {
 										</Button>
 									</div>
 									<br />
+									<hr />
+									{teacherCookie || adminCookie ? (
+										<>
+											<PublisherSheets 
+												name={data?.name!}
+											/>
+										</>
+									): (
+										<>
+										
+										</>
+									)}
 								</div>
 							</div>
 						</div>

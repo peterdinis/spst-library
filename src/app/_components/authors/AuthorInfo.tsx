@@ -12,9 +12,13 @@ import Link from "next/link";
 import LongText from "../shared/LongText";
 import AuthorSheets from "./AuthorsSheets";
 import { Author } from "@prisma/client";
+import useTeacherCookie from "~/hooks/useTeacherCookie";
+import useAdminCookie from "~/hooks/useAdminCookie";
 
 const AuthorInfo: FC = () => {
 	const { id } = useParams();
+	const teacherCookie = useTeacherCookie();
+	const adminCookie = useAdminCookie();
 	const { data, isLoading, isError } = api.author.fetchAuthorById.useQuery({
 		id: Number(id),
 	});
@@ -137,10 +141,14 @@ const AuthorInfo: FC = () => {
 									</div>
 									<br />
 									<hr />
-									<AuthorSheets
+									{teacherCookie || adminCookie ? (
+										<AuthorSheets
 										name={data?.name!}
 										data={data as unknown as Author}
 									/>
+									): (
+										<></>
+									)}
 								</div>
 							</div>
 						</div>
