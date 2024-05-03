@@ -9,6 +9,25 @@ export const bookingRouter = createTRPCRouter({
 		return allBorrowedBooks;
 	}),
 
+	displayingMyBooking: publicProcedure.input(z.object({
+		borrowerEmail: z.string()
+	})).query(async({ctx, input}) => {
+		const allMyBooks = await ctx.db.booking.findMany({
+			where: {
+				borrowerEmail: input.borrowerEmail
+			}
+		});
+
+		if(!allMyBooks) {
+			throw new TRPCError({
+				message: "Žiadne požičané knihy",
+				code: "NOT_FOUND"
+			})
+		};
+
+		return allMyBooks;
+	}),
+
 	fetchBookingById: publicProcedure
 		.input(
 			z.object({
@@ -121,7 +140,8 @@ export const bookingRouter = createTRPCRouter({
 			return borrowedSpecificBook;
 		}),
 
-	returnBooking: publicProcedure
+	// TODO: This bug must be fixed later 
+	/* returnBooking: publicProcedure
 		.input(
 			z.object({
 				bookName: z.string(),
@@ -159,7 +179,7 @@ export const bookingRouter = createTRPCRouter({
 					isAvaiable: true,
 				},
 			});
-		}),
+		}), */
 
 	extendedBooking: publicProcedure
 		.input(
