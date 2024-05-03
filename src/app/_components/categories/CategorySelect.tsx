@@ -36,7 +36,7 @@ const CategorySelect: FC = () => {
 				</SelectTrigger>
 				<SelectContent>
 					{data &&
-						data.map((item: any) => {
+						data.map((item) => {
 							return (
 								<SelectItem
 									key={item.id}

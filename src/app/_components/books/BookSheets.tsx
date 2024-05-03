@@ -52,7 +52,7 @@ const BookSheets: FC<IBookSheetsProps> = ({ name, data }: IBookSheetsProps) => {
 							<Input
 								type="checkbox"
 								className="mt-5"
-								value={data?.isAvaiable as any}
+								value={data?.isAvaiable as unknown as string}
 							/>
 						</div>
 						<Input

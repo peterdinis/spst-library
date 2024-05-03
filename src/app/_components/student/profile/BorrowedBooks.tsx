@@ -1,7 +1,15 @@
 import { FC } from "react";
 import { Card, CardHeader, CardContent } from "~/components/ui/card";
+import useStudentCookie from "~/hooks/useStudentCookie";
+import { api } from "~/trpc/react";
 
 const BorrowedBooks: FC = () => {
+	
+	const studentCookie = useStudentCookie();
+	const {data, isLoading, isError} = api.booking.displayingMyBooking.useQuery({
+		borrowerEmail: studentCookie?.email as unknown as string
+	});
+	
 	return (
 		<div className="space-y-6">
 			<Card>
