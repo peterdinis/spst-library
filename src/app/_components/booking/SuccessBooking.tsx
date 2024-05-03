@@ -12,7 +12,7 @@ const SuccessBooking: FC = () => {
               </path>
           </svg>
           <div className="text-center">
-              <h3 className="md:text-2xl text-base text-gray-900 font-semibold text-center">Objednanie knihy bolo úspešné</h3>
+              <h3 className="md:text-2xl text-base text-gray-900 dark:text-blue-50 font-semibold text-center">Objednanie knihy bolo úspešné</h3>
               <div className="py-10 text-center">
                  <Button variant={"secondary"}>
                     <Link href="/books">Požičať si ďalšie knihy</Link>

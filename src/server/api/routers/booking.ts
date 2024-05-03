@@ -113,8 +113,8 @@ export const bookingRouter = createTRPCRouter({
 				data: {
 					userEmail: input.userEmail,
 					bookName: findOneBook.name,
-					from: format(input.from, "dd-MM-yyyy"),
-					to: format(input.to, "dd-MM-yyyy"),
+					from: input.from,
+					to: input.to,
 					isBorrowed: true,
 					isReturned: false,
 					isExtended: false,

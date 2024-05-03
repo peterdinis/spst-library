@@ -102,9 +102,9 @@ const BookingModal: FC = () => {
               <div className="mt-4">
                 <Input
                   type="text"
-                  {...(register("userEmail"),
-                  {
+                  {...register("userEmail", {
                     required: true,
+                    
                   })}
                   placeholder="Email osoby ktorá si chce požičať knihu"
                 />
