@@ -51,6 +51,7 @@ const BookingModal: FC = () => {
   });
 
   const onSubmit = async (data: FieldValues) => {
+	console.log("D", data);
     await newBookingRequest.mutateAsync({
       bookName: data.bookName,
       from: data.from,
