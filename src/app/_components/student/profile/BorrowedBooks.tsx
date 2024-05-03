@@ -1,14 +1,26 @@
+import { Loader2 } from "lucide-react";
 import { FC } from "react";
 import { Card, CardHeader, CardContent } from "~/components/ui/card";
 import useStudentCookie from "~/hooks/useStudentCookie";
 import { api } from "~/trpc/react";
+import GlobalErrorComponent from "../../shared/GlobalErrorComponent";
 
 const BorrowedBooks: FC = () => {
 	
 	const studentCookie = useStudentCookie();
 	const {data, isLoading, isError} = api.booking.displayingMyBooking.useQuery({
-		borrowerEmail: studentCookie?.email as unknown as string
+		userEmail: studentCookie?.email as unknown as string
 	});
+
+	if(isLoading) {
+		return <Loader2 className="animate-bounce w-8 h-8" />
+	}
+
+	if(isError) {
+		return <GlobalErrorComponent message="Nepodarilo sa načítať požičané knihy" statusCode="404" />
+	}
+
+	console.log("D", data);
 	
 	return (
 		<div className="space-y-6">
