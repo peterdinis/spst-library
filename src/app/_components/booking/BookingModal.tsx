@@ -101,7 +101,7 @@ const BookingModal: FC = () => {
               </div>
               <div className="mt-4">
                 <Input
-                  type="email"
+                  type="text"
                   {...(register("borrowerEmail"),
                   {
                     required: true,
