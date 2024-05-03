@@ -13,9 +13,15 @@ import BookingModal from "../booking/BookingModal";
 import { Badge } from "~/components/ui/badge";
 import LongText from "../shared/LongText";
 import { useCopyToClipboard } from "~/hooks/useCopy";
+import BookSheets from "./BookSheets";
+import { Book } from "@prisma/client";
+import useTeacherCookie from "~/hooks/useTeacherCookie";
+import useAdminCookie from "~/hooks/useAdminCookie";
 
 const BookDetail: FC = () => {
 	const { id } = useParams();
+	const teacherCookie = useTeacherCookie();
+	const adminCookie = useAdminCookie();
 	const [_, copy] = useCopyToClipboard();
 	const { data, isLoading, isError } = api.book.fetchBookById.useQuery({
 		id: Number(id),
@@ -148,6 +154,15 @@ const BookDetail: FC = () => {
 										</Button>
 									</div>
 									<br />
+									<hr />
+									{teacherCookie || adminCookie ? (
+										<BookSheets
+											data={data as unknown as Book}
+											name={data?.name!}
+										/>
+									) : (
+										<></>
+									)}
 								</div>
 							</div>
 						</div>

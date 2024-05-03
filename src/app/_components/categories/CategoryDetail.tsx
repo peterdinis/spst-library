@@ -8,9 +8,15 @@ import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import Link from "next/link";
 import { Button } from "~/components/ui/button";
 import Header from "../shared/Header";
+import CategorySheets from "./CategorySheets";
+import { Category } from "@prisma/client";
+import useTeacherCookie from "~/hooks/useTeacherCookie";
+import useAdminCookie from "~/hooks/useAdminCookie";
 
 const CategoryDetail: FC = () => {
 	const { id } = useParams();
+	const teacherCookie = useTeacherCookie();
+	const adminCookie = useAdminCookie();
 	const { data, isLoading, isError } =
 		api.category.fetchCategoryById.useQuery({
 			id: Number(id),
@@ -65,6 +71,15 @@ const CategoryDetail: FC = () => {
 					<Link href="/categories">Späť na kategórie</Link>
 				</Button>
 			</div>
+
+			{teacherCookie || adminCookie ? (
+				<CategorySheets
+				data={data as unknown as Category}
+				name={data?.name!}
+			/>
+			): (
+				<></>
+			)}
 		</>
 	);
 };

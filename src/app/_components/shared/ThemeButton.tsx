@@ -26,9 +26,9 @@ const ThemeButton: FC = () => {
 		<div
 			onClick={toggleTheme}
 			className={`
-       relative w-16 h-8 flex items-center dark:bg-gray-900 bg-teal-500 cursor-pointer rounded-full p-1`}
+       relative w-16 h-8 flex items-center dark:bg-gray-700 bg-teal-500 cursor-pointer rounded-full p-1`}
 		>
-			<Moon className="fill-white w-[15px] h-[15px]"></Moon>
+			<Moon className="fill-white w-[17px] h-[17px]"></Moon>
 			<div
 				id="toggleBtnTheme"
 				className={` bg-white
@@ -38,7 +38,7 @@ const ThemeButton: FC = () => {
 				: " transition-transform translate-x-8"
 		}`}
 			></div>
-			<Sun className="fill-white ml-auto w-[15px] h-[15px]"></Sun>
+			<Sun className="fill-white ml-auto w-[17px] h-[17px]"></Sun>
 		</div>
 	);
 };

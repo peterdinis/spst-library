@@ -1,33 +1,63 @@
 "use client";
 
-import { FC, useState, FormEvent } from "react";
+import { FC, useState } from "react";
 import Header from "../shared/Header";
 import Link from "next/link";
-import { useFormState } from "react-dom";
-import { login } from "~/server/lucia/actions/teacherActions";
 import { Eye, EyeOff } from "lucide-react";
 import { useToast } from "~/components/ui/use-toast";
+import { useForm, FieldValues } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import { ILoginType } from "~/app/types/authTypes";
+import Cookie from "js-cookie";
 
-const RegisterForm: FC = () => {
-	const [state, formAction] = useFormState(login, null);
+const LoginForm: FC = () => {
+	const { register, handleSubmit } = useForm();
 	const [showPassword, setShowPassword] = useState(false);
 	const { toast } = useToast();
+	const router = useRouter();
 
-	const handleLoginSubmit = (e: FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		const formData = new FormData(e.currentTarget);
-		formAction(formData);
-		toast({
-			title: "Prihlásenie bolo úspešné",
-			duration: 2000,
-			className: "bg-green-500 text-white",
+	const loginTeacherMut = useMutation({
+		mutationKey: ["loginTeacher"],
+		mutationFn: async (data: ILoginType) => {
+			return await axios.post(
+				process.env.NEXT_PUBLIC_AUTH_API + "auth/users/login",
+				data,
+			);
+		},
+		onSuccess: (data) => {
+			Cookie.set("teacherD", JSON.stringify(data?.data?.user));
+			toast({
+				title: "Prihlásenie bolo úspešné",
+				duration: 2000,
+				className: "bg-green-500 text-white",
+			});
+			router.push("/teacher/profile");
+		},
+
+		onError: () => {
+			toast({
+				title: "Prihlásenie nebolo úspešné",
+				duration: 2000,
+				className: "bg-red-500 text-white",
+			});
+		},
+	});
+
+	const onStudentSubmit = async (data: FieldValues) => {
+		await loginTeacherMut.mutateAsync({
+			name: data.name,
+			lastName: data.lastName,
+			email: data.email,
+			password: data.password,
 		});
 	};
 	return (
 		<>
 			<Header text="Prihlásenie učiteľ" />
-			<form onSubmit={handleLoginSubmit}>
-				<div className="mb-4 flex flex-col rounded bg-white mt-6 dark:bg-card px-8 pb-8 pt-6 shadow-md">
+			<form onSubmit={handleSubmit(onStudentSubmit)}>
+				<div className="mb-4 flex flex-col rounded mt-6 bg-white dark:bg-card px-8 pb-8 pt-6 shadow-md">
 					<div className="mb-4">
 						<div className="mb-2">
 							<label
@@ -37,12 +67,14 @@ const RegisterForm: FC = () => {
 								Meno
 							</label>
 							<input
-								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
+								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 dark:text-black shadow"
 								id="name"
 								type="text"
-								name="name"
-								autoFocus
 								placeholder="Meno"
+								{...register("name", {
+									required: true,
+									minLength: 5,
+								})}
 							/>
 						</div>
 						<div className="mb-2">
@@ -53,11 +85,13 @@ const RegisterForm: FC = () => {
 								Priezvisko
 							</label>
 							<input
-								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
+								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 dark:text-black shadow"
 								id="lastName"
 								type="text"
-								name="lastName"
-								autoFocus
+								{...register("lastName", {
+									required: true,
+									minLength: 5,
+								})}
 								placeholder="Priezvisko"
 							/>
 						</div>
@@ -69,11 +103,13 @@ const RegisterForm: FC = () => {
 								Email
 							</label>
 							<input
-								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
+								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 dark:text-black shadow"
 								id="Email"
 								type="email"
-								name="email"
-								autoFocus
+								{...register("email", {
+									required: true,
+									minLength: 5,
+								})}
 								placeholder="Email"
 							/>
 						</div>
@@ -87,10 +123,13 @@ const RegisterForm: FC = () => {
 							</label>
 							<div className="relative">
 								<input
-									className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 shadow"
+									className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 dark:text-black shadow"
 									id="password"
 									type={showPassword ? "text" : "password"}
-									name="password"
+									{...register("password", {
+										required: true,
+										minLength: 5,
+									})}
 									autoFocus
 									autoComplete="current-password"
 									placeholder="********************************************"
@@ -106,20 +145,6 @@ const RegisterForm: FC = () => {
 								</button>
 							</div>
 						</div>
-
-						{state?.fieldError ? (
-							<ul className="list-disc space-y-1 rounded-lg border bg-destructive/10 p-2 text-[0.8rem] font-medium text-destructive">
-								{Object.values(state.fieldError).map((err) => (
-									<li className="ml-4" key={err}>
-										{err}
-									</li>
-								))}
-							</ul>
-						) : state?.formError ? (
-							<p className="rounded-lg border bg-destructive/10 p-2 text-[0.8rem] font-medium text-destructive">
-								{state?.formError}
-							</p>
-						) : null}
 						<div>
 							<button
 								className="mt-4 rounded-lg bg-red-700 p-2 text-white"
@@ -143,4 +168,4 @@ const RegisterForm: FC = () => {
 	);
 };
 
-export default RegisterForm;
+export default LoginForm;
