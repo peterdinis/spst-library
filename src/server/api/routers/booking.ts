@@ -188,38 +188,4 @@ export const bookingRouter = createTRPCRouter({
 				},
 			});
 		}),
-
-	extendedBooking: publicProcedure
-		.input(
-			z.object({
-				bookName: z.string(),
-				to: z.date(),
-				userEmail: z.string(),
-			}),
-		)
-		.mutation(async ({ ctx, input }) => {
-			const findBookToReturn = await ctx.db.booking.findFirst({
-				where: {
-					bookName: input.bookName,
-				},
-			});
-
-			if (!findBookToReturn) {
-				throw new TRPCError({
-					message: "Book with this id does not exists in user",
-					code: "BAD_REQUEST",
-				});
-			}
-
-			const extendSpecificBook = await ctx.db.booking.update({
-				where: {
-					id: findBookToReturn.id,
-				},
-				data: {
-					to: input.to,
-				},
-			});
-
-			return extendSpecificBook;
-		}),
 });
