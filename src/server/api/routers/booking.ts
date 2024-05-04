@@ -138,8 +138,7 @@ export const bookingRouter = createTRPCRouter({
 
 			return borrowedSpecificBook;
 		}),
-
-	// TODO: This bug must be fixed later 
+		
 	returnBooking: publicProcedure
 		.input(
 			z.object({
