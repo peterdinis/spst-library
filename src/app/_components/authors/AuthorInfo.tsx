@@ -32,6 +32,8 @@ const AuthorInfo: FC = () => {
 			<GlobalErrorComponent
 				statusCode="404"
 				message="Spisovateľ / ka  pod týmto id neexistuje"
+				linkHref="/authors"
+				linkText="Zoznam všetkých autorov"
 			/>
 		);
 	}

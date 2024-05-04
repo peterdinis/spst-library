@@ -21,6 +21,8 @@ const AdminAllTeachers: FC = () => {
 			<GlobalErrorComponent
 				statusCode="404"
 				message="Učitelia neboli nájdení"
+				linkHref="/admin/teachers"
+				linkText="Načítať znova"
 			/>
 		);
 	}

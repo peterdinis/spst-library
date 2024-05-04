@@ -31,6 +31,8 @@ const CategoryDetail: FC = () => {
 			<GlobalErrorComponent
 				statusCode="404"
 				message="Kategória pod týmto id neexistuje"
+				linkHref="/categories"
+				linkText="Zoznam všetkých kategórií"
 			/>
 		);
 	}
