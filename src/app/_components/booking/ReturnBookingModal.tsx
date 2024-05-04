@@ -44,11 +44,9 @@ const ReturnBookingModal: FC = () => {
 	});
 
 	const onSubmit = async (data: FieldValues) => {
-		console.log("D", data);
 		await newBookingRequest.mutateAsync({
 			bookName: data.bookName,
-			from: data.from,
-			to: data.to,
+			returnDate: data.returnDate,
 			userEmail: data.userEmail,
 		});
 	};
@@ -62,7 +60,7 @@ const ReturnBookingModal: FC = () => {
 						<Header text="Vrátenie knihy" />
 					</DialogTitle>
 					<DialogDescription>
-						<form onSubmit={handleSubmit(onSubmit)}>
+						<form className="mt-5" onSubmit={handleSubmit(onSubmit)}>
 							<div className="mt-2">
 								<Input
 									type="text"
@@ -75,21 +73,11 @@ const ReturnBookingModal: FC = () => {
 							<div className="mt-4">
 								<Input
 									type="date"
-									{...register("from", {
+									{...register("returnDate", {
 										required: true,
 										valueAsDate: true,
 									})}
-									placeholder="Od"
-								/>
-							</div>
-							<div className="mt-4">
-								<Input
-									type="date"
-									{...register("to", {
-										required: true,
-										valueAsDate: true,
-									})}
-									placeholder="Do"
+									placeholder="Vrátená k dátumu"
 								/>
 							</div>
 							<div className="mt-4">
@@ -98,7 +86,7 @@ const ReturnBookingModal: FC = () => {
 									{...register("userEmail", {
 										required: true,
 									})}
-									placeholder="Email osoby ktorá si chce požičať knihu"
+									placeholder="Email osoby ktorá si chce vrátiť knihu"
 								/>
 							</div>
 							<div className="mt-8">
