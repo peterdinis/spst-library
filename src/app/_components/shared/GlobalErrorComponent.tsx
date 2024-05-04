@@ -6,7 +6,7 @@ const GlobalErrorComponent: FC<IGlobalErrorProps> = ({
 	statusCode,
 	message,
 	linkHref,
-	linkText
+	linkText,
 }) => {
 	return (
 		<main className="flex h-screen w-full flex-col items-center justify-center">

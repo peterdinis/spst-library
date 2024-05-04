@@ -9,7 +9,6 @@ import GlobalErrorComponent from "../../shared/GlobalErrorComponent";
 import { format } from "date-fns";
 import { Button } from "~/components/ui/button";
 import ReturnBookingModal from "../../booking/ReturnBookingModal";
-import ExtendedBookingModal from "../../booking/ExtendedBookingModal";
 import { IBorrowedBookingTypes } from "~/app/types/bookingTypes";
 import GlobalPagination from "../../shared/GlobalPagination";
 
