@@ -11,6 +11,8 @@ export interface IGlobalCardProps {
 export interface IGlobalErrorProps {
 	statusCode: string;
 	message: string;
+	linkHref: string;
+	linkText: string
 }
 
 export interface IGlobalPaginationProps {

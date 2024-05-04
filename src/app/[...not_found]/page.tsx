@@ -6,6 +6,8 @@ const NotFoundPage: NextPage = () => {
 		<GlobalErrorComponent
 			statusCode={"404"}
 			message={"Stránka nebola nájdená"}
+			linkHref="/"
+			linkText="Návrat na hlavnú stárnku"
 		/>
 	);
 };

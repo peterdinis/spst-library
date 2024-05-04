@@ -32,6 +32,8 @@ const PublisherInfo: FC = () => {
 			<GlobalErrorComponent
 				statusCode="404"
 				message="Vydavateľstvo pod týmto id neexistuje"
+				linkHref="/publishers"
+				linkText="Zoznam všetkých vydavateľstiev"
 			/>
 		);
 	}

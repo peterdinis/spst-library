@@ -46,6 +46,8 @@ const BorrowedBooks: FC = () => {
 			<GlobalErrorComponent
 				message="Nepodarilo sa načítať požičané knihy"
 				statusCode="404"
+				linkHref="/student/profile"
+				linkText="Načítať znova"
 			/>
 		);
 	}

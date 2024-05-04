@@ -38,6 +38,8 @@ const BookDetail: FC = () => {
 			<GlobalErrorComponent
 				statusCode="404"
 				message="Kniha pod týmto id neexistuje"
+				linkHref="/books"
+				linkText="Zoznam všetkých kníh"
 			/>
 		);
 	}
