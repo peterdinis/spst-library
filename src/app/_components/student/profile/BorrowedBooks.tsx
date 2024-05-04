@@ -7,6 +7,7 @@ import GlobalErrorComponent from "../../shared/GlobalErrorComponent";
 import { format } from "date-fns";
 import { Button } from "~/components/ui/button";
 import ReturnBookingModal from "../../booking/ReturnBookingModal";
+import ExtendedBookingModal from "../../booking/ExtendedBookingModal";
 
 const BorrowedBooks: FC = () => {
   const studentCookie = useStudentCookie();
@@ -53,6 +54,9 @@ const BorrowedBooks: FC = () => {
                       </div>
                       <Button size={"lg"} className="ml-5" variant={"default"}>
                         <ReturnBookingModal />
+                      </Button>
+                      <Button size={"lg"} className="ml-5" variant={"secondary"}>
+                        <ExtendedBookingModal />
                       </Button>
                     </div>
                   </>

@@ -56,11 +56,15 @@ export const bookingRouter = createTRPCRouter({
 				limit: z.number(),
 				cursor: z.number().optional(),
 				skip: z.number().optional(),
+				userEmail: z.string(),
 			}),
 		)
 		.query(async ({ ctx, input }) => {
 			const { limit, skip, cursor } = input;
 			const items = await ctx.db.booking.findMany({
+				where: {
+					userEmail: input.userEmail,
+				},
 				take: limit + 1,
 				cursor: cursor ? { id: cursor } : undefined,
 				skip: skip,
@@ -138,7 +142,7 @@ export const bookingRouter = createTRPCRouter({
 
 			return borrowedSpecificBook;
 		}),
-		
+
 	returnBooking: publicProcedure
 		.input(
 			z.object({
