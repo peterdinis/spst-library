@@ -14,7 +14,6 @@ import {
 import { Input } from "~/components/ui/input";
 import { useToast } from "~/components/ui/use-toast";
 import { useForm, FieldValues } from "react-hook-form";
-import { useRouter } from "next/navigation";
 import { api } from "~/trpc/react";
 
 const ReturnBookingModal: FC = () => {
@@ -24,25 +23,23 @@ const ReturnBookingModal: FC = () => {
     register,
     handleSubmit,
   } = useForm();
-  const router = useRouter();
 
   const handleOpenDialog = () => {
     setOpen(!open);
   };
 
-  const newBookingRequest = api.booking.createBooking.useMutation({
+  const newBookingRequest = api.booking.returnBooking.useMutation({
     onSuccess: () => {
       toast({
-        title: "Kniha bola úpsešné požičaná",
+        title: "Kniha bola úpsešné vrátená",
         duration: 2000,
         className: "bg-green-500",
       });
-      router.push("/booking/success");
     },
 
     onError: () => {
       toast({
-        title: "Knihu sa požičať nepodarilo",
+        title: "Knihu nebola úspešné vrátená",
         duration: 2000,
         className: "bg-red-500",
       });
