@@ -143,10 +143,10 @@ const AuthorInfo: FC = () => {
 									<hr />
 									{teacherCookie || adminCookie ? (
 										<AuthorSheets
-										name={data?.name!}
-										data={data as unknown as Author}
-									/>
-									): (
+											name={data?.name!}
+											data={data as unknown as Author}
+										/>
+									) : (
 										<></>
 									)}
 								</div>

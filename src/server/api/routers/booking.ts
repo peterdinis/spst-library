@@ -8,24 +8,28 @@ export const bookingRouter = createTRPCRouter({
 		return allBorrowedBooks;
 	}),
 
-	displayingMyBooking: publicProcedure.input(z.object({
-		userEmail: z.string()
-	})).query(async({ctx, input}) => {
-		const allMyBooks = await ctx.db.booking.findMany({
-			where: {
-				userEmail: input.userEmail
+	displayingMyBooking: publicProcedure
+		.input(
+			z.object({
+				userEmail: z.string(),
+			}),
+		)
+		.query(async ({ ctx, input }) => {
+			const allMyBooks = await ctx.db.booking.findMany({
+				where: {
+					userEmail: input.userEmail,
+				},
+			});
+
+			if (!allMyBooks) {
+				throw new TRPCError({
+					message: "Žiadne požičané knihy",
+					code: "NOT_FOUND",
+				});
 			}
-		});
 
-		if(!allMyBooks) {
-			throw new TRPCError({
-				message: "Žiadne požičané knihy",
-				code: "NOT_FOUND"
-			})
-		};
-
-		return allMyBooks;
-	}),
+			return allMyBooks;
+		}),
 
 	fetchBookingById: publicProcedure
 		.input(
@@ -161,7 +165,7 @@ export const bookingRouter = createTRPCRouter({
 
 			const removeBookFromUserBooking = await ctx.db.booking.delete({
 				where: {
-					id: findBookToReturn?.id
+					id: findBookToReturn?.id,
 				},
 			});
 
