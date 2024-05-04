@@ -17,7 +17,7 @@ import { useForm, FieldValues } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { api } from "~/trpc/react";
 
-const BookingModal: FC = () => {
+const ReturnBookingModal: FC = () => {
   const [open, setOpen] = useState(false);
   const { toast } = useToast();
   const {
@@ -119,4 +119,4 @@ const BookingModal: FC = () => {
   );
 };
 
-export default BookingModal;
+export default ReturnBookingModal;
