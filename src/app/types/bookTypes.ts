@@ -16,5 +16,4 @@ export interface IBook {
 	author: IAuthor;
 }
 
-
-export type IBookCard = Pick<IBook, 'id' | 'image' | 'name' | 'description'>
+export type IBookCard = Pick<IBook, "id" | "image" | "name" | "description">;

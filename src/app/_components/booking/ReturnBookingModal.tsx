@@ -17,34 +17,31 @@ import { useForm, FieldValues } from "react-hook-form";
 import { api } from "~/trpc/react";
 
 const ReturnBookingModal: FC = () => {
-  const [open, setOpen] = useState(false);
-  const { toast } = useToast();
-  const {
-    register,
-    handleSubmit,
-  } = useForm();
+	const [open, setOpen] = useState(false);
+	const { toast } = useToast();
+	const { register, handleSubmit } = useForm();
 
 	const handleOpenDialog = () => {
 		setOpen(!open);
 	};
 
-  const newBookingRequest = api.booking.returnBooking.useMutation({
-    onSuccess: () => {
-      toast({
-        title: "Kniha bola úpsešné vrátená",
-        duration: 2000,
-        className: "bg-green-500",
-      });
-    },
+	const newBookingRequest = api.booking.returnBooking.useMutation({
+		onSuccess: () => {
+			toast({
+				title: "Kniha bola úpsešné vrátená",
+				duration: 2000,
+				className: "bg-green-500",
+			});
+		},
 
-    onError: () => {
-      toast({
-        title: "Knihu nebola úspešné vrátená",
-        duration: 2000,
-        className: "bg-red-500",
-      });
-    },
-  });
+		onError: () => {
+			toast({
+				title: "Knihu nebola úspešné vrátená",
+				duration: 2000,
+				className: "bg-red-500",
+			});
+		},
+	});
 
 	const onSubmit = async (data: FieldValues) => {
 		console.log("D", data);

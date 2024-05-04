@@ -27,7 +27,8 @@ const AllBooksWrapper: FC = () => {
 		},
 		{
 			//@ts-ignore
-			getNextPageParam: (lastPage: { nextCursor: any; }) => lastPage.nextCursor,
+			getNextPageParam: (lastPage: { nextCursor: any }) =>
+				lastPage.nextCursor,
 		},
 	);
 
