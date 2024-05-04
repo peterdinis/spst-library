@@ -115,7 +115,9 @@ const BookDetail: FC = () => {
                     <Button variant={"default"} size={"lg"} className="mt-5">
                       <Link href="/books">Návrat na knihy</Link>
                     </Button>
-                    {studentCookie || teacherCookie || adminCookie ? (
+                    {studentCookie ||
+                    teacherCookie ||
+                    (adminCookie && data?.isAvaiable! !== true) ? (
                       <>
                         <Button
                           variant={"secondary"}
@@ -128,10 +130,10 @@ const BookDetail: FC = () => {
                       </>
                     ) : (
                       <>
-					  <p className="break-words ml-6 pt-6 mt-6 font-bold text-xl text-red-600">
-                        Ak si chcete požičať knihu musíte byť prihlasení
-                      </p>
-					  </>
+                        <p className="break-words ml-6 pt-6 mt-6 font-bold text-xl text-red-600">
+                          Ak si chcete požičať knihu musíte byť prihlasení
+                        </p>
+                      </>
                     )}
                   </div>
                   <br />
