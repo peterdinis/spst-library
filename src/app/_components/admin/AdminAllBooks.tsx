@@ -20,6 +20,8 @@ const AdminAllBooks: FC = () => {
 			<GlobalErrorComponent
 				statusCode="404"
 				message="Knihy neboli nájdené"
+				linkHref="/admin/books"
+				linkText="Načítať znova"
 			/>
 		);
 	}

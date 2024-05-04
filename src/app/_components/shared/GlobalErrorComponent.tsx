@@ -5,6 +5,8 @@ import { IGlobalErrorProps } from "~/app/types/sharedTypes";
 const GlobalErrorComponent: FC<IGlobalErrorProps> = ({
 	statusCode,
 	message,
+	linkHref,
+	linkText
 }) => {
 	return (
 		<main className="flex h-screen w-full flex-col items-center justify-center">
@@ -19,7 +21,7 @@ const GlobalErrorComponent: FC<IGlobalErrorProps> = ({
 					<span className="absolute inset-0 translate-x-0.5 translate-y-0.5 bg-[#FF6A3D] transition-transform group-hover:translate-x-0 group-hover:translate-y-0"></span>
 
 					<span className="relative block border border-current bg-[#1A2238] px-8 py-3">
-						<Link href="/">Návrat na hlavnú stránku</Link>
+						<Link href={linkHref}>{linkText}</Link>
 					</span>
 				</button>
 			</div>

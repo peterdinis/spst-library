@@ -21,6 +21,8 @@ const AdminAllCategories: FC = () => {
 			<GlobalErrorComponent
 				statusCode="404"
 				message="Kategórie nenájdené"
+				linkHref="/admin/categories"
+				linkText="Načítať znova"
 			/>
 		);
 	}
