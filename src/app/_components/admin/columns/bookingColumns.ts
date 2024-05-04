@@ -29,4 +29,11 @@ export const columns: ColumnDef<Booking>[] = [
 		enableSorting: true,
 		enableGlobalFilter: true,
 	},
+
+	{
+		accessorKey: "userEmail",
+		header: "Knihu má požičanú",
+		enableSorting: true,
+		enableGlobalFilter: true
+	}
 ];
