@@ -140,7 +140,7 @@ export const bookingRouter = createTRPCRouter({
 		}),
 
 	// TODO: This bug must be fixed later 
-	/* returnBooking: publicProcedure
+	returnBooking: publicProcedure
 		.input(
 			z.object({
 				bookName: z.string(),
@@ -156,9 +156,9 @@ export const bookingRouter = createTRPCRouter({
 				},
 			});
 
-			const removeBookFromUserBooking = await ctx.db.user.delete({
+			const removeBookFromUserBooking = await ctx.db.booking.delete({
 				where: {
-					id: String(findBookToReturn?.id),
+					id: findBookToReturn?.id
 				},
 			});
 
@@ -178,7 +178,7 @@ export const bookingRouter = createTRPCRouter({
 					isAvaiable: true,
 				},
 			});
-		}), */
+		}),
 
 	extendedBooking: publicProcedure
 		.input(
