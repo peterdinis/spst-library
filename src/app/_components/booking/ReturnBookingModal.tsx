@@ -15,12 +15,14 @@ import { Input } from "~/components/ui/input";
 import { useToast } from "~/components/ui/use-toast";
 import { useForm, FieldValues } from "react-hook-form";
 import { api } from "~/trpc/react";
+import { useRouter, usePathname } from "next/navigation";
 
 const ReturnBookingModal: FC = () => {
 	const [open, setOpen] = useState(false);
 	const { toast } = useToast();
 	const { register, handleSubmit } = useForm();
-
+	const router = useRouter();
+	const pathname = usePathname();
 	const handleOpenDialog = () => {
 		setOpen(!open);
 	};
@@ -32,6 +34,9 @@ const ReturnBookingModal: FC = () => {
 				duration: 2000,
 				className: "bg-green-500",
 			});
+			setTimeout(() => {
+				router.prefetch(pathname);
+			}, 2000);
 		},
 
 		onError: () => {
