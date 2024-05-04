@@ -35,7 +35,7 @@ const Settings: FC<IStettingProps> = ({ studentCookie }: IStettingProps) => {
 							Meno
 						</label>
 						<Input
-							defaultValue="Alice Smith"
+							disabled={true}
 							id="name"
 							readOnly={!isEditable}
 							value={studentCookie?.name}
@@ -49,7 +49,7 @@ const Settings: FC<IStettingProps> = ({ studentCookie }: IStettingProps) => {
 							Email
 						</label>
 						<Input
-							defaultValue="alice.smith@example.com"
+							disabled={true}
 							id="email"
 							readOnly={!isEditable}
 							value={studentCookie?.email}
@@ -67,23 +67,9 @@ const Settings: FC<IStettingProps> = ({ studentCookie }: IStettingProps) => {
 							id="priezvisko"
 							placeholder="Priezvisko"
 							value={studentCookie?.lastName}
+							disabled={true}
 						/>
 					</div>
-					<div className="space-y-2">
-						<label
-							className="text-sm font-medium leading-none"
-							htmlFor="priezvisko"
-						>
-							Priezvisko
-						</label>
-						<Input
-							readOnly={!isEditable}
-							id="priezvisko"
-							placeholder="Priezvisko"
-							value={studentCookie?.lastName}
-						/>
-					</div>
-					<Button type="submit">Uložiť</Button>
 				</form>
 			</CardContent>
 		</Card>
