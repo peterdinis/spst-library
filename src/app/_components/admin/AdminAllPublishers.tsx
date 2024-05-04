@@ -6,7 +6,7 @@ import { api } from "~/trpc/react";
 import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import Header from "../shared/Header";
 import { DataTable } from "../shared/GlobalTable";
-import { columns } from "./columns/publisherColumns";
+import { columns, Publisher } from "./columns/publisherColumns";
 
 const AdminAllPublishers: FC = () => {
 	const { data, isLoading, isError } =
@@ -30,7 +30,7 @@ const AdminAllPublishers: FC = () => {
 	return (
 		<div className="mt-4">
 			<Header text="Zoznam všetkých vydavateľstiev" />
-			<DataTable columns={columns} data={data} />
+			<DataTable columns={columns} data={data as unknown as Publisher[]} />
 		</div>
 	);
 };

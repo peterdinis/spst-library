@@ -6,7 +6,7 @@ import { api } from "~/trpc/react";
 import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import Header from "../shared/Header";
 import { DataTable } from "../shared/GlobalTable";
-import { columns } from "./columns/authorColumns";
+import { Author, columns } from "./columns/authorColumns";
 
 const AdminAllAuthors: FC = () => {
 	const { data, isLoading, isError } = api.author.fetchAuthors.useQuery();
@@ -29,7 +29,7 @@ const AdminAllAuthors: FC = () => {
 	return (
 		<div className="mt-4">
 			<Header text="Zoznam všetkých spisovateľov" />
-			<DataTable columns={columns} data={data} />
+			<DataTable columns={columns} data={data as unknown as Author[]} />
 		</div>
 	);
 };

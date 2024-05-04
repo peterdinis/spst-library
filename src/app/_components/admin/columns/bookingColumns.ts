@@ -2,17 +2,17 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 
-export type Publisher = {
+export type Booking = {
 	id: string;
 	bookName: string;
 	from: string | Date;
 	to: string | Date;
 	isReturned: boolean;
 	isExtended: boolean;
-	borrowerEmail: string;
+	userEmail: string;
 };
 
-export const columns: ColumnDef<Publisher>[] = [
+export const columns: ColumnDef<Booking>[] = [
 	{
 		accessorKey: "id",
 		header: "Id",
@@ -29,4 +29,11 @@ export const columns: ColumnDef<Publisher>[] = [
 		enableSorting: true,
 		enableGlobalFilter: true,
 	},
+
+	{
+		accessorKey: "userEmail",
+		header: "Knihu má požičanú",
+		enableSorting: true,
+		enableGlobalFilter: true
+	}
 ];

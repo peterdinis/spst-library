@@ -7,6 +7,7 @@ import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import Header from "../shared/Header";
 import { DataTable } from "../shared/GlobalTable";
 import { columns } from "./columns/categoryColumns";
+import { Category } from "~/app/types/categoryTypes";
 
 const AdminAllCategories: FC = () => {
 	const { data, isLoading, isError } =
@@ -30,7 +31,7 @@ const AdminAllCategories: FC = () => {
 	return (
 		<div className="mt-4">
 			<Header text="Zoznam všetkých kategórií" />
-			<DataTable columns={columns} data={data} />
+			<DataTable columns={columns} data={data as unknown as Category[]} />
 		</div>
 	);
 };
