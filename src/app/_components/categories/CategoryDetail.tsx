@@ -74,10 +74,10 @@ const CategoryDetail: FC = () => {
 
 			{teacherCookie || adminCookie ? (
 				<CategorySheets
-				data={data as unknown as Category}
-				name={data?.name!}
-			/>
-			): (
+					data={data as unknown as Category}
+					name={data?.name!}
+				/>
+			) : (
 				<></>
 			)}
 		</>

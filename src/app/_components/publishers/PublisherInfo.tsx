@@ -139,14 +139,12 @@ const PublisherInfo: FC = () => {
 									<hr />
 									{teacherCookie || adminCookie ? (
 										<>
-											<PublisherSheets 
+											<PublisherSheets
 												name={data?.name!}
 											/>
 										</>
-									): (
-										<>
-										
-										</>
+									) : (
+										<></>
 									)}
 								</div>
 							</div>

@@ -6,7 +6,9 @@ interface IPublisherSheetProps {
 	name: string;
 }
 
-const PublisherSheets: FC<IPublisherSheetProps> = ({ name }: IPublisherSheetProps) => {
+const PublisherSheets: FC<IPublisherSheetProps> = ({
+	name,
+}: IPublisherSheetProps) => {
 	return (
 		<div className="flex mt-5">
 			<SheetHelper
