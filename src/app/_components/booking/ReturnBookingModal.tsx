@@ -14,37 +14,37 @@ import {
 import { Input } from "~/components/ui/input";
 import { useToast } from "~/components/ui/use-toast";
 import { useForm, FieldValues } from "react-hook-form";
-import { useRouter } from "next/navigation";
 import { api } from "~/trpc/react";
 
 const ReturnBookingModal: FC = () => {
-	const [open, setOpen] = useState(false);
-	const { toast } = useToast();
-	const { register, handleSubmit } = useForm();
-	const router = useRouter();
+  const [open, setOpen] = useState(false);
+  const { toast } = useToast();
+  const {
+    register,
+    handleSubmit,
+  } = useForm();
 
 	const handleOpenDialog = () => {
 		setOpen(!open);
 	};
 
-	const newBookingRequest = api.booking.createBooking.useMutation({
-		onSuccess: () => {
-			toast({
-				title: "Kniha bola úpsešné požičaná",
-				duration: 2000,
-				className: "bg-green-500",
-			});
-			router.push("/booking/success");
-		},
+  const newBookingRequest = api.booking.returnBooking.useMutation({
+    onSuccess: () => {
+      toast({
+        title: "Kniha bola úpsešné vrátená",
+        duration: 2000,
+        className: "bg-green-500",
+      });
+    },
 
-		onError: () => {
-			toast({
-				title: "Knihu sa požičať nepodarilo",
-				duration: 2000,
-				className: "bg-red-500",
-			});
-		},
-	});
+    onError: () => {
+      toast({
+        title: "Knihu nebola úspešné vrátená",
+        duration: 2000,
+        className: "bg-red-500",
+      });
+    },
+  });
 
 	const onSubmit = async (data: FieldValues) => {
 		console.log("D", data);

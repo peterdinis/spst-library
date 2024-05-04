@@ -64,12 +64,12 @@ export const bookingRouter = createTRPCRouter({
 			}),
 		)
 		.query(async ({ ctx, input }) => {
-			const { limit, skip, cursor } = input;
+			const { limit, skip, cursor, userEmail } = input;
 			const items = await ctx.db.booking.findMany({
-				where: {
-					userEmail: input.userEmail,
-				},
 				take: limit + 1,
+				where: {
+					userEmail
+				},
 				cursor: cursor ? { id: cursor } : undefined,
 				skip: skip,
 				orderBy: {
@@ -146,17 +146,16 @@ export const bookingRouter = createTRPCRouter({
 
 			return borrowedSpecificBook;
 		}),
-
+		
 	returnBooking: publicProcedure
 		.input(
 			z.object({
 				bookName: z.string(),
 				from: z.date(),
 				to: z.date(),
-				borrowerEmail: z.string(),
+				userEmail: z.string(),
 			}),
-		)
-		.mutation(async ({ ctx, input }) => {
+		).mutation(async ({ ctx, input }) => {
 			const findBookToReturn = await ctx.db.booking.findFirst({
 				where: {
 					bookName: input.bookName,
@@ -166,6 +165,9 @@ export const bookingRouter = createTRPCRouter({
 			const removeBookFromUserBooking = await ctx.db.booking.delete({
 				where: {
 					id: findBookToReturn?.id,
+					AND: {
+						userEmail: input.userEmail
+					}
 				},
 			});
 
@@ -185,14 +187,14 @@ export const bookingRouter = createTRPCRouter({
 					isAvaiable: true,
 				},
 			});
-		}),
+		}), 
 
 	extendedBooking: publicProcedure
 		.input(
 			z.object({
 				bookName: z.string(),
 				to: z.date(),
-				borrowerEmail: z.string(),
+				userEmail: z.string(),
 			}),
 		)
 		.mutation(async ({ ctx, input }) => {

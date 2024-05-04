@@ -136,57 +136,50 @@ const BookDetail: FC = () => {
 										</p>
 									</div>
 
-									<hr className="mt-6" />
-									<div className="flex">
-										<Button
-											variant={"default"}
-											size={"lg"}
-											className="mt-5"
-										>
-											<Link href="/books">
-												Návrat na knihy
-											</Link>
-										</Button>
-										{studentCookie ||
-										teacherCookie ||
-										adminCookie ? (
-											<>
-												<Button
-													variant={"secondary"}
-													size={"lg"}
-													className="ml-4 mt-5"
-												>
-													<BookingModal />
-												</Button>
-												<br />
-											</>
-										) : (
-											<>
-												<p className="break-words ml-6 pt-6 mt-6 font-bold text-xl text-red-600">
-													Ak si chcete požičať knihu
-													musíte byť prihlasení
-												</p>
-											</>
-										)}
-									</div>
-									<br />
-									<hr />
-									{teacherCookie || adminCookie ? (
-										<BookSheets
-											data={data as unknown as Book}
-											name={data?.name!}
-										/>
-									) : (
-										<></>
-									)}
-								</div>
-							</div>
-						</div>
-					</section>
-				</>
-			) : null}
-		</>
-	);
+                  <hr className="mt-6" />
+                  <div className="flex">
+                    <Button variant={"default"} size={"lg"} className="mt-5">
+                      <Link href="/books">Návrat na knihy</Link>
+                    </Button>
+                    {studentCookie ||
+                    teacherCookie ||
+                    (adminCookie && data?.isAvaiable! !== true) ? (
+                      <>
+                        <Button
+                          variant={"secondary"}
+                          size={"lg"}
+                          className="ml-4 mt-5"
+                        >
+                          <BookingModal />
+                        </Button>
+                        <br />
+                      </>
+                    ) : (
+                      <>
+                        <p className="break-words ml-6 pt-6 mt-6 font-bold text-xl text-red-600">
+                          Ak si chcete požičať knihu musíte byť prihlasení
+                        </p>
+                      </>
+                    )}
+                  </div>
+                  <br />
+                  <hr />
+                  {teacherCookie || adminCookie ? (
+                    <BookSheets
+                      data={data as unknown as Book}
+                      name={data?.name!}
+                    />
+                  ) : (
+                    <></>
+                  )}
+                </div>
+              </div>
+            </div>
+          </section>
+        </>
+      ) : null}
+    </>
+  );
 };
 
 export default BookDetail;
