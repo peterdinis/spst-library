@@ -67,7 +67,10 @@ const ExtendedBookingModal: FC = () => {
 						<Header text="Predlženie knihy" />
 					</DialogTitle>
 					<DialogDescription>
-						<form className="mt-5" onSubmit={handleSubmit(onSubmit)}>
+						<form
+							className="mt-5"
+							onSubmit={handleSubmit(onSubmit)}
+						>
 							<div className="mt-2">
 								<Input
 									type="text"

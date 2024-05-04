@@ -30,7 +30,10 @@ const AdminAllPublishers: FC = () => {
 	return (
 		<div className="mt-4">
 			<Header text="Zoznam všetkých vydavateľstiev" />
-			<DataTable columns={columns} data={data as unknown as Publisher[]} />
+			<DataTable
+				columns={columns}
+				data={data as unknown as Publisher[]}
+			/>
 		</div>
 	);
 };
