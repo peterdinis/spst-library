@@ -21,6 +21,8 @@ const AdminAllPublishers: FC = () => {
 			<GlobalErrorComponent
 				statusCode="404"
 				message="Vydavateľstvá neboli nájdené"
+				linkHref="/admin/publishers"
+				linkText="Načítať znova"
 			/>
 		);
 	}

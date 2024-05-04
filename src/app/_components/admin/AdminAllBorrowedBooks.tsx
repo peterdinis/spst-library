@@ -21,6 +21,8 @@ const AdminAllCategories: FC = () => {
 			<GlobalErrorComponent
 				statusCode="404"
 				message="Žiadne objednávky neboli vykonané"
+				linkHref="/admin/booking"
+				linkText="Načítať znova"
 			/>
 		);
 	}

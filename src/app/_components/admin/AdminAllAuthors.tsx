@@ -20,6 +20,8 @@ const AdminAllAuthors: FC = () => {
 			<GlobalErrorComponent
 				statusCode="404"
 				message="Spisovatelia neboli nájdení"
+				linkHref="/admin/authors"
+				linkText="Načítať znova"
 			/>
 		);
 	}
