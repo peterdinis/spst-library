@@ -151,8 +151,7 @@ export const bookingRouter = createTRPCRouter({
 		.input(
 			z.object({
 				bookName: z.string(),
-				from: z.date(),
-				to: z.date(),
+				returnDate: z.string(),
 				userEmail: z.string(),
 			}),
 		)
