@@ -1,5 +1,7 @@
+"use client"
+
 import { Loader2 } from "lucide-react";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Card, CardHeader, CardContent } from "~/components/ui/card";
 import useStudentCookie from "~/hooks/useStudentCookie";
 import { api } from "~/trpc/react";
@@ -12,12 +14,26 @@ import { IBorrowedBookingTypes } from "~/app/types/bookingTypes";
 import GlobalPagination from "../../shared/GlobalPagination";
 
 const BorrowedBooks: FC = () => {
+	const [page, setPage] = useState(0);
+
+	const limit = 10 as const;
   const studentCookie = useStudentCookie();
-  const { data, isLoading, isError } = api.booking.displayingMyBooking.useQuery(
-    {
-      userEmail: studentCookie?.email as unknown as string,
-    }
-  );
+
+  const {
+		data: paginatedData,
+		fetchNextPage,
+		isFetchingNextPage,
+		isLoading: paginatedLoading,
+		isError: paginatedError,
+	} = api.booking.paginatedBoooking.useInfiniteQuery(
+		{
+			limit,
+			userEmail: studentCookie?.email
+		},
+		{
+			
+		}
+	);
 
   if (isLoading) {
     return <Loader2 className="animate-bounce w-8 h-8" />;

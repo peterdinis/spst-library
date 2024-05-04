@@ -60,12 +60,16 @@ export const bookingRouter = createTRPCRouter({
 				limit: z.number(),
 				cursor: z.number().optional(),
 				skip: z.number().optional(),
+				userEmail: z.string(),
 			}),
 		)
 		.query(async ({ ctx, input }) => {
-			const { limit, skip, cursor } = input;
+			const { limit, skip, cursor, userEmail } = input;
 			const items = await ctx.db.booking.findMany({
 				take: limit + 1,
+				where: {
+					userEmail
+				},
 				cursor: cursor ? { id: cursor } : undefined,
 				skip: skip,
 				orderBy: {

@@ -15,3 +15,6 @@ export interface IBook {
 	publisher: Publisher;
 	author: IAuthor;
 }
+
+
+export type IBookCard = Pick<IBook, 'id' | 'image' | 'name' | 'description'>
