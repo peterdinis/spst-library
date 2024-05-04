@@ -15,43 +15,43 @@ import { Input } from "~/components/ui/input";
 import { useToast } from "~/components/ui/use-toast";
 import { useForm, FieldValues } from "react-hook-form";
 import { api } from "~/trpc/react";
+import { useRouter, usePathname } from "next/navigation";
 
 const ReturnBookingModal: FC = () => {
-  const [open, setOpen] = useState(false);
-  const { toast } = useToast();
-  const {
-    register,
-    handleSubmit,
-  } = useForm();
-
+	const [open, setOpen] = useState(false);
+	const { toast } = useToast();
+	const { register, handleSubmit } = useForm();
+	const router = useRouter();
+	const pathname = usePathname();
 	const handleOpenDialog = () => {
 		setOpen(!open);
 	};
 
-  const newBookingRequest = api.booking.returnBooking.useMutation({
-    onSuccess: () => {
-      toast({
-        title: "Kniha bola úpsešné vrátená",
-        duration: 2000,
-        className: "bg-green-500",
-      });
-    },
+	const newBookingRequest = api.booking.returnBooking.useMutation({
+		onSuccess: () => {
+			toast({
+				title: "Kniha bola úpsešné vrátená",
+				duration: 2000,
+				className: "bg-green-500",
+			});
+			setTimeout(() => {
+				router.prefetch(pathname);
+			}, 2000);
+		},
 
-    onError: () => {
-      toast({
-        title: "Knihu nebola úspešné vrátená",
-        duration: 2000,
-        className: "bg-red-500",
-      });
-    },
-  });
+		onError: () => {
+			toast({
+				title: "Knihu nebola úspešné vrátená",
+				duration: 2000,
+				className: "bg-red-500",
+			});
+		},
+	});
 
 	const onSubmit = async (data: FieldValues) => {
-		console.log("D", data);
 		await newBookingRequest.mutateAsync({
 			bookName: data.bookName,
-			from: data.from,
-			to: data.to,
+			returnDate: data.returnDate,
 			userEmail: data.userEmail,
 		});
 	};
@@ -65,7 +65,7 @@ const ReturnBookingModal: FC = () => {
 						<Header text="Vrátenie knihy" />
 					</DialogTitle>
 					<DialogDescription>
-						<form onSubmit={handleSubmit(onSubmit)}>
+						<form className="mt-5" onSubmit={handleSubmit(onSubmit)}>
 							<div className="mt-2">
 								<Input
 									type="text"
@@ -78,21 +78,11 @@ const ReturnBookingModal: FC = () => {
 							<div className="mt-4">
 								<Input
 									type="date"
-									{...register("from", {
+									{...register("returnDate", {
 										required: true,
 										valueAsDate: true,
 									})}
-									placeholder="Od"
-								/>
-							</div>
-							<div className="mt-4">
-								<Input
-									type="date"
-									{...register("to", {
-										required: true,
-										valueAsDate: true,
-									})}
-									placeholder="Do"
+									placeholder="Vrátená k dátumu"
 								/>
 							</div>
 							<div className="mt-4">
@@ -101,7 +91,7 @@ const ReturnBookingModal: FC = () => {
 									{...register("userEmail", {
 										required: true,
 									})}
-									placeholder="Email osoby ktorá si chce požičať knihu"
+									placeholder="Email osoby ktorá si chce vrátiť knihu"
 								/>
 							</div>
 							<div className="mt-8">

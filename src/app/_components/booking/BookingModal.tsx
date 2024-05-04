@@ -47,7 +47,6 @@ const BookingModal: FC = () => {
 	});
 
 	const onSubmit = async (data: FieldValues) => {
-		console.log("D", data);
 		await newBookingRequest.mutateAsync({
 			bookName: data.bookName,
 			from: data.from,
@@ -65,7 +64,7 @@ const BookingModal: FC = () => {
 						<Header text="Požičanie knihy" />
 					</DialogTitle>
 					<DialogDescription>
-						<form onSubmit={handleSubmit(onSubmit)}>
+						<form className="mt-5" onSubmit={handleSubmit(onSubmit)}>
 							<div className="mt-2">
 								<Input
 									type="text"
