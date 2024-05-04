@@ -17,7 +17,7 @@ import { useForm, FieldValues } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { api } from "~/trpc/react";
 
-const ReturnBookingModal: FC = () => {
+const ExtendedBookingModal: FC = () => {
   const [open, setOpen] = useState(false);
   const { toast } = useToast();
   const {
@@ -61,11 +61,11 @@ const ReturnBookingModal: FC = () => {
 
   return (
     <Dialog open={open} onOpenChange={handleOpenDialog}>
-      <DialogTrigger>Vrátenie knihy</DialogTrigger>
+      <DialogTrigger>Predlženie knihy</DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>
-            <Header text="Vrátenie knihy" />
+            <Header text="Predlženie knihy" />
           </DialogTitle>
           <DialogDescription>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -109,7 +109,7 @@ const ReturnBookingModal: FC = () => {
                 />
               </div>
               <div className="mt-8">
-                <Button>Vrátiť knihu</Button>
+                <Button>Predlžiť knihu</Button>
               </div>
             </form>
           </DialogDescription>
@@ -119,4 +119,4 @@ const ReturnBookingModal: FC = () => {
   );
 };
 
-export default ReturnBookingModal;
+export default ExtendedBookingModal;

@@ -6,6 +6,7 @@ import { api } from "~/trpc/react";
 import GlobalErrorComponent from "../../shared/GlobalErrorComponent";
 import { format } from "date-fns";
 import { Button } from "~/components/ui/button";
+import ReturnBookingModal from "../../booking/ReturnBookingModal";
 
 const BorrowedBooks: FC = () => {
   const studentCookie = useStudentCookie();
@@ -42,17 +43,17 @@ const BorrowedBooks: FC = () => {
                   <>
                     <div className="flex items-center space-x-4">
                       <div className="grid gap-1.5">
-                        <h3 className="text-lg font-bold">
-                          {item.bookName}
-                        </h3>
+                        <h3 className="text-lg font-bold">{item.bookName}</h3>
                         <p className="text-sm font-medium leading-none">
                           Od: {format(item.from, "dd-MM-yyyy")}
                         </p>
-						<p className="text-sm font-medium leading-none">
+                        <p className="text-sm font-medium leading-none">
                           Do: {format(item.to, "dd-MM-yyyy")}
                         </p>
                       </div>
-					  <Button size={"lg"} className="ml-5" variant={"default"}>Vrátiť knihu</Button>
+                      <Button size={"lg"} className="ml-5" variant={"default"}>
+                        <ReturnBookingModal />
+                      </Button>
                     </div>
                   </>
                 );
