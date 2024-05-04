@@ -10,7 +10,7 @@ import { columns } from "./columns/bookColumns";
 
 const AdminAllTeachers: FC = () => {
 	const { data, isLoading, isError } =
-		api.teacher.fetchAllTeachers.useQuery();
+		api.teacher.fetchAllTeachers.useQuery(); /* TODO: Call external server later */
 
 	if (isLoading) {
 		return <Loader2 className="animate-bounce w-8 h-8" />;
