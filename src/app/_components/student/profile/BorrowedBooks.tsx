@@ -106,13 +106,6 @@ const BorrowedBooks: FC = () => {
 											>
 												<ReturnBookingModal />
 											</Button>
-											<Button
-												size={"lg"}
-												className="ml-5"
-												variant={"secondary"}
-											>
-												<ExtendedBookingModal />
-											</Button>
 										</div>
 										<GlobalPagination
 											handleFetchNextPage={
