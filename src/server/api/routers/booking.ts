@@ -56,11 +56,15 @@ export const bookingRouter = createTRPCRouter({
 				limit: z.number(),
 				cursor: z.number().optional(),
 				skip: z.number().optional(),
+				userEmail: z.string(),
 			}),
 		)
 		.query(async ({ ctx, input }) => {
 			const { limit, skip, cursor } = input;
 			const items = await ctx.db.booking.findMany({
+				where: {
+					userEmail: input.userEmail,
+				},
 				take: limit + 1,
 				cursor: cursor ? { id: cursor } : undefined,
 				skip: skip,
@@ -139,8 +143,7 @@ export const bookingRouter = createTRPCRouter({
 			return borrowedSpecificBook;
 		}),
 
-	// TODO: This bug must be fixed later 
-	/* returnBooking: publicProcedure
+	returnBooking: publicProcedure
 		.input(
 			z.object({
 				bookName: z.string(),
@@ -156,9 +159,9 @@ export const bookingRouter = createTRPCRouter({
 				},
 			});
 
-			const removeBookFromUserBooking = await ctx.db.user.delete({
+			const removeBookFromUserBooking = await ctx.db.booking.delete({
 				where: {
-					id: String(findBookToReturn?.id),
+					id: findBookToReturn?.id
 				},
 			});
 
@@ -178,7 +181,7 @@ export const bookingRouter = createTRPCRouter({
 					isAvaiable: true,
 				},
 			});
-		}), */
+		}),
 
 	extendedBooking: publicProcedure
 		.input(
