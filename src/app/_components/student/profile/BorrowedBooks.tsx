@@ -28,7 +28,7 @@ const BorrowedBooks: FC = () => {
   } = api.booking.paginatedBoooking.useInfiniteQuery(
     {
 		limit,
-		userEmail: studentCookie?.email
+		userEmail: studentCookie?.email as unknown as string
     },
     {
       //@ts-ignore
