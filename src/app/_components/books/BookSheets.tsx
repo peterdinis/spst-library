@@ -9,7 +9,7 @@ import { Label } from "~/components/ui/label";
 import { api } from "~/trpc/react";
 import { useToast } from "~/components/ui/use-toast";
 import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 
 interface IBookSheetsProps {
   name: string;
@@ -21,22 +21,22 @@ const BookSheets: FC<IBookSheetsProps> = ({ name, data }: IBookSheetsProps) => {
   const router = useRouter();
   const deleteBookMut = api.book.deleteBook.useMutation();
   const updateBookMut = api.book.updateBook.useMutation({
-	onSuccess: () => {
-		toast({
-			title: "Kniha bola úpravená",
-			duration: 2000,
-			className: "bg-green-500 text-white"
-		})
-		router.push(`/books/${data?.id!}`)
-	},
+    onSuccess: () => {
+      toast({
+        title: "Kniha bola úpravená",
+        duration: 2000,
+        className: "bg-green-500 text-white",
+      });
+      router.push(`/books/${data?.id!}`);
+    },
 
-	onError: () => {
-		toast({
-			title: "Kniha nebola úpravená",
-			duration: 2000,
-			className: "bg-red-500 text-white"
-		})
-	}
+    onError: () => {
+      toast({
+        title: "Kniha nebola úpravená",
+        duration: 2000,
+        className: "bg-red-500 text-white",
+      });
+    },
   });
 
   const deleteBookFn = async (e: FormEvent) => {
@@ -55,13 +55,15 @@ const BookSheets: FC<IBookSheetsProps> = ({ name, data }: IBookSheetsProps) => {
   };
 
   const {
-	register,
-	handleSubmit,
-	reset,
-	formState: { errors },
-} = useForm();
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
-
+  const onSubmit = async(data: FieldValues) => {
+	// TODO: Musíme ešte sa zamyslieť čo budeme pri knihe upravovať
+  }
 
   return (
     <div className="flex mt-5">
