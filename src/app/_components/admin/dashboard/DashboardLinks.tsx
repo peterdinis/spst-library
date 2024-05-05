@@ -4,7 +4,7 @@ import { FC } from "react";
 const DashboardLinks: FC = () => {
 	return (
 		<nav className="text-sm text-gray-500 grid gap-4 dark:text-gray-400">
-			<Link
+			{/* <Link
 				className="font-semibold text-xl text-gray-900 dark:hover:text-primary dark:text-gray-50 hover:text-primary"
 				href="/admin/books"
 			>
@@ -45,7 +45,7 @@ const DashboardLinks: FC = () => {
 				href="/admin/bookings"
 			>
 				Všetky objednávky
-			</Link>
+			</Link> */}
 		</nav>
 	);
 };
