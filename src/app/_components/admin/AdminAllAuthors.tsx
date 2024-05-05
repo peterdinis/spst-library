@@ -1,15 +1,26 @@
 "use client";
 
 import { Loader2 } from "lucide-react";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { api } from "~/trpc/react";
 import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import Header from "../shared/Header";
 import { DataTable } from "../shared/GlobalTable";
 import { Author, columns } from "./columns/authorColumns";
+import { useRouter } from "next/navigation";
+import useAdminCookie from "~/hooks/useAdminCookie";
 
 const AdminAllAuthors: FC = () => {
 	const { data, isLoading, isError } = api.author.fetchAuthors.useQuery();
+
+	const router = useRouter();
+	const adminCookie = useAdminCookie();
+
+	useEffect(() => {
+		if (!adminCookie) {
+			router.push("/not-allowed");
+		}
+	}, [adminCookie]);
 
 	if (isLoading) {
 		return <Loader2 className="animate-bounce w-8 h-8" />;
