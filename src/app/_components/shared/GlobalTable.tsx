@@ -17,6 +17,8 @@ import {
 } from "~/components/ui/table";
 import { ChevronLeftIcon, ChevronRightIcon, Ghost } from "lucide-react";
 import { DataTableProps } from "~/app/types/sharedTypes";
+import Link from "next/link";
+import { Button } from "~/components/ui/button";
 
 export function DataTable<TData, TValue>({
 	columns,
@@ -39,6 +41,10 @@ export function DataTable<TData, TValue>({
 	});
 
 	return (
+		<>
+		<Button variant={"link"} size={"lg"}>
+			<Link href="/admin/profile">Späť na admin profil</Link>
+		</Button>
 		<div className="rounded-md border mt-5">
 			<Table>
 				<TableHeader>
@@ -174,5 +180,6 @@ export function DataTable<TData, TValue>({
 				</div>
 			</div>
 		</div>
+		</>
 	);
 }
