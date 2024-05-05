@@ -14,7 +14,7 @@ const AdminProfileWrapper: FC = () => {
 	const adminCookie = useAdminCookie();
 
 	useEffect(() => {
-		if(!adminCookie) {
+		if (!adminCookie) {
 			router.push("/admin/login");
 		}
 	}, [adminCookie]);
