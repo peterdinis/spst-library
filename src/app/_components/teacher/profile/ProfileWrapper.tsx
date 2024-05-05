@@ -12,7 +12,7 @@ const ProfileWrapper: FC = ({}) => {
 	const router = useRouter();
 
 	useEffect(() => {
-		if(!teacherCookie) {
+		if (!teacherCookie) {
 			router.push("/teacher/login");
 		}
 	}, [teacherCookie]);

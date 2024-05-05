@@ -13,9 +13,12 @@ const AdminAllTeachers: FC = () => {
 	const { data, isLoading, isError } = useQuery({
 		queryKey: ["allTeachers"],
 		queryFn: () => {
-			return axios.get(process.env.NEXT_PUBLIC_AUTH_API as unknown as string + "auth/users/teachers")
-		}
-	})
+			return axios.get(
+				(process.env.NEXT_PUBLIC_AUTH_API as unknown as string) +
+					"auth/users/teachers",
+			);
+		},
+	});
 
 	if (isLoading) {
 		return <Loader2 className="animate-bounce w-8 h-8" />;
