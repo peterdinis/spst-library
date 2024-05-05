@@ -6,7 +6,6 @@ import Link from "next/link";
 import { Eye, EyeOff } from "lucide-react";
 import { useToast } from "~/components/ui/use-toast";
 import { useForm, FieldValues } from "react-hook-form";
-import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { ILoginType } from "~/app/types/authTypes";
@@ -16,7 +15,6 @@ const LoginForm: FC = () => {
 	const { register, handleSubmit } = useForm();
 	const [showPassword, setShowPassword] = useState(false);
 	const { toast } = useToast();
-	const router = useRouter();
 
 	const loginTeacherMut = useMutation({
 		mutationKey: ["loginTeacher"],
@@ -33,7 +31,7 @@ const LoginForm: FC = () => {
 				duration: 2000,
 				className: "bg-green-500 text-white",
 			});
-			router.push("/teacher/profile");
+			window.location.replace("/teacher/profile");
 		},
 
 		onError: () => {
