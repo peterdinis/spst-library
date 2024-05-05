@@ -10,7 +10,6 @@ import {
 } from "~/components/ui/card";
 import DashboardLinks from "./dashboard/DashboardLinks";
 
-
 const AdminProfileWrapper: FC = () => {
 	return (
 		<>

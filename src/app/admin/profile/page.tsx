@@ -1,8 +1,8 @@
-import {NextPage} from "next";
+import { NextPage } from "next";
 import AdminProfileWrapper from "~/app/_components/admin/AdminProfileWrapper";
 
 const AdminProfilePage: NextPage = () => {
-	return <AdminProfileWrapper />
-}
+	return <AdminProfileWrapper />;
+};
 
-export default AdminProfilePage;	
+export default AdminProfilePage;
