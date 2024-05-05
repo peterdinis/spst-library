@@ -1,42 +1,34 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { Role } from "~/app/types/authTypes";
 
-export type User = {
+export type Student = {
 	id: string;
 	name: string;
 	lastName: string;
-	email: string;
-	role: Role;
+	userEmail: string;
 };
 
-export const columns: ColumnDef<User>[] = [
+export const columns: ColumnDef<Student>[] = [
 	{
 		accessorKey: "id",
 		header: "Id",
 	},
 	{
 		accessorKey: "name",
-		header: "Meno",
+		header: "Meno študenta/ky",
 		enableSorting: true,
 		enableGlobalFilter: true,
 	},
 	{
 		accessorKey: "lastName",
-		header: "Priezvisko",
+		header: "Priezvisko študenta/ky",
 		enableSorting: true,
 		enableGlobalFilter: true,
 	},
 	{
-		accessorKey: "email",
-		header: "Email",
-		enableSorting: true,
-		enableGlobalFilter: true,
-	},
-	{
-		accessorKey: "role",
-		header: "Rola",
+		accessorKey: "userEmail",
+		header: "Email študenta/ky",
 		enableSorting: true,
 		enableGlobalFilter: true,
 	},

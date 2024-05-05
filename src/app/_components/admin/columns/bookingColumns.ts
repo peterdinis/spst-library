@@ -18,14 +18,21 @@ export const columns: ColumnDef<Booking>[] = [
 		header: "Id",
 	},
 	{
-		accessorKey: "name",
-		header: "Meno vydavateľstva",
+		accessorKey: "bookName",
+		header: "Meno knihy",
 		enableSorting: true,
 		enableGlobalFilter: true,
 	},
 	{
-		accessorKey: "description",
-		header: "Popis vydavateľstva",
+		accessorKey: "from",
+		header: "Požičaná od",
+		enableSorting: true,
+		enableGlobalFilter: true,
+	},
+
+	{
+		accessorKey: "to",
+		header: "Požičaná do",
 		enableSorting: true,
 		enableGlobalFilter: true,
 	},

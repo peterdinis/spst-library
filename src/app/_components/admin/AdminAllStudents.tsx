@@ -2,15 +2,20 @@
 
 import { Loader2 } from "lucide-react";
 import { FC } from "react";
-import { api } from "~/trpc/react";
+import axios from "axios";
 import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import Header from "../shared/Header";
 import { DataTable } from "../shared/GlobalTable";
-import { columns } from "./columns/bookColumns";
+import { columns } from "./columns/studentColumns";
+import { useQuery } from "@tanstack/react-query";
 
 const AdminAllStudents: FC = () => {
-	const { data, isLoading, isError } =
-		api.student.fetchAllStudents.useQuery(); /* TODO: Call extenral server later  */
+	const { data, isLoading, isError } = useQuery({
+		queryKey: ["allStudents"],
+		queryFn: () => {
+			return axios.get(process.env.NEXT_PUBLIC_AUTH_API as unknown as string + "auth/users/students")
+		}
+	})
 
 	if (isLoading) {
 		return <Loader2 className="animate-bounce w-8 h-8" />;
@@ -30,7 +35,7 @@ const AdminAllStudents: FC = () => {
 	return (
 		<div className="mt-4">
 			<Header text="Zoznam všetkých študentov" />
-			<DataTable columns={columns} data={data} />
+			<DataTable columns={columns} data={data as any} />
 		</div>
 	);
 };
