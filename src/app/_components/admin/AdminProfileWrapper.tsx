@@ -2,7 +2,6 @@
 
 import { FC } from "react";
 import Header from "../shared/Header";
-import { IProfileData } from "~/app/types/authTypes";
 import {
 	Card,
 	CardHeader,
@@ -11,14 +10,8 @@ import {
 } from "~/components/ui/card";
 import DashboardLinks from "./dashboard/DashboardLinks";
 
-interface IProfileWrapperProps {
-	profileData: IProfileData;
-}
 
-const AdminProfileWrapper: FC<IProfileWrapperProps> = ({
-	profileData,
-}: IProfileWrapperProps) => {
-	console.log(profileData);
+const AdminProfileWrapper: FC = () => {
 	return (
 		<>
 			<Header text="Admin časť" />
