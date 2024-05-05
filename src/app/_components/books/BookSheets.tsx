@@ -9,6 +9,7 @@ import { Label } from "~/components/ui/label";
 import { api } from "~/trpc/react";
 import { useToast } from "~/components/ui/use-toast";
 import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
 
 interface IBookSheetsProps {
   name: string;
@@ -19,21 +20,48 @@ const BookSheets: FC<IBookSheetsProps> = ({ name, data }: IBookSheetsProps) => {
   const { toast } = useToast();
   const router = useRouter();
   const deleteBookMut = api.book.deleteBook.useMutation();
+  const updateBookMut = api.book.updateBook.useMutation({
+	onSuccess: () => {
+		toast({
+			title: "Kniha bola úpravená",
+			duration: 2000,
+			className: "bg-green-500 text-white"
+		})
+		router.push(`/books/${data?.id!}`)
+	},
+
+	onError: () => {
+		toast({
+			title: "Kniha nebola úpravená",
+			duration: 2000,
+			className: "bg-red-500 text-white"
+		})
+	}
+  });
 
   const deleteBookFn = async (e: FormEvent) => {
-	e.preventDefault();
+    e.preventDefault();
 
     await deleteBookMut.mutateAsync({
       id: data?.id,
     });
-	
+
     toast({
       title: "Kniha bola úspešené zmazaná",
       duration: 2000,
       className: "bg-green-500",
     });
-	router.push("/books");
+    router.push("/books");
   };
+
+  const {
+	register,
+	handleSubmit,
+	reset,
+	formState: { errors },
+} = useForm();
+
+
 
   return (
     <div className="flex mt-5">
