@@ -34,6 +34,7 @@ const LoginForm: FC = () => {
 				className: "bg-green-500 text-white",
 			});
 			window.location.replace("/student/profile");
+			window.location.replace("/student/profile");
 		},
 
 		onError: () => {

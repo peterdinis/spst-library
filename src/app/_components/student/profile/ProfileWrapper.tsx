@@ -10,12 +10,6 @@ import { useRouter } from "next/navigation";
 const ProfileWrapper: FC = () => {
 	const studentCookie = useStudentCookie();
 	const router = useRouter();
-
-	useEffect(() => {
-		if (!studentCookie) {
-			router.push("/student/login");
-		}
-	}, [studentCookie]);
 	return (
 		<div className="grid md:grid-cols-2 md:gap-6 ml-4 mr-4">
 			<div className="space-y-6">
@@ -29,3 +23,4 @@ const ProfileWrapper: FC = () => {
 };
 
 export default ProfileWrapper;
+
