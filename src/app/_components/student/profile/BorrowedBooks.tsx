@@ -62,7 +62,6 @@ const BorrowedBooks: FC = () => {
 	const handleFetchPreviousPage = () => {
 		setPage((prev) => prev - 1);
 	};
-	
 
 	return (
 		<div className="space-y-6">

@@ -1,11 +1,11 @@
-"use client";
+"use client"
 
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import BorrowedBooks from "./BorrowedBooks";
 import Settings from "./Settings";
 import useStudentCookie from "~/hooks/useStudentCookie";
 import { ICookieAuthType } from "~/app/types/authTypes";
-import { useRouter } from "next/navigation";
+import { Loader2 } from "lucide-react";
 
 const ProfileWrapper: FC = () => {
 	const studentCookie = useStudentCookie();
@@ -23,4 +23,3 @@ const ProfileWrapper: FC = () => {
 };
 
 export default ProfileWrapper;
-
