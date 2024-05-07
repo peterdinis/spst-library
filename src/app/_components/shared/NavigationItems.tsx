@@ -17,8 +17,6 @@ const NavigationItems: FC = () => {
 	const adminCookie = useAdminCookie();
 	const router = useRouter();
 	const { toast } = useToast();
-
-	console.log("StudentCookie", studentCookie);
 	return (
 		<>
 			<li className="text-xl dark:text-blue-50 text-black">
