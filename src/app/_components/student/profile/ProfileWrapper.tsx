@@ -5,7 +5,7 @@ import BorrowedBooks from "./BorrowedBooks";
 import Settings from "./Settings";
 import useStudentCookie from "~/hooks/useStudentCookie";
 import { ICookieAuthType } from "~/app/types/authTypes";
-import { Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const ProfileWrapper: FC = () => {
 	const studentCookie = useStudentCookie();
