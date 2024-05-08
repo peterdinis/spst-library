@@ -76,8 +76,3 @@ model Booking {
     isExtended    Boolean? // Predlženie knihy
     userEmail     String
 }
-
-model SearchQuery {
-  id    String @id @default(cuid())
-  query String
-}
