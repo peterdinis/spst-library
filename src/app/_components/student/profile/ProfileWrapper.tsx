@@ -12,8 +12,7 @@ const ProfileWrapper: FC = () => {
 	const studentCookie = useStudentCookie();
 	const router = useRouter();
 	const studentCheck = Cookie.get("isStudentLogin");
-
-	console.log("StudentCheck", studentCheck);
+	
 	if(!studentCheck) {
 		router.push("/student/login");
 	}

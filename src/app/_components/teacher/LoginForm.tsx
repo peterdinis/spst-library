@@ -31,6 +31,8 @@ const LoginForm: FC = () => {
 				duration: 2000,
 				className: "bg-green-500 text-white",
 			});
+			Cookie.set("isTeacherLogin", "true");
+			window.location.replace("/teacher/profile");
 			window.location.replace("/teacher/profile");
 		},
 
