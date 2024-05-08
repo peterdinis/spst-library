@@ -8,8 +8,8 @@ import Header from "../shared/Header";
 import { DataTable } from "../shared/GlobalTable";
 import { columns } from "./columns/categoryColumns";
 import { Category } from "~/app/types/categoryTypes";
-import useAdminCookie from "~/hooks/useAdminCookie";
 import { useRouter } from "next/navigation";
+import Cookie from "js-cookie";
 
 const AdminAllCategories: FC = () => {
 	const { data, isLoading, isError } =
@@ -20,13 +20,11 @@ const AdminAllCategories: FC = () => {
 	}
 
 	const router = useRouter();
-	const adminCookie = useAdminCookie();
+	const adminCheck = Cookie.get("isAdminLogin");
 
-	useEffect(() => {
-		if(!adminCookie) {
-			router.push("/not-allowed");
-		}
-	}, [adminCookie]);
+	if (!adminCheck) {
+		router.push("/not-allowed");
+	}
 
 	if (isError) {
 		return (

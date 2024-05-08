@@ -33,6 +33,7 @@ const LoginForm: FC = () => {
 				duration: 2000,
 				className: "bg-green-500 text-white",
 			});
+			Cookie.set("isStudentLogin", "true");
 			window.location.replace("/student/profile");
 			window.location.replace("/student/profile");
 		},
