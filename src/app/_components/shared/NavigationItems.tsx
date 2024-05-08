@@ -56,8 +56,8 @@ const NavigationItems: FC = () => {
 						profileLink={"/student/profile"}
 						logoutFn={() => {
 							Cookie.remove("studentD");
-							window.location.reload();
-							router.push("/student/login");
+							Cookie.remove("isStudentLogin");
+							window.location.replace("/student/login");
 							toast({
 								title: "Odhlásenie bolo úspešné",
 								className: "bg-green-500 text-blue-50",
