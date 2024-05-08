@@ -1,10 +1,5 @@
 import { TRPCError } from "@trpc/server";
-import {
-	createTRPCRouter,
-	protectedProcedure,
-	publicProcedure,
-	studentProtectedProcedure,
-} from "../trpc";
+import { createTRPCRouter, publicProcedure } from "../trpc";
 import z from "zod";
 
 export const bookingRouter = createTRPCRouter({
@@ -12,6 +7,29 @@ export const bookingRouter = createTRPCRouter({
 		const allBorrowedBooks = await ctx.db.booking.findMany({});
 		return allBorrowedBooks;
 	}),
+
+	displayingMyBooking: publicProcedure
+		.input(
+			z.object({
+				userEmail: z.string(),
+			}),
+		)
+		.query(async ({ ctx, input }) => {
+			const allMyBooks = await ctx.db.booking.findMany({
+				where: {
+					userEmail: input.userEmail,
+				},
+			});
+
+			if (!allMyBooks) {
+				throw new TRPCError({
+					message: "Žiadne požičané knihy",
+					code: "NOT_FOUND",
+				});
+			}
+
+			return allMyBooks;
+		}),
 
 	fetchBookingById: publicProcedure
 		.input(
@@ -42,12 +60,16 @@ export const bookingRouter = createTRPCRouter({
 				limit: z.number(),
 				cursor: z.number().optional(),
 				skip: z.number().optional(),
+				userEmail: z.string(),
 			}),
 		)
 		.query(async ({ ctx, input }) => {
-			const { limit, skip, cursor } = input;
+			const { limit, skip, cursor, userEmail } = input;
 			const items = await ctx.db.booking.findMany({
 				take: limit + 1,
+				where: {
+					userEmail,
+				},
 				cursor: cursor ? { id: cursor } : undefined,
 				skip: skip,
 				orderBy: {
@@ -66,20 +88,104 @@ export const bookingRouter = createTRPCRouter({
 			};
 		}),
 
-	//TODO: Later
-	/* createTeacherBooking: protectedProcedure.input().mutation(async({ctx, input} => {
+	createBooking: publicProcedure
+		.input(
+			z.object({
+				bookName: z.string(),
+				from: z.date(),
+				to: z.date(),
+				userEmail: z.string(),
+			}),
+		)
+		.mutation(async ({ ctx, input }) => {
+			const findOneBook = await ctx.db.book.findFirst({
+				where: {
+					name: input.bookName,
+					AND: {
+						NOT: {
+							isAvaiable: false,
+						},
+					},
+				},
+			});
 
-	})),
+			if (!findOneBook) {
+				throw new TRPCError({
+					message: "Can not borrowed book",
+					code: "FORBIDDEN",
+				});
+			}
 
-	createStudentBooking: studentProtectedProcedure.input().mutation(async({ctx, input} => {
+			const borrowedSpecificBook = await ctx.db.booking.create({
+				data: {
+					userEmail: input.userEmail,
+					bookName: findOneBook.name,
+					from: input.from,
+					to: input.to,
+					isBorrowed: true,
+					isReturned: false,
+					isExtended: false,
+				},
+			});
 
-	})),
+			await ctx.db.book.update({
+				where: {
+					id: findOneBook.id,
+				},
+				data: {
+					isAvaiable: false,
+				},
+			});
 
-	returnTeacherBooking: protectedProcedure.input().mutation(async({ctx, input} => {
+			if (!borrowedSpecificBook) {
+				throw new TRPCError({
+					message: "Something went wrong",
+					code: "BAD_REQUEST",
+				});
+			}
 
-	})),
+			return borrowedSpecificBook;
+		}),
 
-	returnStudentBooking: studentProtectedProcedure.input().mutation(async({ctx, input} => {
+	returnBooking: publicProcedure
+		.input(
+			z.object({
+				bookName: z.string(),
+				returnDate: z.date(),
+				userEmail: z.string(),
+			}),
+		)
+		.mutation(async ({ ctx, input }) => {
+			const findBookToReturn = await ctx.db.booking.findFirst({
+				where: {
+					bookName: input.bookName,
+				},
+			});
 
-	})), */
+			const removeBookFromUserBooking = await ctx.db.booking.delete({
+				where: {
+					id: findBookToReturn?.id,
+					AND: {
+						userEmail: input.userEmail,
+					},
+				},
+			});
+
+			if (!removeBookFromUserBooking) {
+				throw new TRPCError({
+					message: "Book with this id does not exists in user",
+					code: "BAD_REQUEST",
+				});
+			}
+
+			await ctx.db.book.update({
+				where: {
+					id: removeBookFromUserBooking?.id as unknown as number,
+				},
+
+				data: {
+					isAvaiable: true,
+				},
+			});
+		}),
 });

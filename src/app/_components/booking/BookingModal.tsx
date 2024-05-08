@@ -13,21 +13,45 @@ import {
 } from "~/components/ui/dialog";
 import { Input } from "~/components/ui/input";
 import { useToast } from "~/components/ui/use-toast";
+import { useForm, FieldValues } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { api } from "~/trpc/react";
 
 const BookingModal: FC = () => {
 	const [open, setOpen] = useState(false);
 	const { toast } = useToast();
+	const { register, handleSubmit } = useForm();
+	const router = useRouter();
 
 	const handleOpenDialog = () => {
 		setOpen(!open);
 	};
 
-	const handleBooking = (e: { preventDefault: () => void }) => {
-		e.preventDefault();
-		toast({
-			title: "Kniha bola úpsešné požičaná",
-			duration: 2000,
-			className: "bg-green-500",
+	const newBookingRequest = api.booking.createBooking.useMutation({
+		onSuccess: () => {
+			toast({
+				title: "Kniha bola úpsešné požičaná",
+				duration: 2000,
+				className: "bg-green-500",
+			});
+			router.push("/booking/success");
+		},
+
+		onError: () => {
+			toast({
+				title: "Knihu sa požičať nepodarilo",
+				duration: 2000,
+				className: "bg-red-500",
+			});
+		},
+	});
+
+	const onSubmit = async (data: FieldValues) => {
+		await newBookingRequest.mutateAsync({
+			bookName: data.bookName,
+			from: data.from,
+			to: data.to,
+			userEmail: data.userEmail,
 		});
 	};
 
@@ -40,23 +64,50 @@ const BookingModal: FC = () => {
 						<Header text="Požičanie knihy" />
 					</DialogTitle>
 					<DialogDescription>
-						<form>
+						<form
+							className="mt-5"
+							onSubmit={handleSubmit(onSubmit)}
+						>
 							<div className="mt-2">
-								<Input type="text" placeholder="Meno" />
+								<Input
+									type="text"
+									{...register("bookName", {
+										required: true,
+									})}
+									placeholder="Meno knihy"
+								/>
 							</div>
 							<div className="mt-4">
-								<Input type="text" placeholder="Priezvisko" />
+								<Input
+									type="date"
+									{...register("from", {
+										required: true,
+										valueAsDate: true,
+									})}
+									placeholder="Od"
+								/>
 							</div>
 							<div className="mt-4">
-								<Input type="text" placeholder="Názov knihy" />
+								<Input
+									type="date"
+									{...register("to", {
+										required: true,
+										valueAsDate: true,
+									})}
+									placeholder="Do"
+								/>
 							</div>
 							<div className="mt-4">
-								<Input type="date" placeholder="Od" />
+								<Input
+									type="text"
+									{...register("userEmail", {
+										required: true,
+									})}
+									placeholder="Email osoby ktorá si chce požičať knihu"
+								/>
 							</div>
 							<div className="mt-8">
-								<Button onClick={handleBooking}>
-									Požičať knihu
-								</Button>
+								<Button>Požičať knihu</Button>
 							</div>
 						</form>
 					</DialogDescription>

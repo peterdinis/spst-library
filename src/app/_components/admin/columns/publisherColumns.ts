@@ -2,26 +2,26 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 
-export type Category = {
+export type Publisher = {
 	id: string;
 	name: string;
 	description: string;
 };
 
-export const columns: ColumnDef<Category>[] = [
+export const columns: ColumnDef<Publisher>[] = [
 	{
 		accessorKey: "id",
 		header: "Id",
 	},
 	{
 		accessorKey: "name",
-		header: "Meno kategórie",
+		header: "Meno vydavateľstva",
 		enableSorting: true,
 		enableGlobalFilter: true,
 	},
 	{
 		accessorKey: "description",
-		header: "Popis kategórie",
+		header: "Popis vydavateľstva",
 		enableSorting: true,
 		enableGlobalFilter: true,
 	},

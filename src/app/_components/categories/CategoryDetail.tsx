@@ -8,9 +8,15 @@ import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import Link from "next/link";
 import { Button } from "~/components/ui/button";
 import Header from "../shared/Header";
+import CategorySheets from "./CategorySheets";
+import { Category } from "@prisma/client";
+import useTeacherCookie from "~/hooks/useTeacherCookie";
+import useAdminCookie from "~/hooks/useAdminCookie";
 
 const CategoryDetail: FC = () => {
 	const { id } = useParams();
+	const teacherCookie = useTeacherCookie();
+	const adminCookie = useAdminCookie();
 	const { data, isLoading, isError } =
 		api.category.fetchCategoryById.useQuery({
 			id: Number(id),
@@ -25,6 +31,8 @@ const CategoryDetail: FC = () => {
 			<GlobalErrorComponent
 				statusCode="404"
 				message="Kategória pod týmto id neexistuje"
+				linkHref="/categories"
+				linkText="Zoznam všetkých kategórií"
 			/>
 		);
 	}
@@ -32,28 +40,28 @@ const CategoryDetail: FC = () => {
 	return (
 		<>
 			<Header text="Detail kategórie" />
-			<div className="mt-6 overflow-hidden bg-white shadow sm:rounded-lg">
-				<div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-					<dt className="text-sm font-medium text-gray-500">
+			<div className="mt-6 overflow-hidden dark:bg-card bg-white shadow sm:rounded-lg">
+				<div className="dark:text-blue-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+					<dt className="text-sm font-medium text-gray-500 dark:text-blue-50">
 						Meno kategórie
 					</dt>
-					<dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+					<dd className="mt-1 text-sm dark:text-blue-50 text-gray-900 sm:col-span-2 sm:mt-0">
 						{data && data.name}{" "}
 					</dd>
 				</div>
-				<div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-					<dt className="text-sm font-medium text-gray-500">
+				<div className="dark:text-blue-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+					<dt className="text-sm font-medium text-gray-500 dark:text-blue-50">
 						Popis kategórie
 					</dt>
-					<dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+					<dd className="mt-1 text-sm dark:text-blue-50 text-gray-900 sm:col-span-2 sm:mt-0">
 						{data && data.description}
 					</dd>
 				</div>
-				<div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-					<dt className="text-sm font-medium text-gray-500">
+				<div className="dark:text-blue-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+					<dt className="text-sm font-medium text-gray-500 dark:text-blue-50">
 						Knihy ktoré májú danú kategóriu
 					</dt>
-					<dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+					<dd className="mt-1 text-sm dark:text-blue-50 text-gray-900 sm:col-span-2 sm:mt-0">
 						{data &&
 							data.books.map((item) => {
 								return <>{item.name}</>;
@@ -65,6 +73,15 @@ const CategoryDetail: FC = () => {
 					<Link href="/categories">Späť na kategórie</Link>
 				</Button>
 			</div>
+
+			{teacherCookie || adminCookie ? (
+				<CategorySheets
+					data={data as unknown as Category}
+					name={data?.name!}
+				/>
+			) : (
+				<></>
+			)}
 		</>
 	);
 };

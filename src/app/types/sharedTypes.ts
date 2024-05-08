@@ -11,6 +11,8 @@ export interface IGlobalCardProps {
 export interface IGlobalErrorProps {
 	statusCode: string;
 	message: string;
+	linkHref: string;
+	linkText: string;
 }
 
 export interface IGlobalPaginationProps {
@@ -27,7 +29,7 @@ export interface ILongTextProps {
 
 export interface DataTableProps<TData, TValue> {
 	columns: ColumnDef<TData, TValue>[];
-	data: any; // TODO: Fix later
+	data: TData[];
 }
 
 export interface IHeaderProps {

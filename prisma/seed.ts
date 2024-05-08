@@ -43,38 +43,6 @@ async function main() {
 		authors.push(author);
 	}
 
-	// Create users - STUDENT
-	const students = [];
-	for (let i = 0; i < 6; i++) {
-		const student = await prisma.user.create({
-			data: {
-				name: `Student ${i + 1}`,
-				lastName: "Doe",
-				email: `student${i + 1}@example.com`,
-				password: "password123",
-				isActive: true,
-				role: "STUDENT",
-			},
-		});
-		students.push(student);
-	}
-
-	// Create users - TEACHER
-	const teachers = [];
-	for (let i = 0; i < 6; i++) {
-		const teacher = await prisma.user.create({
-			data: {
-				name: `Teacher ${i + 1}`,
-				lastName: "Smith",
-				email: `teacher${i + 1}@example.com`,
-				password: "password123",
-				isActive: true,
-				role: "TEACHER",
-			},
-		});
-		teachers.push(teacher);
-	}
-
 	// Create books
 	const books = [];
 	for (let i = 0; i < 6; i++) {
@@ -83,7 +51,7 @@ async function main() {
 				name: `Book ${i + 1}`,
 				description: `Description for book ${i + 1}.`,
 				image: "https://picsum.photos/200/300",
-				year: 2000 + i,
+				year: "2001",
 				pages: 300 + i,
 				isAvaiable: true,
 				itemsInStock: 10 + i,

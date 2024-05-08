@@ -2,26 +2,33 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 
-export type Category = {
+export type Student = {
 	id: string;
 	name: string;
-	description: string;
+	lastName: string;
+	userEmail: string;
 };
 
-export const columns: ColumnDef<Category>[] = [
+export const columns: ColumnDef<Student>[] = [
 	{
 		accessorKey: "id",
 		header: "Id",
 	},
 	{
 		accessorKey: "name",
-		header: "Meno kategórie",
+		header: "Meno študenta/ky",
 		enableSorting: true,
 		enableGlobalFilter: true,
 	},
 	{
-		accessorKey: "description",
-		header: "Popis kategórie",
+		accessorKey: "lastName",
+		header: "Priezvisko študenta/ky",
+		enableSorting: true,
+		enableGlobalFilter: true,
+	},
+	{
+		accessorKey: "userEmail",
+		header: "Email študenta/ky",
 		enableSorting: true,
 		enableGlobalFilter: true,
 	},

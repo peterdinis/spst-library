@@ -66,26 +66,6 @@ model Author {
     updatedAt   DateTime @default(now()) @updatedAt
 }
 
-model User {
-    id        String   @id @default(uuid())
-    name      String
-    lastName  String
-    email     String
-    password  String
-    isActive  Boolean  @default(true)
-    role      AuthRole @default(STUDENT)
-    createdAt DateTime @default(now())
-    updatedAt DateTime @default(now()) @updatedAt
-    sessions  Session[]
-}
-
-model Session {
-    id        String   @id
-    userId    String
-    expiresAt DateTime
-    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
 model Booking {
     id            Int      @id @default(autoincrement())
     bookName      String
@@ -94,13 +74,7 @@ model Booking {
     isBorrowed    Boolean
     isReturned    Boolean
     isExtended    Boolean? // Predlženie knihy
-    borrowerEmail String
-}
-
-enum AuthRole {
-    TEACHER
-    STUDENT
-    ADMIN
+    userEmail     String
 }
 
 model SearchQuery {

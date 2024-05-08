@@ -1,12 +1,13 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, Key, useState } from "react";
 import Header from "../shared/Header";
 import { Input } from "~/components/ui/input";
 import { Ghost, Loader2 } from "lucide-react";
 import { api } from "~/trpc/react";
 import GlobalCard from "../shared/GlobalCard";
 import GlobalPagination from "../shared/GlobalPagination";
+import { IBookCard } from "~/app/types/bookTypes";
 
 const AllBooksWrapper: FC = () => {
 	const [searchTerm, setSearchTerm] = useState("");
@@ -25,7 +26,9 @@ const AllBooksWrapper: FC = () => {
 			limit,
 		},
 		{
-			getNextPageParam: (lastPage) => lastPage.nextCursor,
+			//@ts-ignore
+			getNextPageParam: (lastPage: { nextCursor: any }) =>
+				lastPage.nextCursor,
 		},
 	);
 
@@ -79,7 +82,7 @@ const AllBooksWrapper: FC = () => {
 			<div className="mx-auto mt-5 grid gap-8 overflow-x-auto pt-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 				{!paginatedLoading &&
 					toShow &&
-					toShow.map((filteredItem) => (
+					toShow.map((filteredItem: IBookCard) => (
 						<GlobalCard
 							key={filteredItem.id}
 							image={filteredItem.image}
