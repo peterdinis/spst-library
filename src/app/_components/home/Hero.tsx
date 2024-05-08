@@ -8,7 +8,7 @@ import { Button } from "~/components/ui/button";
 import { motion } from "framer-motion";
 
 const Hero: FC = () => {
-  const cardVariants = {
+  const homepageVariants = {
     hidden: { opacity: 0, scale: 0.9 },
     visible: {
       opacity: 1,
@@ -21,7 +21,7 @@ const Hero: FC = () => {
 
   return (
     <motion.div
-      variants={cardVariants}
+      variants={homepageVariants}
       className="container relative z-0 mx-auto px-4 xl:px-0"
     >
       <div className="flex flex-col-reverse md:flex-row">
