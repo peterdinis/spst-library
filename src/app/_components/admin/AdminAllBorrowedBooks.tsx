@@ -8,7 +8,7 @@ import Header from "../shared/Header";
 import { DataTable } from "../shared/GlobalTable";
 import { Booking, columns } from "./columns/bookingColumns";
 import { useRouter } from "next/navigation";
-import Cookie from "js-cookie"
+import Cookie from "js-cookie";
 
 const AdminAllCategories: FC = () => {
 	const { data, isLoading, isError } =
@@ -17,7 +17,7 @@ const AdminAllCategories: FC = () => {
 	const router = useRouter();
 	const adminCheck = Cookie.get("isAdminLogin");
 
-	if(!adminCheck) {
+	if (!adminCheck) {
 		router.push("/not-allowed");
 	}
 

@@ -1,14 +1,14 @@
 "use client";
 
 import { Loader2 } from "lucide-react";
-import { FC} from "react";
+import { FC } from "react";
 import { api } from "~/trpc/react";
 import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import Header from "../shared/Header";
 import { DataTable } from "../shared/GlobalTable";
 import { Book, columns } from "./columns/bookColumns";
 import { useRouter } from "next/navigation";
-import Cookie from "js-cookie"
+import Cookie from "js-cookie";
 
 const AdminAllBooks: FC = () => {
 	const { data, isLoading, isError } = api.book.fetchBooks.useQuery();
@@ -16,7 +16,7 @@ const AdminAllBooks: FC = () => {
 	const router = useRouter();
 	const adminCheck = Cookie.get("isAdminLogin");
 
-	if(!adminCheck) {
+	if (!adminCheck) {
 		router.push("/not-allowed");
 	}
 

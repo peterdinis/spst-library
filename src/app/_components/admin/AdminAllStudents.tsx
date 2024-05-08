@@ -1,7 +1,7 @@
 "use client";
 
 import { Loader2 } from "lucide-react";
-import { FC} from "react";
+import { FC } from "react";
 import axios from "axios";
 import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import Header from "../shared/Header";
@@ -15,7 +15,7 @@ const AdminAllStudents: FC = () => {
 	const router = useRouter();
 	const adminCheck = Cookie.get("isAdminLogin");
 
-	if(!adminCheck) {
+	if (!adminCheck) {
 		router.push("/not-allowed");
 	}
 

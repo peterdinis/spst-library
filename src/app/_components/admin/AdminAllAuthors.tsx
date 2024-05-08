@@ -16,9 +16,9 @@ const AdminAllAuthors: FC = () => {
 	const router = useRouter();
 	const adminCheck = Cookie.get("isAdminLogin");
 
-	if(!adminCheck) {
+	if (!adminCheck) {
 		router.push("/not-allowed");
-	};
+	}
 
 	if (isLoading) {
 		return <Loader2 className="animate-bounce w-8 h-8" />;

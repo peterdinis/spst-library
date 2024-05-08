@@ -9,7 +9,7 @@ import { DataTable } from "../shared/GlobalTable";
 import { columns } from "./columns/categoryColumns";
 import { Category } from "~/app/types/categoryTypes";
 import { useRouter } from "next/navigation";
-import Cookie from "js-cookie"
+import Cookie from "js-cookie";
 
 const AdminAllCategories: FC = () => {
 	const { data, isLoading, isError } =
@@ -22,7 +22,7 @@ const AdminAllCategories: FC = () => {
 	const router = useRouter();
 	const adminCheck = Cookie.get("isAdminLogin");
 
-	if(!adminCheck) {
+	if (!adminCheck) {
 		router.push("/not-allowed");
 	}
 

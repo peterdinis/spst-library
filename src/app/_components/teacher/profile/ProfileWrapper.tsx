@@ -1,6 +1,6 @@
 "use client";
 
-import { FC} from "react";
+import { FC } from "react";
 import useTeacherCookie from "~/hooks/useTeacherCookie";
 import Settings from "./Settings";
 import { ICookieAuthType } from "~/app/types/authTypes";
@@ -13,7 +13,7 @@ const ProfileWrapper: FC = () => {
 	const router = useRouter();
 	const teacherCheck = Cookie.get("isTeacherLogin");
 
-	if(!teacherCheck) {
+	if (!teacherCheck) {
 		router.push("/not-allowed");
 	}
 	return (

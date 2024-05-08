@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { FC } from "react";
 import BorrowedBooks from "./BorrowedBooks";
@@ -12,8 +12,8 @@ const ProfileWrapper: FC = () => {
 	const studentCookie = useStudentCookie();
 	const router = useRouter();
 	const studentCheck = Cookie.get("isStudentLogin");
-	
-	if(!studentCheck) {
+
+	if (!studentCheck) {
 		router.push("/not-allowed");
 	}
 	return (
