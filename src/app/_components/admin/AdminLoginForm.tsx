@@ -33,6 +33,8 @@ const AdminLoginForm: FC = () => {
 				duration: 2000,
 				className: "bg-green-500 text-white",
 			});
+			Cookie.set("isAdminLogin", "true");
+			window.location.replace("/admin/profile");
 			window.location.replace("/admin/profile");
 		},
 

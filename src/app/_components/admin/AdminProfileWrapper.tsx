@@ -6,18 +6,15 @@ import { Card, CardHeader, CardTitle } from "~/components/ui/card";
 import DashboardLinks from "./dashboard/DashboardLinks";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import useAdminCookie from "~/hooks/useAdminCookie";
+import Cookie from "js-cookie";
 
 const AdminProfileWrapper: FC = () => {
 	const router = useRouter();
+	const adminCheck = Cookie.get("isAdminLogin");
 
-	const adminCookie = useAdminCookie();
-
-	useEffect(() => {
-		if (!adminCookie) {
-			router.push("/admin/login");
-		}
-	}, [adminCookie]);
+	if(!adminCheck) {
+		router.push("/admin/login");
+	}
 	return (
 		<>
 			<Header text="Admin časť" />
