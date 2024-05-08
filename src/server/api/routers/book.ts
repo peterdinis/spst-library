@@ -8,6 +8,27 @@ export const bookRouter = createTRPCRouter({
 		return books;
 	}),
 
+	searchForBook: publicProcedure.input(z.object({
+		searchTerm: z.string()
+	})).query(async ({ctx, input}) => {
+		const books = await ctx.db.book.findMany({
+			where: {
+				name: {
+					contains: input.searchTerm,
+					mode: "insensitive"
+				}
+			},
+
+			include: {
+				category: true,
+				publisher: true,
+				author: true,
+			}
+		});
+
+		return books;
+	}),
+
 	fetchBookById: publicProcedure
 		.input(
 			z.object({
