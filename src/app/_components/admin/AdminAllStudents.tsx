@@ -9,9 +9,16 @@ import { DataTable } from "../shared/GlobalTable";
 import { columns } from "./columns/studentColumns";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import useAdminCookie from "~/hooks/useAdminCookie";
+import Cookie from "js-cookie";
 
 const AdminAllStudents: FC = () => {
+	const router = useRouter();
+	const adminCheck = Cookie.get("isAdminLogin");
+
+	if(!adminCheck) {
+		router.push("/not-allowed");
+	}
+
 	const { data, isLoading, isError } = useQuery({
 		queryKey: ["allStudents"],
 		queryFn: () => {
@@ -21,15 +28,6 @@ const AdminAllStudents: FC = () => {
 			);
 		},
 	});
-
-	const router = useRouter();
-	const adminCookie = useAdminCookie();
-
-	useEffect(() => {
-		if(!adminCookie) {
-			router.push("/not-allowed");
-		}
-	}, [adminCookie]);
 
 	if (isLoading) {
 		return <Loader2 className="animate-bounce w-8 h-8" />;

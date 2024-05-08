@@ -8,7 +8,7 @@ import Header from "../shared/Header";
 import { DataTable } from "../shared/GlobalTable";
 import { columns, Publisher } from "./columns/publisherColumns";
 import { useRouter } from "next/navigation";
-import useAdminCookie from "~/hooks/useAdminCookie";
+import Cookie from "js-cookie"
 
 const AdminAllPublishers: FC = () => {
 	const { data, isLoading, isError } =
@@ -19,13 +19,11 @@ const AdminAllPublishers: FC = () => {
 	}
 
 	const router = useRouter();
-	const adminCookie = useAdminCookie();
+	const adminCheck = Cookie.get("isAdminLogin");
 
-	useEffect(() => {
-		if(!adminCookie) {
-			router.push("/not-allowed");
-		}
-	}, [adminCookie]);
+	if(!adminCheck) {
+		router.push("/not-allowed");
+	}
 
 	if (isError) {
 		return (
