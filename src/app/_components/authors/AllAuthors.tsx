@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useState, ChangeEvent } from "react";
 import Header from "../shared/Header";
 import { api } from "~/trpc/react";
 import { Loader2, Ghost } from "lucide-react";
@@ -54,6 +54,16 @@ const AllAuthors: FC = () => {
 		setPage((prev) => prev - 1);
 	};
 
+	const filteredData =
+		toShow &&
+		toShow.filter((item) =>
+			item.name.toLowerCase().includes(searchTerm.toLowerCase()),
+		);
+
+	const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+		setSearchTerm(e.target.value);
+	};
+
 	return (
 		<>
 			<Header text="Všetci spisovatelia" />
@@ -62,12 +72,12 @@ const AllAuthors: FC = () => {
 					<Input
 						placeholder="Hľadaj spisovateľa/ku..."
 						value={searchTerm}
-						onChange={(e) => setSearchTerm(e.target.value)}
+						onChange={handleSearchChange}
 					/>
 				</form>
 			</div>
 
-			{toShow && toShow.length === 0 && (
+			{filteredData && filteredData.length === 0 && (
 				<div className="mt-5 flex justify-center align-top">
 					<span className="text-center font-bold text-gray-500">
 						<Ghost className="h-8 w-8 animate-bounce" />
@@ -78,8 +88,8 @@ const AllAuthors: FC = () => {
 
 			<div className="mx-auto mt-5 grid gap-8 overflow-x-auto pt-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 				{!paginatedLoading &&
-					toShow &&
-					toShow.map((filteredItem) => (
+					filteredData &&
+					filteredData.map((filteredItem) => (
 						<GlobalCard
 							description={filteredItem.description}
 							key={filteredItem.id}

@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useState, ChangeEvent } from "react";
 import Header from "../shared/Header";
 import { api } from "~/trpc/react";
 import { Loader2, Ghost } from "lucide-react";
@@ -45,6 +45,12 @@ const AllPublishers: FC = () => {
 	const toShow = paginatedData?.pages[page]?.items;
 	const nextCursor = paginatedData?.pages[page]?.nextCursor;
 
+	const filteredData =
+		toShow &&
+		toShow.filter((item) =>
+			item.name.toLowerCase().includes(searchTerm.toLowerCase()),
+		);
+
 	const handleFetchNextPage = async () => {
 		await fetchNextPage();
 		setPage((prev) => prev + 1);
@@ -52,6 +58,10 @@ const AllPublishers: FC = () => {
 
 	const handleFetchPreviousPage = () => {
 		setPage((prev) => prev - 1);
+	};
+
+	const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+		setSearchTerm(e.target.value);
 	};
 
 	return (
@@ -62,12 +72,12 @@ const AllPublishers: FC = () => {
 					<Input
 						placeholder="Hľadaj vydavateľstvo..."
 						value={searchTerm}
-						onChange={(e) => setSearchTerm(e.target.value)}
+						onChange={handleSearchChange}
 					/>
 				</form>
 			</div>
 
-			{toShow && toShow.length === 0 && (
+			{filteredData && filteredData.length === 0 && (
 				<div className="mt-5 flex justify-center align-top">
 					<span className="text-center font-bold text-gray-500">
 						<Ghost className="h-8 w-8 animate-bounce" />
@@ -78,8 +88,8 @@ const AllPublishers: FC = () => {
 
 			<div className="mx-auto mt-5 grid gap-8 overflow-x-auto pt-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 				{!paginatedLoading &&
-					toShow &&
-					toShow.map((filteredItem) => (
+					filteredData &&
+					filteredData.map((filteredItem) => (
 						<GlobalCard
 							key={filteredItem.id}
 							description={filteredItem.description}
