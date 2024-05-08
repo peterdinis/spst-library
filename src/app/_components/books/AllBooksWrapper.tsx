@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, Key, useState } from "react";
+import { FC, useState } from "react";
 import Header from "../shared/Header";
 import { Input } from "~/components/ui/input";
 import { Ghost, Loader2 } from "lucide-react";
@@ -8,12 +8,19 @@ import { api } from "~/trpc/react";
 import GlobalCard from "../shared/GlobalCard";
 import GlobalPagination from "../shared/GlobalPagination";
 import { IBookCard } from "~/app/types/bookTypes";
+import debounce from 'lodash/debounce';
 
 const AllBooksWrapper: FC = () => {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [page, setPage] = useState(0);
 
 	const limit = 10 as const;
+
+	const debouncedSearchTerm = debounce((newSearchTerm) => {
+        setSearchTerm(newSearchTerm);
+    }, 300);
+
+	console.log("Debounce Search term", searchTerm);
 
 	const {
 		data: paginatedData,
@@ -65,7 +72,7 @@ const AllBooksWrapper: FC = () => {
 					<Input
 						placeholder="Hľadaj knihu..."
 						value={searchTerm}
-						onChange={(e) => setSearchTerm(e.target.value)}
+						onChange={(e) => debouncedSearchTerm(e.target.value)}
 					/>
 				</form>
 			</div>
