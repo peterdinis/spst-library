@@ -14,7 +14,7 @@ const ProfileWrapper: FC = () => {
 	const studentCheck = Cookie.get("isStudentLogin");
 	
 	if(!studentCheck) {
-		router.push("/student/login");
+		router.push("/not-allowed");
 	}
 	return (
 		<div className="grid md:grid-cols-2 md:gap-6 ml-4 mr-4">

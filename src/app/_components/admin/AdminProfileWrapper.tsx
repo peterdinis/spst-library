@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useEffect } from "react";
+import { FC} from "react";
 import Header from "../shared/Header";
 import { Card, CardHeader, CardTitle } from "~/components/ui/card";
 import DashboardLinks from "./dashboard/DashboardLinks";
@@ -13,7 +13,7 @@ const AdminProfileWrapper: FC = () => {
 	const adminCheck = Cookie.get("isAdminLogin");
 
 	if(!adminCheck) {
-		router.push("/admin/login");
+		router.push("/not-allowed");
 	}
 	return (
 		<>

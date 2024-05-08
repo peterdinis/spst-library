@@ -14,7 +14,7 @@ const ProfileWrapper: FC = () => {
 	const teacherCheck = Cookie.get("isTeacherLogin");
 
 	if(!teacherCheck) {
-		router.push("/teacher/login");
+		router.push("/not-allowed");
 	}
 	return (
 		<>
