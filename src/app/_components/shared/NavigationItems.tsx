@@ -17,7 +17,6 @@ const NavigationItems: FC = () => {
 	const adminCookie = useAdminCookie();
 	const router = useRouter();
 	const { toast } = useToast();
-
 	return (
 		<>
 			<li className="text-xl dark:text-blue-50 text-black">
@@ -35,7 +34,7 @@ const NavigationItems: FC = () => {
 			<li className="text-xl dark:text-blue-50 text-black">
 				<Link href="/authors">Spisovatelia</Link>
 			</li>
-			{teacherCookie && (
+			{teacherCookie != null && (
 				<li className="text-xl dark:text-blue-50 text-black">
 					<MenuDropdown
 						profileLink={"/teacher/profile"}
@@ -51,13 +50,14 @@ const NavigationItems: FC = () => {
 					/>
 				</li>
 			)}
-			{studentCookie && (
+			{studentCookie !== null && (
 				<li className="text-xl dark:text-blue-50 text-black">
 					<MenuDropdown
 						profileLink={"/student/profile"}
 						logoutFn={() => {
 							Cookie.remove("studentD");
-							router.push("/student/login");
+							Cookie.remove("isStudentLogin");
+							window.location.replace("/student/login");
 							toast({
 								title: "Odhlásenie bolo úspešné",
 								className: "bg-green-500 text-blue-50",

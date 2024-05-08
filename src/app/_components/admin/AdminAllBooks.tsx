@@ -1,26 +1,24 @@
 "use client";
 
 import { Loader2 } from "lucide-react";
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { api } from "~/trpc/react";
 import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import Header from "../shared/Header";
 import { DataTable } from "../shared/GlobalTable";
 import { Book, columns } from "./columns/bookColumns";
 import { useRouter } from "next/navigation";
-import useAdminCookie from "~/hooks/useAdminCookie";
+import Cookie from "js-cookie";
 
 const AdminAllBooks: FC = () => {
 	const { data, isLoading, isError } = api.book.fetchBooks.useQuery();
 
 	const router = useRouter();
-	const adminCookie = useAdminCookie();
+	const adminCheck = Cookie.get("isAdminLogin");
 
-	useEffect(() => {
-		if (!adminCookie) {
-			router.push("/not-allowed");
-		}
-	}, [adminCookie]);
+	if (!adminCheck) {
+		router.push("/not-allowed");
+	}
 
 	if (isLoading) {
 		return <Loader2 className="animate-bounce w-8 h-8" />;
