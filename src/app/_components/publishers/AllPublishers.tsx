@@ -12,7 +12,7 @@ const AllPublishers: FC = () => {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [page, setPage] = useState(0);
 
-	const limit = 10 as const;
+	const limit = 50 as const;
 
 	const {
 		data: paginatedData,
