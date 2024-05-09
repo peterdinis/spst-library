@@ -66,14 +66,30 @@ const CreateBookForm: FC = () => {
 						type="text"
 						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
 						placeholder="Meno Knihy"
+						{...register("name", {
+							required: true
+						})}
 					/>
+					{errors.name && errors.name.type === "required" && (
+						<span className="text-red-500">
+							Meno knihy je povinné
+						</span>
+					)}
 				</div>
 				<div className="group relative z-0 mb-6">
 					<Input
 						type="text"
 						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
 						placeholder="Obrázok"
+						{...register("image", {
+							required: true
+						})}
 					/>
+					{errors.image && errors.image.type === "required" && (
+						<span className="text-red-500">
+							Obrázok je povinný
+						</span>
+					)}
 				</div>
 				<div className="group relative z-0 mb-6">
 					<AuthorSelect />
@@ -83,13 +99,25 @@ const CreateBookForm: FC = () => {
 						type="text"
 						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
 						placeholder="Rok"
+						{...register("year", {
+							required: true
+						})}
 					/>
+					{errors.year && errors.year.type === "required" && (
+						<span className="text-red-500">
+							Rok je povinný
+						</span>
+					)}
 				</div>
 				<div className="group relative z-0 mb-6">
 					<Input
 						type="text"
 						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
 						placeholder="Počet strán"
+						{...register("pages", {
+							required: true,
+							valueAsNumber: true
+						})}
 					/>
 				</div>
 				<div className="group relative z-0 mb-6">
