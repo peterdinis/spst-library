@@ -29,7 +29,7 @@ const AuthorSelect: FC = () => {
 	}
 
 	return (
-		<section className="peer mt-4 block w-full appearance-none bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0">
+		<section className="peer mt-4 block w-full appearance-none bg-transparent px-0 py-2.5 text-lg text-gray-900 dark:text-blue-50 focus:outline-none focus:ring-0">
 			<Select>
 				<SelectTrigger>
 					<SelectValue placeholder="Výber spisovateľa/ky" />
