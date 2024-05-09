@@ -8,14 +8,59 @@ import dynamic from "next/dynamic";
 import AuthorSelect from "../authors/AuthorSelect";
 import CategorySelect from "../categories/CategorySelect";
 import PublisherSelect from "../publishers/PublisherSelect";
+import { useToast } from "~/components/ui/use-toast";
+import { FieldValue, FieldValues, useForm } from "react-hook-form";
+import { api } from "~/trpc/react";
+import { useRouter } from "next/navigation";
 
 const AppEditor = dynamic(() => import("../shared/AppEditor"), { ssr: false });
 
 const CreateBookForm: FC = () => {
+	const {toast} = useToast();
+	const router = useRouter();
+
+	const {register, handleSubmit, reset, formState: {errors}} = useForm();
+
+	const addNewBookMut = api.book.createNewBook.useMutation({
+		onSuccess: () => {
+			toast({
+				title: "Nová kniha bola vytvorená",
+				duration: 2000,
+				className: "bg-green-500 text-white",
+			});
+			router.push("/books");
+		},
+
+		onError: () => {
+			toast({
+				title: "Nová kniha nebola vytvorená",
+				duration: 2000,
+				className: "bg-red-500 text-white",
+			});
+		}
+	});
+
+
+	const onSubmit = async(data: FieldValues) => {
+		await addNewBookMut.mutateAsync({
+			name: data.name,
+			description: data.description,
+			image: data.image,
+			year: data.year,
+			pages: data.pages,
+			isAvaiable: data.isAvaiable,
+			itemsInStock: data.itemsInStock,
+			categoryId: data.categoryId,
+			authorId: data.authorId,
+			publisherId: data.publisherId
+		});
+		reset();
+	}
+
 	return (
 		<>
 			<Header text="Tvorba novej knihy" />
-			<form className="mx-auto mt-10 max-w-2xl">
+			<form onSubmit={handleSubmit(onSubmit)} className="mx-auto mt-10 max-w-2xl">
 				<div className="group relative z-0 mb-6">
 					<Input
 						type="text"
