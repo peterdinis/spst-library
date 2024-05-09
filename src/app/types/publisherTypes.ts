@@ -10,3 +10,9 @@ export interface Publisher {
 	books?: IBook;
 	bossName: string;
 }
+
+
+export interface SelectPublisher {
+	id: number;
+	name: string;
+}

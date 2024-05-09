@@ -7,6 +7,7 @@ import { Button } from "~/components/ui/button";
 import dynamic from "next/dynamic";
 import AuthorSelect from "../authors/AuthorSelect";
 import CategorySelect from "../categories/CategorySelect";
+import PublisherSelect from "../publishers/PublisherSelect";
 
 const AppEditor = dynamic(() => import("../shared/AppEditor"), { ssr: false });
 
@@ -62,6 +63,10 @@ const CreateBookForm: FC = () => {
 				</div>
 				<div className="group relative z-0 mb-6">
 					<CategorySelect />
+				</div>
+
+				<div className="group relative z-0 mb-6">
+					<PublisherSelect />
 				</div>
 
 				<div className="group relative z-0 mb-6">

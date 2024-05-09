@@ -1,6 +1,6 @@
 import { Loader2, Ghost } from "lucide-react";
 import { FC } from "react";
-import { SelectAuthor } from "~/app/types/authorTypes";
+import { SelectPublisher } from "~/app/types/publisherTypes";
 import {
   Select,
   SelectContent,
@@ -10,8 +10,8 @@ import {
 } from "~/components/ui/select";
 import { api } from "~/trpc/react";
 
-const AuthorSelect: FC = () => {
-  const { data, isLoading, isError } = api.author.fetchAuthors.useQuery();
+const PublisherSelect: FC = () => {
+  const { data, isLoading, isError } = api.publisher.fetchPublishers.useQuery();
 
   if (isLoading) {
     return <Loader2 className="h-8 w-8 animate-spin" />;
@@ -30,14 +30,14 @@ const AuthorSelect: FC = () => {
     <section className="peer mt-4 block w-full appearance-none bg-transparent px-0 py-2.5 text-lg text-gray-900 dark:text-blue-50 focus:outline-none focus:ring-0">
       <Select>
         <SelectTrigger>
-          <SelectValue placeholder="Výber spisovateľa/ky" />
+          <SelectValue placeholder="Výber vydavateľstva" />
         </SelectTrigger>
         <SelectContent>
           {data &&
-            data.map((author: SelectAuthor) => {
+            data.map((publisher: SelectPublisher) => {
               return (
-                <SelectItem key={author.id} value={author.id.toString()}>
-                  {author.name}
+                <SelectItem key={publisher.id} value={publisher.id.toString()}>
+                  {publisher.name}
                 </SelectItem>
               );
             })}
@@ -47,4 +47,4 @@ const AuthorSelect: FC = () => {
   );
 };
 
-export default AuthorSelect;
+export default PublisherSelect;
