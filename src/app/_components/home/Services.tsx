@@ -5,7 +5,8 @@ import { Home, School2 } from "lucide-react";
 import { FC } from "react";
 
 const Services: FC = () => {
-	const cardVariants = {
+
+	const servicesVariant = {
 		hidden: { opacity: 0, scale: 0.9 },
 		visible: {
 			opacity: 1,
@@ -31,7 +32,7 @@ const Services: FC = () => {
 							tabIndex={0}
 							aria-label="card 1"
 							className="flex w-full flex-col items-center px-6 py-6 focus:outline-none sm:w-1/2 md:w-1/4 md:py-0"
-							variants={cardVariants}
+							variants={servicesVariant}
 						>
 							<h4
 								tabIndex={0}
@@ -44,7 +45,7 @@ const Services: FC = () => {
 							tabIndex={0}
 							aria-label="card 2"
 							className="flex w-full flex-col items-center px-6 py-6 focus:outline-none sm:w-1/2 md:w-1/4 md:py-0"
-							variants={cardVariants}
+							variants={servicesVariant}
 						>
 							<h4
 								tabIndex={0}
@@ -58,7 +59,7 @@ const Services: FC = () => {
 							tabIndex={0}
 							aria-label="card 3"
 							className="flex w-full flex-col items-center px-6 py-6 focus:outline-none sm:w-1/2 md:w-1/4 md:py-0"
-							variants={cardVariants}
+							variants={servicesVariant}
 						>
 							<h4
 								tabIndex={0}
