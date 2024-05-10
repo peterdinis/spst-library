@@ -1,6 +1,8 @@
-import { Loader2 } from "lucide-react";
+import { Settings, ShieldCheck, ShieldBan } from "lucide-react";
 import React, { FC } from "react";
 import { BentoGrid, BentoGridItem } from "~/components/ui/bento-grid";
+import { Button } from "~/components/ui/button";
+import SettingsModal from "./SettingsDialog";
 
 const SettingsWrapper: FC = () => {
   return (
@@ -10,60 +12,42 @@ const SettingsWrapper: FC = () => {
           key={i}
           title={item.title}
           description={item.description}
-          header={item.header}
           icon={item.icon}
+          button={item.button}
           className={i === 3 || i === 6 ? "md:col-span-2" : ""}
         />
       ))}
     </BentoGrid>
   );
 }
-const Skeleton = () => (
-  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100"></div>
-);
+
 const items = [
   {
-    title: "The Dawn of Innovation",
-    description: "Explore the birth of groundbreaking ideas and inventions.",
-    header: <Skeleton />,
-    icon: <Loader2 className="h-4 w-4 text-neutral-500" />,
+    title: "Nastaviť admin práva emailu",
+    description: "Tu sa nastavuju admin práva pre učiteľský účet",
+    icon: <Settings className="h-4 w-4 text-neutral-500" />,
+    button: <Button variant={"default"}>
+        <SettingsModal />
+    </Button>
   },
   {
-    title: "The Digital Revolution",
-    description: "Dive into the transformative power of technology.",
-    header: <Skeleton />,
-    icon: <Loader2 className="h-4 w-4 text-neutral-500" />,
+    title: "Vymazať účet",
+    description: "Tu sa mažú účty",
+    icon: <ShieldCheck className="h-4 w-4 text-neutral-500" />,
+    button: <Button variant={"secondary"}><SettingsModal /></Button>
   },
   {
-    title: "The Art of Design",
-    description: "Discover the beauty of thoughtful and functional design.",
-    header: <Skeleton />,
-    icon: <Loader2 className="h-4 w-4 text-neutral-500" />,
+    title: "Dekativovať účet",
+    description: "Tu sa deaktivujú účty",
+    icon: <ShieldBan className="h-4 w-4 text-neutral-500" />,
+    button: <Button variant={"default"}><SettingsModal /></Button>
   },
   {
-    title: "The Power of Communication",
+    title: "Odobrať admin práva",
     description:
-      "Understand the impact of effective communication in our lives.",
-    header: <Skeleton />,
-    icon: <Loader2 className="h-4 w-4 text-neutral-500" />,
-  },
-  {
-    title: "The Pursuit of Knowledge",
-    description: "Join the quest for understanding and enlightenment.",
-    header: <Skeleton />,
-    icon: <Loader2 className="h-4 w-4 text-neutral-500" />,
-  },
-  {
-    title: "The Joy of Creation",
-    description: "Experience the thrill of bringing ideas to life.",
-    header: <Skeleton />,
-    icon: <Loader2 className="h-4 w-4 text-neutral-500" />,
-  },
-  {
-    title: "The Spirit of Adventure",
-    description: "Embark on exciting journeys and thrilling discoveries.",
-    header: <Skeleton />,
-    icon: <Loader2 className="h-4 w-4 text-neutral-500" />,
+      "Tu sa odoberajú admin práva.",
+    icon: <Settings className="h-4 w-4 text-neutral-500" />,
+    button: <Button variant={"secondary"}><SettingsModal /></Button>
   },
 ];
 
