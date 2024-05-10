@@ -32,13 +32,13 @@ const items = [
   },
   {
     title: "Vymazať účet",
-    description: "Tu sa mažú účty",
+    description: "Vymazanie jedného účtu",
     icon: <ShieldCheck className="h-4 w-4 text-neutral-500" />,
     button: <Button variant={"secondary"}><SettingsModal /></Button>
   },
   {
     title: "Dekativovať účet",
-    description: "Tu sa deaktivujú účty",
+    description: "Deaktivovanie jedného účtu",
     icon: <ShieldBan className="h-4 w-4 text-neutral-500" />,
     button: <Button variant={"default"}><SettingsModal /></Button>
   },
