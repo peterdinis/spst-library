@@ -2,7 +2,7 @@ import { Settings, ShieldCheck, ShieldBan } from "lucide-react";
 import React, { FC } from "react";
 import { BentoGrid, BentoGridItem } from "~/components/ui/bento-grid";
 import { Button } from "~/components/ui/button";
-import SettingsModal from "./SettingsDialog";
+import SettingsModal from "./SettingsModal";
 
 const SettingsWrapper: FC = () => {
   return (
