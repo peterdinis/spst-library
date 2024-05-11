@@ -58,7 +58,7 @@ const RemoveAccountModal: FC = () => {
 	return (
 		<Dialog open={open} onOpenChange={handleOpenDialog}>
 			<DialogTrigger>
-                <Button variant={"default"}>Zmazať účet</Button>
+                <Button variant={"secondary"}>Zmazať účet</Button>
             </DialogTrigger>
 			<DialogContent>
 				<DialogHeader>
