@@ -31,7 +31,7 @@ const AdminRightsModal: FC = () => {
     const adminRightsMut = useMutation({
         mutationKey: ["adminRightsAccount"],
         mutationFn: async (data: any) => {
-            return await axios.post(process.env.NEXT_PUBLIC_AUTH_API + "auth/users/make-admin", data)
+            return await axios.patch(process.env.NEXT_PUBLIC_AUTH_API + "auth/users/make-admin", data)
         },
 
         onSuccess: () => {

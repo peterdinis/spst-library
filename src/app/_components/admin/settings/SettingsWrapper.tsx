@@ -1,11 +1,10 @@
 import { Settings, ShieldCheck, ShieldBan } from "lucide-react";
 import { FC } from "react";
 import { BentoGrid, BentoGridItem } from "~/components/ui/bento-grid";
-import { Button } from "~/components/ui/button";
-import SettingsModal from "./SettingsModal";
 import AdminRightsModal from "./modals/AdminRightsModal";
 import AdminRemoveRightsModal from "./modals/AdminRemoveRightsModal";
 import DeactivateAccountModal from "./modals/DeactivateAccountModal";
+import RemoveAccountModal from "./modals/RemoveAccountModal";
 
 const SettingsWrapper: FC = () => {
   return (
@@ -35,7 +34,7 @@ const items = [
     title: "Vymazať účet",
     description: "Vymazanie jedného účtu",
     icon: <ShieldCheck className="h-4 w-4 text-neutral-500" />,
-    button: <Button variant={"secondary"}><SettingsModal /></Button>
+    button:<RemoveAccountModal />
   },
   {
     title: "Dekativovať účet",
