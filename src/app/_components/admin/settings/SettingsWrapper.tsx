@@ -4,6 +4,7 @@ import { BentoGrid, BentoGridItem } from "~/components/ui/bento-grid";
 import { Button } from "~/components/ui/button";
 import SettingsModal from "./SettingsModal";
 import AdminRightsModal from "./modals/AdminRightsModal";
+import AdminRemoveRightsModal from "./modals/AdminRemoveRightsModal";
 
 const SettingsWrapper: FC = () => {
   return (
@@ -46,7 +47,7 @@ const items = [
     description:
       "Tu sa odoberajú admin práva.",
     icon: <Settings className="h-4 w-4 text-neutral-500" />,
-    button: <Button variant={"secondary"}><SettingsModal /></Button>
+    button: <AdminRemoveRightsModal />
   },
 ];
 
