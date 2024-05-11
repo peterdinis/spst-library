@@ -27,9 +27,9 @@ const AdminRemoveRightsModal: FC = () => {
 	};
 
     const adminRemoveRightsMut = useMutation({
-        mutationKey: ["adminRightsAccount"],
+        mutationKey: ["adminRemoveRights"],
         mutationFn: async (data: any) => {
-            return await axios.post(process.env.NEXT_PUBLIC_AUTH_API + "auth/users/make-admin", data)
+            return await axios.patch(process.env.NEXT_PUBLIC_AUTH_API + "auth/users/make-admin", data)
         },
 
         onSuccess: () => {

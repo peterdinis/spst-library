@@ -27,9 +27,9 @@ const RemoveAccountModal: FC = () => {
 	};
 
     const removeAccountModal = useMutation({
-        mutationKey: ["adminRightsAccount"],
+        mutationKey: ["removeAccount"],
         mutationFn: async (data: any) => {
-            return await axios.post(process.env.NEXT_PUBLIC_AUTH_API + "auth/user/account/delete", data)
+            return await axios.delete(process.env.NEXT_PUBLIC_AUTH_API + "auth/user/account/delete", data)
         },
 
         onSuccess: () => {

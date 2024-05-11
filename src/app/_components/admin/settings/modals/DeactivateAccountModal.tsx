@@ -27,9 +27,9 @@ const DeactivateAccountModal: FC = () => {
 	};
 
     const deactivateAccountModal = useMutation({
-        mutationKey: ["adminRightsAccount"],
+        mutationKey: ["deactivateAccount"],
         mutationFn: async (data: any) => {
-            return await axios.post(process.env.NEXT_PUBLIC_AUTH_API + "auth/users/deactivate", data)
+            return await axios.patch(process.env.NEXT_PUBLIC_AUTH_API + "auth/users/deactivate", data)
         },
 
         onSuccess: () => {
