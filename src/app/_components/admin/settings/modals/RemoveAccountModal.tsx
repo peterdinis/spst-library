@@ -30,7 +30,7 @@ const RemoveAccountModal: FC = () => {
     const removeAccountModal = useMutation({
         mutationKey: ["removeAccount"],
         mutationFn: async (data: IAdminAction) => {
-            return await axios.delete(process.env.NEXT_PUBLIC_AUTH_API + "auth/user/account/delete", data)
+            return await axios.patch(process.env.NEXT_PUBLIC_AUTH_API + "auth/user/account/delete", data)
         },
 
         onSuccess: () => {
