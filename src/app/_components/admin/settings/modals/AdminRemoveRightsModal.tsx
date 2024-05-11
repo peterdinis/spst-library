@@ -26,7 +26,7 @@ const AdminRemoveRightsModal: FC = () => {
 		setOpen(!open);
 	};
 
-    const adminRightsMut = useMutation({
+    const adminRemoveRightsMut = useMutation({
         mutationKey: ["adminRightsAccount"],
         mutationFn: async (data: any) => {
             return await axios.post(process.env.NEXT_PUBLIC_AUTH_API + "auth/users/make-admin", data)
@@ -50,7 +50,7 @@ const AdminRemoveRightsModal: FC = () => {
     })
 
 	const onSubmit = async (data: FieldValues) => {
-		await adminRightsMut.mutateAsync({
+		await adminRemoveRightsMut.mutateAsync({
 			accountId: data.accountId
 		});
 	};
