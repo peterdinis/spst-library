@@ -3,6 +3,7 @@ import React, { FC } from "react";
 import { BentoGrid, BentoGridItem } from "~/components/ui/bento-grid";
 import { Button } from "~/components/ui/button";
 import SettingsModal from "./SettingsModal";
+import AdminRightsModal from "./modals/AdminRightsModal";
 
 const SettingsWrapper: FC = () => {
   return (
@@ -26,9 +27,7 @@ const items = [
     title: "Nastaviť admin práva emailu",
     description: "Tu sa nastavuju admin práva pre učiteľský účet",
     icon: <Settings className="h-4 w-4 text-neutral-500" />,
-    button: <Button variant={"default"}>
-        <SettingsModal />
-    </Button>
+    button: <AdminRightsModal />
   },
   {
     title: "Vymazať účet",
