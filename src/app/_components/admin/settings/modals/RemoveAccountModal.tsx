@@ -16,6 +16,7 @@ import { useForm, FieldValues } from "react-hook-form";
 import axios from "axios";
 import Header from "~/app/_components/shared/Header";
 import {useMutation} from "@tanstack/react-query";
+import { IAdminAction } from "~/app/types/adminTypes";
 
 const RemoveAccountModal: FC = () => {
 	const [open, setOpen] = useState(false);
@@ -28,7 +29,7 @@ const RemoveAccountModal: FC = () => {
 
     const removeAccountModal = useMutation({
         mutationKey: ["removeAccount"],
-        mutationFn: async (data: any) => {
+        mutationFn: async (data: IAdminAction) => {
             return await axios.delete(process.env.NEXT_PUBLIC_AUTH_API + "auth/user/account/delete", data)
         },
 
