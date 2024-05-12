@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { useMemo } from "react";
 import QuillEditor from "react-quill";
@@ -49,13 +49,24 @@ const AppEditor = ({ value, onChange }: AppEditorProps) => {
     "clean",
   ];
 
+  const handleEditorChange = (content: string, delta: any, source: string, editor: any) => {
+    const plainText = editor.getText().trim();
+    const reversedText = reverseText(plainText);
+    onChange(reversedText);
+  };
+
+  // Function to reverse the text
+  const reverseText = (text: string) => {
+    return text.split("").reverse().join("");
+  };
+
   return (
     <QuillEditor
       theme="snow"
-      value={value}
+      value={reverseText(value)}
       formats={formats}
       modules={modules}
-      onChange={(content, delta, source, editor) => onChange(editor.getText())}
+      onChange={handleEditorChange}
     />
   );
 };
