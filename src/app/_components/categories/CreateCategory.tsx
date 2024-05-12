@@ -55,11 +55,11 @@ const CreateCategory: FC = () => {
 				<div className="group relative z-0 mb-6">
 					<input
 						type="text"
-						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
+						className="peer mt-4 block w-full dark:text-blue-50 appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
 						placeholder="Meno kategórie"
 						{...register("name", {
 							required: true,
-							minLength: 5, // Mala byť minLength namiesto min
+							minLength: 5,
 						})}
 					/>
 					{errors.name && errors.name.type === "required" && (
@@ -76,7 +76,7 @@ const CreateCategory: FC = () => {
 				<div className="group relative z-0 mb-6">
 					<input
 						type="text"
-						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
+						className="peer mt-4 dark:text-blue-50 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
 						placeholder="Popis kategórie"
 						{...register("description", {
 							required: true,
