@@ -175,7 +175,14 @@ const CreateBookForm: FC = () => {
         </div>
 
         <div className="group relative z-0 mb-6">
-          <AppEditor />
+		<Controller
+            name="description"
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <AppEditor value={field.value} onChange={field.onChange} />
+            )}
+          />
         </div>
 
         <div className="flex justify-center align-top">
