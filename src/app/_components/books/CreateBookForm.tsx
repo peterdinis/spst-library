@@ -72,7 +72,7 @@ const CreateBookForm: FC = () => {
         <div className="group relative z-0 mb-6">
           <Input
             type="text"
-            className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
+            className="peer mt-4 block w-full appearance-none border-0 border-b-2 dark:text-blue-50 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
             placeholder="Meno Knihy"
             {...register("name", {
               required: true,
@@ -85,7 +85,7 @@ const CreateBookForm: FC = () => {
         <div className="group relative z-0 mb-6">
           <Input
             type="text"
-            className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
+            className="peer mt-4 block w-full appearance-none border-0 border-b-2 dark:text-blue-50 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
             placeholder="Obrázok"
             {...register("image", {
               required: true,
@@ -111,7 +111,7 @@ const CreateBookForm: FC = () => {
         <div className="group relative z-0 mb-6">
           <Input
             type="text"
-            className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
+            className="peer mt-4 block w-full appearance-none border-0 border-b-2 dark:text-blue-50 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
             placeholder="Rok"
             {...register("year", {
               required: true,
@@ -124,7 +124,7 @@ const CreateBookForm: FC = () => {
         <div className="group relative z-0 mb-6">
           <Input
             type="text"
-            className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
+            className="peer mt-4 block w-full appearance-none border-0 border-b-2 dark:text-blue-50 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
             placeholder="Počet strán"
             {...register("pages", {
               required: true,
@@ -135,14 +135,14 @@ const CreateBookForm: FC = () => {
         <div className="group relative z-0 mb-6">
           <Input
             type="text"
-            className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
+            className="peer dark:text-blue-50 mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
             placeholder="Dostupná"
           />
         </div>
         <div className="group relative z-0 mb-6">
           <Input
             type="text"
-            className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
+            className="peer dark:text-blue-50 mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
             placeholder="Počet kusov"
           />
         </div>
