@@ -12,6 +12,7 @@ import { useToast } from "~/components/ui/use-toast";
 import { FieldValues, useForm, Controller } from "react-hook-form";
 import { api } from "~/trpc/react";
 import { useRouter } from "next/navigation";
+import { Label } from "~/components/ui/label";
 
 const AppEditor = dynamic(() => import("../shared/AppEditor"), { ssr: false });
 
@@ -132,6 +133,7 @@ const CreateBookForm: FC = () => {
             })}
           />
         </div>
+        <Label>Dostupnosť knihy</Label>
         <div className="group relative z-0 mb-6">
           <Input
             type="checkbox"
