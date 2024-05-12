@@ -116,9 +116,9 @@ export const bookRouter = createTRPCRouter({
 					year: input.year,
 					pages: input.pages,
 					isAvaiable: input.isAvaiable,
-					categoryId: input.categoryId as unknown as number,
-					publisherId: input.publisherId as unknown as number,
-					authorId: input.authorId as unknown as number,
+					categoryId: Number(input.categoryId),
+					publisherId: Number(input.publisherId),
+					authorId: Number(input.authorId),
 					itemsInStock: input.itemsInStock,
 				},
 			});
