@@ -4,7 +4,6 @@ import { FC } from "react";
 import Header from "../shared/Header";
 import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
-import dynamic from "next/dynamic";
 import AuthorSelect from "../authors/AuthorSelect";
 import CategorySelect from "../categories/CategorySelect";
 import PublisherSelect from "../publishers/PublisherSelect";
@@ -13,8 +12,6 @@ import { FieldValues, useForm, Controller } from "react-hook-form";
 import { api } from "~/trpc/react";
 import { useRouter } from "next/navigation";
 import { Label } from "~/components/ui/label";
-
-const AppEditor = dynamic(() => import("../shared/AppEditor"), { ssr: false });
 
 const CreateBookForm: FC = () => {
   const { toast } = useToast();
@@ -184,13 +181,13 @@ const CreateBookForm: FC = () => {
         </div>
 
         <div className="group relative z-0 mb-6">
-          <Controller
-            name="description"
-            control={control}
-            defaultValue=""
-            render={({ field }) => (
-              <AppEditor value={field.value} onChange={field.onChange} />
-            )}
+        <Input
+            type="text"
+            className="peer dark:text-blue-50 mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
+            placeholder="Popis ku knihe"
+            {...register("description", {
+              required: true,
+            })}
           />
         </div>
 
