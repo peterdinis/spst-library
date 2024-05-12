@@ -15,7 +15,7 @@ import { useToast } from "~/components/ui/use-toast";
 import { useForm, FieldValues } from "react-hook-form";
 import axios from "axios";
 import Header from "~/app/_components/shared/Header";
-import {useMutation} from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
 const RemoveAccountModal: FC = () => {
 	const [open, setOpen] = useState(false);
@@ -26,40 +26,43 @@ const RemoveAccountModal: FC = () => {
 		setOpen(!open);
 	};
 
-    const removeAccountModal = useMutation({
-        mutationKey: ["removeAccount"],
-        mutationFn: async (data: any) => {
-            return await axios.delete(process.env.NEXT_PUBLIC_AUTH_API + "auth/user/account/delete", data)
-        },
+	const removeAccountModal = useMutation({
+		mutationKey: ["removeAccount"],
+		mutationFn: async (data: any) => {
+			return await axios.delete(
+				process.env.NEXT_PUBLIC_AUTH_API + "auth/user/account/delete",
+				data,
+			);
+		},
 
-        onSuccess: () => {
-            toast({
+		onSuccess: () => {
+			toast({
 				title: "Učet bol zmazaný",
 				duration: 2000,
 				className: "bg-green-500",
 			});
-        },
+		},
 
-        onError: () => {
-            toast({
+		onError: () => {
+			toast({
 				title: "Učet nebol zmazaný",
 				duration: 2000,
 				className: "bg-red-500",
 			});
-        }
-    })
+		},
+	});
 
 	const onSubmit = async (data: FieldValues) => {
 		await removeAccountModal.mutateAsync({
-			accountId: data.accountId
+			accountId: data.accountId,
 		});
 	};
 
 	return (
 		<Dialog open={open} onOpenChange={handleOpenDialog}>
 			<DialogTrigger>
-                <Button variant={"secondary"}>Zmazať účet</Button>
-            </DialogTrigger>
+				<Button variant={"secondary"}>Zmazať účet</Button>
+			</DialogTrigger>
 			<DialogContent>
 				<DialogHeader>
 					<DialogTitle>

@@ -11,7 +11,6 @@ export interface Publisher {
 	bossName: string;
 }
 
-
 export interface SelectPublisher {
 	id: number;
 	name: string;

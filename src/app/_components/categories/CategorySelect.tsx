@@ -1,3 +1,5 @@
+"use client"
+
 import { Loader2, Ghost } from "lucide-react";
 import { FC } from "react";
 import {
@@ -9,7 +11,12 @@ import {
 } from "~/components/ui/select";
 import { api } from "~/trpc/react";
 
-const CategorySelect: FC = () => {
+interface ICategorySelectProps {
+	onChange: (...args: unknown[]) => void;
+	value: string;
+}
+
+const CategorySelect: FC<ICategorySelectProps> = ({onChange, value}) => {
 	const { data, isLoading, isError } =
 		api.category.fetchCategories.useQuery();
 
@@ -30,7 +37,7 @@ const CategorySelect: FC = () => {
 
 	return (
 		<section className="peer mt-4 block w-full appearance-none bg-transparent px-0 py-2.5 text-lg text-gray-900 dark:text-blue-50 focus:outline-none focus:ring-0">
-			<Select>
+			<Select onValueChange={onChange} value={value}>
 				<SelectTrigger>
 					<SelectValue placeholder="Výber kategórie" />
 				</SelectTrigger>

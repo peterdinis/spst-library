@@ -16,7 +16,7 @@ import { useForm, FieldValues } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import Header from "~/app/_components/shared/Header";
-import {useMutation} from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
 const AdminRightsModal: FC = () => {
 	const [open, setOpen] = useState(false);
@@ -28,40 +28,43 @@ const AdminRightsModal: FC = () => {
 		setOpen(!open);
 	};
 
-    const adminRightsMut = useMutation({
-        mutationKey: ["adminRightsAccount"],
-        mutationFn: async (data: any) => {
-            return await axios.patch(process.env.NEXT_PUBLIC_AUTH_API + "auth/users/make-admin", data)
-        },
+	const adminRightsMut = useMutation({
+		mutationKey: ["adminRightsAccount"],
+		mutationFn: async (data: any) => {
+			return await axios.patch(
+				process.env.NEXT_PUBLIC_AUTH_API + "auth/users/make-admin",
+				data,
+			);
+		},
 
-        onSuccess: () => {
-            toast({
+		onSuccess: () => {
+			toast({
 				title: "Učet má admin práva",
 				duration: 2000,
 				className: "bg-green-500",
 			});
-        },
+		},
 
-        onError: () => {
-            toast({
+		onError: () => {
+			toast({
 				title: "Nepodarilo sa nastaviť pre účet, admin práva",
 				duration: 2000,
 				className: "bg-red-500",
 			});
-        }
-    })
+		},
+	});
 
 	const onSubmit = async (data: FieldValues) => {
 		await adminRightsMut.mutateAsync({
-			accountId: data.accountId
+			accountId: data.accountId,
 		});
 	};
 
 	return (
 		<Dialog open={open} onOpenChange={handleOpenDialog}>
 			<DialogTrigger>
-                <Button variant={"default"}>Nastaviť admin práva</Button>
-            </DialogTrigger>
+				<Button variant={"default"}>Nastaviť admin práva</Button>
+			</DialogTrigger>
 			<DialogContent>
 				<DialogHeader>
 					<DialogTitle>

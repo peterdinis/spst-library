@@ -15,7 +15,7 @@ import { useToast } from "~/components/ui/use-toast";
 import { useForm, FieldValues } from "react-hook-form";
 import axios from "axios";
 import Header from "~/app/_components/shared/Header";
-import {useMutation} from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
 const DeactivateAccountModal: FC = () => {
 	const [open, setOpen] = useState(false);
@@ -26,40 +26,43 @@ const DeactivateAccountModal: FC = () => {
 		setOpen(!open);
 	};
 
-    const deactivateAccountModal = useMutation({
-        mutationKey: ["deactivateAccount"],
-        mutationFn: async (data: any) => {
-            return await axios.patch(process.env.NEXT_PUBLIC_AUTH_API + "auth/users/deactivate", data)
-        },
+	const deactivateAccountModal = useMutation({
+		mutationKey: ["deactivateAccount"],
+		mutationFn: async (data: any) => {
+			return await axios.patch(
+				process.env.NEXT_PUBLIC_AUTH_API + "auth/users/deactivate",
+				data,
+			);
+		},
 
-        onSuccess: () => {
-            toast({
+		onSuccess: () => {
+			toast({
 				title: "Učet bol deaktivovaný",
 				duration: 2000,
 				className: "bg-green-500",
 			});
-        },
+		},
 
-        onError: () => {
-            toast({
+		onError: () => {
+			toast({
 				title: "Učet nebol deaktivovaný",
 				duration: 2000,
 				className: "bg-red-500",
 			});
-        }
-    })
+		},
+	});
 
 	const onSubmit = async (data: FieldValues) => {
 		await deactivateAccountModal.mutateAsync({
-			accountId: data.accountId
+			accountId: data.accountId,
 		});
 	};
 
 	return (
 		<Dialog open={open} onOpenChange={handleOpenDialog}>
 			<DialogTrigger>
-                <Button variant={"default"}>Deaktivovat účet</Button>
-            </DialogTrigger>
+				<Button variant={"default"}>Deaktivovat účet</Button>
+			</DialogTrigger>
 			<DialogContent>
 				<DialogHeader>
 					<DialogTitle>
