@@ -24,7 +24,9 @@ const Hero: FC = () => {
   };
 
   useEffect(() => {
-    const socket = io('ws://localhost:4000'); // Upravte URL na adresu vašej WebSocket servera
+    const socket = io('http://localhost:4001', {
+      
+    }); // Upravte URL na adresu vašej WebSocket servera
 
     socket.on('connect', () => {
       console.log('Connected to WebSocket server');
