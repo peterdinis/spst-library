@@ -161,7 +161,17 @@ const CreateBookForm: FC = () => {
         </div>
 
         <div className="group relative z-0 mb-6">
-          <PublisherSelect />
+          <Controller
+            name="publisherId"
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <PublisherSelect onChange={field.onChange} value={field.value} />
+            )}
+          />
+          {errors.publisherId && (
+            <span className="text-red-500">Vydavateľstvo musí byť vybraté</span>
+          )}
         </div>
 
         <div className="group relative z-0 mb-6">

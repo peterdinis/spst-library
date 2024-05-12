@@ -1,3 +1,5 @@
+"use client"
+
 import { Loader2, Ghost } from "lucide-react";
 import { FC } from "react";
 import { SelectPublisher } from "~/app/types/publisherTypes";
@@ -10,7 +12,12 @@ import {
 } from "~/components/ui/select";
 import { api } from "~/trpc/react";
 
-const PublisherSelect: FC = () => {
+interface IPublisherSelectProps {
+	onChange: (...args: unknown[]) => void;
+	value: string;
+}
+
+const PublisherSelect: FC<IPublisherSelectProps> = ({onChange, value}) => {
 	const { data, isLoading, isError } =
 		api.publisher.fetchPublishers.useQuery();
 
@@ -31,7 +38,7 @@ const PublisherSelect: FC = () => {
 
 	return (
 		<section className="peer mt-4 block w-full appearance-none bg-transparent px-0 py-2.5 text-lg text-gray-900 dark:text-blue-50 focus:outline-none focus:ring-0">
-			<Select>
+			<Select onValueChange={onChange} value={value}>
 				<SelectTrigger>
 					<SelectValue placeholder="Výber vydavateľstva" />
 				</SelectTrigger>
