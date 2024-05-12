@@ -1,6 +1,7 @@
+"use client" 
+
 import { Loader2, Ghost } from "lucide-react";
 import { FC } from "react";
-import { SelectAuthor } from "~/app/types/authorTypes";
 import {
 	Select,
 	SelectContent,
@@ -10,7 +11,12 @@ import {
 } from "~/components/ui/select";
 import { api } from "~/trpc/react";
 
-const AuthorSelect: FC = () => {
+interface IAuthorSelectProps {
+	onChange: (...args: unknown[]) => void;
+	value: string;
+}
+
+const AuthorSelect: FC<IAuthorSelectProps> = ({ onChange, value }) => {
 	const { data, isLoading, isError } = api.author.fetchAuthors.useQuery();
 
 	if (isLoading) {
@@ -29,23 +35,21 @@ const AuthorSelect: FC = () => {
 	}
 
 	return (
-		<section className="peer mt-4 block w-full appearance-none bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0">
-			<Select>
+		<section className="peer mt-4 block w-full appearance-none bg-transparent px-0 py-2.5 text-lg text-gray-900 dark:text-blue-50 focus:outline-none focus:ring-0">
+			<Select onValueChange={onChange} value={value}>
 				<SelectTrigger>
 					<SelectValue placeholder="Výber spisovateľa/ky" />
 				</SelectTrigger>
 				<SelectContent>
 					{data &&
-						data.map((author: SelectAuthor) => {
-							return (
-								<SelectItem
-									key={author.id}
-									value={author.id.toString()}
-								>
-									{author.name}
-								</SelectItem>
-							);
-						})}
+						data.map((author) => (
+							<SelectItem
+								key={author.id}
+								value={author.id.toString()}
+							>
+								{author.name}
+							</SelectItem>
+						))}
 				</SelectContent>
 			</Select>
 		</section>

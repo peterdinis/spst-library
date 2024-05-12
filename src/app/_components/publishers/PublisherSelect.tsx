@@ -2,6 +2,7 @@
 
 import { Loader2, Ghost } from "lucide-react";
 import { FC } from "react";
+import { SelectPublisher } from "~/app/types/publisherTypes";
 import {
 	Select,
 	SelectContent,
@@ -11,14 +12,14 @@ import {
 } from "~/components/ui/select";
 import { api } from "~/trpc/react";
 
-interface ICategorySelectProps {
+interface IPublisherSelectProps {
 	onChange: (...args: unknown[]) => void;
 	value: string;
 }
 
-const CategorySelect: FC<ICategorySelectProps> = ({onChange, value}) => {
+const PublisherSelect: FC<IPublisherSelectProps> = ({onChange, value}) => {
 	const { data, isLoading, isError } =
-		api.category.fetchCategories.useQuery();
+		api.publisher.fetchPublishers.useQuery();
 
 	if (isLoading) {
 		return <Loader2 className="h-8 w-8 animate-spin" />;
@@ -29,7 +30,7 @@ const CategorySelect: FC<ICategorySelectProps> = ({onChange, value}) => {
 			<div className="mt-6 flex justify-center align-top">
 				<Ghost className="h-8 w-8 animate-bounce" />{" "}
 				<span className="font-bold">
-					Žiadne kategórie neboli nájdené
+					Žiadny spisovatelia neboli nájdený
 				</span>
 			</div>
 		);
@@ -39,17 +40,17 @@ const CategorySelect: FC<ICategorySelectProps> = ({onChange, value}) => {
 		<section className="peer mt-4 block w-full appearance-none bg-transparent px-0 py-2.5 text-lg text-gray-900 dark:text-blue-50 focus:outline-none focus:ring-0">
 			<Select onValueChange={onChange} value={value}>
 				<SelectTrigger>
-					<SelectValue placeholder="Výber kategórie" />
+					<SelectValue placeholder="Výber vydavateľstva" />
 				</SelectTrigger>
 				<SelectContent>
 					{data &&
-						data.map((item) => {
+						data.map((publisher: SelectPublisher) => {
 							return (
 								<SelectItem
-									key={item.id}
-									value={item.id.toString()}
+									key={publisher.id}
+									value={publisher.id.toString()}
 								>
-									{item.name}
+									{publisher.name}
 								</SelectItem>
 							);
 						})}
@@ -59,4 +60,4 @@ const CategorySelect: FC<ICategorySelectProps> = ({onChange, value}) => {
 	);
 };
 
-export default CategorySelect;
+export default PublisherSelect;

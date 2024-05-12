@@ -15,7 +15,7 @@ import { useToast } from "~/components/ui/use-toast";
 import { useForm, FieldValues } from "react-hook-form";
 import axios from "axios";
 import Header from "~/app/_components/shared/Header";
-import {useMutation} from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
 const AdminRemoveRightsModal: FC = () => {
 	const [open, setOpen] = useState(false);
@@ -26,40 +26,43 @@ const AdminRemoveRightsModal: FC = () => {
 		setOpen(!open);
 	};
 
-    const adminRemoveRightsMut = useMutation({
-        mutationKey: ["adminRemoveRights"],
-        mutationFn: async (data: any) => {
-            return await axios.patch(process.env.NEXT_PUBLIC_AUTH_API + "auth/users/make-admin", data)
-        },
+	const adminRemoveRightsMut = useMutation({
+		mutationKey: ["adminRemoveRights"],
+		mutationFn: async (data: any) => {
+			return await axios.patch(
+				process.env.NEXT_PUBLIC_AUTH_API + "auth/users/make-admin",
+				data,
+			);
+		},
 
-        onSuccess: () => {
-            toast({
+		onSuccess: () => {
+			toast({
 				title: "Učtu boli odobrané admin práva",
 				duration: 2000,
 				className: "bg-green-500",
 			});
-        },
+		},
 
-        onError: () => {
-            toast({
+		onError: () => {
+			toast({
 				title: "Nepodarilo sa odobrať účtu admin práva",
 				duration: 2000,
 				className: "bg-red-500",
 			});
-        }
-    })
+		},
+	});
 
 	const onSubmit = async (data: FieldValues) => {
 		await adminRemoveRightsMut.mutateAsync({
-			accountId: data.accountId
+			accountId: data.accountId,
 		});
 	};
 
 	return (
 		<Dialog open={open} onOpenChange={handleOpenDialog}>
 			<DialogTrigger>
-                <Button variant={"secondary"}>Odobrať admin práva</Button>
-            </DialogTrigger>
+				<Button variant={"secondary"}>Odobrať admin práva</Button>
+			</DialogTrigger>
 			<DialogContent>
 				<DialogHeader>
 					<DialogTitle>
