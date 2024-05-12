@@ -9,7 +9,7 @@ import AuthorSelect from "../authors/AuthorSelect";
 import CategorySelect from "../categories/CategorySelect";
 import PublisherSelect from "../publishers/PublisherSelect";
 import { useToast } from "~/components/ui/use-toast";
-import { FieldValue, FieldValues, useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import { api } from "~/trpc/react";
 import { useRouter } from "next/navigation";
 
