@@ -101,10 +101,10 @@ export const bookRouter = createTRPCRouter({
 				year: z.string(),
 				pages: z.number(),
 				isAvaiable: z.boolean(),
-				categoryId: z.number(),
-				authorId: z.number(),
+				categoryId: z.string(),
+				authorId: z.string(),
 				itemsInStock: z.number(),
-				publisherId: z.number(),
+				publisherId: z.string(),
 			}),
 		)
 		.mutation(async ({ ctx, input }) => {
@@ -116,9 +116,9 @@ export const bookRouter = createTRPCRouter({
 					year: input.year,
 					pages: input.pages,
 					isAvaiable: input.isAvaiable,
-					categoryId: input.categoryId,
-					publisherId: input.publisherId,
-					authorId: input.authorId,
+					categoryId: Number(input.categoryId),
+					publisherId: Number(input.publisherId),
+					authorId: Number(input.authorId),
 					itemsInStock: input.itemsInStock,
 				},
 			});
