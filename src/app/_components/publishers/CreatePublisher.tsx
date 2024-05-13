@@ -12,7 +12,12 @@ import { format } from "date-fns";
 const CreatePublisher: FC = () => {
 	const { toast } = useToast();
 
-	const { register, handleSubmit, reset } = useForm();
+	const {
+		register,
+		handleSubmit,
+		reset,
+		formState: { errors },
+	} = useForm();
 
 	const router = useRouter();
 
@@ -23,7 +28,7 @@ const CreatePublisher: FC = () => {
 				duration: 2000,
 				className: "bg-green-500 text-white",
 			});
-			router.push("/categories");
+			router.push("/publishers");
 		},
 
 		onError: () => {
@@ -44,6 +49,7 @@ const CreatePublisher: FC = () => {
 			isActive: data.isActive,
 			bossName: data.bossName,
 		});
+		reset();
 	};
 
 	return (
@@ -56,42 +62,78 @@ const CreatePublisher: FC = () => {
 				<div className="group relative z-0 mb-6">
 					<input
 						type="text"
-						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
+						className="peer mt-4 block w-full dark:text-blue-50 appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
 						placeholder="Meno"
-						{...register("name", { required: true })}
+						{...register("name", { required: true, minLength: 5 })}
 					/>
+					{errors.name && errors.name.type === "required" && (
+						<span className="text-red-500">
+							Meno vydavateľstva je povinné
+						</span>
+					)}
+
+					{errors.name && errors.name.type === "minLength" && (
+						<span className="text-red-500">
+							Meno vydavateľstva musí mať minimálne 5 znakov
+						</span>
+					)}
 				</div>
 				<div className="group relative z-0 mb-6">
 					<input
 						type="text"
-						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
+						className="peer mt-4 block w-full dark:text-blue-50 appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
 						placeholder="Krátky popis"
-						{...register("description", { required: true })}
+						{...register("description", {
+							required: true,
+							minLength: 5,
+						})}
 					/>
+					{errors.description &&
+						errors.description.type === "required" && (
+							<span className="text-red-500">
+								Pridanie popisu k vydavateľstva je povinné
+							</span>
+						)}
+
+					{errors.description &&
+						errors.description.type === "minLength" && (
+							<span className="text-red-500">
+								Popis musí mať minimálne 5 znakov
+							</span>
+						)}
 				</div>
 				<div className="group relative z-0 mb-6">
 					<input
 						type="text"
-						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
+						className="peer mt-4 block w-full dark:text-blue-50 appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
 						placeholder="Obrázok"
-						{...register("image", { required: true })}
+						{...register("image", { required: true, minLength: 5 })}
 					/>
+					{errors.image && errors.image.type === "required" && (
+						<span className="text-red-500">Obrázok je povinný</span>
+					)}
 				</div>
 				<div className="group relative z-0 mb-6">
 					<input
 						type="date"
-						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
+						className="peer mt-4 block w-full dark:text-blue-50 appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
 						placeholder="Dátum vytvorenia"
 						{...register("createdDated", {
 							required: true,
 							valueAsDate: true,
 						})}
 					/>
+					{errors.createdDated &&
+						errors.createdDated.type === "required" && (
+							<span className="text-red-500">
+								Dátum je povinný
+							</span>
+						)}
 				</div>
 				<div className="group relative z-0 mb-6">
 					<input
 						type="checkbox"
-						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
+						className="peer mt-4 block w-full dark:text-blue-50 appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
 						placeholder="Je akítnve"
 						{...register("isActive", { required: true })}
 					/>
@@ -99,10 +141,20 @@ const CreatePublisher: FC = () => {
 				<div className="group relative z-0 mb-6">
 					<input
 						type="text"
-						className="peer mt-4 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
+						className="peer mt-4 block w-full dark:text-blue-50 appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-lg text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600"
 						placeholder="Riaditeľ/ka"
 						{...register("boossName", { required: true })}
 					/>
+					{errors.bossName && errors.bossName.type === "required" && (
+						<span className="text-red-500">
+							Meno majiteľa je povinné
+						</span>
+					)}
+					{errors.name && errors.name.type === "minLength" && (
+						<span className="text-red-500">
+							Meno majiteľa musí mať minimálne 5 znakov
+						</span>
+					)}
 				</div>
 				<div className="flex justify-center align-top">
 					<Button variant={"default"} size={"lg"}>

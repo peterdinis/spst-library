@@ -20,7 +20,6 @@ const AdminLoginForm: FC = () => {
 	} = useForm();
 	const [showPassword, setShowPassword] = useState(false);
 	const { toast } = useToast();
-
 	const loginAdminMut = useMutation({
 		mutationKey: ["loginAdmin"],
 		mutationFn: async (data: ILoginType) => {

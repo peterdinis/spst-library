@@ -20,7 +20,7 @@ import { useMutation } from "@tanstack/react-query";
 const RemoveAccountModal: FC = () => {
 	const [open, setOpen] = useState(false);
 	const { toast } = useToast();
-	const { register, handleSubmit } = useForm();
+	const { register, handleSubmit, formState: {errors} } = useForm();
 
 	const handleOpenDialog = () => {
 		setOpen(!open);
@@ -81,6 +81,12 @@ const RemoveAccountModal: FC = () => {
 									})}
 									placeholder="Id účtu"
 								/>
+								{errors.accountId &&
+									errors.accountId.type === "required" && (
+										<span className="text-red-500">
+											Id účtu je povinné
+										</span>
+									)}
 							</div>
 							<div className="mt-8">
 								<Button>Zmazať účet</Button>
