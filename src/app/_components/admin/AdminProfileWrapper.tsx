@@ -2,9 +2,7 @@
 
 import { FC } from "react";
 import Header from "../shared/Header";
-import { Card, CardHeader, CardTitle } from "~/components/ui/card";
 import DashboardLinks from "./dashboard/DashboardLinks";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Cookie from "js-cookie";
 import DashboardCards from "./dashboard/DashboardCards";
