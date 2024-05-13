@@ -14,7 +14,7 @@
     "start": "next start",
     "format": "bunx @biomejs/biome format --write .",
     "seed": "ts-node prisma/seed.ts",
-    "helperLint": "bunx eslint src -c .ts,.tsx --fix"
+    "helperLint": "npx eslint src --ext .ts,.tsx --fix"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
