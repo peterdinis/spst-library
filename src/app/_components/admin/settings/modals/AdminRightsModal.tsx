@@ -13,7 +13,6 @@ import {
 import { Input } from "~/components/ui/input";
 import { useToast } from "~/components/ui/use-toast";
 import { useForm, FieldValues } from "react-hook-form";
-import { useRouter } from "next/navigation";
 import axios from "axios";
 import Header from "~/app/_components/shared/Header";
 import { useMutation } from "@tanstack/react-query";
@@ -21,8 +20,7 @@ import { useMutation } from "@tanstack/react-query";
 const AdminRightsModal: FC = () => {
 	const [open, setOpen] = useState(false);
 	const { toast } = useToast();
-	const { register, handleSubmit } = useForm();
-	const router = useRouter();
+	const { register, handleSubmit, formState: {errors} } = useForm();
 
 	const handleOpenDialog = () => {
 		setOpen(!open);
@@ -83,6 +81,9 @@ const AdminRightsModal: FC = () => {
 									})}
 									placeholder="Id účtu"
 								/>
+								 {errors.accountId && errors.accountId.type === "required" && (
+                  <span className="text-red-500">Id účtu je povinné</span>
+                )}
 							</div>
 							<div className="mt-8">
 								<Button>Nastaviť admin práva</Button>
