@@ -20,7 +20,11 @@ import { useMutation } from "@tanstack/react-query";
 const AdminRightsModal: FC = () => {
 	const [open, setOpen] = useState(false);
 	const { toast } = useToast();
-	const { register, handleSubmit, formState: {errors} } = useForm();
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm();
 
 	const handleOpenDialog = () => {
 		setOpen(!open);
@@ -81,9 +85,12 @@ const AdminRightsModal: FC = () => {
 									})}
 									placeholder="Id účtu"
 								/>
-								 {errors.accountId && errors.accountId.type === "required" && (
-                  <span className="text-red-500">Id účtu je povinné</span>
-                )}
+								{errors.accountId &&
+									errors.accountId.type === "required" && (
+										<span className="text-red-500">
+											Id účtu je povinné
+										</span>
+									)}
 							</div>
 							<div className="mt-8">
 								<Button>Nastaviť admin práva</Button>
