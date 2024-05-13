@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Loader2, Ghost } from "lucide-react";
 import { FC } from "react";
@@ -17,7 +17,7 @@ interface IPublisherSelectProps {
 	value: string;
 }
 
-const PublisherSelect: FC<IPublisherSelectProps> = ({onChange, value}) => {
+const PublisherSelect: FC<IPublisherSelectProps> = ({ onChange, value }) => {
 	const { data, isLoading, isError } =
 		api.publisher.fetchPublishers.useQuery();
 

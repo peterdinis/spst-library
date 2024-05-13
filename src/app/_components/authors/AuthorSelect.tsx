@@ -1,4 +1,4 @@
-"use client" 
+"use client";
 
 import { Loader2, Ghost } from "lucide-react";
 import { FC } from "react";

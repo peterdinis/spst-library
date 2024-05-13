@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Loader2, Ghost } from "lucide-react";
 import { FC } from "react";
@@ -16,7 +16,7 @@ interface ICategorySelectProps {
 	value: string;
 }
 
-const CategorySelect: FC<ICategorySelectProps> = ({onChange, value}) => {
+const CategorySelect: FC<ICategorySelectProps> = ({ onChange, value }) => {
 	const { data, isLoading, isError } =
 		api.category.fetchCategories.useQuery();
 
