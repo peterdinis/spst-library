@@ -13,11 +13,13 @@ import { ILoginType } from "~/app/types/authTypes";
 import Cookie from "js-cookie";
 
 const AdminLoginForm: FC = () => {
-	const { register, handleSubmit } = useForm();
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm();
 	const [showPassword, setShowPassword] = useState(false);
 	const { toast } = useToast();
-	const router = useRouter();
-
 	const loginAdminMut = useMutation({
 		mutationKey: ["loginAdmin"],
 		mutationFn: async (data: ILoginType) => {
@@ -78,6 +80,17 @@ const AdminLoginForm: FC = () => {
 									minLength: 5,
 								})}
 							/>
+							{errors.name && errors.name.type === "required" && (
+								<span className="text-red-500">
+									Meno je povinné
+								</span>
+							)}
+							{errors.name &&
+								errors.name.type === "minLength" && (
+									<span className="text-red-500">
+										Meno musí mať minimálne 5 znakov
+									</span>
+								)}
 						</div>
 						<div className="mb-2">
 							<label
@@ -96,6 +109,18 @@ const AdminLoginForm: FC = () => {
 								})}
 								placeholder="Priezvisko"
 							/>
+							{errors.lastName &&
+								errors.lastName.type === "required" && (
+									<span className="text-red-500">
+										Priezivsko je povinné
+									</span>
+								)}
+							{errors.lastName &&
+								errors.lastName.type === "minLength" && (
+									<span className="text-red-500">
+										Priezivsko musí mať minimálne 5 znakov
+									</span>
+								)}
 						</div>
 						<div className="mb-2">
 							<label
@@ -111,9 +136,19 @@ const AdminLoginForm: FC = () => {
 								{...register("email", {
 									required: true,
 									minLength: 5,
+									pattern: {
+										value: /^\S+@\S+$/i,
+										message: "Zlý formát emailu",
+									},
 								})}
 								placeholder="Email"
 							/>
+							{errors.email &&
+								errors.email.type === "required" && (
+									<span className="text-red-500">
+										Email je povinný
+									</span>
+								)}
 						</div>
 
 						<div className="mb-2">
@@ -136,6 +171,18 @@ const AdminLoginForm: FC = () => {
 									autoComplete="current-password"
 									placeholder="********************************************"
 								/>
+								{errors.password &&
+									errors.password.type === "required" && (
+										<span className="text-red-500">
+											Heslo je povinné
+										</span>
+									)}
+								{errors.password &&
+									errors.password.type === "minLength" && (
+										<span className="text-red-500">
+											Heslo musí mať minimálne 5 znakov
+										</span>
+									)}
 								<button
 									type="button"
 									className="absolute inset-y-0 right-0 flex items-center px-4 bg-transparent text-gray-500 focus:outline-none"

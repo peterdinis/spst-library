@@ -17,12 +17,12 @@ model Book {
     image        String
     year         String
     pages        Int
-    isAvaiable   Boolean
+    isAvaiable   Boolean   @default(true)
     itemsInStock Int
-    category     Category  @relation(fields: [categoryId], references: [id])
+    category     Category  @relation(fields: [categoryId], references: [id], onDelete: NoAction)
     categoryId   Int
-    publisher    Publisher @relation(fields: [publisherId], references: [id])
-    author       Author    @relation(fields: [authorId], references: [id])
+    publisher    Publisher @relation(fields: [publisherId], references: [id], onDelete: NoAction)
+    author       Author    @relation(fields: [authorId], references: [id],  onDelete: NoAction)
     authorId     Int
     publisherId  Int
     createdAt    DateTime  @default(now())

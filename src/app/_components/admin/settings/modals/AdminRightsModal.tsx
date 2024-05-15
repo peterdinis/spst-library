@@ -13,7 +13,6 @@ import {
 import { Input } from "~/components/ui/input";
 import { useToast } from "~/components/ui/use-toast";
 import { useForm, FieldValues } from "react-hook-form";
-import { useRouter } from "next/navigation";
 import axios from "axios";
 import Header from "~/app/_components/shared/Header";
 import {useMutation} from "@tanstack/react-query";
@@ -22,8 +21,11 @@ import { IAdminAction } from "~/app/types/adminTypes";
 const AdminRightsModal: FC = () => {
 	const [open, setOpen] = useState(false);
 	const { toast } = useToast();
-	const { register, handleSubmit } = useForm();
-	const router = useRouter();
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm();
 
 	const handleOpenDialog = () => {
 		setOpen(!open);
@@ -35,34 +37,34 @@ const AdminRightsModal: FC = () => {
             return await axios.patch(process.env.NEXT_PUBLIC_AUTH_API + "auth/users/make-admin", data)
         },
 
-        onSuccess: () => {
-            toast({
+		onSuccess: () => {
+			toast({
 				title: "Učet má admin práva",
 				duration: 2000,
 				className: "bg-green-500",
 			});
-        },
+		},
 
-        onError: () => {
-            toast({
+		onError: () => {
+			toast({
 				title: "Nepodarilo sa nastaviť pre účet, admin práva",
 				duration: 2000,
 				className: "bg-red-500",
 			});
-        }
-    })
+		},
+	});
 
 	const onSubmit = async (data: FieldValues) => {
 		await adminRightsMut.mutateAsync({
-			accountId: data.accountId
+			accountId: data.accountId,
 		});
 	};
 
 	return (
 		<Dialog open={open} onOpenChange={handleOpenDialog}>
 			<DialogTrigger>
-                <Button variant={"default"}>Nastaviť admin práva</Button>
-            </DialogTrigger>
+				<Button variant={"default"}>Nastaviť admin práva</Button>
+			</DialogTrigger>
 			<DialogContent>
 				<DialogHeader>
 					<DialogTitle>
@@ -81,6 +83,12 @@ const AdminRightsModal: FC = () => {
 									})}
 									placeholder="Id účtu"
 								/>
+								{errors.accountId &&
+									errors.accountId.type === "required" && (
+										<span className="text-red-500">
+											Id účtu je povinné
+										</span>
+									)}
 							</div>
 							<div className="mt-8">
 								<Button>Nastaviť admin práva</Button>

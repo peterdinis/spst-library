@@ -21,7 +21,11 @@ import { IAdminAction } from "~/app/types/adminTypes";
 const AdminRemoveRightsModal: FC = () => {
 	const [open, setOpen] = useState(false);
 	const { toast } = useToast();
-	const { register, handleSubmit } = useForm();
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm();
 
 	const handleOpenDialog = () => {
 		setOpen(!open);
@@ -33,34 +37,34 @@ const AdminRemoveRightsModal: FC = () => {
             return await axios.patch(process.env.NEXT_PUBLIC_AUTH_API + "auth/users/make-admin", data)
         },
 
-        onSuccess: () => {
-            toast({
+		onSuccess: () => {
+			toast({
 				title: "Učtu boli odobrané admin práva",
 				duration: 2000,
 				className: "bg-green-500",
 			});
-        },
+		},
 
-        onError: () => {
-            toast({
+		onError: () => {
+			toast({
 				title: "Nepodarilo sa odobrať účtu admin práva",
 				duration: 2000,
 				className: "bg-red-500",
 			});
-        }
-    })
+		},
+	});
 
 	const onSubmit = async (data: FieldValues) => {
 		await adminRemoveRightsMut.mutateAsync({
-			accountId: data.accountId
+			accountId: data.accountId,
 		});
 	};
 
 	return (
 		<Dialog open={open} onOpenChange={handleOpenDialog}>
 			<DialogTrigger>
-                <Button variant={"secondary"}>Odobrať admin práva</Button>
-            </DialogTrigger>
+				<Button variant={"secondary"}>Odobrať admin práva</Button>
+			</DialogTrigger>
 			<DialogContent>
 				<DialogHeader>
 					<DialogTitle>
@@ -79,6 +83,12 @@ const AdminRemoveRightsModal: FC = () => {
 									})}
 									placeholder="Id účtu"
 								/>
+								{errors.accountId &&
+									errors.accountId.type === "required" && (
+										<span className="text-red-500">
+											Id účtu je povinné
+										</span>
+									)}
 							</div>
 							<div className="mt-8">
 								<Button>Odobrať admin práva</Button>

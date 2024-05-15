@@ -21,7 +21,11 @@ import { IAdminAction } from "~/app/types/adminTypes";
 const DeactivateAccountModal: FC = () => {
 	const [open, setOpen] = useState(false);
 	const { toast } = useToast();
-	const { register, handleSubmit } = useForm();
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm();
 
 	const handleOpenDialog = () => {
 		setOpen(!open);
@@ -33,34 +37,34 @@ const DeactivateAccountModal: FC = () => {
             return await axios.patch(process.env.NEXT_PUBLIC_AUTH_API + "auth/users/deactivate", data)
         },
 
-        onSuccess: () => {
-            toast({
+		onSuccess: () => {
+			toast({
 				title: "Učet bol deaktivovaný",
 				duration: 2000,
 				className: "bg-green-500",
 			});
-        },
+		},
 
-        onError: () => {
-            toast({
+		onError: () => {
+			toast({
 				title: "Učet nebol deaktivovaný",
 				duration: 2000,
 				className: "bg-red-500",
 			});
-        }
-    })
+		},
+	});
 
 	const onSubmit = async (data: FieldValues) => {
 		await deactivateAccountModal.mutateAsync({
-			accountId: data.accountId
+			accountId: data.accountId,
 		});
 	};
 
 	return (
 		<Dialog open={open} onOpenChange={handleOpenDialog}>
 			<DialogTrigger>
-                <Button variant={"default"}>Deaktivovat účet</Button>
-            </DialogTrigger>
+				<Button variant={"default"}>Deaktivovat účet</Button>
+			</DialogTrigger>
 			<DialogContent>
 				<DialogHeader>
 					<DialogTitle>
@@ -79,6 +83,12 @@ const DeactivateAccountModal: FC = () => {
 									})}
 									placeholder="Id účtu"
 								/>
+								{errors.accountId &&
+									errors.accountId.type === "required" && (
+										<span className="text-red-500">
+											Id účtu je povinné
+										</span>
+									)}
 							</div>
 							<div className="mt-8">
 								<Button>Deaktivovať účet</Button>

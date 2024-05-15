@@ -5,7 +5,6 @@ import { Home, School2 } from "lucide-react";
 import { FC } from "react";
 
 const Services: FC = () => {
-
 	const servicesVariant = {
 		hidden: { opacity: 0, scale: 0.9 },
 		visible: {

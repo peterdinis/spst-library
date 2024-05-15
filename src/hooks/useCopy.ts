@@ -21,14 +21,14 @@ export function useCopyToClipboard(): [CopiedValue, CopyFn] {
 			setCopiedText(text);
 			toast({
 				title: "Skopirovaná hodnota",
-				duration: 1500,
+				duration: 2000,
 				className: "bg-green-500 text-blue-50",
 			});
 			return true;
 		} catch (error) {
 			toast({
 				title: "Hodnotu sa nepodarilo skopírovať",
-				duration: 1500,
+				duration: 2000,
 				className: "bg-red-500 text-blue-50",
 			});
 

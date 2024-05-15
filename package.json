@@ -1,6 +1,6 @@
 {
   "name": "spst-kniznica",
-  "version": "2.5.0",
+  "version": "2.7.0",
   "private": true,
   "type": "module",
   "author": {
@@ -17,7 +17,6 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
-    "@lucia-auth/adapter-prisma": "^4.0.1",
     "@prisma/client": "^5.13.0",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-avatar": "^1.0.4",
@@ -55,11 +54,9 @@
     "react-quill": "^2.0.0",
     "scroll-to-top": "^1.1.0",
     "server-only": "^0.0.1",
-    "socket.io-client": "^4.7.5",
     "superjson": "^2.2.1",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
-    "ws": "^8.17.0",
     "zod": "^3.23.6",
     "zustand": "^4.5.2"
   },
