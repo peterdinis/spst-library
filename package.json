@@ -50,6 +50,7 @@
     "react-confetti": "^6.1.0",
     "react-date-picker": "^10.6.0",
     "react-dom": "18.2.0",
+    "react-email": "^2.1.2",
     "react-hook-form": "^7.51.4",
     "react-quill": "^2.0.0",
     "scroll-to-top": "^1.1.0",
