@@ -19,7 +19,8 @@ import { ChevronLeftIcon, ChevronRightIcon, Ghost } from "lucide-react";
 import { DataTableProps } from "~/app/types/sharedTypes";
 import Link from "next/link";
 import { Button } from "~/components/ui/button";
-
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import PdfWrapper from "../pdfs/PdfWrapper";
 export function DataTable<TData, TValue>({
 	columns,
 	data,
@@ -45,6 +46,11 @@ export function DataTable<TData, TValue>({
 			<Button variant={"link"} size={"lg"}>
 				<Link href="/admin/profile">Späť na admin profil</Link>
 			</Button>
+			<PDFDownloadLink document={<PdfWrapper data={data} />} fileName="document.pdf">
+        {({ blob, url, loading, error }) =>
+          loading ? "Loading document..." : "Zobraziť pdf zobrazenie"
+        }
+      </PDFDownloadLink>
 			<div className="rounded-md border mt-5">
 				<Table>
 					<TableHeader>
