@@ -9,16 +9,23 @@ type PdfWrapperProps = {
 const PdfWrapper: FC<PdfWrapperProps> = ({ data }) => (
   <Document>
     <Page size="A4" style={styles.page}>
-      {data &&
-        data.map((item: any) => {
-          return (
-            <>
-              <View style={styles.section}>
-                <Text>{item.name}</Text>
+      <View style={styles.table}>
+        <View style={styles.tableRow}>
+          <View style={styles.tableColHeader}>
+            <Text style={styles.tableCellHeader}>Name</Text>
+          </View>
+          {/* Add more header cells here if needed */}
+        </View>
+        {data &&
+          data.map((item: any, index: number) => (
+            <View key={index} style={styles.tableRow}>
+              <View style={styles.tableCol}>
+                <Text style={styles.tableCell}>{item.name}</Text>
               </View>
-            </>
-          );
-        })}
+              {/* Add more cells here if needed */}
+            </View>
+          ))}
+      </View>
     </Page>
   </Document>
 );
