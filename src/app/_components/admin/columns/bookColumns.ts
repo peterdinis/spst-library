@@ -10,6 +10,8 @@ export type Book = {
 	itemsInStock: number;
 };
 
+const booleanCellRenderer = (value: boolean) => (value ? "Ano" : "Nie");
+
 export const columns: ColumnDef<Book>[] = [
 	{
 		accessorKey: "id",
@@ -32,6 +34,8 @@ export const columns: ColumnDef<Book>[] = [
 		header: "Je dostupná",
 		enableSorting: true,
 		enableGlobalFilter: true,
+		cell: ({getValue}) => booleanCellRenderer(getValue<boolean>())
+		
 	},
 	{
 		accessorKey: "itemsInStock",
