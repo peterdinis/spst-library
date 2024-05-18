@@ -6,7 +6,6 @@ import Link from "next/link";
 import { Eye, EyeOff } from "lucide-react";
 import { useToast } from "~/components/ui/use-toast";
 import { useForm, FieldValues } from "react-hook-form";
-import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { ILoginType } from "~/app/types/authTypes";

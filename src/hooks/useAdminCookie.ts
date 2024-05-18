@@ -12,7 +12,7 @@ const useAdminCookie = (): ICookieAuthType | null => {
 	useEffect(() => {
 		const fetchAdminCookie = () => {
 			try {
-				const cookieValue = Cookie.get("AdminD");
+				const cookieValue = Cookie.get("adminD");
 				if (cookieValue) {
 					const parsedCookie = JSON.parse(
 						cookieValue,

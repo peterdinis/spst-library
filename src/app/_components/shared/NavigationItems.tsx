@@ -67,6 +67,23 @@ const NavigationItems: FC = () => {
 					/>
 				</li>
 			)}
+			{adminCookie !== null && (
+				<li className="text-xl dark:text-blue-50 text-black">
+					<MenuDropdown
+						profileLink={"/admin/profile"}
+						logoutFn={() => {
+							Cookie.remove("adminD");
+							Cookie.remove("isAdminLogin");
+							window.location.replace("/admin/login");
+							toast({
+								title: "Odhlásenie bolo úspešné",
+								className: "bg-green-500 text-blue-50",
+								duration: 2000,
+							});
+						}}
+					/>
+				</li>
+			)}
 			{!studentCookie && !teacherCookie && !adminCookie && (
 				<>
 					<li className="text-xl dark:text-blue-50 text-black">
