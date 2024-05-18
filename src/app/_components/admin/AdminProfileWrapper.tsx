@@ -2,10 +2,41 @@
 
 import { FC } from "react";
 import Header from "../shared/Header";
-import DashboardLinks from "./dashboard/DashboardLinks";
 import { useRouter } from "next/navigation";
 import Cookie from "js-cookie";
-import DashboardCards from "./dashboard/DashboardCards";
+import { Settings, ShieldCheck, ShieldBan } from "lucide-react";
+import AdminRemoveRightsModal from "./settings/modals/AdminRemoveRightsModal";
+import AdminRightsModal from "./settings/modals/AdminRightsModal";
+import DeactivateAccountModal from "./settings/modals/DeactivateAccountModal";
+import RemoveAccountModal from "./settings/modals/RemoveAccountModal";
+import { BentoGrid, BentoGridItem } from "~/components/ui/bento-grid";
+
+const items = [
+	{
+		title: "Nastaviť admin práva emailu",
+		description: "Tu sa nastavuju admin práva pre učiteľský účet",
+		icon: <Settings className="h-4 w-4 text-neutral-500" />,
+		button: <AdminRightsModal />,
+	},
+	{
+		title: "Vymazať účet",
+		description: "Vymazanie jedného účtu",
+		icon: <ShieldCheck className="h-4 w-4 text-neutral-500" />,
+		button: <RemoveAccountModal />,
+	},
+	{
+		title: "Dekativovať účet",
+		description: "Deaktivovanie jedného účtu",
+		icon: <ShieldBan className="h-4 w-4 text-neutral-500" />,
+		button: <DeactivateAccountModal />,
+	},
+	{
+		title: "Odobrať admin práva",
+		description: "Tu sa odoberajú admin práva.",
+		icon: <Settings className="h-4 w-4 text-neutral-500" />,
+		button: <AdminRemoveRightsModal />,
+	},
+];
 
 const AdminProfileWrapper: FC = () => {
 	const router = useRouter();
@@ -17,14 +48,18 @@ const AdminProfileWrapper: FC = () => {
 	return (
 		<>
 			<Header text="Admin časť" />
-			<div className="flex flex-col min-h-screen w-full">
-				<main className="flex min-h-[calc(100vh_-_theme(spacing.16))]  flex-1 flex-col gap-4 p-4 md:gap-8 md:p-10">
-					<div className="grid md:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr] items-start gap-6 max-w-6xl w-full mx-auto">
-						<DashboardLinks />
-						<DashboardCards />
-					</div>
-				</main>
-			</div>
+			<BentoGrid className="mt-12 max-w-4xl mx-auto">
+			{items.map((item, i) => (
+				<BentoGridItem
+					key={i}
+					title={item.title}
+					description={item.description}
+					icon={item.icon}
+					button={item.button}
+					className={i === 3 || i === 6 ? "md:col-span-2" : ""}
+				/>
+			))}
+		</BentoGrid>
 		</>
 	);
 };
