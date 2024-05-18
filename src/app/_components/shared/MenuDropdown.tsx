@@ -35,10 +35,9 @@ const MenuDropdown: FC<IMenuDropdownProps> = ({
 				<DropdownMenuSeparator />
 				<DropdownMenuGroup>
 					<DropdownMenuItem>
-						Môj profil
-						<DropdownMenuShortcut>
-							<Link href={profileLink!}>Profil</Link>
-						</DropdownMenuShortcut>
+						<Link href={profileLink!}>
+							<DropdownMenuShortcut>Profil</DropdownMenuShortcut>
+						</Link>
 					</DropdownMenuItem>
 				</DropdownMenuGroup>
 				<DropdownMenuSeparator />
@@ -47,7 +46,6 @@ const MenuDropdown: FC<IMenuDropdownProps> = ({
 						Odhlásiť sa
 					</Button>
 				</DropdownMenuItem>
-
 				{children}
 			</DropdownMenuContent>
 		</DropdownMenu>
