@@ -34,8 +34,7 @@ export const columns: ColumnDef<Book>[] = [
 		header: "Je dostupná",
 		enableSorting: true,
 		enableGlobalFilter: true,
-		cell: ({getValue}) => booleanCellRenderer(getValue<boolean>())
-		
+		cell: ({ getValue }) => booleanCellRenderer(getValue<boolean>()),
 	},
 	{
 		accessorKey: "itemsInStock",
