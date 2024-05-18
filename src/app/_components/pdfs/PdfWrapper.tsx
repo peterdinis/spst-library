@@ -1,8 +1,12 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { Page, Text, View, Document } from "@react-pdf/renderer";
 
+interface Item {
+  name: string;
+}
+
 type PdfWrapperProps = {
-  data: any[];
+  data: Item[];
 };
 
 const PdfWrapper: FC<PdfWrapperProps> = ({ data }) => (
@@ -17,13 +21,11 @@ const PdfWrapper: FC<PdfWrapperProps> = ({ data }) => (
         Zoznam
       </Text>
       {data &&
-        data.map((item) => {
-          return (
-            <View>
-              <Text>{item.name}</Text>
-            </View>
-          );
-        })}
+        data.map((item: Item, index: number) => (
+          <View key={index}>
+            <Text>{item.name}</Text>
+          </View>
+        ))}
     </Page>
   </Document>
 );
