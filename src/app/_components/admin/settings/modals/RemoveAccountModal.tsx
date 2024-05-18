@@ -20,7 +20,11 @@ import { useMutation } from "@tanstack/react-query";
 const RemoveAccountModal: FC = () => {
 	const [open, setOpen] = useState(false);
 	const { toast } = useToast();
-	const { register, handleSubmit, formState: {errors} } = useForm();
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm();
 
 	const handleOpenDialog = () => {
 		setOpen(!open);

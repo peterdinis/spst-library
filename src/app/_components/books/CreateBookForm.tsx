@@ -137,7 +137,9 @@ const CreateBookForm: FC = () => {
 						})}
 					/>
 					{errors.pages && errors.pages.type === "required" && (
-						<span className="text-red-500">Počet strán je povinný</span>
+						<span className="text-red-500">
+							Počet strán je povinný
+						</span>
 					)}
 				</div>
 				<Label>Dostupnosť knihy</Label>
@@ -161,9 +163,12 @@ const CreateBookForm: FC = () => {
 							valueAsNumber: true,
 						})}
 					/>
-					{errors.itemsInStock && errors.itemsInStock.type === "required" && (
-						<span className="text-red-500">Počet kusov je povinný</span>
-					)}
+					{errors.itemsInStock &&
+						errors.itemsInStock.type === "required" && (
+							<span className="text-red-500">
+								Počet kusov je povinný
+							</span>
+						)}
 				</div>
 				<div className="group relative z-0 mb-6">
 					<Controller
