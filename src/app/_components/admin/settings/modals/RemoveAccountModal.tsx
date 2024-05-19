@@ -10,18 +10,25 @@ import {
 	DialogContent,
 	DialogDescription,
 } from "~/components/ui/dialog";
-import { Input } from "~/components/ui/input";
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from "~/components/ui/select";
 import { useToast } from "~/components/ui/use-toast";
 import { useForm, FieldValues } from "react-hook-form";
 import axios from "axios";
+import { Loader2 } from "lucide-react";
 import Header from "~/app/_components/shared/Header";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 const RemoveAccountModal: FC = () => {
 	const [open, setOpen] = useState(false);
 	const { toast } = useToast();
 	const {
-		register,
+		setValue,
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
@@ -29,6 +36,15 @@ const RemoveAccountModal: FC = () => {
 	const handleOpenDialog = () => {
 		setOpen(!open);
 	};
+
+	const { data, isLoading } = useQuery({
+		queryKey: ["allUsers"],
+		queryFn: async () => {
+			return await axios.get(
+				process.env.NEXT_PUBLIC_AUTH_API + "auth/users",
+			);
+		},
+	});
 
 	const removeAccountModal = useMutation({
 		mutationKey: ["removeAccount"],
@@ -62,6 +78,10 @@ const RemoveAccountModal: FC = () => {
 		});
 	};
 
+	if (isLoading) {
+		return <Loader2 className="h-8 w-8 animate-spin" />;
+	}
+
 	return (
 		<Dialog open={open} onOpenChange={handleOpenDialog}>
 			<DialogTrigger>
@@ -73,28 +93,51 @@ const RemoveAccountModal: FC = () => {
 						<Header text="Zmazať účet" />
 					</DialogTitle>
 					<DialogDescription>
-						<form
-							className="mt-5"
-							onSubmit={handleSubmit(onSubmit)}
-						>
-							<div className="mt-2">
-								<Input
-									type="text"
-									{...register("accountId", {
-										required: true,
-									})}
-									placeholder="Id účtu"
-								/>
-								{errors.accountId &&
-									errors.accountId.type === "required" && (
-										<span className="text-red-500">
-											Id účtu je povinné
-										</span>
-									)}
-							</div>
-							<div className="mt-8">
-								<Button>Zmazať účet</Button>
-							</div>
+					<form onSubmit={handleSubmit(onSubmit)}>
+							<section className="peer mt-4 block w-full appearance-none bg-transparent px-0 py-2.5 text-lg text-gray-900 dark:text-blue-50 focus:outline-none focus:ring-0">
+								<Select
+									onValueChange={(value) =>
+										setValue("accountId", value)
+									}
+								>
+									<SelectTrigger>
+										<SelectValue placeholder="Výber učtu pre admin práva" />
+									</SelectTrigger>
+									<SelectContent>
+										{data &&
+											data.data.map(
+												(item: {
+													id: string;
+													email: string;
+												}) => {
+													return (
+														<SelectItem
+															key={item.id}
+															value={item.id.toString()}
+														>
+															{item.email}
+														</SelectItem>
+													);
+												},
+											)}
+									</SelectContent>
+								</Select>
+								{errors.accountId && (
+									<p className="text-red-500">
+										{
+											errors.accountId
+												.message as unknown as string
+										}
+									</p>
+								)}
+								<Button
+									type="submit"
+									className="mt-10"
+									variant={"default"}
+								>
+									Zmazať účet
+								</Button>
+							</section>
 						</form>
 					</DialogDescription>
 				</DialogHeader>
