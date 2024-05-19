@@ -22,14 +22,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
-import { Loader2, Ghost } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 const AdminRightsModal: FC = () => {
   const [open, setOpen] = useState(false);
   const { toast } = useToast();
   const {
-    register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
 
@@ -37,7 +37,7 @@ const AdminRightsModal: FC = () => {
     setOpen(!open);
   };
 
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["adminTeachers"],
     queryFn: async () => {
       return await axios.get(
@@ -82,17 +82,6 @@ const AdminRightsModal: FC = () => {
     return <Loader2 className="h-8 w-8 animate-spin" />;
   }
 
-  if (isError) {
-    return (
-      <div className="mt-6 flex justify-center align-top">
-        <Ghost className="h-8 w-8 animate-bounce" />{" "}
-        <span className="font-bold">
-          Žiadny učiteľia / admini neboli nájdení
-        </span>
-      </div>
-    );
-  }
-
   return (
     <Dialog open={open} onOpenChange={handleOpenDialog}>
       <DialogTrigger>
@@ -104,23 +93,29 @@ const AdminRightsModal: FC = () => {
             <Header text="Nastaviť admin práva účtu" />
           </DialogTitle>
           <DialogDescription>
-            <section className="peer mt-4 block w-full appearance-none bg-transparent px-0 py-2.5 text-lg text-gray-900 dark:text-blue-50 focus:outline-none focus:ring-0">
-              <Select>
-                <SelectTrigger>
-                  <SelectValue placeholder="Výber učtu pre admin práva" />
-                </SelectTrigger>
-                <SelectContent>
-                  {data &&
-                    data.data.map((item: { id: string; email: string }) => {
-                      return (
-                        <SelectItem key={item.id} value={item.id.toString()}>
-                          {item.email}
-                        </SelectItem>
-                      );
-                    })}
-                </SelectContent>
-              </Select>
-            </section>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <section className="peer mt-4 block w-full appearance-none bg-transparent px-0 py-2.5 text-lg text-gray-900 dark:text-blue-50 focus:outline-none focus:ring-0">
+                <Select onValueChange={(value) => setValue('accountId', value)}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Výber učtu pre admin práva" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {data &&
+                      data.data.map((item: { id: string; email: string }) => {
+                        return (
+                          <SelectItem key={item.id} value={item.id.toString()}>
+                            {item.email}
+                          </SelectItem>
+                        );
+                      })}
+                  </SelectContent>
+                </Select>
+                {errors.accountId && <p className="text-red-500">{errors.accountId.message as unknown as string}</p>}
+                <Button type="submit" className="mt-10" variant={"default"}>
+                  Nastaviť práva
+                </Button>
+              </section>
+            </form>
           </DialogDescription>
         </DialogHeader>
       </DialogContent>
