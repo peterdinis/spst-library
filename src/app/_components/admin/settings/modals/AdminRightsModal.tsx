@@ -41,7 +41,7 @@ const AdminRightsModal: FC = () => {
     queryKey: ["adminTeachers"],
     queryFn: async () => {
       return await axios.get(
-        process.env.NEXT_PUBLIC_AUTH_API + "auth/users/admins/teachers"
+        process.env.NEXT_PUBLIC_AUTH_API + "auth/all/teachers/admins"
       );
     },
   });
@@ -50,7 +50,7 @@ const AdminRightsModal: FC = () => {
     mutationKey: ["adminRightsAccount"],
     mutationFn: async (data: any) => {
       return await axios.patch(
-        process.env.NEXT_PUBLIC_AUTH_API + "auth/users/make-admin",
+        process.env.NEXT_PUBLIC_AUTH_API + "auth/account/make-admin",
         data
       );
     },
