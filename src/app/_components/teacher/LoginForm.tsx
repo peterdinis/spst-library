@@ -24,7 +24,7 @@ const LoginForm: FC = () => {
 		mutationKey: ["loginTeacher"],
 		mutationFn: async (data: ILoginType) => {
 			return await axios.post(
-				process.env.NEXT_PUBLIC_AUTH_API + "auth/users/login",
+				process.env.NEXT_PUBLIC_AUTH_API + "auth/login",
 				data,
 			);
 		},
