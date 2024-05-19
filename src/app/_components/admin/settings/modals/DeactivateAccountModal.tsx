@@ -34,7 +34,7 @@ const DeactivateAccountModal: FC = () => {
 		mutationKey: ["deactivateAccount"],
 		mutationFn: async (data: any) => {
 			return await axios.patch(
-				process.env.NEXT_PUBLIC_AUTH_API + "auth/users/deactivate",
+				process.env.NEXT_PUBLIC_AUTH_API + "auth/account/deactivate",
 				data,
 			);
 		},
