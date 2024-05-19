@@ -41,7 +41,7 @@ const AdminRightsModal: FC = () => {
 		queryKey: ["adminTeachers"],
 		queryFn: async () => {
 			return await axios.get(
-				process.env.NEXT_PUBLIC_AUTH_API + "auth/all/teachers/admins",
+				process.env.NEXT_PUBLIC_AUTH_API + "auth/teachers",
 			);
 		},
 	});
