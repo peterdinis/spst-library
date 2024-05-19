@@ -135,7 +135,7 @@ const AdminRemoveRightsModal: FC = () => {
 									className="mt-10"
 									variant={"default"}
 								>
-									Nastaviť práva
+									Odstrániť práva
 								</Button>
 							</section>
 						</form>

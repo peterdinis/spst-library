@@ -135,7 +135,7 @@ const DeactivateAccountModal: FC = () => {
 									className="mt-10"
 									variant={"default"}
 								>
-									Nastaviť práva
+									Deaktivovať účet
 								</Button>
 							</section>
 						</form>
