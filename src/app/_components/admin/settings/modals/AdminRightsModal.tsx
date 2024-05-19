@@ -46,6 +46,8 @@ const AdminRightsModal: FC = () => {
 		},
 	});
 
+	console.log("D", data);
+
 	const adminRightsMut = useMutation({
 		mutationKey: ["adminRightsAccount"],
 		mutationFn: async (data: any) => {
