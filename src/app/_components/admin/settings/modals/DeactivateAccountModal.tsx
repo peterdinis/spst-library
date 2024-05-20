@@ -100,7 +100,7 @@ const DeactivateAccountModal: FC = () => {
 			email: data.email,
 			subject: "Váš účet bol úspešné deaktivovaný",
 			message:
-			  "Od dnešného dňa sa prihlasujete na tomto linku: http://localhost:3000/admin/login",
+			  "",
 		  });
 	};
 
