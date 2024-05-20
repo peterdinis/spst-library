@@ -23,6 +23,7 @@ import axios from "axios";
 import Header from "~/app/_components/shared/Header";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
+import { api } from "~/trpc/react";
 
 const DeactivateAccountModal: FC = () => {
 	const [open, setOpen] = useState(false);
@@ -72,10 +73,35 @@ const DeactivateAccountModal: FC = () => {
 		},
 	});
 
+	const sendEmailMut = api.email.sendEmail.useMutation({
+		onSuccess: () => {
+		  toast({
+			title: "Email pre účet bol odoslaný",
+			duration: 2000,
+			className: "bg-green-500 text-white",
+		  });
+		},
+	
+		onError: () => {
+		  toast({
+			title: "Email pre účet nebol odoslaný",
+			duration: 2000,
+			className: "bg-red-500 text-white",
+		  });
+		},
+	  });
+
 	const onSubmit = async (data: FieldValues) => {
 		await deactivateAccountModal.mutateAsync({
 			accountId: data.accountId,
 		});
+
+		await sendEmailMut.mutateAsync({
+			email: data.email,
+			subject: "Váš účet bol úspešné deaktivovaný",
+			message:
+			  "Od dnešného dňa sa prihlasujete na tomto linku: http://localhost:3000/admin/login",
+		  });
 	};
 
 	if (isLoading) {
