@@ -23,6 +23,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "~/components/ui/select";
+import { api } from "~/trpc/react";
 
 const AdminRemoveRightsModal: FC = () => {
 	const [open, setOpen] = useState(false);
@@ -45,6 +46,24 @@ const AdminRemoveRightsModal: FC = () => {
 			);
 		},
 	});
+
+	const sendEmailMut = api.email.sendEmail.useMutation({
+		onSuccess: () => {
+		  toast({
+			title: "Email pre účet bol odoslaný",
+			duration: 2000,
+			className: "bg-green-500 text-white",
+		  });
+		},
+	
+		onError: () => {
+		  toast({
+			title: "Email pre účet nebol odoslaný",
+			duration: 2000,
+			className: "bg-red-500 text-white",
+		  });
+		},
+	  });
 
 	const adminRemoveRightsMut = useMutation({
 		mutationKey: ["adminRemoveRights"],

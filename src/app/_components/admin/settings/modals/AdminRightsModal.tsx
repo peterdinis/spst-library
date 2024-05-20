@@ -41,7 +41,9 @@ const AdminRightsModal: FC = () => {
   const { data, isLoading } = useQuery({
     queryKey: ["adminTeachers"],
     queryFn: async () => {
-      return await axios.get(process.env.NEXT_PUBLIC_AUTH_API + "auth/teachers");
+      return await axios.get(
+        process.env.NEXT_PUBLIC_AUTH_API + "auth/teachers"
+      );
     },
   });
 
@@ -68,7 +70,7 @@ const AdminRightsModal: FC = () => {
     mutationFn: async (data: any) => {
       return await axios.patch(
         process.env.NEXT_PUBLIC_AUTH_API + "auth/account/make-admin",
-        data,
+        data
       );
     },
 
@@ -97,7 +99,8 @@ const AdminRightsModal: FC = () => {
     await sendEmailMut.mutateAsync({
       email: formData.email,
       subject: "Váš účet má od dnešného dňa admin práva.",
-	  message: "Od dnešného dňa sa prihlasujete na tomto linku: http://localhost:3000/admin/login"
+      message:
+        "Od dnešného dňa sa prihlasujete na tomto linku: http://localhost:3000/admin/login",
     });
   };
 
@@ -120,7 +123,11 @@ const AdminRightsModal: FC = () => {
               <section className="peer mt-4 block w-full appearance-none bg-transparent px-0 py-2.5 text-lg text-gray-900 dark:text-blue-50 focus:outline-none focus:ring-0">
                 <Select
                   onValueChange={(value) => {
-                    const selectedAccount = data && data.data.find((item: { id: string }) => item.id.toString() === value);
+                    const selectedAccount =
+                      data &&
+                      data.data.find(
+                        (item: { id: string }) => item.id.toString() === value
+                      );
                     if (selectedAccount) {
                       setValue("accountId", selectedAccount.id);
                       setValue("email", selectedAccount.email);
@@ -140,7 +147,9 @@ const AdminRightsModal: FC = () => {
                   </SelectContent>
                 </Select>
                 {errors.accountId && (
-                  <p className="text-red-500">{errors.accountId.message as string}</p>
+                  <p className="text-red-500">
+                    {errors.accountId.message as string}
+                  </p>
                 )}
                 <Button type="submit" className="mt-10" variant={"default"}>
                   Nastaviť práva
