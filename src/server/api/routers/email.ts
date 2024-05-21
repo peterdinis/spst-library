@@ -24,6 +24,7 @@ export const emailRouter = createTRPCRouter({
 				subject: input.subject,
 				react: EmailTemplate({
 					email: input.email,
+					message: input.message,
 					subject: input.subject,
 				}),
 			});
@@ -34,6 +35,8 @@ export const emailRouter = createTRPCRouter({
 					code: "BAD_REQUEST",
 				});
 			}
+
+			console.log("E", error);
 
 			return {
 				data,
