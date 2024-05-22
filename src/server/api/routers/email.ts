@@ -19,7 +19,7 @@ export const emailRouter = createTRPCRouter({
 			);
 
 			const { data, error } = await resend.emails.send({
-				from: "admin.spstkniznica.sk",
+				from: "Acme <onboarding@resend.dev>",
 				to: input.email,
 				subject: input.subject,
 				react: EmailTemplate({
