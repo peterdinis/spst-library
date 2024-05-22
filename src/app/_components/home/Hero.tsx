@@ -39,7 +39,7 @@ const Hero: FC = () => {
 						<Button
 							className="ml-4"
 							size="default"
-							variant={"destructive"}
+							variant={"secondary"}
 						>
 							<Link href="/books">Školská stránka</Link>
 						</Button>
