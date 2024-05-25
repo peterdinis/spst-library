@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { FC, FormEvent } from "react";
 import { Button } from "~/components/ui/button";
@@ -29,7 +29,7 @@ const BookSheets: FC<IBookSheetsProps> = ({ name, data }: IBookSheetsProps) => {
         });
 
         toast({
-            title: "Book was successfully deleted",
+            title: "Kniha bola úspešne zmazaná",
             duration: 2000,
             className: "bg-green-500",
         });
@@ -51,14 +51,14 @@ const BookSheets: FC<IBookSheetsProps> = ({ name, data }: IBookSheetsProps) => {
             });
 
             toast({
-                title: "Book was successfully updated",
+                title: "Kniha bola úspešne aktualizovaná",
                 duration: 2000,
                 className: "bg-green-500",
             });
             router.push(`/books/${data?.id}`);
         } catch (error) {
             toast({
-                title: "Failed to update book",
+                title: "Nepodarilo sa aktualizovať knihu",
                 duration: 2000,
                 className: "bg-red-500",
             });
@@ -69,39 +69,39 @@ const BookSheets: FC<IBookSheetsProps> = ({ name, data }: IBookSheetsProps) => {
         <div className="flex mt-5">
             <SheetHelper
                 variantProp="default"
-                title={"Update Book"}
-                secondTitle={"Update Book"}
+                title={"Upraviť Knihu"}
+                secondTitle={"Upraviť Knihu"}
             >
                 <span className="mt-2 font-bold text-xl">
-                    Update Book: {name}
+                    Upraviť Kniha: {name}
                 </span>
                 <div>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <Input
                             type="text"
                             className="mt-5"
-                            placeholder="Name"
+                            placeholder="Názov"
                             defaultValue={data?.name}
                             {...register("name")}
                         />
                         <Input
                             type="text"
                             className="mt-5"
-                            placeholder="Description"
+                            placeholder="Popis"
                             defaultValue={data?.description}
                             {...register("description")}
                         />
                         <Input
                             type="text"
                             className="mt-5"
-                            placeholder="Image"
+                            placeholder="Obrázok"
                             defaultValue={data?.image}
                             {...register("image")}
                         />
                         <Input
                             type="text"
                             className="mt-5"
-                            placeholder="Year"
+                            placeholder="Rok"
                             defaultValue={data?.year}
                             {...register("year")}
                         />
@@ -113,13 +113,13 @@ const BookSheets: FC<IBookSheetsProps> = ({ name, data }: IBookSheetsProps) => {
                                     defaultChecked={data?.isAvaiable}
                                     {...register("isAvaiable")}
                                 />
-                                Is Available
+                                Je k dispozícii
                             </label>
                         </div>
                         <Input
                             type="text"
                             className="mt-5"
-                            placeholder="Items in Stock"
+                            placeholder="Počet kusov na sklade"
                             defaultValue={data?.itemsInStock}
                             {...register("itemsInStock")}
                         />
@@ -130,7 +130,7 @@ const BookSheets: FC<IBookSheetsProps> = ({ name, data }: IBookSheetsProps) => {
                             size={"lg"}
                             type="submit"
                         >
-                            Upraviť knihu
+                            Upraviť Kniha
                         </Button>
                     </form>
                 </div>
@@ -138,16 +138,16 @@ const BookSheets: FC<IBookSheetsProps> = ({ name, data }: IBookSheetsProps) => {
             <div className="ml-4">
                 <SheetHelper
                     variantProp="outline"
-                    title="Delete Book"
-                    secondTitle="Are you sure you want to delete this book?"
+                    title="Zmazať Kniha"
+                    secondTitle="Ste si istí, že chcete zmazať túto knihu?"
                 >
                     <span className="mt-2 font-bold text-xl">
-                        Are you sure you want to delete book: {name}
+                        Ste si istí, že chcete zmazať knihu: {name}
                     </span>
                     <div className="p-5 mt-5">
                         <form onSubmit={deleteBookFn}>
                             <Button variant={"destructive"} size={"lg"} type="submit">
-                                Delete
+                                Zmazať
                             </Button>
                         </form>
                     </div>
