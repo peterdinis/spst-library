@@ -97,7 +97,7 @@ export const publisherRouter = createTRPCRouter({
 			return addNewPublisher;
 		}),
 
-	updatePublsher: publicProcedure
+	updatePublisher: publicProcedure
 		.input(
 			z.object({
 				id: z.number(),
