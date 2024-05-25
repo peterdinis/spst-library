@@ -46,7 +46,7 @@ const AuthorSheets: FC<IAuthorSheetsProps> = ({
         });
 
         toast({
-            title: "Author was successfully updated",
+            title: "Autor bol úspešne aktualizovaný",
             duration: 2000,
             className: "bg-green-500",
         });
@@ -61,7 +61,7 @@ const AuthorSheets: FC<IAuthorSheetsProps> = ({
         });
 
         toast({
-            title: "Author was successfully deleted",
+            title: "Autor bol úspešne zmazaný",
             duration: 2000,
             className: "bg-green-500",
         });
@@ -72,66 +72,66 @@ const AuthorSheets: FC<IAuthorSheetsProps> = ({
         <div className="flex mt-5">
             <SheetHelper
                 variantProp="default"
-                title={"Update Author"}
-                secondTitle={"Update Author"}
+                title={"Aktualizovať autora/ku"}
+                secondTitle={"Aktualizovať autora/ku"}
             >
                 <span className="mt-2 font-bold text-xl">
-                    Update Author: {name}
+                    Aktualizovať autora/ku: {name}
                 </span>
                 <div>
                     <form onSubmit={updateAuthorFn}>
                         <Input
                             type="text"
                             className="mt-5"
-                            placeholder="Name"
+                            placeholder="Meno"
                             value={authorName}
                             onChange={(e) => setAuthorName(e.target.value)}
                         />
                         <Input
                             type="text"
                             className="mt-5"
-                            placeholder="Death Year"
+                            placeholder="Rok úmrtia"
                             value={authorDeathYear}
                             onChange={(e) => setAuthorDeathYear(e.target.value)}
                         />
                         <Input
                             type="text"
                             className="mt-5"
-                            placeholder="Birth Year"
+                            placeholder="Rok narodenia"
                             value={authorBirthYear}
                             onChange={(e) => setAuthorBirthYear(e.target.value)}
                         />
                         <Input
                             type="text"
                             className="mt-5"
-                            placeholder="Description"
+                            placeholder="Popis"
                             value={authorDescription}
                             onChange={(e) => setAuthorDescription(e.target.value)}
                         />
                         <Input
                             type="text"
                             className="mt-5"
-                            placeholder="Literary Period"
+                            placeholder="Literárna doba"
                             value={authorLitPeriod}
                             onChange={(e) => setAuthorLitPeriod(e.target.value)}
                         />
                         <Input
                             type="number"
                             className="mt-5"
-                            placeholder="Total Books"
+                            placeholder="Počet kníh"
                             value={authorTotalBooks}
                             onChange={(e) => setAuthorTotalBooks(parseInt(e.target.value))}
                         />
                         <Input
                             type="text"
                             className="mt-5"
-                            placeholder="Author Image"
+                            placeholder="Obrázok autora"
                             value={authorImage}
                             onChange={(e) => setAuthorImage(e.target.value)}
                         />
 
                         <Button className="mt-6" variant={"secondary"} size={"lg"} type="submit">
-                            Update Author
+                            Aktualizovať autora/ku
                         </Button>
                     </form>
                 </div>
@@ -139,16 +139,16 @@ const AuthorSheets: FC<IAuthorSheetsProps> = ({
             <div className="ml-4">
                 <SheetHelper
                     variantProp="outline"
-                    title="Delete Author"
-                    secondTitle="Are you sure you want to delete this author?"
+                    title="Zmazať autora/ku"
+                    secondTitle="Ste si istí, že chcete zmazať tohto autora/ku?"
                 >
                     <span className="mt-2 font-bold text-xl">
-                        Are you sure you want to delete author: {name}
+                        Ste si istí, že chcete zmazať autora/ku: {name}
                     </span>
                     <div className="p-5 mt-5">
                         <form onSubmit={deleteAuthorFn}>
                             <Button variant={"destructive"} size={"lg"} type="submit">
-                                Delete
+                                Zmazať
                             </Button>
                         </form>
                     </div>
