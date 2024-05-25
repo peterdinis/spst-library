@@ -130,7 +130,7 @@ const BookSheets: FC<IBookSheetsProps> = ({ name, data }: IBookSheetsProps) => {
                             size={"lg"}
                             type="submit"
                         >
-                            Update Book
+                            Upraviť knihu
                         </Button>
                     </form>
                 </div>
