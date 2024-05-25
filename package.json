@@ -12,7 +12,7 @@
     "dev": "next dev --turbo",
     "lint": "next lint",
     "start": "next start",
-    "format": "bunx @biomejs/biome format --write .",
+    "format": "bunx @biomejs/biome check --apply .",
     "seed": "ts-node prisma/seed.ts"
   },
   "dependencies": {
