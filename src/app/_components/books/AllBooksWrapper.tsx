@@ -28,19 +28,6 @@ const AllBooksWrapper: FC = () => {
     }
   );
 
-  if (isFetchingNextPage || paginatedLoading) {
-    return <Loader2 className="h-8 w-8 animate-spin" />;
-  }
-
-  if (paginatedError) {
-    return (
-      <div className="mt-6 flex justify-center align-top">
-        <Ghost className="h-8 w-8 animate-bounce" />{" "}
-        <span className="font-bold">Knihy neboli nájdené</span>
-      </div>
-    );
-  }
-
   const toShow = paginatedData?.pages[page]?.items;
   const nextCursor = paginatedData?.pages[page]?.nextCursor;
 
@@ -65,6 +52,19 @@ const AllBooksWrapper: FC = () => {
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
   };
+
+  if (isFetchingNextPage || paginatedLoading) {
+    return <Loader2 className="h-8 w-8 animate-spin" />;
+  }
+
+  if (paginatedError) {
+    return (
+      <div className="mt-6 flex justify-center align-top">
+        <Ghost className="h-8 w-8 animate-bounce" />{" "}
+        <span className="font-bold">Knihy neboli nájdené</span>
+      </div>
+    );
+  }
 
   return (
     <>
