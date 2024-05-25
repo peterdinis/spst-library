@@ -126,39 +126,49 @@ export const categoryRouter = createTRPCRouter({
 
 			return updateOneCategory;
 		}),
-	deleteCategory: publicProcedure
-		.input(
-			z.object({
-				id: z.number(),
-			}),
-		)
-		.mutation(async ({ ctx, input }) => {
-			const findOneCategory = await ctx.db.category.findUnique({
-				where: {
-					id: input.id,
-				},
-			});
+		deleteCategory: publicProcedure
+        .input(
+            z.object({
+                id: z.number(),
+            }),
+        )
+        .mutation(async ({ ctx, input }) => {
+            const findOneCategory = await ctx.db.category.findUnique({
+                where: {
+                    id: input.id,
+                },
+                include: {
+                    books: true,
+                },
+            });
 
-			if (!findOneCategory) {
-				throw new TRPCError({
-					message: "Category with this is not found",
-					code: "NOT_FOUND",
-				});
-			}
+            if (!findOneCategory) {
+                throw new TRPCError({
+                    message: "Category with this id is not found",
+                    code: "NOT_FOUND",
+                });
+            }
 
-			const deleteOneCategory = await ctx.db.category.delete({
-				where: {
-					id: findOneCategory.id,
-				},
-			});
+            if (findOneCategory.books.length > 0) {
+                throw new TRPCError({
+                    message: "Cannot delete category as it is referenced by one or more books",
+                    code: "BAD_REQUEST",
+                });
+            }
 
-			if (!deleteOneCategory) {
-				throw new TRPCError({
-					message: "Failed to delete category",
-					code: "NOT_FOUND",
-				});
-			}
+            const deleteOneCategory = await ctx.db.category.delete({
+                where: {
+                    id: findOneCategory.id,
+                },
+            });
 
-			return deleteOneCategory;
-		}),
+            if (!deleteOneCategory) {
+                throw new TRPCError({
+                    message: "Failed to delete category",
+                    code: "BAD_REQUEST",
+                });
+            }
+
+            return deleteOneCategory;
+        }),
 });

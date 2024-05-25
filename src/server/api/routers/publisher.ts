@@ -97,7 +97,7 @@ export const publisherRouter = createTRPCRouter({
 			return addNewPublisher;
 		}),
 
-	updatePublsher: publicProcedure
+	updatePublisher: publicProcedure
 		.input(
 			z.object({
 				id: z.number(),
@@ -142,7 +142,7 @@ export const publisherRouter = createTRPCRouter({
 			return updateOnePublisher;
 		}),
 
-	deletePublisher: publicProcedure
+		deletePublisher: publicProcedure
 		.input(
 			z.object({
 				id: z.number(),
@@ -153,12 +153,22 @@ export const publisherRouter = createTRPCRouter({
 				where: {
 					id: input.id,
 				},
+				include: {
+					books: true,
+				},
 			});
 
 			if (!findOnePublisher) {
 				throw new TRPCError({
-					message: "Publisher with this is not found",
+					message: "Publisher with this id is not found",
 					code: "NOT_FOUND",
+				});
+			}
+
+			if (findOnePublisher.books.length > 0) {
+				throw new TRPCError({
+					message: "Cannot delete publisher as it is referenced by one or more books",
+					code: "BAD_REQUEST",
 				});
 			}
 
@@ -171,7 +181,7 @@ export const publisherRouter = createTRPCRouter({
 			if (!deleteOnePublisher) {
 				throw new TRPCError({
 					message: "Delete publisher failed",
-					code: "NOT_FOUND",
+					code: "BAD_REQUEST",
 				});
 			}
 

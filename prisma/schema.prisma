@@ -20,10 +20,10 @@ model Book {
     pages        Int
     isAvaiable   Boolean   @default(true)
     itemsInStock Int
-    category     Category  @relation(fields: [categoryId], references: [id], onDelete: NoAction)
+    category     Category  @relation(fields: [categoryId], references: [id], onDelete: Restrict)
     categoryId   Int
-    publisher    Publisher @relation(fields: [publisherId], references: [id], onDelete: NoAction)
-    author       Author    @relation(fields: [authorId], references: [id],  onDelete: NoAction)
+    publisher    Publisher @relation(fields: [publisherId], references: [id], onDelete: Restrict)
+    author       Author    @relation(fields: [authorId], references: [id], onDelete: Restrict)
     authorId     Int
     publisherId  Int
     createdAt    DateTime  @default(now())

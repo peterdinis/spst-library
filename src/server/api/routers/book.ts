@@ -182,38 +182,51 @@ export const bookRouter = createTRPCRouter({
 			return updateBook;
 		}),
 
-	deleteBook: publicProcedure
-		.input(
-			z.object({
-				id: z.number(),
-			}),
-		)
-		.mutation(async ({ ctx, input }) => {
-			const findOneBookById = await ctx.db.book.findUnique({
-				where: {
-					id: input.id,
-				},
-			});
+		deleteBook: publicProcedure
+        .input(
+            z.object({
+                id: z.number(),
+            }),
+        )
+        .mutation(async ({ ctx, input }) => {
+            const findOneBookById = await ctx.db.book.findUnique({
+                where: {
+                    id: input.id,
+                },
+                include: {
+                    author: true,
+                    category: true,
+                    publisher: true,
+                },
+            });
 
-			if (!findOneBookById) {
-				throw new TRPCError({
-					message: "Book with this id does not exists",
-					code: "BAD_REQUEST",
-				});
-			}
+            if (!findOneBookById) {
+                throw new TRPCError({
+                    message: "Book with this id does not exist",
+                    code: "BAD_REQUEST",
+                });
+            }
 
-			const deleteOneBook = await ctx.db.book.delete({
-				where: {
-					id: findOneBookById.id,
-				},
-			});
-			if (!deleteOneBook) {
-				throw new TRPCError({
-					message: "Update failed",
-					code: "BAD_REQUEST",
-				});
-			}
+            if (findOneBookById.author || findOneBookById.category) {
+                throw new TRPCError({
+                    message: "Cannot delete book as it is referenced by an author or category",
+                    code: "BAD_REQUEST",
+                });
+            }
 
-			return deleteOneBook;
-		}),
+            const deleteOneBook = await ctx.db.book.delete({
+                where: {
+                    id: findOneBookById.id,
+                },
+            });
+
+            if (!deleteOneBook) {
+                throw new TRPCError({
+                    message: "Delete failed",
+                    code: "BAD_REQUEST",
+                });
+            }
+
+            return deleteOneBook;
+        }),
 });
