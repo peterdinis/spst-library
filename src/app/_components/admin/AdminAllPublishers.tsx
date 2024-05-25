@@ -17,7 +17,7 @@ const AdminAllPublishers: FC = () => {
 	if (isLoading) {
 		return <Loader2 className="animate-bounce w-8 h-8" />;
 	}
-
+ 
 	const router = useRouter();
 	const adminCheck = Cookie.get("isAdminLogin");
 
