@@ -1,12 +1,12 @@
 "use client";
 
-import { FC } from "react";
-import useTeacherCookie from "~/hooks/useTeacherCookie";
-import Settings from "./Settings";
-import { ICookieAuthType } from "~/app/types/authTypes";
-import BorrowedBooks from "./BorrowedBooks";
-import { useRouter } from "next/navigation";
 import Cookie from "js-cookie";
+import { useRouter } from "next/navigation";
+import type { FC } from "react";
+import type { ICookieAuthType } from "~/app/types/authTypes";
+import useTeacherCookie from "~/hooks/useTeacherCookie";
+import BorrowedBooks from "./BorrowedBooks";
+import Settings from "./Settings";
 
 const ProfileWrapper: FC = () => {
 	const teacherCookie = useTeacherCookie();

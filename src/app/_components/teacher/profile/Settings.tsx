@@ -1,8 +1,8 @@
 "use client";
 
-import { FC } from "react";
-import { ICookieAuthType } from "~/app/types/authTypes";
-import { Card, CardHeader, CardContent } from "~/components/ui/card";
+import type { FC } from "react";
+import type { ICookieAuthType } from "~/app/types/authTypes";
+import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import { Input } from "~/components/ui/input";
 
 interface IStettingProps {

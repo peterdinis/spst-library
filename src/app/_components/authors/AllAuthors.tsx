@@ -1,13 +1,13 @@
 "use client";
 
-import { FC, useState, ChangeEvent, useMemo } from "react";
-import Header from "../shared/Header";
-import { api } from "~/trpc/react";
-import { Loader2, Ghost } from "lucide-react";
+import { Ghost, Loader2 } from "lucide-react";
+import { type ChangeEvent, type FC, useMemo, useState } from "react";
 import { Input } from "~/components/ui/input";
-import GlobalPagination from "../shared/GlobalPagination";
-import GlobalCard from "../shared/GlobalCard";
 import { useDebounce } from "~/hooks/useDebounce";
+import { api } from "~/trpc/react";
+import GlobalCard from "../shared/GlobalCard";
+import GlobalPagination from "../shared/GlobalPagination";
+import Header from "../shared/Header";
 
 const AllAuthors: FC = () => {
 	const [searchTerm, setSearchTerm] = useState("");
@@ -35,12 +35,14 @@ const AllAuthors: FC = () => {
 
 	const filteredData = useMemo(() => {
 		return (
-		  toShow &&
-		  toShow.filter((item) =>
-			item.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
-		  )
+			toShow &&
+			toShow.filter((item) =>
+				item.name
+					.toLowerCase()
+					.includes(debouncedSearchTerm.toLowerCase()),
+			)
 		);
-	  }, [toShow, debouncedSearchTerm]);
+	}, [toShow, debouncedSearchTerm]);
 
 	if (isFetchingNextPage || paginatedLoading) {
 		return <Loader2 className="h-8 w-8 animate-spin" />;

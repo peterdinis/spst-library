@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import type { NextPage } from "next";
 import AllCategories from "../_components/categories/AllCategories";
 
 const CategoriesPage: NextPage = () => {

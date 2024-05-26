@@ -1,7 +1,7 @@
-import { NextPage } from "next";
+import type { NextPage } from "next";
 import Hero from "./_components/home/Hero";
-import Footer from "./_components/shared/Footer";
 import Services from "./_components/home/Services";
+import Footer from "./_components/shared/Footer";
 
 const Homepage: NextPage = () => {
 	return (

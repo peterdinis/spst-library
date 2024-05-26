@@ -1,6 +1,6 @@
-import { IAuthor } from "./authorTypes";
-import { Category } from "./categoryTypes";
-import { Publisher } from "./publisherTypes";
+import type { IAuthor } from "./authorTypes";
+import type { Category } from "./categoryTypes";
+import type { Publisher } from "./publisherTypes";
 
 export interface IBook {
 	id: number;

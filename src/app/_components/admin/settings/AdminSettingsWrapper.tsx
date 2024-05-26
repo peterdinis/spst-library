@@ -1,8 +1,8 @@
-import { FC } from "react";
+import Link from "next/link";
+import type { FC } from "react";
+import { Button } from "~/components/ui/button";
 import Header from "../../shared/Header";
 import SettingsWrapper from "./SettingsWrapper";
-import Link from "next/link";
-import { Button } from "~/components/ui/button";
 
 const AdminSettingsWrapper: FC = () => {
 	return (

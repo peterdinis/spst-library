@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import type { NextPage } from "next";
 import AllPublishers from "../_components/publishers/AllPublishers";
 
 const PublishersPage: NextPage = () => {

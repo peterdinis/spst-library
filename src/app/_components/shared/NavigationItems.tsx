@@ -1,15 +1,15 @@
 "use client";
 
-import Link from "next/link";
-import ThemeButton from "./ThemeButton";
-import { FC } from "react";
-import useStudentCookie from "~/hooks/useStudentCookie";
-import MenuDropdown from "./MenuDropdown";
 import Cookie from "js-cookie";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import type { FC } from "react";
 import { useToast } from "~/components/ui/use-toast";
-import useTeacherCookie from "~/hooks/useTeacherCookie";
 import useAdminCookie from "~/hooks/useAdminCookie";
+import useStudentCookie from "~/hooks/useStudentCookie";
+import useTeacherCookie from "~/hooks/useTeacherCookie";
+import MenuDropdown from "./MenuDropdown";
+import ThemeButton from "./ThemeButton";
 
 const NavigationItems: FC = () => {
 	const studentCookie = useStudentCookie();

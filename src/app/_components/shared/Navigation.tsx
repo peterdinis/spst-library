@@ -1,12 +1,12 @@
 "use client";
 
-import { FC, useState } from "react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { X, Menu } from "lucide-react";
+import { type FC, useState } from "react";
 import NavigationItems from "./NavigationItems";
 
 const Navigation: FC = () => {
-	const [navbar, setNavbar] = useState<Boolean>(false);
+	const [navbar, setNavbar] = useState<boolean>(false);
 
 	return (
 		<nav className="w-full bg-white dark:bg-background">

@@ -2,7 +2,7 @@
 
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { FC, useEffect, useState } from "react";
+import { type FC, useEffect, useState } from "react";
 
 const ThemeButton: FC = () => {
 	const [mounted, setMounted] = useState(false);

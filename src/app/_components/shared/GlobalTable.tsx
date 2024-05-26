@@ -1,12 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 import {
 	flexRender,
 	getCoreRowModel,
 	getPaginationRowModel,
 	useReactTable,
 } from "@tanstack/react-table";
+import { ChevronLeftIcon, ChevronRightIcon, Ghost } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
+import type { DataTableProps } from "~/app/types/sharedTypes";
+import { Button } from "~/components/ui/button";
 import {
 	Table,
 	TableBody,
@@ -15,11 +20,6 @@ import {
 	TableHeader,
 	TableRow,
 } from "~/components/ui/table";
-import { ChevronLeftIcon, ChevronRightIcon, Ghost } from "lucide-react";
-import { DataTableProps } from "~/app/types/sharedTypes";
-import Link from "next/link";
-import { Button } from "~/components/ui/button";
-import { PDFDownloadLink } from "@react-pdf/renderer";
 import PdfWrapper from "../pdfs/PdfWrapper";
 
 export function DataTable<TData, TValue>({

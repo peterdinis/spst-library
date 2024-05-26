@@ -1,7 +1,7 @@
 "use client";
 
-import { FC, useState, useEffect } from "react";
 import { ChevronUp } from "lucide-react";
+import { type FC, useEffect, useState } from "react";
 
 const ScrollToTop: FC = () => {
 	const [showTopBtn, setShowTopBtn] = useState(false);

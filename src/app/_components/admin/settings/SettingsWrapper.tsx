@@ -1,8 +1,8 @@
-import { Settings, ShieldCheck, ShieldBan } from "lucide-react";
-import { FC } from "react";
+import { Settings, ShieldBan, ShieldCheck } from "lucide-react";
+import type { FC } from "react";
 import { BentoGrid, BentoGridItem } from "~/components/ui/bento-grid";
-import AdminRightsModal from "./modals/AdminRightsModal";
 import AdminRemoveRightsModal from "./modals/AdminRemoveRightsModal";
+import AdminRightsModal from "./modals/AdminRightsModal";
 import DeactivateAccountModal from "./modals/DeactivateAccountModal";
 import RemoveAccountModal from "./modals/RemoveAccountModal";
 

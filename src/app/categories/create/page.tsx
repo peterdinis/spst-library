@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import type { NextPage } from "next";
 import CreateCategory from "~/app/_components/categories/CreateCategory";
 
 const NewCategoryPage: NextPage = () => {

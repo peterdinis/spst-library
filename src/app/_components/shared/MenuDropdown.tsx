@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FC, ReactNode } from "react";
+import type { FC, ReactNode } from "react";
 import { Button } from "~/components/ui/button";
 import {
 	DropdownMenu,

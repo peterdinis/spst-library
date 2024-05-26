@@ -1,14 +1,14 @@
 "use client";
 
+import Cookie from "js-cookie";
 import { Loader2 } from "lucide-react";
-import { FC } from "react";
+import { useRouter } from "next/navigation";
+import type { FC } from "react";
 import { api } from "~/trpc/react";
 import GlobalErrorComponent from "../shared/GlobalErrorComponent";
-import Header from "../shared/Header";
 import { DataTable } from "../shared/GlobalTable";
-import { Book, columns } from "./columns/bookColumns";
-import { useRouter } from "next/navigation";
-import Cookie from "js-cookie";
+import Header from "../shared/Header";
+import { type Book, columns } from "./columns/bookColumns";
 
 const AdminAllBooks: FC = () => {
 	const { data, isLoading, isError } = api.book.fetchBooks.useQuery();

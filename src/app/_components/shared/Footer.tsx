@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FC } from "react";
+import type { FC } from "react";
 
 const Footer: FC = () => {
 	const footerVariants = {

@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Cookie from "js-cookie";
-import { ICookieAuthType } from "~/app/types/authTypes";
+import { useEffect, useState } from "react";
+import type { ICookieAuthType } from "~/app/types/authTypes";
 
 const useTeacherCookie = (): ICookieAuthType | null => {
 	const [teacherCookie, setTeacherCookie] = useState<ICookieAuthType | null>(

@@ -1,15 +1,15 @@
 "use client";
 
-import { FC, useState } from "react";
-import Header from "../shared/Header";
-import Link from "next/link";
-import { Eye, EyeOff } from "lucide-react";
-import { useToast } from "~/components/ui/use-toast";
-import { useForm, FieldValues } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import { ILoginType } from "~/app/types/authTypes";
 import Cookie from "js-cookie";
+import { Eye, EyeOff } from "lucide-react";
+import Link from "next/link";
+import { type FC, useState } from "react";
+import { type FieldValues, useForm } from "react-hook-form";
+import type { ILoginType } from "~/app/types/authTypes";
+import { useToast } from "~/components/ui/use-toast";
+import Header from "../shared/Header";
 
 const LoginForm: FC = () => {
 	const {

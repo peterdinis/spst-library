@@ -1,7 +1,7 @@
 "use client";
 
-import { Loader2, Ghost } from "lucide-react";
-import { FC } from "react";
+import { Ghost, Loader2 } from "lucide-react";
+import type { FC } from "react";
 import {
 	Select,
 	SelectContent,

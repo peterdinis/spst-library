@@ -1,6 +1,6 @@
 import { TRPCError } from "@trpc/server";
-import { createTRPCRouter, publicProcedure } from "../trpc";
 import { z } from "zod";
+import { createTRPCRouter, publicProcedure } from "../trpc";
 
 export const bookRouter = createTRPCRouter({
 	fetchBooks: publicProcedure.query(async ({ ctx }) => {
@@ -182,51 +182,52 @@ export const bookRouter = createTRPCRouter({
 			return updateBook;
 		}),
 
-		deleteBook: publicProcedure
-        .input(
-            z.object({
-                id: z.number(),
-            }),
-        )
-        .mutation(async ({ ctx, input }) => {
-            const findOneBookById = await ctx.db.book.findUnique({
-                where: {
-                    id: input.id,
-                },
-                include: {
-                    author: true,
-                    category: true,
-                    publisher: true,
-                },
-            });
+	deleteBook: publicProcedure
+		.input(
+			z.object({
+				id: z.number(),
+			}),
+		)
+		.mutation(async ({ ctx, input }) => {
+			const findOneBookById = await ctx.db.book.findUnique({
+				where: {
+					id: input.id,
+				},
+				include: {
+					author: true,
+					category: true,
+					publisher: true,
+				},
+			});
 
-            if (!findOneBookById) {
-                throw new TRPCError({
-                    message: "Book with this id does not exist",
-                    code: "BAD_REQUEST",
-                });
-            }
+			if (!findOneBookById) {
+				throw new TRPCError({
+					message: "Book with this id does not exist",
+					code: "BAD_REQUEST",
+				});
+			}
 
-            if (findOneBookById.author || findOneBookById.category) {
-                throw new TRPCError({
-                    message: "Cannot delete book as it is referenced by an author or category",
-                    code: "BAD_REQUEST",
-                });
-            }
+			if (findOneBookById.author || findOneBookById.category) {
+				throw new TRPCError({
+					message:
+						"Cannot delete book as it is referenced by an author or category",
+					code: "BAD_REQUEST",
+				});
+			}
 
-            const deleteOneBook = await ctx.db.book.delete({
-                where: {
-                    id: findOneBookById.id,
-                },
-            });
+			const deleteOneBook = await ctx.db.book.delete({
+				where: {
+					id: findOneBookById.id,
+				},
+			});
 
-            if (!deleteOneBook) {
-                throw new TRPCError({
-                    message: "Delete failed",
-                    code: "BAD_REQUEST",
-                });
-            }
+			if (!deleteOneBook) {
+				throw new TRPCError({
+					message: "Delete failed",
+					code: "BAD_REQUEST",
+				});
+			}
 
-            return deleteOneBook;
-        }),
+			return deleteOneBook;
+		}),
 });

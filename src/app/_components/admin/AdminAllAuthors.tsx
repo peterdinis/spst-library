@@ -1,14 +1,14 @@
 "use client";
 
+import Cookie from "js-cookie";
 import { Loader2 } from "lucide-react";
-import { FC, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { type FC, useEffect } from "react";
 import { api } from "~/trpc/react";
 import GlobalErrorComponent from "../shared/GlobalErrorComponent";
-import Header from "../shared/Header";
 import { DataTable } from "../shared/GlobalTable";
-import { Author, columns } from "./columns/authorColumns";
-import { useRouter } from "next/navigation";
-import Cookie from "js-cookie";
+import Header from "../shared/Header";
+import { type Author, columns } from "./columns/authorColumns";
 
 const AdminAllAuthors: FC = () => {
 	const { data, isLoading, isError } = api.author.fetchAuthors.useQuery();

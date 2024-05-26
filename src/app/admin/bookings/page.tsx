@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import type { NextPage } from "next";
 import AdminAllBorrowedBooks from "~/app/_components/admin/AdminAllBorrowedBooks";
 
 const AdminBookingsPage: NextPage = () => {

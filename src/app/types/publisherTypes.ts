@@ -1,4 +1,4 @@
-import { IBook } from "./bookTypes";
+import type { IBook } from "./bookTypes";
 
 export interface Publisher {
 	id: number;

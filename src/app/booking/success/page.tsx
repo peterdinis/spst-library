@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import type { NextPage } from "next";
 import SuccessBooking from "~/app/_components/booking/SuccessBooking";
 
 const SuccessBorrowingPage: NextPage = () => {

@@ -1,6 +1,6 @@
 import { TRPCError } from "@trpc/server";
-import { createTRPCRouter, publicProcedure } from "../trpc";
 import { z } from "zod";
+import { createTRPCRouter, publicProcedure } from "../trpc";
 
 export const publisherRouter = createTRPCRouter({
 	fetchPublishers: publicProcedure.query(async ({ ctx }) => {
@@ -142,7 +142,7 @@ export const publisherRouter = createTRPCRouter({
 			return updateOnePublisher;
 		}),
 
-		deletePublisher: publicProcedure
+	deletePublisher: publicProcedure
 		.input(
 			z.object({
 				id: z.number(),
@@ -167,7 +167,8 @@ export const publisherRouter = createTRPCRouter({
 
 			if (findOnePublisher.books.length > 0) {
 				throw new TRPCError({
-					message: "Cannot delete publisher as it is referenced by one or more books",
+					message:
+						"Cannot delete publisher as it is referenced by one or more books",
 					code: "BAD_REQUEST",
 				});
 			}

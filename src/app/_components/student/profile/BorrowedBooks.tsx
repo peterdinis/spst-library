@@ -1,15 +1,15 @@
 "use client";
 
+import { format } from "date-fns";
 import { Loader2 } from "lucide-react";
-import { FC, useState } from "react";
-import { Card, CardHeader, CardContent } from "~/components/ui/card";
+import { type FC, useState } from "react";
+import type { IBorrowedBookingTypes } from "~/app/types/bookingTypes";
+import { Button } from "~/components/ui/button";
+import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import useStudentCookie from "~/hooks/useStudentCookie";
 import { api } from "~/trpc/react";
-import GlobalErrorComponent from "../../shared/GlobalErrorComponent";
-import { format } from "date-fns";
-import { Button } from "~/components/ui/button";
 import ReturnBookingModal from "../../booking/ReturnBookingModal";
-import { IBorrowedBookingTypes } from "~/app/types/bookingTypes";
+import GlobalErrorComponent from "../../shared/GlobalErrorComponent";
 import GlobalPagination from "../../shared/GlobalPagination";
 
 const BorrowedBooks: FC = () => {

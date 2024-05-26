@@ -1,17 +1,17 @@
 "use client";
 
-import { FC } from "react";
-import { useParams } from "next/navigation";
-import { api } from "~/trpc/react";
+import type { Category } from "@prisma/client";
 import { Loader2 } from "lucide-react";
-import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import Link from "next/link";
+import { useParams } from "next/navigation";
+import type { FC } from "react";
 import { Button } from "~/components/ui/button";
+import useAdminCookie from "~/hooks/useAdminCookie";
+import useTeacherCookie from "~/hooks/useTeacherCookie";
+import { api } from "~/trpc/react";
+import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import Header from "../shared/Header";
 import CategorySheets from "./CategorySheets";
-import { Category } from "@prisma/client";
-import useTeacherCookie from "~/hooks/useTeacherCookie";
-import useAdminCookie from "~/hooks/useAdminCookie";
 
 const CategoryDetail: FC = () => {
 	const { id } = useParams();

@@ -1,15 +1,15 @@
 "use client";
 
+import Cookie from "js-cookie";
 import { Loader2 } from "lucide-react";
-import { FC, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { type FC, useEffect } from "react";
+import type { Category } from "~/app/types/categoryTypes";
 import { api } from "~/trpc/react";
 import GlobalErrorComponent from "../shared/GlobalErrorComponent";
-import Header from "../shared/Header";
 import { DataTable } from "../shared/GlobalTable";
+import Header from "../shared/Header";
 import { columns } from "./columns/categoryColumns";
-import { Category } from "~/app/types/categoryTypes";
-import { useRouter } from "next/navigation";
-import Cookie from "js-cookie";
 
 const AdminAllCategories: FC = () => {
 	const { data, isLoading, isError } =

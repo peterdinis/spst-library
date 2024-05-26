@@ -1,13 +1,26 @@
 "use client";
 
-import { FC, ReactNode } from "react";
+import {
+	AlertDialog,
+	AlertDialogAction,
+	AlertDialogCancel,
+	AlertDialogContent,
+	AlertDialogDescription,
+	AlertDialogTitle,
+	AlertDialogTrigger,
+} from "@radix-ui/react-alert-dialog";
+import type { FC, ReactNode } from "react";
+import {
+	AlertDialogFooter,
+	AlertDialogHeader,
+} from "~/components/ui/alert-dialog";
 import { Button } from "~/components/ui/button";
 import {
 	Sheet,
 	SheetContent,
+	SheetDescription,
 	SheetHeader,
 	SheetTitle,
-	SheetDescription,
 	SheetTrigger,
 } from "~/components/ui/sheet";
 
@@ -44,6 +57,30 @@ const SheetHelper: FC<ISheetHelperProps> = ({
 					<SheetTitle>{secondTitle}</SheetTitle>
 					<SheetDescription>{children}</SheetDescription>
 				</SheetHeader>
+
+				<AlertDialog>
+					<AlertDialogTrigger>
+						Info pred upravovaním
+					</AlertDialogTrigger>
+					<AlertDialogContent>
+						<AlertDialogHeader>
+							<AlertDialogTitle>
+								Skontrolujte si či daná vec nemá referenciu
+								niekde inde.
+							</AlertDialogTitle>
+							<AlertDialogDescription>
+								Ak mám vyvorenú kategóriu 'abc' a kategória
+								'abc' referencuje sa v knihe 'Abc' nemôžeme
+								zmazať kategóiu 'abc'. Najprv musíte v knihe
+								'Abc' nahradiť kategóriu
+							</AlertDialogDescription>
+						</AlertDialogHeader>
+						<AlertDialogFooter>
+							<AlertDialogCancel>Zavrieť</AlertDialogCancel>
+							<AlertDialogAction>OK</AlertDialogAction>
+						</AlertDialogFooter>
+					</AlertDialogContent>
+				</AlertDialog>
 			</SheetContent>
 		</Sheet>
 	);

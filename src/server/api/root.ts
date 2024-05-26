@@ -1,9 +1,9 @@
 import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
+import { authorRouter } from "./routers/author";
 import { bookRouter } from "./routers/book";
+import { bookingRouter } from "./routers/booking";
 import { categoryRouter } from "./routers/category";
 import { publisherRouter } from "./routers/publisher";
-import { authorRouter } from "./routers/author";
-import { bookingRouter } from "./routers/booking";
 
 export const appRouter = createTRPCRouter({
 	book: bookRouter,

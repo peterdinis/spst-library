@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { FC } from "react";
-import { IGlobalErrorProps } from "~/app/types/sharedTypes";
+import type { FC } from "react";
+import type { IGlobalErrorProps } from "~/app/types/sharedTypes";
 
 const GlobalErrorComponent: FC<IGlobalErrorProps> = ({
 	statusCode,

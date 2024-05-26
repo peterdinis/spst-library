@@ -1,14 +1,19 @@
 "use client";
 
-import { FC, useState } from "react";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { Loader2 } from "lucide-react";
+import { type FC, useState } from "react";
+import { type FieldValues, useForm } from "react-hook-form";
+import Header from "~/app/_components/shared/Header";
 import { Button } from "~/components/ui/button";
 import {
-	DialogHeader,
-	DialogTitle,
-	DialogTrigger,
 	Dialog,
 	DialogContent,
 	DialogDescription,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
 } from "~/components/ui/dialog";
 import {
 	Select,
@@ -18,11 +23,6 @@ import {
 	SelectValue,
 } from "~/components/ui/select";
 import { useToast } from "~/components/ui/use-toast";
-import { useForm, FieldValues } from "react-hook-form";
-import axios from "axios";
-import Header from "~/app/_components/shared/Header";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { Loader2 } from "lucide-react";
 import { api } from "~/trpc/react";
 
 const DeactivateAccountModal: FC = () => {
@@ -75,21 +75,21 @@ const DeactivateAccountModal: FC = () => {
 
 	const sendEmailMut = api.email.sendEmail.useMutation({
 		onSuccess: () => {
-		  toast({
-			title: "Email pre účet bol odoslaný",
-			duration: 2000,
-			className: "bg-green-500 text-white",
-		  });
+			toast({
+				title: "Email pre účet bol odoslaný",
+				duration: 2000,
+				className: "bg-green-500 text-white",
+			});
 		},
-	
+
 		onError: () => {
-		  toast({
-			title: "Email pre účet nebol odoslaný",
-			duration: 2000,
-			className: "bg-red-500 text-white",
-		  });
+			toast({
+				title: "Email pre účet nebol odoslaný",
+				duration: 2000,
+				className: "bg-red-500 text-white",
+			});
 		},
-	  });
+	});
 
 	const onSubmit = async (data: FieldValues) => {
 		await deactivateAccountModal.mutateAsync({
@@ -99,9 +99,8 @@ const DeactivateAccountModal: FC = () => {
 		await sendEmailMut.mutateAsync({
 			email: data.email,
 			subject: "Váš účet bol úspešné deaktivovaný",
-			message:
-			  "",
-		  });
+			message: "",
+		});
 	};
 
 	if (isLoading) {
