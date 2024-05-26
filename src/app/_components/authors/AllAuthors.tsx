@@ -1,17 +1,18 @@
 "use client";
 
-import { FC, useState, ChangeEvent } from "react";
+import { FC, useState, ChangeEvent, useMemo } from "react";
 import Header from "../shared/Header";
 import { api } from "~/trpc/react";
 import { Loader2, Ghost } from "lucide-react";
 import { Input } from "~/components/ui/input";
 import GlobalPagination from "../shared/GlobalPagination";
 import GlobalCard from "../shared/GlobalCard";
+import { useDebounce } from "~/hooks/useDebounce";
 
 const AllAuthors: FC = () => {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [page, setPage] = useState(0);
-
+	const debouncedSearchTerm = useDebounce(searchTerm, 500);
 	const limit = 50 as const;
 
 	const {
@@ -29,6 +30,18 @@ const AllAuthors: FC = () => {
 		},
 	);
 
+	const toShow = paginatedData?.pages[page]?.items;
+	const nextCursor = paginatedData?.pages[page]?.nextCursor;
+
+	const filteredData = useMemo(() => {
+		return (
+		  toShow &&
+		  toShow.filter((item) =>
+			item.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
+		  )
+		);
+	  }, [toShow, debouncedSearchTerm]);
+
 	if (isFetchingNextPage || paginatedLoading) {
 		return <Loader2 className="h-8 w-8 animate-spin" />;
 	}
@@ -41,10 +54,6 @@ const AllAuthors: FC = () => {
 			</div>
 		);
 	}
-
-	const toShow = paginatedData?.pages[page]?.items;
-	const nextCursor = paginatedData?.pages[page]?.nextCursor;
-
 	const handleFetchNextPage = async () => {
 		await fetchNextPage();
 		setPage((prev) => prev + 1);
@@ -53,12 +62,6 @@ const AllAuthors: FC = () => {
 	const handleFetchPreviousPage = () => {
 		setPage((prev) => prev - 1);
 	};
-
-	const filteredData =
-		toShow &&
-		toShow.filter((item) =>
-			item.name.toLowerCase().includes(searchTerm.toLowerCase()),
-		);
 
 	const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setSearchTerm(e.target.value);
