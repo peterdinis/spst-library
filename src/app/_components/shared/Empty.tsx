@@ -1,5 +1,5 @@
 import { Ghost } from "lucide-react";
-import { FC } from "react";
+import type { FC } from "react";
 
 type EmptyProps = {
 	text: string;

@@ -1,13 +1,13 @@
 "use client";
 
-import { FC } from "react";
-import Header from "../shared/Header";
-import { Button } from "~/components/ui/button";
-import { api } from "~/trpc/react";
-import { useForm, FieldValues } from "react-hook-form";
-import { useToast } from "~/components/ui/use-toast";
-import { useRouter } from "next/navigation";
 import { format } from "date-fns";
+import { useRouter } from "next/navigation";
+import type { FC } from "react";
+import { type FieldValues, useForm } from "react-hook-form";
+import { Button } from "~/components/ui/button";
+import { useToast } from "~/components/ui/use-toast";
+import { api } from "~/trpc/react";
+import Header from "../shared/Header";
 
 const CreatePublisher: FC = () => {
 	const { toast } = useToast();

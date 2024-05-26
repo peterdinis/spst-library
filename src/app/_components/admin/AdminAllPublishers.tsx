@@ -1,14 +1,14 @@
 "use client";
 
+import Cookie from "js-cookie";
 import { Loader2 } from "lucide-react";
-import { FC, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { type FC, useEffect } from "react";
 import { api } from "~/trpc/react";
 import GlobalErrorComponent from "../shared/GlobalErrorComponent";
-import Header from "../shared/Header";
 import { DataTable } from "../shared/GlobalTable";
-import { columns, Publisher } from "./columns/publisherColumns";
-import { useRouter } from "next/navigation";
-import Cookie from "js-cookie";
+import Header from "../shared/Header";
+import { type Publisher, columns } from "./columns/publisherColumns";
 
 const AdminAllPublishers: FC = () => {
 	const { data, isLoading, isError } =
@@ -17,7 +17,7 @@ const AdminAllPublishers: FC = () => {
 	if (isLoading) {
 		return <Loader2 className="animate-bounce w-8 h-8" />;
 	}
- 
+
 	const router = useRouter();
 	const adminCheck = Cookie.get("isAdminLogin");
 

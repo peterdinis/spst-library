@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { Page, Text, View, Document } from "@react-pdf/renderer";
+import { Document, Page, Text, View } from "@react-pdf/renderer";
+import type { FC } from "react";
 
 interface Item {
 	name: string;

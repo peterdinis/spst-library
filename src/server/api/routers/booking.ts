@@ -1,6 +1,6 @@
 import { TRPCError } from "@trpc/server";
-import { createTRPCRouter, publicProcedure } from "../trpc";
 import z from "zod";
+import { createTRPCRouter, publicProcedure } from "../trpc";
 
 export const bookingRouter = createTRPCRouter({
 	displayAllBooking: publicProcedure.query(async ({ ctx }) => {

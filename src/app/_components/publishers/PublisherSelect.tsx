@@ -1,8 +1,8 @@
 "use client";
 
-import { Loader2, Ghost } from "lucide-react";
-import { FC } from "react";
-import { SelectPublisher } from "~/app/types/publisherTypes";
+import { Ghost, Loader2 } from "lucide-react";
+import type { FC } from "react";
+import type { SelectPublisher } from "~/app/types/publisherTypes";
 import {
 	Select,
 	SelectContent,

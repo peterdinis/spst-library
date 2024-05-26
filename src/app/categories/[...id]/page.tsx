@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import type { NextPage } from "next";
 import CategoryDetail from "~/app/_components/categories/CategoryDetail";
 
 const CategoryDetailPage: NextPage = () => {

@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import type { NextPage } from "next";
 import AdminLoginForm from "~/app/_components/admin/AdminLoginForm";
 
 const LoginAdminPage: NextPage = () => {

@@ -1,14 +1,19 @@
 "use client";
 
-import { FC, useState } from "react";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { Loader2 } from "lucide-react";
+import { type FC, useState } from "react";
+import { type FieldValues, useForm } from "react-hook-form";
+import Header from "~/app/_components/shared/Header";
 import { Button } from "~/components/ui/button";
 import {
-	DialogHeader,
-	DialogTitle,
-	DialogTrigger,
 	Dialog,
 	DialogContent,
 	DialogDescription,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
 } from "~/components/ui/dialog";
 import {
 	Select,
@@ -18,11 +23,6 @@ import {
 	SelectValue,
 } from "~/components/ui/select";
 import { useToast } from "~/components/ui/use-toast";
-import { useForm, FieldValues } from "react-hook-form";
-import axios from "axios";
-import { Loader2 } from "lucide-react";
-import Header from "~/app/_components/shared/Header";
-import { useMutation, useQuery } from "@tanstack/react-query";
 
 const RemoveAccountModal: FC = () => {
 	const [open, setOpen] = useState(false);
@@ -93,7 +93,7 @@ const RemoveAccountModal: FC = () => {
 						<Header text="Zmazať účet" />
 					</DialogTitle>
 					<DialogDescription>
-					<form onSubmit={handleSubmit(onSubmit)}>
+						<form onSubmit={handleSubmit(onSubmit)}>
 							<section className="peer mt-4 block w-full appearance-none bg-transparent px-0 py-2.5 text-lg text-gray-900 dark:text-blue-50 focus:outline-none focus:ring-0">
 								<Select
 									onValueChange={(value) =>

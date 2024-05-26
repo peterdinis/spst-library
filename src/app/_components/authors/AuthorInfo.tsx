@@ -1,19 +1,19 @@
 "use client";
 
-import { FC } from "react";
-import Header from "../shared/Header";
-import { useParams } from "next/navigation";
-import { api } from "~/trpc/react";
-import { Loader2 } from "lucide-react";
-import GlobalErrorComponent from "../shared/GlobalErrorComponent";
+import type { Author } from "@prisma/client";
 import { format } from "date-fns";
-import { Button } from "~/components/ui/button";
+import { Loader2 } from "lucide-react";
 import Link from "next/link";
+import { useParams } from "next/navigation";
+import type { FC } from "react";
+import { Button } from "~/components/ui/button";
+import useAdminCookie from "~/hooks/useAdminCookie";
+import useTeacherCookie from "~/hooks/useTeacherCookie";
+import { api } from "~/trpc/react";
+import GlobalErrorComponent from "../shared/GlobalErrorComponent";
+import Header from "../shared/Header";
 import LongText from "../shared/LongText";
 import AuthorSheets from "./AuthorsSheets";
-import { Author } from "@prisma/client";
-import useTeacherCookie from "~/hooks/useTeacherCookie";
-import useAdminCookie from "~/hooks/useAdminCookie";
 
 const AuthorInfo: FC = () => {
 	const { id } = useParams();

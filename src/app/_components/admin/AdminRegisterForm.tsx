@@ -1,15 +1,15 @@
 "use client";
 
-import { FC, useState } from "react";
-import Header from "../shared/Header";
-import Link from "next/link";
-import { Eye, EyeOff } from "lucide-react";
-import { useToast } from "~/components/ui/use-toast";
-import { useForm, FieldValues } from "react-hook-form";
-import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import { IRegisterType } from "~/app/types/authTypes";
+import { Eye, EyeOff } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { type FC, useState } from "react";
+import { type FieldValues, useForm } from "react-hook-form";
+import type { IRegisterType } from "~/app/types/authTypes";
+import { useToast } from "~/components/ui/use-toast";
+import Header from "../shared/Header";
 
 const AdminRegisterForm: FC = () => {
 	const {

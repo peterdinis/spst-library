@@ -1,21 +1,21 @@
 "use client";
 
-import { FC, useState } from "react";
-import Header from "../shared/Header";
+import { usePathname, useRouter } from "next/navigation";
+import { type FC, useState } from "react";
+import { type FieldValues, useForm } from "react-hook-form";
 import { Button } from "~/components/ui/button";
 import {
-	DialogHeader,
-	DialogTitle,
-	DialogTrigger,
 	Dialog,
 	DialogContent,
 	DialogDescription,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
 } from "~/components/ui/dialog";
 import { Input } from "~/components/ui/input";
 import { useToast } from "~/components/ui/use-toast";
-import { useForm, FieldValues } from "react-hook-form";
 import { api } from "~/trpc/react";
-import { useRouter, usePathname } from "next/navigation";
+import Header from "../shared/Header";
 
 const ReturnBookingModal: FC = () => {
 	const [open, setOpen] = useState(false);

@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import type { NextPage } from "next";
 import ProfileWrapper from "~/app/_components/student/profile/ProfileWrapper";
 
 const StudentProfilePage: NextPage = () => {

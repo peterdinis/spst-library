@@ -1,10 +1,10 @@
 import "~/styles/globals.css";
 
+import type { Metadata } from "next";
 import { Fira_Code } from "next/font/google";
+import { Toaster } from "~/components/ui/toaster";
 import { TRPCReactProvider } from "~/trpc/react";
 import Navigation from "./_components/shared/Navigation";
-import { Toaster } from "~/components/ui/toaster";
-import { Metadata } from "next";
 import ScrollToTop from "./_components/shared/ScrollToTop";
 import ThemeProvider from "./_components/shared/ThemeProvider";
 

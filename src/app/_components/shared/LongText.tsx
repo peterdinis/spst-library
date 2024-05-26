@@ -1,9 +1,9 @@
 "use client";
 
-import { FC, useState } from "react";
 import classNames from "classnames";
+import { type FC, useState } from "react";
+import type { ILongTextProps } from "~/app/types/sharedTypes";
 import { Button } from "~/components/ui/button";
-import { ILongTextProps } from "~/app/types/sharedTypes";
 
 const LongText: FC<ILongTextProps> = ({ text, maxLength }: ILongTextProps) => {
 	const [isExpanded, setIsExpanded] = useState(false);

@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import type { NextPage } from "next";
 import NotAllowedComponent from "../_components/shared/NotAllowedComponent";
 
 const NotAllowedPage: NextPage = () => {

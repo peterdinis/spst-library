@@ -1,17 +1,17 @@
 "use client";
 
-import { FC } from "react";
-import Header from "../shared/Header";
-import { useParams } from "next/navigation";
-import { api } from "~/trpc/react";
-import { Loader2 } from "lucide-react";
-import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import { format } from "date-fns";
-import { Button } from "~/components/ui/button";
+import { Loader2 } from "lucide-react";
 import Link from "next/link";
-import LongText from "../shared/LongText";
-import useTeacherCookie from "~/hooks/useTeacherCookie";
+import { useParams } from "next/navigation";
+import type { FC } from "react";
+import { Button } from "~/components/ui/button";
 import useAdminCookie from "~/hooks/useAdminCookie";
+import useTeacherCookie from "~/hooks/useTeacherCookie";
+import { api } from "~/trpc/react";
+import GlobalErrorComponent from "../shared/GlobalErrorComponent";
+import Header from "../shared/Header";
+import LongText from "../shared/LongText";
 import PublisherSheets from "./PublisherSheets";
 
 const PublisherInfo: FC = () => {

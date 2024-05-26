@@ -1,14 +1,14 @@
 "use client";
 
-import { FC } from "react";
-import { IGlobalPaginationProps } from "~/app/types/sharedTypes";
+import type { FC } from "react";
+import type { IGlobalPaginationProps } from "~/app/types/sharedTypes";
 import {
 	Pagination,
 	PaginationContent,
 	PaginationItem,
-	PaginationPrevious,
 	PaginationLink,
 	PaginationNext,
+	PaginationPrevious,
 } from "~/components/ui/pagination";
 
 const GlobalPagination: FC<IGlobalPaginationProps> = ({

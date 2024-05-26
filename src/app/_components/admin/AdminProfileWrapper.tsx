@@ -1,13 +1,13 @@
 "use client";
 
-import { FC } from "react";
-import Header from "../shared/Header";
-import { useRouter } from "next/navigation";
 import Cookie from "js-cookie";
-import { Settings, Book, Info, Users } from "lucide-react";
+import { Book, Info, Settings, Users } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import type { FC } from "react";
 import { BentoGrid, BentoGridItem } from "~/components/ui/bento-grid";
 import { Button } from "~/components/ui/button";
-import Link from "next/link";
+import Header from "../shared/Header";
 
 const items = [
 	{

@@ -1,5 +1,5 @@
-import { FC, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { type FC, useEffect } from "react";
 
 const NotAllowedComponent: FC = () => {
 	const router = useRouter();
