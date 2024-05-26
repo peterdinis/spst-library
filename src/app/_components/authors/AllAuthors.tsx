@@ -30,6 +30,18 @@ const AllAuthors: FC = () => {
 		},
 	);
 
+	const toShow = paginatedData?.pages[page]?.items;
+	const nextCursor = paginatedData?.pages[page]?.nextCursor;
+
+	const filteredData = useMemo(() => {
+		return (
+		  toShow &&
+		  toShow.filter((item) =>
+			item.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
+		  )
+		);
+	  }, [toShow, debouncedSearchTerm]);
+
 	if (isFetchingNextPage || paginatedLoading) {
 		return <Loader2 className="h-8 w-8 animate-spin" />;
 	}
@@ -42,10 +54,6 @@ const AllAuthors: FC = () => {
 			</div>
 		);
 	}
-
-	const toShow = paginatedData?.pages[page]?.items;
-	const nextCursor = paginatedData?.pages[page]?.nextCursor;
-
 	const handleFetchNextPage = async () => {
 		await fetchNextPage();
 		setPage((prev) => prev + 1);
@@ -54,15 +62,6 @@ const AllAuthors: FC = () => {
 	const handleFetchPreviousPage = () => {
 		setPage((prev) => prev - 1);
 	};
-
-	const filteredData = useMemo(() => {
-		return (
-		  toShow &&
-		  toShow.filter((item) =>
-			item.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
-		  )
-		);
-	  }, [toShow, debouncedSearchTerm]);
 
 	const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setSearchTerm(e.target.value);

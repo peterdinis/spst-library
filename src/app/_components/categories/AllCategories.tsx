@@ -30,6 +30,18 @@ const AllCategories: FC = () => {
     }
   );
 
+  const toShow = paginatedData?.pages[page]?.items;
+  const nextCursor = paginatedData?.pages[page]?.nextCursor;
+
+  const filteredData = useMemo(() => {
+    return (
+      toShow &&
+      toShow.filter((item) =>
+        item.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
+      )
+    );
+  }, [toShow, debouncedSearchTerm]);
+
   if (isFetchingNextPage || paginatedLoading) {
     return <Loader2 className="h-8 w-8 animate-spin" />;
   }
@@ -42,18 +54,6 @@ const AllCategories: FC = () => {
       </div>
     );
   }
-
-  const toShow = paginatedData?.pages[page]?.items;
-  const nextCursor = paginatedData?.pages[page]?.nextCursor;
-
-  const filteredData = useMemo(() => {
-    return (
-      toShow &&
-      toShow.filter((item) =>
-        item.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
-      )
-    );
-  }, [toShow, debouncedSearchTerm]);
 
   const handleFetchNextPage = async () => {
     await fetchNextPage();
