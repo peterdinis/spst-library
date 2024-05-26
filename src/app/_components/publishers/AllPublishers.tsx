@@ -1,17 +1,18 @@
 "use client";
 
-import { FC, useState, ChangeEvent } from "react";
+import { FC, useState, ChangeEvent, useMemo } from "react";
 import Header from "../shared/Header";
 import { api } from "~/trpc/react";
 import { Loader2, Ghost } from "lucide-react";
 import { Input } from "~/components/ui/input";
 import GlobalPagination from "../shared/GlobalPagination";
 import GlobalCard from "../shared/GlobalCard";
+import { useDebounce } from "~/hooks/useDebounce";
 
 const AllPublishers: FC = () => {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [page, setPage] = useState(0);
-
+	const debouncedSearchTerm = useDebounce(searchTerm, 500);
 	const limit = 50 as const;
 
 	const {
@@ -45,11 +46,14 @@ const AllPublishers: FC = () => {
 	const toShow = paginatedData?.pages[page]?.items;
 	const nextCursor = paginatedData?.pages[page]?.nextCursor;
 
-	const filteredData =
-		toShow &&
-		toShow.filter((item) =>
-			item.name.toLowerCase().includes(searchTerm.toLowerCase()),
+	const filteredData = useMemo(() => {
+		return (
+		  toShow &&
+		  toShow.filter((item) =>
+			item.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
+		  )
 		);
+	  }, [toShow, debouncedSearchTerm]);
 
 	const handleFetchNextPage = async () => {
 		await fetchNextPage();
