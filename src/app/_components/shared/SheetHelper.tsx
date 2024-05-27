@@ -44,7 +44,9 @@ const SheetHelper: FC<ISheetHelperProps> = ({
           <SheetTitle>{secondTitle}</SheetTitle>
           <SheetDescription>{children}</SheetDescription>
           <hr />
-          <SheetDescription className="text-center text-xl mt-5 font-bold text-red-600">Info pred upravovaním</SheetDescription>
+          <SheetDescription className="text-center text-xl mt-5 font-bold text-red-600">
+            Info pred upravovaním
+          </SheetDescription>
           <br />
           <SheetDescription className="mt-4 p-4 text-xl font-bold">
             Ak mám vyvorenú kategóriu 'abc' a kategória 'abc' referencuje sa v
