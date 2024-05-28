@@ -93,4 +93,10 @@ In summary, the relationships are as follows:
 - Each `Booking` is associated with a book via the `bookName` field, linking to the `Book` model's `name` field.
 
 Short Description:
-- 
+We have three roles: STUDENT, TEACHER, and ADMIN.
+A student can borrow books, view books with pagination, and filter books (the same applies to categories, publishers, and authors).
+A teacher has the same capabilities as a student but can also perform CRUD operations on books, categories, publishers, and authors.
+An admin has the same capabilities as a teacher plus the ability to manage students (TODO: Add more functionality for the admin later).
+
+Auth Server
+- I developed custom auth server for this application in Nestjs: [Auth Server](https://github.com/peterdinis/spst-library-auth)
