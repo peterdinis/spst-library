@@ -1,11 +1,10 @@
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import { db } from "~/server/db";
 
 async function main() {
 	// Create categories
 	const categories = [];
 	for (let i = 0; i < 6; i++) {
-		const category = await prisma.category.create({
+		const category = await db.category.create({
 			data: {
 				name: `Category ${i + 1}`,
 				description: `Description for category ${i + 1}.`,
@@ -17,7 +16,7 @@ async function main() {
 	// Create publishers
 	const publishers = [];
 	for (let i = 0; i < 6; i++) {
-		const publisher = await prisma.publisher.create({
+		const publisher = await db.publisher.create({
 			data: {
 				name: `Publisher ${i + 1}`,
 				description: `Description for publisher ${i + 1}.`,
@@ -30,7 +29,7 @@ async function main() {
 	// Create authors
 	const authors = [];
 	for (let i = 0; i < 6; i++) {
-		const author = await prisma.author.create({
+		const author = await db.author.create({
 			data: {
 				name: `Author ${i + 1}`,
 				birthYear: "19XX",
@@ -46,7 +45,7 @@ async function main() {
 	// Create books
 	const books = [];
 	for (let i = 0; i < 6; i++) {
-		const book = await prisma.book.create({
+		const book = await db.book.create({
 			data: {
 				name: `Book ${i + 1}`,
 				description: `Description for book ${i + 1}.`,
@@ -72,5 +71,5 @@ main()
 		process.exit(1);
 	})
 	.finally(async () => {
-		await prisma.$disconnect();
+		await db.$disconnect();
 	});
