@@ -14,6 +14,7 @@ import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import Header from "../shared/Header";
 import LongText from "../shared/LongText";
 import PublisherSheets from "./PublisherSheets";
+import { Badge } from "~/components/ui/badge";
 
 const PublisherInfo: FC = () => {
 	const { id } = useParams();
@@ -105,12 +106,12 @@ const PublisherInfo: FC = () => {
 									{data && data.isActive === true ? (
 										<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed dark:text-blue-50 text-gray-800">
 											<span className="font-bold">
-												Vydavateľstvo je:
+												Vydavateľstvo je
 											</span>
 											:{" "}
-											<span className="text-green-500">
+											<Badge className="bg-green-500 ml-4 text-white text-sm">
 												Aktívne
-											</span>
+											</Badge>
 										</p>
 									) : (
 										<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed dark:text-blue-50 text-gray-800">
@@ -118,7 +119,7 @@ const PublisherInfo: FC = () => {
 												Vydavateľstvo je:
 											</span>
 											:{" "}
-											<span className="text-red-500">
+											<Badge variant={"destructive"} className="ml-4 text-white text-sm">
 												Neaktívne:{" "}
 												{
 													format(
@@ -126,7 +127,7 @@ const PublisherInfo: FC = () => {
 														"dd-MM-yyyy",
 													) as unknown as string
 												}
-											</span>
+											</Badge>
 										</p>
 									)}
 									<hr className="mt-6" />
