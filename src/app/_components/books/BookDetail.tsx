@@ -16,6 +16,7 @@ import { api } from "~/trpc/react";
 import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import Header from "../shared/Header";
 import LongText from "../shared/LongText";
+import Image from 'next/image'
 
 const BookingModal = dynamic(() => import("../booking/BookingModal"), {
 	ssr: false,
@@ -138,10 +139,13 @@ const BookDetail: FC = () => {
 			<section className="body-font mt-2 overflow-hidden dark:bg-background bg-white text-gray-700">
 				<div className="container mx-auto px-5 py-12">
 					<div className="mx-auto flex flex-wrap lg:w-4/5">
-						<img
-							alt={data?.name}
+						<Image
+							width={400}
+							height={400}
+							loading="lazy"
+							alt={data?.name!}
 							className="w-full rounded-lg border object-cover object-center drop-shadow-md lg:w-1/2"
-							src={data?.image}
+							src={data?.image!}
 						/>
 						{bookDetails}
 					</div>
