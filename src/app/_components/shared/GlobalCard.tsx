@@ -21,8 +21,9 @@ const GlobalCard: FC<IGlobalCardProps> = ({
 						<Image
 							src={image}
 							alt={name}
-							width={300}
-							height={300}
+							width={400}
+							height={400}
+							loading="lazy"
 							className="h-80 w-72 rounded-t-xl object-cover"
 						/>
 					</>
