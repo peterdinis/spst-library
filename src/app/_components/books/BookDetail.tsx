@@ -3,6 +3,7 @@
 import { format } from "date-fns";
 import { Copy, Loader2 } from "lucide-react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { type FC, useMemo } from "react";
@@ -138,10 +139,13 @@ const BookDetail: FC = () => {
 			<section className="body-font mt-2 overflow-hidden dark:bg-background bg-white text-gray-700">
 				<div className="container mx-auto px-5 py-12">
 					<div className="mx-auto flex flex-wrap lg:w-4/5">
-						<img
-							alt={data?.name}
+						<Image
+							width={400}
+							height={400}
+							loading="lazy"
+							alt={data?.name!}
 							className="w-full rounded-lg border object-cover object-center drop-shadow-md lg:w-1/2"
-							src={data?.image}
+							src={data?.image!}
 						/>
 						{bookDetails}
 					</div>

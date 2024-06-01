@@ -1,10 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { FC } from "react";
 import LazyLoad from "react-lazyload";
 import type { IGlobalCardProps } from "~/app/types/sharedTypes";
 import { Button } from "~/components/ui/button";
 import { CardDescription, CardFooter, CardHeader } from "~/components/ui/card";
-import Image from 'next/image'
 
 const GlobalCard: FC<IGlobalCardProps> = ({
 	name,
@@ -21,8 +21,9 @@ const GlobalCard: FC<IGlobalCardProps> = ({
 						<Image
 							src={image}
 							alt={name}
-							width={300}
-							height={300}
+							width={400}
+							height={400}
+							loading="lazy"
 							className="h-80 w-72 rounded-t-xl object-cover"
 						/>
 					</>

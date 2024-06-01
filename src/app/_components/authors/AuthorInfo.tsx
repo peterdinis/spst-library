@@ -3,6 +3,7 @@
 import type { Author } from "@prisma/client";
 import { format } from "date-fns";
 import { Loader2 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import type { FC } from "react";
@@ -46,10 +47,13 @@ const AuthorInfo: FC = () => {
 					<section className="body-font mt-2 overflow-hidden dark:bg-background text-gray-700">
 						<div className="container mx-auto px-5 py-12">
 							<div className="mx-auto flex flex-wrap lg:w-4/5">
-								<img
-									alt={data && data.name}
+								<Image
+									width={400}
+									height={400}
+									loading="lazy"
+									alt={data?.name!}
 									className="w-full rounded-lg border object-cover object-center drop-shadow-md lg:w-1/2"
-									src={data && data.authorImage}
+									src={data?.authorImage!}
 								/>
 								<div className="mt-6 w-full lg:mt-0 lg:w-1/2 lg:py-6 lg:pl-10">
 									<div>
