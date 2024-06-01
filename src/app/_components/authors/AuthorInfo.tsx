@@ -39,6 +39,14 @@ const AuthorInfo: FC = () => {
 		);
 	}
 
+	const formatDate = (date: string | undefined) => {
+		try {
+			return date ? format(new Date(date), "dd-MM-yyyy") : "N/A";
+		} catch (error) {
+			return "N/A";
+		}
+	};
+
 	return (
 		<>
 			<Header text="Detail o spisovateľovi / ke" />
@@ -77,8 +85,7 @@ const AuthorInfo: FC = () => {
 										<span className="font-bold">
 											Dátum narodenia
 										</span>
-										:{" "}
-										{format(data?.birthYear!, "dd-MM-yyyy")}
+										: {formatDate(data?.birthYear)}
 									</p>
 									<p className="mb-4 mt-3 text-2xl font-light  leading-relaxed dark:text-blue-50 text-gray-800">
 										<span className="font-bold">
@@ -102,7 +109,7 @@ const AuthorInfo: FC = () => {
 										{data &&
 											data.books.map((item) => {
 												return (
-													<span className="ml-3 break-words">
+													<span key={item.id} className="ml-3 break-words">
 														{item.name}
 													</span>
 												);
@@ -115,13 +122,7 @@ const AuthorInfo: FC = () => {
 													{" "}
 													Dátum úmrtia
 												</span>
-												:{" "}
-												{
-													format(
-														data && data.deathYear!,
-														"dd-MM-yyyy",
-													) as unknown as string
-												}
+												: {formatDate(data.deathYear)}
 											</p>
 										</>
 									) : (
