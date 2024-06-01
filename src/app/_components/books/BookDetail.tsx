@@ -81,13 +81,13 @@ const BookDetail: FC = () => {
 						<span className="font-bold">Kniha je:</span>
 						{isAvailable ? (
 							<Badge
-								className="bg-green-500 text-sm text-white"
+								className="ml-4 bg-green-500 text-sm text-white"
 								variant="default"
 							>
 								Dostupná
 							</Badge>
 						) : (
-							<Badge variant="destructive" className="text-sm">
+							<Badge variant="destructive" className="text-sm text-white ml-4">
 								Nedostupná
 							</Badge>
 						)}
