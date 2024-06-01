@@ -1,10 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { FC } from "react";
 import LazyLoad from "react-lazyload";
 import type { IGlobalCardProps } from "~/app/types/sharedTypes";
 import { Button } from "~/components/ui/button";
 import { CardDescription, CardFooter, CardHeader } from "~/components/ui/card";
-import Image from 'next/image'
 
 const GlobalCard: FC<IGlobalCardProps> = ({
 	name,

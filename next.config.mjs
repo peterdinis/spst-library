@@ -3,8 +3,8 @@
 const config = {
 	reactStrictMode: true,
 	images: {
-		domains: ["picsum.photos"]
-	}
+		domains: ["picsum.photos"],
+	},
 };
 
 export default config;

@@ -3,6 +3,7 @@
 import { format } from "date-fns";
 import { Copy, Loader2 } from "lucide-react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { type FC, useMemo } from "react";
@@ -16,7 +17,6 @@ import { api } from "~/trpc/react";
 import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import Header from "../shared/Header";
 import LongText from "../shared/LongText";
-import Image from 'next/image'
 
 const BookingModal = dynamic(() => import("../booking/BookingModal"), {
 	ssr: false,
