@@ -4,6 +4,7 @@ import LazyLoad from "react-lazyload";
 import type { IGlobalCardProps } from "~/app/types/sharedTypes";
 import { Button } from "~/components/ui/button";
 import { CardDescription, CardFooter, CardHeader } from "~/components/ui/card";
+import Image from 'next/image'
 
 const GlobalCard: FC<IGlobalCardProps> = ({
 	name,
@@ -17,9 +18,11 @@ const GlobalCard: FC<IGlobalCardProps> = ({
 			<div className="ml-4">
 				{image ? (
 					<>
-						<img
+						<Image
 							src={image}
 							alt={name}
+							width={300}
+							height={300}
 							className="h-80 w-72 rounded-t-xl object-cover"
 						/>
 					</>
