@@ -1,7 +1,7 @@
 "use client";
 
 import { format } from "date-fns";
-import { Loader2 } from "lucide-react";
+import { Ghost, Loader2 } from "lucide-react";
 import { type FC, useState } from "react";
 import type { IBorrowedBookingTypes } from "~/app/types/bookingTypes";
 import { Button } from "~/components/ui/button";
@@ -71,6 +71,12 @@ const BorrowedBooks: FC = () => {
 				</CardHeader>
 				<CardContent>
 					<div className="grid gap-4">
+					{toShow?.length === 0 && (
+							<div className="flex justify-center align-top mt-5 p-2 ml-4 text-blue-50 prose tex-xl">
+								<Ghost className="animate-bounce w-8 h-8" />{" "}
+								Žiadne knihy neboli požičané
+							</div>
+						)}
 						{!paginatedLoading &&
 							toShow &&
 							toShow.map((item: IBorrowedBookingTypes) => {

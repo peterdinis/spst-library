@@ -38,7 +38,7 @@ const NavigationItems: FC = () => {
 						profileLink={"/teacher/profile"}
 						logoutFn={() => {
 							Cookie.remove("teacherD");
-							window.location.replace("/teacher/login")
+							window.location.replace("/teacher/login");
 							toast({
 								title: "Odhlásenie bolo úspešné",
 								className: "bg-green-500 text-blue-50",

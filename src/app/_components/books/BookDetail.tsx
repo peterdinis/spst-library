@@ -87,7 +87,10 @@ const BookDetail: FC = () => {
 								Dostupná
 							</Badge>
 						) : (
-							<Badge variant="destructive" className="text-sm text-white ml-4">
+							<Badge
+								variant="destructive"
+								className="text-sm text-white ml-4"
+							>
 								Nedostupná
 							</Badge>
 						)}
