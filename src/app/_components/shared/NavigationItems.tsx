@@ -2,7 +2,6 @@
 
 import Cookie from "js-cookie";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import type { FC } from "react";
 import { useToast } from "~/components/ui/use-toast";
 import useAdminCookie from "~/hooks/useAdminCookie";
@@ -15,7 +14,6 @@ const NavigationItems: FC = () => {
 	const studentCookie = useStudentCookie();
 	const teacherCookie = useTeacherCookie();
 	const adminCookie = useAdminCookie();
-	const router = useRouter();
 	const { toast } = useToast();
 	return (
 		<>
@@ -40,7 +38,7 @@ const NavigationItems: FC = () => {
 						profileLink={"/teacher/profile"}
 						logoutFn={() => {
 							Cookie.remove("teacherD");
-							router.push("/teacher/login");
+							window.location.replace("/teacher/login")
 							toast({
 								title: "Odhlásenie bolo úspešné",
 								className: "bg-green-500 text-blue-50",
