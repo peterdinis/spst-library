@@ -11,11 +11,11 @@ import { api } from "~/trpc/react";
 import ReturnBookingModal from "../../booking/ReturnBookingModal";
 import GlobalErrorComponent from "../../shared/GlobalErrorComponent";
 import GlobalPagination from "../../shared/GlobalPagination";
+import { limit } from "~/app/_constants/app-constants";
 
 const BorrowedBooks: FC = () => {
 	const [page, setPage] = useState(0);
-
-	const limit = 6 as const;
+	
 	const teacherCookie = useTeacherCookie();
 
 	const {
