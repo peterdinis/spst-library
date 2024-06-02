@@ -10,6 +10,13 @@ const config = {
 		  port: '',
 		  pathname: '/**',
 		},
+
+		{
+			protocol: "https",
+			hostname: "*",
+			port: "",
+			pathname: "/**"
+		}
 	  ],
 	},
   };
