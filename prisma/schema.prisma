@@ -1,5 +1,5 @@
 generator client {
-    provider = "prisma-client-js"
+    provider        = "prisma-client-js"
     previewFeatures = ["fullTextSearch", "fullTextIndex"]
 }
 
@@ -65,12 +65,13 @@ model Author {
 }
 
 model Booking {
-    id            Int      @id @default(autoincrement())
-    bookName      String
-    from          DateTime
-    to            DateTime
-    isBorrowed    Boolean
-    isReturned    Boolean
-    isExtended    Boolean? // Predlženie knihy
-    userEmail     String
+    id         Int      @id @default(autoincrement())
+    bookName   String
+    from       DateTime
+    to         DateTime
+    isBorrowed Boolean
+    isReturned Boolean
+    isExtended Boolean? // Predlženie knihy
+    userEmail  String
+    createdAt  DateTime @default(now())
 }
