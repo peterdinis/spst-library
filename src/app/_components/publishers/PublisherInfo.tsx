@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import type { FC } from "react";
+import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import useAdminCookie from "~/hooks/useAdminCookie";
 import useTeacherCookie from "~/hooks/useTeacherCookie";
@@ -14,7 +15,6 @@ import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import Header from "../shared/Header";
 import LongText from "../shared/LongText";
 import PublisherSheets from "./PublisherSheets";
-import { Badge } from "~/components/ui/badge";
 
 const PublisherInfo: FC = () => {
 	const { id } = useParams();
@@ -119,7 +119,10 @@ const PublisherInfo: FC = () => {
 												Vydavateľstvo je:
 											</span>
 											:{" "}
-											<Badge variant={"destructive"} className="ml-4 text-white text-sm">
+											<Badge
+												variant={"destructive"}
+												className="ml-4 text-white text-sm"
+											>
 												Neaktívne:{" "}
 												{
 													format(

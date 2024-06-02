@@ -9,12 +9,13 @@ import { api } from "~/trpc/react";
 import GlobalCard from "../shared/GlobalCard";
 import GlobalPagination from "../shared/GlobalPagination";
 import Header from "../shared/Header";
+import { limit } from "~/app/_constants/app-constants";
 
 const AllBooksWrapper: FC = () => {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [page, setPage] = useState(0);
 	const debouncedSearchTerm = useDebounce(searchTerm, 500);
-	const limit = 50 as const;
+
 	const {
 		data: paginatedData,
 		fetchNextPage,

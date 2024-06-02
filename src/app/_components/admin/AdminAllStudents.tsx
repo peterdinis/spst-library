@@ -10,6 +10,7 @@ import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import { DataTable } from "../shared/GlobalTable";
 import Header from "../shared/Header";
 import { columns } from "./columns/studentColumns";
+import { Book } from "@prisma/client";
 
 const AdminAllStudents: FC = () => {
 	const router = useRouter();

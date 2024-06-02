@@ -29,7 +29,7 @@ const Hero: FC = () => {
 					<h1 className="text-heading-color dark:text-blue-50  text-center text-3xl font-black leading-tight tracking-tighter text-gray-900 md:w-7/12 md:text-left lg:text-6xl xl:text-8xl">
 						SPŠT Knižnica
 					</h1>
-					<h2 className="py-4 text-center text-lg dark:text-blue-50  text-gray-700 md:w-8/12 md:py-8 md:text-left lg:text-2xl">
+					<h2 className="prose py-4 text-center text-lg dark:text-blue-50  text-gray-700 md:w-8/12 md:py-8 md:text-left lg:text-2xl">
 						<q>Knihy sú jedinečne prenosné kúzlo - Stephen King</q>
 					</h2>
 					<div className="flex justify-center sm:block md:block">

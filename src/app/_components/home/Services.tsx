@@ -33,7 +33,7 @@ const Services: FC = () => {
 							className="flex items-center flex-col px-6 py-6 focus:outline-none sm:w-1/2 md:w-1/4 md:py-0"
 							variants={servicesVariant}
 						>
-							<Home className="h-6 w-6" />
+							<Home className="h-7 w-7" />
 							<h4
 								tabIndex={0}
 								className="pt-5 dark:text-blue-50 text-center text-lg font-medium leading-6 text-gray-800 focus:outline-none"
@@ -47,7 +47,7 @@ const Services: FC = () => {
 							className="flex items-center flex-col px-6 py-6 focus:outline-none sm:w-1/2 md:w-1/4 md:py-0"
 							variants={servicesVariant}
 						>
-							<School2 className="h-6 w-6" />
+							<School2 className="h-7 w-7" />
 							<h4
 								tabIndex={0}
 								className="pt-5 dark:text-blue-50 text-center text-lg font-medium leading-6 text-gray-800 focus:outline-none"
