@@ -52,7 +52,7 @@ const AdminRightsModal: FC = () => {
 		mutationKey: ["adminRightsAccount"],
 		mutationFn: async (data: any) => {
 			return await axios.patch(
-				process.env.NEXT_PUBLIC_AUTH_API + "auth/account/make-admin",
+				urlCheck + "auth/account/make-admin",
 				data,
 			);
 		},

@@ -6,6 +6,7 @@ import { Loader2 } from "lucide-react";
 import { type FC, useState } from "react";
 import { type FieldValues, useForm } from "react-hook-form";
 import Header from "~/app/_components/shared/Header";
+import { urlCheck } from "~/app/_constants/api";
 import { Button } from "~/components/ui/button";
 import {
 	Dialog,
@@ -42,7 +43,7 @@ const DeactivateAccountModal: FC = () => {
 		queryKey: ["allUsers"],
 		queryFn: async () => {
 			return await axios.get(
-				process.env.NEXT_PUBLIC_AUTH_API + "auth/users",
+				urlCheck + "auth/users",
 			);
 		},
 	});
@@ -51,7 +52,7 @@ const DeactivateAccountModal: FC = () => {
 		mutationKey: ["deactivateAccount"],
 		mutationFn: async (data: any) => {
 			return await axios.patch(
-				process.env.NEXT_PUBLIC_AUTH_API + "auth/account/deactivate",
+				urlCheck + "auth/account/deactivate",
 				data,
 			);
 		},
@@ -73,33 +74,9 @@ const DeactivateAccountModal: FC = () => {
 		},
 	});
 
-	const sendEmailMut = api.email.sendEmail.useMutation({
-		onSuccess: () => {
-			toast({
-				title: "Email pre účet bol odoslaný",
-				duration: 2000,
-				className: "bg-green-500 text-white",
-			});
-		},
-
-		onError: () => {
-			toast({
-				title: "Email pre účet nebol odoslaný",
-				duration: 2000,
-				className: "bg-red-500 text-white",
-			});
-		},
-	});
-
 	const onSubmit = async (data: FieldValues) => {
 		await deactivateAccountModal.mutateAsync({
 			accountId: data.accountId,
-		});
-
-		await sendEmailMut.mutateAsync({
-			email: data.email,
-			subject: "Váš účet bol úspešné deaktivovaný",
-			message: "",
 		});
 	};
 

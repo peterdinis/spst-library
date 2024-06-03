@@ -10,6 +10,7 @@ import { type FieldValues, useForm } from "react-hook-form";
 import type { IRegisterType } from "~/app/types/authTypes";
 import { useToast } from "~/components/ui/use-toast";
 import Header from "../shared/Header";
+import { urlCheck } from "~/app/_constants/api";
 
 const RegisterForm: FC = () => {
 	const {
@@ -25,7 +26,7 @@ const RegisterForm: FC = () => {
 		mutationKey: ["registerTeacher"],
 		mutationFn: async (data: IRegisterType) => {
 			return await axios.post(
-				process.env.NEXT_PUBLIC_AUTH_API + "auth/register",
+				urlCheck + "auth/register",
 				data,
 			);
 		},

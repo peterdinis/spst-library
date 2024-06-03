@@ -6,6 +6,7 @@ import { Loader2 } from "lucide-react";
 import { type FC, useState } from "react";
 import { type FieldValues, useForm } from "react-hook-form";
 import Header from "~/app/_components/shared/Header";
+import { urlCheck } from "~/app/_constants/api";
 import { Button } from "~/components/ui/button";
 import {
 	Dialog,
@@ -41,7 +42,7 @@ const RemoveAccountModal: FC = () => {
 		queryKey: ["allUsers"],
 		queryFn: async () => {
 			return await axios.get(
-				process.env.NEXT_PUBLIC_AUTH_API + "auth/users",
+				urlCheck + "auth/users",
 			);
 		},
 	});
@@ -50,7 +51,7 @@ const RemoveAccountModal: FC = () => {
 		mutationKey: ["removeAccount"],
 		mutationFn: async (data: any) => {
 			return await axios.delete(
-				process.env.NEXT_PUBLIC_AUTH_API + "auth/account/delete",
+				urlCheck + "auth/account/delete",
 				data,
 			);
 		},
