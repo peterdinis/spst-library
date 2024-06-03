@@ -10,13 +10,14 @@ import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import { DataTable } from "../shared/GlobalTable";
 import Header from "../shared/Header";
 import { columns } from "./columns/studentColumns";
+import { urlCheck } from "~/app/_constants/api";
 
 const AdminAllTeachers: FC = () => {
 	const { data, isLoading, isError } = useQuery({
 		queryKey: ["allTeachers"],
 		queryFn: () => {
 			return axios.get(
-				(process.env.NEXT_PUBLIC_AUTH_API as unknown as string) +
+				(urlCheck) +
 					"auth/users/teachers",
 			);
 		},

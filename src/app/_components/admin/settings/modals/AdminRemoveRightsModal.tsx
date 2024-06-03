@@ -6,6 +6,7 @@ import { Loader2 } from "lucide-react";
 import { type FC, useState } from "react";
 import { type FieldValues, useForm } from "react-hook-form";
 import Header from "~/app/_components/shared/Header";
+import { urlCheck } from "~/app/_constants/api";
 import { Button } from "~/components/ui/button";
 import {
 	Dialog,
@@ -42,26 +43,8 @@ const AdminRemoveRightsModal: FC = () => {
 		queryKey: ["adminTeachers"],
 		queryFn: async () => {
 			return await axios.get(
-				process.env.NEXT_PUBLIC_AUTH_API + "auth/all/teachers/admins",
+				urlCheck + "auth/all/teachers/admins",
 			);
-		},
-	});
-
-	const sendEmailMut = api.email.sendEmail.useMutation({
-		onSuccess: () => {
-			toast({
-				title: "Email pre účet bol odoslaný",
-				duration: 2000,
-				className: "bg-green-500 text-white",
-			});
-		},
-
-		onError: () => {
-			toast({
-				title: "Email pre účet nebol odoslaný",
-				duration: 2000,
-				className: "bg-red-500 text-white",
-			});
 		},
 	});
 
@@ -69,7 +52,7 @@ const AdminRemoveRightsModal: FC = () => {
 		mutationKey: ["adminRemoveRights"],
 		mutationFn: async (data: any) => {
 			return await axios.patch(
-				process.env.NEXT_PUBLIC_AUTH_API + "auth/account/make-admin",
+				urlCheck + "auth/account/make-admin",
 				data,
 			);
 		},
@@ -94,12 +77,6 @@ const AdminRemoveRightsModal: FC = () => {
 	const onSubmit = async (formData: FieldValues) => {
 		await adminRemoveRightsMut.mutateAsync({
 			accountId: formData.accountId,
-		});
-		await sendEmailMut.mutateAsync({
-			email: formData.email,
-			subject: "Vášmu účtu boli zobrané admin práva.",
-			message:
-				"Od dnešného dňa sa prihlasujete na tomto linku: http://localhost:3000/teacher/login",
 		});
 	};
 

@@ -6,6 +6,7 @@ import { Loader2 } from "lucide-react";
 import { type FC, useState } from "react";
 import { type FieldValues, useForm } from "react-hook-form";
 import Header from "~/app/_components/shared/Header";
+import { urlCheck } from "~/app/_constants/api";
 import { Button } from "~/components/ui/button";
 import {
 	Dialog,
@@ -42,26 +43,8 @@ const AdminRightsModal: FC = () => {
 		queryKey: ["adminTeachers"],
 		queryFn: async () => {
 			return await axios.get(
-				process.env.NEXT_PUBLIC_AUTH_API + "auth/teachers",
+				urlCheck + "auth/teachers",
 			);
-		},
-	});
-
-	const sendEmailMut = api.email.sendEmail.useMutation({
-		onSuccess: () => {
-			toast({
-				title: "Email pre účet bol odoslaný",
-				duration: 2000,
-				className: "bg-green-500 text-white",
-			});
-		},
-
-		onError: () => {
-			toast({
-				title: "Email pre účet nebol odoslaný",
-				duration: 2000,
-				className: "bg-red-500 text-white",
-			});
 		},
 	});
 
@@ -95,13 +78,6 @@ const AdminRightsModal: FC = () => {
 	const onSubmit = async (formData: FieldValues) => {
 		await adminRightsMut.mutateAsync({
 			accountId: formData.accountId,
-		});
-
-		await sendEmailMut.mutateAsync({
-			email: formData.email,
-			subject: "Váš účet má od dnešného dňa admin práva.",
-			message:
-				"Od dnešného dňa sa prihlasujete na tomto linku: http://localhost:3000/admin/login",
 		});
 	};
 
