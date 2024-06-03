@@ -12,6 +12,12 @@ import { useToast } from "~/components/ui/use-toast";
 import Header from "../shared/Header";
 import { urlCheck } from "~/app/_constants/api";
 
+interface ApiResponse {
+    data: {
+        user: unknown;
+    }
+}
+
 const AdminLoginForm: FC = () => {
 	const {
 		register,
@@ -28,7 +34,7 @@ const AdminLoginForm: FC = () => {
 				data,
 			);
 		},
-		onSuccess: (data) => {
+		onSuccess: (data: ApiResponse) => {
 			Cookie.set("adminD", JSON.stringify(data?.data?.user));
 			toast({
 				title: "Prihlásenie bolo úspešné",

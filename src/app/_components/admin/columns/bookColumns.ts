@@ -1,14 +1,8 @@
 "use client";
 
 import type { ColumnDef } from "@tanstack/react-table";
+import { Book } from "~/app/types/tableTypes";
 
-export type Book = {
-	id: string;
-	name: string;
-	description: string;
-	isAvaiable: boolean;
-	itemsInStock: number;
-};
 
 const booleanCellRenderer = (value: boolean) => (value ? "Ano" : "Nie");
 

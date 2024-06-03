@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
 import { Ghost, Loader2 } from "lucide-react";
-import { type ChangeEvent, type FC, useMemo, useState } from "react";
+import { ChangeEvent, FC, useMemo, useState } from "react";
 import { Input } from "~/components/ui/input";
 import { useDebounce } from "~/hooks/useDebounce";
 import { api } from "~/trpc/react";
@@ -37,9 +37,7 @@ const AllPublishers: FC = () => {
 		return (
 			toShow &&
 			toShow.filter((item) =>
-				item.name
-					.toLowerCase()
-					.includes(debouncedSearchTerm.toLowerCase()),
+				item.name?.toLowerCase().includes(debouncedSearchTerm.toLowerCase()), // Use optional chaining
 			)
 		);
 	}, [toShow, debouncedSearchTerm]);
@@ -83,7 +81,7 @@ const AllPublishers: FC = () => {
 				</form>
 			</div>
 
-			{filteredData && filteredData.length === 0 && (
+			{filteredData?.length === 0 && ( // Use optional chaining
 				<div className="mt-5 flex justify-center align-top">
 					<span className="text-center font-bold text-gray-500">
 						<Ghost className="h-8 w-8 animate-bounce" />
@@ -93,18 +91,16 @@ const AllPublishers: FC = () => {
 			)}
 
 			<div className="mx-auto mt-5 grid gap-8 overflow-x-auto pt-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-				{!paginatedLoading &&
-					filteredData &&
-					filteredData.map((filteredItem) => (
-						<GlobalCard
-							key={filteredItem.id}
-							description={filteredItem.description}
-							image={filteredItem.image}
-							linkName="publishers"
-							name={filteredItem.name}
-							id={filteredItem.id}
-						/>
-					))}
+				{filteredData?.map((filteredItem) => ( // Use optional chaining
+					<GlobalCard
+						key={filteredItem.id}
+						description={filteredItem.description}
+						image={filteredItem.image}
+						linkName="publishers"
+						name={filteredItem.name}
+						id={filteredItem.id}
+					/>
+				))}
 			</div>
 
 			<GlobalPagination

@@ -9,7 +9,7 @@ import type { FC } from "react";
 import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import { DataTable } from "../shared/GlobalTable";
 import Header from "../shared/Header";
-import { columns, Student } from "./columns/studentColumns";
+import { columns, type Student} from "./columns/studentColumns";
 import { urlCheck } from "~/app/_constants/api";
 
 const AdminAllStudents: FC = () => {

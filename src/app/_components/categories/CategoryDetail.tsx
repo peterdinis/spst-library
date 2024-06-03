@@ -74,10 +74,10 @@ const CategoryDetail: FC = () => {
 				</Button>
 			</div>
 
-			{teacherCookie || adminCookie ? (
+			{teacherCookie ?? adminCookie ? (
 				<CategorySheets
 					data={data as unknown as Category}
-					name={data?.name!}
+					name={data!.name as unknown as string}
 				/>
 			) : (
 				<></>

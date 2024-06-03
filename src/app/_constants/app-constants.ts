@@ -1,1 +1,1 @@
-export const limit = 50 as const;
+export const limit = 50;

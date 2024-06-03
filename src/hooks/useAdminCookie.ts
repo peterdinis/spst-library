@@ -25,8 +25,6 @@ const useAdminCookie = (): ICookieAuthType | null => {
 		};
 
 		fetchAdminCookie();
-
-		return () => {};
 	}, []);
 
 	return adminCookie;

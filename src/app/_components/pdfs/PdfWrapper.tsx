@@ -5,11 +5,11 @@ interface Item {
 	name: string;
 }
 
-type PdfWrapperProps = {
-	data: Item[];
+export type PdfWrapperProps = {
+	data?: Item[];
 };
 
-const PdfWrapper: FC<PdfWrapperProps> = ({ data }) => (
+const PdfWrapper: FC<PdfWrapperProps> = ({ data = [] }) => (
 	<Document>
 		<Page size={"A4"}>
 			<Text
@@ -20,12 +20,11 @@ const PdfWrapper: FC<PdfWrapperProps> = ({ data }) => (
 			>
 				Zoznam
 			</Text>
-			{data &&
-				data.map((item: Item, index: number) => (
-					<View key={index}>
-						<Text>{item.name}</Text>
-					</View>
-				))}
+			{data?.map((item: Item, index: number) => (
+				<View key={index}>
+					<Text>{item.name}</Text>
+				</View>
+			))}
 		</Page>
 	</Document>
 );

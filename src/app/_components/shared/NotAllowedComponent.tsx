@@ -11,7 +11,7 @@ const NotAllowedComponent: FC = () => {
 			router.push("/");
 		}, 2000);
 		return () => clearTimeout(redirectTimeout);
-	}, [history]);
+	}, [router]);
 
 	return (
 		<main className="flex h-screen w-full flex-col items-center justify-center">

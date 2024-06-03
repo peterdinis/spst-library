@@ -25,8 +25,6 @@ const useStudentCookie = (): ICookieAuthType | null => {
 		};
 
 		fetchStudentCookie();
-
-		return () => {};
 	}, []);
 
 	return studentCookie;

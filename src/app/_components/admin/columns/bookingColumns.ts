@@ -1,16 +1,8 @@
 "use client";
 
 import type { ColumnDef } from "@tanstack/react-table";
+import { Booking } from "~/app/types/tableTypes";
 
-export type Booking = {
-	id: string;
-	bookName: string;
-	from: string | Date;
-	to: string | Date;
-	isReturned: boolean;
-	isExtended: boolean;
-	userEmail: string;
-};
 
 export const columns: ColumnDef<Booking>[] = [
 	{

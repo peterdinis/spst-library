@@ -1,10 +1,10 @@
-"use client";
+"use client"
 
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
-import { type FC, useState } from "react";
-import { type FieldValues, useForm } from "react-hook-form";
+import { FC, useState } from "react";
+import { FieldValues, useForm } from "react-hook-form";
 import Header from "~/app/_components/shared/Header";
 import { urlCheck } from "~/app/_constants/api";
 import { Button } from "~/components/ui/button";
@@ -19,12 +19,11 @@ import {
 import {
 	Select,
 	SelectContent,
-	SelectItem,
+SelectItem,
 	SelectTrigger,
 	SelectValue,
 } from "~/components/ui/select";
 import { useToast } from "~/components/ui/use-toast";
-import { api } from "~/trpc/react";
 
 const AdminRightsModal: FC = () => {
 	const [open, setOpen] = useState(false);
@@ -42,15 +41,13 @@ const AdminRightsModal: FC = () => {
 	const { data, isLoading } = useQuery({
 		queryKey: ["adminTeachers"],
 		queryFn: async () => {
-			return await axios.get(
-				urlCheck + "auth/teachers",
-			);
+			return await axios.get(urlCheck + "auth/teachers");
 		},
 	});
 
 	const adminRightsMut = useMutation({
 		mutationKey: ["adminRightsAccount"],
-		mutationFn: async (data: any) => {
+		mutationFn: async (data: FieldValues) => {
 			return await axios.patch(
 				urlCheck + "auth/account/make-admin",
 				data,
@@ -65,7 +62,7 @@ const AdminRightsModal: FC = () => {
 			});
 		},
 
-		onError: (error) => {
+		onError: (error: any) => {
 			console.log("E", error);
 			toast({
 				title: "Nepodarilo sa nastaviť pre účet, admin práva",

@@ -35,7 +35,7 @@ export function useCopyToClipboard(): [CopiedValue, CopyFn] {
 			setCopiedText(null);
 			return false;
 		}
-	}, []);
+	}, [toast]);
 
 	return [copiedText, copy];
 }

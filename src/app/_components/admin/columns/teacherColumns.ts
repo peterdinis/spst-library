@@ -1,13 +1,7 @@
 "use client";
 
 import type { ColumnDef } from "@tanstack/react-table";
-
-export type Teacher = {
-	id: string;
-	name: string;
-	lastName: string;
-	userEmail: string;
-};
+import { Teacher } from "~/app/types/tableTypes";
 
 export const columns: ColumnDef<Teacher>[] = [
 	{

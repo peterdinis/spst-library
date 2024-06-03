@@ -22,12 +22,16 @@ import {
 } from "~/components/ui/table";
 import PdfWrapper from "../pdfs/PdfWrapper";
 
+interface Item {
+	name: string;
+}
+
 export function DataTable<TData, TValue>({
 	columns,
 	data,
 }: DataTableProps<TData, TValue>) {
 	const [pageIndex, setPageIndex] = useState(0);
-	const [pageSize, _] = useState(10);
+	const [pageSize] = useState(10);
 
 	const table = useReactTable({
 		data,
@@ -48,7 +52,8 @@ export function DataTable<TData, TValue>({
 				<Link href="/admin/profile">Späť na admin profil</Link>
 			</Button>
 			<PDFDownloadLink
-				document={<PdfWrapper data={data as any} />}
+				
+				document={<PdfWrapper data={data as unknown as Item[]} />}
 				fileName="document.pdf"
 			>
 				{({ loading }) =>

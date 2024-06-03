@@ -16,7 +16,7 @@ import {
 
 interface IMenuDropdownProps {
 	profileLink: string;
-	logoutFn: (...args: unknown[]) => void | Function;
+	logoutFn: (...args: unknown[]) => void;
 	children?: ReactNode;
 }
 
@@ -35,7 +35,7 @@ const MenuDropdown: FC<IMenuDropdownProps> = ({
 				<DropdownMenuSeparator />
 				<DropdownMenuGroup>
 					<DropdownMenuItem>
-						<Link href={profileLink!}>
+						<Link href={profileLink}>
 							<DropdownMenuShortcut>Profil</DropdownMenuShortcut>
 						</Link>
 					</DropdownMenuItem>
