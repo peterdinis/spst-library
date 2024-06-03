@@ -25,4 +25,12 @@ export type ILoginType = Pick<
 	"name" | "lastName" | "email" | "password"
 >;
 
-export interface ICookieAuthType extends IRegisterType {}
+export interface ICookieAuthType {
+	name: string;
+	lastName: string;
+	email: string;
+	password: string;
+	isActive: boolean;
+	hasAdminRights: boolean;
+	role: string;
+}

@@ -3,7 +3,7 @@
 import Cookie from "js-cookie";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { type FC, useEffect } from "react";
+import { type FC} from "react";
 import { api } from "~/trpc/react";
 import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import { DataTable } from "../shared/GlobalTable";

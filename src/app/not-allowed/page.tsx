@@ -5,4 +5,4 @@ const NotAllowedPage: NextPage = () => {
 	return <NotAllowedComponent />;
 };
 
-export default NotAllowedComponent;
+export default NotAllowedPage;

@@ -9,7 +9,7 @@ import type { FC } from "react";
 import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import { DataTable } from "../shared/GlobalTable";
 import Header from "../shared/Header";
-import { columns } from "./columns/studentColumns";
+import { columns, Student } from "./columns/studentColumns";
 import { urlCheck } from "~/app/_constants/api";
 
 const AdminAllStudents: FC = () => {
@@ -48,7 +48,7 @@ const AdminAllStudents: FC = () => {
 	return (
 		<div className="mt-4">
 			<Header text="Zoznam všetkých študentov" />
-			<DataTable columns={columns} data={data as any} />
+			<DataTable columns={columns} data={data as unknown as Student[]} />
 		</div>
 	);
 };

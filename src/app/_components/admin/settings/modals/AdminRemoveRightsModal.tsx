@@ -24,7 +24,6 @@ import {
 	SelectValue,
 } from "~/components/ui/select";
 import { useToast } from "~/components/ui/use-toast";
-import { api } from "~/trpc/react";
 
 const AdminRemoveRightsModal: FC = () => {
 	const [open, setOpen] = useState(false);
@@ -50,7 +49,7 @@ const AdminRemoveRightsModal: FC = () => {
 
 	const adminRemoveRightsMut = useMutation({
 		mutationKey: ["adminRemoveRights"],
-		mutationFn: async (data: any) => {
+		mutationFn: async (data) => {
 			return await axios.patch(
 				urlCheck + "auth/account/make-admin",
 				data,
