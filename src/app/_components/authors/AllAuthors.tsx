@@ -35,8 +35,7 @@ const AllAuthors: FC = () => {
 
 	const filteredData = useMemo(() => {
 		return (
-			toShow &&
-			toShow.filter((item) =>
+			toShow?.filter((item) =>
 				item.name
 					.toLowerCase()
 					.includes(debouncedSearchTerm.toLowerCase()),
@@ -93,8 +92,7 @@ const AllAuthors: FC = () => {
 
 			<div className="mx-auto mt-5 grid gap-8 overflow-x-auto pt-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 				{!paginatedLoading &&
-					filteredData &&
-					filteredData.map((filteredItem) => (
+					filteredData?.map((filteredItem) => (
 						<GlobalCard
 							description={filteredItem.description}
 							key={filteredItem.id}

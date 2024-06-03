@@ -35,8 +35,7 @@ const AllCategories: FC = () => {
 
 	const filteredData = useMemo(() => {
 		return (
-			toShow &&
-			toShow.filter((item) =>
+			toShow?.filter((item) =>
 				item.name
 					.toLowerCase()
 					.includes(debouncedSearchTerm.toLowerCase()),
@@ -83,7 +82,7 @@ const AllCategories: FC = () => {
 				</form>
 			</div>
 
-			{filteredData && filteredData.length === 0 && (
+			{filteredData?.length === 0 && (
 				<div className="mt-5 flex justify-center align-top">
 					<span className="text-center font-bold text-gray-500">
 						<Ghost className="h-8 w-8 animate-bounce" />
@@ -94,8 +93,7 @@ const AllCategories: FC = () => {
 
 			<div className="mx-auto mt-5 grid gap-8 overflow-x-auto pt-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 				{!paginatedLoading &&
-					filteredData &&
-					filteredData.map((filteredItem) => (
+					filteredData?.map((filteredItem) => (
 						<GlobalCard
 							key={filteredItem.id}
 							linkName="categories"
