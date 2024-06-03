@@ -23,23 +23,23 @@ const AuthorSheets: FC<IAuthorSheetsProps> = ({
 	const { toast } = useToast();
 	const router = useRouter();
 
-	const [authorName, setAuthorName] = useState(data?.name || "");
+	const [authorName, setAuthorName] = useState(data?.name ?? "");
 	const [authorDeathYear, setAuthorDeathYear] = useState(
-		data?.deathYear || "",
+		data?.deathYear ?? ""
 	);
 	const [authorBirthYear, setAuthorBirthYear] = useState(
-		data?.birthYear || "",
+		data?.birthYear ?? ""
 	);
 	const [authorDescription, setAuthorDescription] = useState(
-		data?.description || "",
+		data?.description ?? ""
 	);
 	const [authorLitPeriod, setAuthorLitPeriod] = useState(
-		data?.litPeriod || "",
+		data?.litPeriod ?? ""
 	);
 	const [authorTotalBooks, setAuthorTotalBooks] = useState(
-		data?.totalBooks || 0,
+		data?.totalBooks ?? 0
 	);
-	const [authorImage, setAuthorImage] = useState(data?.authorImage || "");
+	const [authorImage, setAuthorImage] = useState(data?.authorImage ?? "");
 
 	const updateAuthorFn = async (e: FormEvent) => {
 		e.preventDefault();
@@ -134,7 +134,7 @@ const AuthorSheets: FC<IAuthorSheetsProps> = ({
 							value={authorTotalBooks}
 							onChange={(e) =>
 								setAuthorTotalBooks(
-									Number.parseInt(e.target.value),
+									Number.parseInt(e.target.value)
 								)
 							}
 						/>
