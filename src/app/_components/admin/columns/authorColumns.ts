@@ -1,7 +1,7 @@
 "use client";
 
 import type { ColumnDef } from "@tanstack/react-table";
-import { Author } from "~/app/types/tableTypes";
+import type { Author } from "~/app/types/tableTypes";
 
 
 export const columns: ColumnDef<Author>[] = [
