@@ -10,12 +10,11 @@ import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import { DataTable } from "../shared/GlobalTable";
 import Header from "../shared/Header";
 import { columns } from "./columns/studentColumns";
+import { urlCheck } from "~/app/_constants/api";
 
 const AdminAllStudents: FC = () => {
 	const router = useRouter();
 	const adminCheck = Cookie.get("isAdminLogin");
-
-	const urlCheck = process.env.NODE_ENV === "development" ? process.env.NEXT_PUBLIC_AUTH_API as unknown as string : process.env.NEXT_DEPLOY_AUTH_API as unknown as string;
 
 	if (!adminCheck) {
 		router.push("/not-allowed");

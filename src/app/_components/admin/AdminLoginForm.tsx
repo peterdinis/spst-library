@@ -10,6 +10,7 @@ import { type FieldValues, useForm } from "react-hook-form";
 import type { ILoginType } from "~/app/types/authTypes";
 import { useToast } from "~/components/ui/use-toast";
 import Header from "../shared/Header";
+import { urlCheck } from "~/app/_constants/api";
 
 const AdminLoginForm: FC = () => {
 	const {
@@ -23,7 +24,7 @@ const AdminLoginForm: FC = () => {
 		mutationKey: ["loginAdmin"],
 		mutationFn: async (data: ILoginType) => {
 			return await axios.post(
-				process.env.NEXT_PUBLIC_AUTH_API + "auth/login",
+				urlCheck + "auth/login",
 				data,
 			);
 		},
