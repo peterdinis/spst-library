@@ -8,12 +8,13 @@
     "email": "pdinis1@gmail.com"
   },
   "scripts": {
-    "build": "next build",
+    "build": "next build && pnpm run postinstall",
     "dev": "next dev --turbo",
     "lint": "next lint",
     "start": "next start",
     "format": "bunx @biomejs/biome check --apply .",
-    "seed": "ts-node prisma/seed.ts"
+    "seed": "ts-node prisma/seed.ts",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
