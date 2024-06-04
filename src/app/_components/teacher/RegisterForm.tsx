@@ -6,8 +6,8 @@ import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { type FC, useState } from "react";
-import { type FieldValues, useForm } from "react-hook-form";
-import type { IRegisterType } from "~/app/types/authTypes";
+import { type FieldValues, useForm, type SubmitHandler } from "react-hook-form";
+import { type IRegisterType } from "~/app/types/authTypes";
 import { useToast } from "~/components/ui/use-toast";
 import Header from "../shared/Header";
 import { urlCheck } from "~/app/_constants/api";
@@ -17,7 +17,7 @@ const RegisterForm: FC = () => {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm();
+	} = useForm<FieldValues>();
 	const [showPassword, setShowPassword] = useState(false);
 	const { toast } = useToast();
 	const router = useRouter();
@@ -25,10 +25,7 @@ const RegisterForm: FC = () => {
 	const addNewTeacherMut = useMutation({
 		mutationKey: ["registerTeacher"],
 		mutationFn: async (data: IRegisterType) => {
-			return await axios.post(
-				urlCheck + "auth/register",
-				data,
-			);
+			return await axios.post(urlCheck + "auth/register", data);
 		},
 		onSuccess: () => {
 			toast({
@@ -38,7 +35,6 @@ const RegisterForm: FC = () => {
 			});
 			router.push("/teacher/login");
 		},
-
 		onError: () => {
 			toast({
 				title: "Registrácia nebola úspešná",
@@ -48,17 +44,18 @@ const RegisterForm: FC = () => {
 		},
 	});
 
-	const onStudentSubmit = async (data: FieldValues) => {
+	const onStudentSubmit: SubmitHandler<FieldValues> = async (data) => {
 		await addNewTeacherMut.mutateAsync({
-			name: data.name,
-			lastName: data.lastName,
-			email: data.email,
-			password: data.password,
+			name: data.name as string,
+			lastName: data.lastName as string,
+			email: data.email as string,
+			password: data.password as string,
 			isActive: true,
 			hasAdminRights: false,
 			role: "TEACHER",
 		});
 	};
+
 	return (
 		<>
 			<Header text="Registrácia učiteľ" />
@@ -68,7 +65,7 @@ const RegisterForm: FC = () => {
 						<div className="mb-2">
 							<label
 								className="text-grey-darker mb-2 block text-sm font-bold"
-								htmlFor="password"
+								htmlFor="name"
 							>
 								Meno
 							</label>
@@ -97,7 +94,7 @@ const RegisterForm: FC = () => {
 						<div className="mb-2">
 							<label
 								className="text-grey-darker mb-2 block text-sm font-bold"
-								htmlFor="password"
+								htmlFor="lastName"
 							>
 								Priezvisko
 							</label>
@@ -114,26 +111,26 @@ const RegisterForm: FC = () => {
 							{errors.lastName &&
 								errors.lastName.type === "required" && (
 									<span className="text-red-500">
-										Priezivsko je povinné
+										Priezvisko je povinné
 									</span>
 								)}
 							{errors.lastName &&
 								errors.lastName.type === "minLength" && (
 									<span className="text-red-500">
-										Priezivsko musí mať minimálne 5 znakov
+										Priezvisko musí mať minimálne 5 znakov
 									</span>
 								)}
 						</div>
 						<div className="mb-2">
 							<label
 								className="text-grey-darker mb-2 block text-sm font-bold"
-								htmlFor="password"
+								htmlFor="email"
 							>
 								Email
 							</label>
 							<input
 								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 dark:text-black shadow"
-								id="Email"
+								id="email"
 								type="email"
 								{...register("email", {
 									required: true,
@@ -167,7 +164,7 @@ const RegisterForm: FC = () => {
 									type={showPassword ? "text" : "password"}
 									{...register("password", {
 										required: true,
-										minLength: 5, // Mala byť minLength namiesto min
+										minLength: 5,
 									})}
 									autoFocus
 									autoComplete="current-password"

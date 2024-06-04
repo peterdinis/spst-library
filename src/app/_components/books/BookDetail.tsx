@@ -31,6 +31,7 @@ const BookDetail: FC = () => {
 	const teacherCookie = useTeacherCookie();
 	const adminCookie = useAdminCookie();
 	const studentCookie = useStudentCookie();
+	//@ts-ignore
 	const [_, copy] = useCopyToClipboard();
 
 	const { data, isLoading, isError } = api.book.fetchBookById.useQuery({
