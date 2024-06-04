@@ -9,8 +9,9 @@ import type { FC } from "react";
 import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import { DataTable } from "../shared/GlobalTable";
 import Header from "../shared/Header";
-import { columns, type Student} from "./columns/studentColumns";
+import { columns} from "./columns/studentColumns";
 import { urlCheck } from "~/app/_constants/api";
+import { Student } from "~/app/types/tableTypes";
 
 const AdminAllStudents: FC = () => {
 	const router = useRouter();

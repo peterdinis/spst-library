@@ -8,7 +8,8 @@ import { api } from "~/trpc/react";
 import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import { DataTable } from "../shared/GlobalTable";
 import Header from "../shared/Header";
-import { type Publisher, columns } from "./columns/publisherColumns";
+import { columns } from "./columns/publisherColumns";
+import { Publisher } from "~/app/types/tableTypes";
 
 const AdminAllPublishers: FC = () => {
   const { data, isLoading, isError } = api.publisher.fetchPublishers.useQuery();

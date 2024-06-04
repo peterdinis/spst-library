@@ -8,7 +8,8 @@ import { api } from "~/trpc/react";
 import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import { DataTable } from "../shared/GlobalTable";
 import Header from "../shared/Header";
-import { type Book, columns } from "./columns/bookColumns";
+import { columns } from "./columns/bookColumns";
+import { Book } from "~/app/types/tableTypes";
 
 const AdminAllBooks: FC = () => {
 	const { data, isLoading, isError } = api.book.fetchBooks.useQuery();

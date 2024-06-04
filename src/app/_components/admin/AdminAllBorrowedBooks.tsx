@@ -8,7 +8,8 @@ import { api } from "~/trpc/react";
 import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import { DataTable } from "../shared/GlobalTable";
 import Header from "../shared/Header";
-import { type Booking, columns } from "./columns/bookingColumns";
+import { columns } from "./columns/bookingColumns";
+import { Booking } from "~/app/types/tableTypes";
 
 const AdminAllCategories: FC = () => {
 	const { data, isLoading, isError } =

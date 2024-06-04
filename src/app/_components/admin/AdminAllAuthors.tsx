@@ -8,7 +8,8 @@ import { api } from "~/trpc/react";
 import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import { DataTable } from "../shared/GlobalTable";
 import Header from "../shared/Header";
-import { type Author, columns } from "./columns/authorColumns";
+import { columns } from "./columns/authorColumns";
+import { Author } from "~/app/types/tableTypes";
 
 const AdminAllAuthors: FC = () => {
 	const { data, isLoading, isError } = api.author.fetchAuthors.useQuery();
