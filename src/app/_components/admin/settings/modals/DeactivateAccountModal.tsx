@@ -24,7 +24,6 @@ import {
 	SelectValue,
 } from "~/components/ui/select";
 import { useToast } from "~/components/ui/use-toast";
-import { api } from "~/trpc/react";
 
 const DeactivateAccountModal: FC = () => {
 	const [open, setOpen] = useState(false);

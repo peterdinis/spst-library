@@ -41,15 +41,14 @@ const AuthorSelect: FC<IAuthorSelectProps> = ({ onChange, value }) => {
 					<SelectValue placeholder="Výber spisovateľa/ky" />
 				</SelectTrigger>
 				<SelectContent>
-					{data &&
-						data.map((author) => (
-							<SelectItem
-								key={author.id}
-								value={author.id.toString()}
-							>
-								{author.name}
-							</SelectItem>
-						))}
+					{data?.map((author) => (
+						<SelectItem
+							key={author.id}
+							value={author.id.toString()}
+						>
+							{author.name}
+						</SelectItem>
+					))}
 				</SelectContent>
 			</Select>
 		</section>

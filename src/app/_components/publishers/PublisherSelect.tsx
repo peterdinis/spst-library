@@ -43,8 +43,7 @@ const PublisherSelect: FC<IPublisherSelectProps> = ({ onChange, value }) => {
 					<SelectValue placeholder="Výber vydavateľstva" />
 				</SelectTrigger>
 				<SelectContent>
-					{data &&
-						data.map((publisher: SelectPublisher) => {
+					{data?.map((publisher: SelectPublisher) => {
 							return (
 								<SelectItem
 									key={publisher.id}

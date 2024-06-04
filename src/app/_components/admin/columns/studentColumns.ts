@@ -1,7 +1,7 @@
 "use client";
 
 import type { ColumnDef } from "@tanstack/react-table";
-import { Student } from "~/app/types/tableTypes";
+import type { Student } from "~/app/types/tableTypes";
 
 
 export const columns: ColumnDef<Student>[] = [

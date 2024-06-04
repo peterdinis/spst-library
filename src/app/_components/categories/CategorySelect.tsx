@@ -42,8 +42,7 @@ const CategorySelect: FC<ICategorySelectProps> = ({ onChange, value }) => {
 					<SelectValue placeholder="Výber kategórie" />
 				</SelectTrigger>
 				<SelectContent>
-					{data &&
-						data.map((item) => {
+					{data?.map((item) => {
 							return (
 								<SelectItem
 									key={item.id}

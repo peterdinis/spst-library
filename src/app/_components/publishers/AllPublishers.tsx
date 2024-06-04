@@ -1,7 +1,7 @@
 "use client"
 
 import { Ghost, Loader2 } from "lucide-react";
-import { ChangeEvent, FC, useMemo, useState } from "react";
+import { type ChangeEvent, type FC, useMemo, useState } from "react";
 import { Input } from "~/components/ui/input";
 import { useDebounce } from "~/hooks/useDebounce";
 import { api } from "~/trpc/react";
@@ -35,8 +35,7 @@ const AllPublishers: FC = () => {
 
 	const filteredData = useMemo(() => {
 		return (
-			toShow &&
-			toShow.filter((item) =>
+			toShow?.filter((item) =>
 				item.name?.toLowerCase().includes(debouncedSearchTerm.toLowerCase()), // Use optional chaining
 			)
 		);

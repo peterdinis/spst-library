@@ -1,7 +1,7 @@
 "use client";
 
 import type { ColumnDef } from "@tanstack/react-table";
-import { Publisher } from "~/app/types/tableTypes";
+import type { Publisher } from "~/app/types/tableTypes";
 
 export const columns: ColumnDef<Publisher>[] = [
 	{
