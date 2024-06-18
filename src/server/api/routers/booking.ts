@@ -1,6 +1,7 @@
 import { TRPCError } from "@trpc/server";
 import z from "zod";
 import { createTRPCRouter, publicProcedure } from "../trpc";
+import { isBefore, parseISO } from "date-fns";
 
 export const bookingRouter = createTRPCRouter({
 	displayAllBooking: publicProcedure.query(async ({ ctx }) => {
@@ -98,6 +99,14 @@ export const bookingRouter = createTRPCRouter({
 			}),
 		)
 		.mutation(async ({ ctx, input }) => {
+			const currentDate = new Date();
+			if (isBefore(parseISO(input.from as unknown as string), currentDate)) {
+				throw new TRPCError({
+					message: "Booking start date cannot be in the past",
+					code: "BAD_REQUEST",
+				});
+			}
+	
 			const findOneBook = await ctx.db.book.findFirst({
 				where: {
 					name: input.bookName,
