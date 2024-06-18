@@ -24,9 +24,9 @@ const Navigation: FC = () => {
 								onClick={() => setNavbar(!navbar)}
 							>
 								{navbar ? (
-									<X className="h-6 font-bold" />
+									<X className="text-black dark:text-blue-50 h-6 font-bold" />
 								) : (
-									<Menu className="h-6 font-bold" />
+									<Menu className="text-black dark:text-blue-50 h-6 font-bold" />
 								)}
 							</button>
 						</div>
