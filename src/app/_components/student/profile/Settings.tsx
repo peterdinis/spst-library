@@ -19,19 +19,6 @@ const Settings: FC<IStettingProps> = ({ studentCookie }: IStettingProps) => {
 			<CardContent>
 				<form className="space-y-4">
 					<div className="space-y-2">
-						<label
-							className="text-sm font-medium leading-none"
-							htmlFor="name"
-						>
-							Meno
-						</label>
-						<Input
-							disabled={true}
-							id="name"
-							value={studentCookie?.name}
-						/>
-					</div>
-					<div className="space-y-2">
 						<Label
 							className="text-sm font-medium leading-none"
 							htmlFor="email"
@@ -41,7 +28,7 @@ const Settings: FC<IStettingProps> = ({ studentCookie }: IStettingProps) => {
 						<Input
 							disabled={true}
 							id="email"
-							value={studentCookie?.email}
+							value={studentCookie?.email || ""}
 						/>
 					</div>
 					<div className="space-y-2">
@@ -54,7 +41,7 @@ const Settings: FC<IStettingProps> = ({ studentCookie }: IStettingProps) => {
 						<Input
 							id="meno"
 							placeholder="Meno"
-							value={studentCookie?.name}
+							value={studentCookie?.name || ""}
 							disabled={true}
 						/>
 					</div>
@@ -68,7 +55,7 @@ const Settings: FC<IStettingProps> = ({ studentCookie }: IStettingProps) => {
 						<Input
 							id="priezvisko"
 							placeholder="Priezvisko"
-							value={studentCookie?.lastName}
+							value={studentCookie?.lastName || ""}
 							disabled={true}
 						/>
 					</div>
