@@ -1,6 +1,6 @@
 "use client";
 
-import Cookie from "js-cookie";
+import { getCookie } from "cookies-next";
 import { useEffect, useState } from "react";
 import type { ICookieAuthType } from "~/app/types/authTypes";
 
@@ -12,7 +12,7 @@ const useAdminCookie = (): ICookieAuthType | null => {
 	useEffect(() => {
 		const fetchAdminCookie = () => {
 			try {
-				const cookieValue = Cookie.get("adminD");
+				const cookieValue = getCookie("adminD");
 				if (cookieValue) {
 					const parsedCookie = JSON.parse(
 						cookieValue,

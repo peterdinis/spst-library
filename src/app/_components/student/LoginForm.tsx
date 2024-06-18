@@ -2,7 +2,6 @@
 
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import Cookie from "js-cookie";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { type FC, useState } from "react";
@@ -11,6 +10,7 @@ import type { ILoginType } from "~/app/types/authTypes";
 import { useToast } from "~/components/ui/use-toast";
 import Header from "../shared/Header";
 import { urlCheck } from "~/app/_constants/api";
+import { setCookie } from "cookies-next";
 
 const LoginForm: FC = () => {
 	const {
@@ -30,13 +30,13 @@ const LoginForm: FC = () => {
 			);
 		},
 		onSuccess: (data) => {
-			Cookie.set("studentD", JSON.stringify(data?.data?.user));
+			setCookie("studentD", JSON.stringify(data?.data?.user));
 			toast({
 				title: "Prihlásenie bolo úspešné",
 				duration: 2000,
 				className: "bg-green-500 text-white",
 			});
-			Cookie.set("isStudentLogin", "true");
+			setCookie("isStudentLogin", "true");
 			window.location.replace("/student/profile");
 			window.location.replace("/student/profile");
 		},
