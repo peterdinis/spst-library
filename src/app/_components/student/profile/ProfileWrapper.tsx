@@ -1,17 +1,17 @@
 "use client";
 
-import Cookie from "js-cookie";
 import { useRouter } from "next/navigation";
 import type { FC } from "react";
 import type { ICookieAuthType } from "~/app/types/authTypes";
 import useStudentCookie from "~/hooks/useStudentCookie";
 import BorrowedBooks from "./BorrowedBooks";
 import Settings from "./Settings";
+import { getCookie } from "cookies-next";
 
 const ProfileWrapper: FC = () => {
 	const studentCookie = useStudentCookie();
 	const router = useRouter();
-	const studentCheck = Cookie.get("isStudentLogin");
+	const studentCheck = getCookie("isStudentLogin");
 
 	if (!studentCheck) {
 		router.push("/not-allowed");

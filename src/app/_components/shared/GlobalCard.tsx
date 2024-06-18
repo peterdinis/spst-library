@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { FC } from "react";
+import type { FC, Key } from "react";
 import LazyLoad from "react-lazyload";
 import type { IGlobalCardProps } from "~/app/types/sharedTypes";
 import { Button } from "~/components/ui/button";
@@ -15,7 +15,7 @@ const GlobalCard: FC<IGlobalCardProps> = ({
 }) => {
 	return (
 		<LazyLoad height={500} once>
-			<div className="ml-4">
+			<div key={id as unknown as Key} className="ml-4">
 				{image ? (
 					<>
 						<Image

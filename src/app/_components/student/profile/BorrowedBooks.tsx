@@ -2,7 +2,7 @@
 
 import { format } from "date-fns";
 import { Ghost, Loader2 } from "lucide-react";
-import { type FC, useState } from "react";
+import { type FC, Key, useState } from "react";
 import type { IBorrowedBookingTypes } from "~/app/types/bookingTypes";
 import { Button } from "~/components/ui/button";
 import { Card, CardContent, CardHeader } from "~/components/ui/card";
@@ -82,7 +82,7 @@ const BorrowedBooks: FC = () => {
 							toShow.map((item: IBorrowedBookingTypes) => {
 								return (
 									<>
-										<div className="flex items-center space-x-4">
+										<div key={item.id as unknown as Key} className="flex items-center space-x-4">
 											<div className="grid gap-1.5">
 												<h3 className="text-lg font-bold">
 													{item.bookName}

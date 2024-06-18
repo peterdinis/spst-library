@@ -1,6 +1,6 @@
 {
   "name": "spst-kniznica",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "private": true,
   "type": "module",
   "author": {
@@ -42,6 +42,7 @@
     "class-variance-authority": "^0.7.0",
     "classnames": "^2.5.1",
     "clsx": "^2.1.0",
+    "cookies-next": "^4.2.1",
     "date-fns": "^3.6.0",
     "framer-motion": "^11.0.20",
     "js-cookie": "^3.0.5",
@@ -49,7 +50,6 @@
     "next": "^14.2.3",
     "next-themes": "^0.3.0",
     "react": "18.2.0",
-    "react-confetti": "^6.1.0",
     "react-date-picker": "^10.6.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.51.4",

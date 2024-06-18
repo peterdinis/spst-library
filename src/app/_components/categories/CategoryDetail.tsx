@@ -4,7 +4,7 @@ import type { Category } from "@prisma/client";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import type { FC } from "react";
+import type { FC, Key } from "react";
 import { Button } from "~/components/ui/button";
 import useAdminCookie from "~/hooks/useAdminCookie";
 import useTeacherCookie from "~/hooks/useTeacherCookie";
@@ -40,7 +40,7 @@ const CategoryDetail: FC = () => {
 	return (
 		<>
 			<Header text="Detail kategórie" />
-			<div className="mt-6 overflow-hidden dark:bg-card bg-white shadow sm:rounded-lg">
+			<div key={id as unknown as Key} className="mt-6 overflow-hidden dark:bg-card bg-white shadow sm:rounded-lg">
 				<div className="dark:text-blue-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
 					<dt className="text-sm font-medium text-gray-500 dark:text-blue-50">
 						Meno kategórie

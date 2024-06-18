@@ -2,9 +2,9 @@
 
 const config = {
 	reactStrictMode: true,
-	eslint: {
+	/* eslint: {
 		ignoreDuringBuilds: true // TODO: Later remove
-	},
+	}, */
 	images: {
 		remotePatterns: [
 			{

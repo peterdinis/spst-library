@@ -1,6 +1,5 @@
 "use client";
 
-import Cookie from "js-cookie";
 import { Book, Info, Settings, Users } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -8,6 +7,7 @@ import type { FC } from "react";
 import { BentoGrid, BentoGridItem } from "~/components/ui/bento-grid";
 import { Button } from "~/components/ui/button";
 import Header from "../shared/Header";
+import { getCookie } from "cookies-next";
 
 const items = [
 	{
@@ -98,7 +98,7 @@ const items = [
 
 const AdminProfileWrapper: FC = () => {
 	const router = useRouter();
-	const adminCheck = Cookie.get("isAdminLogin");
+	const adminCheck = getCookie("isAdminLogin");
 
 	if (!adminCheck) {
 		router.push("/not-allowed");

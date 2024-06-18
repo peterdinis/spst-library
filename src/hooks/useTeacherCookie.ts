@@ -1,6 +1,6 @@
 "use client";
 
-import Cookie from "js-cookie";
+import { getCookie } from "cookies-next";
 import { useEffect, useState } from "react";
 import type { ICookieAuthType } from "~/app/types/authTypes";
 
@@ -12,7 +12,7 @@ const useTeacherCookie = (): ICookieAuthType | null => {
 	useEffect(() => {
 		const fetchTeacherCookie = () => {
 			try {
-				const cookieValue = Cookie.get("teacherD");
+				const cookieValue = getCookie("teacherD");
 				if (cookieValue) {
 					const parsedCookie = JSON.parse(
 						cookieValue,
