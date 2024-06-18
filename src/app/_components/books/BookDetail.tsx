@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { type FC, useMemo } from "react";
+import { type FC, Key, useMemo } from "react";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import useAdminCookie from "~/hooks/useAdminCookie";
@@ -44,7 +44,7 @@ const BookDetail: FC = () => {
 		if (!data) return null;
 
 		return (
-			<div className="mt-6 w-full lg:mt-0 lg:w-1/2 lg:py-6 lg:pl-10">
+			<div key={id as unknown as Key} className="mt-6 w-full lg:mt-0 lg:w-1/2 lg:py-6 lg:pl-10">
 				<div>
 					<h1 className="title-font mb-1 text-4xl font-medium dark:text-blue-50 text-gray-900">
 						<span className="font-bold">Názov</span>: {data.name}

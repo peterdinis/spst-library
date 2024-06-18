@@ -6,7 +6,7 @@ import { Loader2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import type { FC } from "react";
+import type { FC, Key } from "react";
 import { Button } from "~/components/ui/button";
 import useAdminCookie from "~/hooks/useAdminCookie";
 import useTeacherCookie from "~/hooks/useTeacherCookie";
@@ -52,7 +52,7 @@ const AuthorInfo: FC = () => {
 			<Header text="Detail o spisovateľovi / ke" />
 			{!isLoading ? (
 				<>
-					<section className="body-font mt-2 overflow-hidden dark:bg-background text-gray-700">
+					<section key={id as unknown as Key} className="body-font mt-2 overflow-hidden dark:bg-background text-gray-700">
 						<div className="container mx-auto px-5 py-12">
 							<div className="mx-auto flex flex-wrap lg:w-4/5">
 								<Image
