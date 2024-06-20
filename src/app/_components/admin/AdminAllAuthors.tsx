@@ -1,6 +1,6 @@
 "use client";
 
-import Cookie from "js-cookie";
+import { getCookie } from "cookies-next";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { type FC} from "react";
@@ -15,7 +15,7 @@ const AdminAllAuthors: FC = () => {
 	const { data, isLoading, isError } = api.author.fetchAuthors.useQuery();
 
 	const router = useRouter();
-	const adminCheck = Cookie.get("isAdminLogin");
+	const adminCheck = getCookie("isAdminLogin");
 
 	if (!adminCheck) {
 		router.push("/not-allowed");

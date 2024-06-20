@@ -2,7 +2,6 @@
 
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import Cookie from "js-cookie";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import type { FC } from "react";
@@ -12,10 +11,11 @@ import Header from "../shared/Header";
 import { columns} from "./columns/studentColumns";
 import { urlCheck } from "~/app/_constants/api";
 import { Student } from "~/app/types/tableTypes";
+import { getCookie } from "cookies-next";
 
 const AdminAllStudents: FC = () => {
 	const router = useRouter();
-	const adminCheck = Cookie.get("isAdminLogin");
+	const adminCheck = getCookie("isAdminLogin");
 
 	if (!adminCheck) {
 		router.push("/not-allowed");

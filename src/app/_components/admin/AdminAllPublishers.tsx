@@ -1,6 +1,5 @@
 "use client";
 
-import Cookie from "js-cookie";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { type FC } from "react";
@@ -10,11 +9,12 @@ import { DataTable } from "../shared/GlobalTable";
 import Header from "../shared/Header";
 import { columns } from "./columns/publisherColumns";
 import { Publisher } from "~/app/types/tableTypes";
+import { getCookie } from "cookies-next";
 
 const AdminAllPublishers: FC = () => {
   const { data, isLoading, isError } = api.publisher.fetchPublishers.useQuery();
   const router = useRouter();
-  const adminCheck = Cookie.get("isAdminLogin");
+  const adminCheck = getCookie("isAdminLogin");
 
   if (isLoading) {
     return <Loader2 className="animate-bounce w-8 h-8" />;

@@ -1,6 +1,5 @@
 "use client";
 
-import Cookie from "js-cookie";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { type FC } from "react";
@@ -10,12 +9,13 @@ import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import { DataTable } from "../shared/GlobalTable";
 import Header from "../shared/Header";
 import { columns } from "./columns/categoryColumns";
+import { getCookie } from "cookies-next";
 
 const AdminAllCategories: FC = () => {
   const { data, isLoading, isError } = api.category.fetchCategories.useQuery();
 
   const router = useRouter();
-  const adminCheck = Cookie.get("isAdminLogin");
+  const adminCheck = getCookie("isAdminLogin");
 
   if (isLoading) {
     return <Loader2 className="animate-bounce w-8 h-8" />;
