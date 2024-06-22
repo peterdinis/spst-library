@@ -7,7 +7,7 @@ export async function POST() {
   try {
     const { data, error } = await resend.emails.send({
       from: 'onboarding@resend.dev',
-      to: 'petter1@pobox.sk',
+      to: process.env.NEXT_PUBLIC_TESTING_EMAIL as unknown as string,
       subject: "SKUSKA",
       text: "SOSOSOSO"
     });
