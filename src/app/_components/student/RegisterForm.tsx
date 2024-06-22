@@ -36,6 +36,7 @@ const RegisterForm: FC = () => {
 				duration: 2000,
 				className: "bg-green-500 text-white",
 			});
+			axios.post("/api/send")
 			router.push("/student/login");
 		},
 
