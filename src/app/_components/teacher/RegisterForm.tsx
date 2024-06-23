@@ -11,6 +11,7 @@ import { urlCheck } from "~/app/_constants/api";
 import type { IRegisterType } from "~/app/types/authTypes";
 import { useToast } from "~/components/ui/use-toast";
 import Header from "../shared/Header";
+import { ConfettiButton } from "~/components/ui/confetti";
 
 const RegisterForm: FC = () => {
 	const {
@@ -202,12 +203,10 @@ const RegisterForm: FC = () => {
 							</div>
 						</div>
 						<div>
-							<button
-								className="mt-4 rounded-lg bg-red-700 p-2 text-white"
-								type="submit"
+							<ConfettiButton
 							>
 								Registrácia
-							</button>
+							</ConfettiButton>
 							<div>
 								<Link
 									className="text-blue hover:text-blue-darker mt-4 inline-block align-baseline text-2xl font-bold"
