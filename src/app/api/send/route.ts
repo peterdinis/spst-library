@@ -1,18 +1,22 @@
-
-import { NextRequest } from 'next/server';
-import { Resend } from 'resend';
+import { NextRequest } from "next/server";
+import { Resend } from "resend";
+import { getGreeting } from "~/lib/getHour";
 
 const resend = new Resend(process.env.RESEND_AUTH_KEY);
+
+const greeting = getGreeting();
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
   try {
     /* TODO: Dostať tu email a nahradiť from a dostať tu aj inú hodnotu pre to */
     const { data, error } = await resend.emails.send({
-      from: 'onboarding@resend.dev',
+      from: "onboarding@resend.dev",
       to: process.env.NEXT_PUBLIC_TESTING_EMAIL as unknown as string,
       subject: "Potvrdenie registrácie",
-      text: "Dobrý deň ..... Vaša registrácia do applikácie bola úspešná. Prajem pekný deň. Admin SPŠT Knižnica"
+      text: `${greeting} ${
+        process.env.NEXT_PUBLIC_TESTING_EMAIL as unknown as string
+      }. Vaša registrácia do applikácie bola úspešná. S pozdravom Admin SPŠT Knižnica.`,
     });
 
     if (error) {
