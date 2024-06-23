@@ -41,7 +41,9 @@ const Hero: FC = () => {
 							size="default"
 							variant={"secondary"}
 						>
-							<Link href="https://www.spsbj.sk/">Školská stránka</Link>
+							<Link href="https://www.spsbj.sk/">
+								Školská stránka
+							</Link>
 						</Button>
 					</div>
 				</div>

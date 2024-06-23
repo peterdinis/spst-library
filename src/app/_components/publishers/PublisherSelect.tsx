@@ -44,15 +44,15 @@ const PublisherSelect: FC<IPublisherSelectProps> = ({ onChange, value }) => {
 				</SelectTrigger>
 				<SelectContent>
 					{data?.map((publisher: SelectPublisher) => {
-							return (
-								<SelectItem
-									key={publisher.id}
-									value={publisher.id.toString()}
-								>
-									{publisher.name}
-								</SelectItem>
-							);
-						})}
+						return (
+							<SelectItem
+								key={publisher.id}
+								value={publisher.id.toString()}
+							>
+								{publisher.name}
+							</SelectItem>
+						);
+					})}
 				</SelectContent>
 			</Select>
 		</section>

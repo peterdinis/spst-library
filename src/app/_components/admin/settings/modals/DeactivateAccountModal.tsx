@@ -41,9 +41,7 @@ const DeactivateAccountModal: FC = () => {
 	const { data, isLoading } = useQuery({
 		queryKey: ["allUsers"],
 		queryFn: async () => {
-			return await axios.get(
-				urlCheck + "auth/users",
-			);
+			return await axios.get(urlCheck + "auth/users");
 		},
 	});
 

@@ -3,7 +3,6 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import type { Student } from "~/app/types/tableTypes";
 
-
 export const columns: ColumnDef<Student>[] = [
 	{
 		accessorKey: "id",
