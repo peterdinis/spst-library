@@ -52,7 +52,6 @@ export function DataTable<TData, TValue>({
 				<Link href="/admin/profile">Späť na admin profil</Link>
 			</Button>
 			<PDFDownloadLink
-				
 				document={<PdfWrapper data={data as unknown as Item[]} />}
 				fileName="document.pdf"
 			>

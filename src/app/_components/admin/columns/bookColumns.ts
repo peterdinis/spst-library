@@ -3,7 +3,6 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import type { Book } from "~/app/types/tableTypes";
 
-
 const booleanCellRenderer = (value: boolean) => (value ? "Ano" : "Nie");
 
 export const columns: ColumnDef<Book>[] = [

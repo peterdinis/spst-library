@@ -2,13 +2,13 @@
 
 import { Ghost, Loader2 } from "lucide-react";
 import { type ChangeEvent, type FC, useMemo, useState } from "react";
+import { limit } from "~/app/_constants/app-constants";
 import { Input } from "~/components/ui/input";
 import { useDebounce } from "~/hooks/useDebounce";
 import { api } from "~/trpc/react";
 import GlobalCard from "../shared/GlobalCard";
 import GlobalPagination from "../shared/GlobalPagination";
 import Header from "../shared/Header";
-import { limit } from "~/app/_constants/app-constants";
 
 const AllCategories: FC = () => {
 	const [searchTerm, setSearchTerm] = useState("");
@@ -34,12 +34,8 @@ const AllCategories: FC = () => {
 	const nextCursor = paginatedData?.pages[page]?.nextCursor;
 
 	const filteredData = useMemo(() => {
-		return (
-			toShow?.filter((item) =>
-				item.name
-					.toLowerCase()
-					.includes(debouncedSearchTerm.toLowerCase()),
-			)
+		return toShow?.filter((item) =>
+			item.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase()),
 		);
 	}, [toShow, debouncedSearchTerm]);
 

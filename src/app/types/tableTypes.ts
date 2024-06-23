@@ -1,26 +1,26 @@
 export type Author = {
-  id: string;
-  name: string;
-  description: string;
-  totalBooks: number;
+	id: string;
+	name: string;
+	description: string;
+	totalBooks: number;
 };
 
 export type Book = {
-  id: string;
-  name: string;
-  description: string;
-  isAvaiable: boolean;
-  itemsInStock: number;
+	id: string;
+	name: string;
+	description: string;
+	isAvaiable: boolean;
+	itemsInStock: number;
 };
 
 export type Booking = {
-  id: string;
-  bookName: string;
-  from: string | Date;
-  to: string | Date;
-  isReturned: boolean;
-  isExtended: boolean;
-  userEmail: string;
+	id: string;
+	bookName: string;
+	from: string | Date;
+	to: string | Date;
+	isReturned: boolean;
+	isExtended: boolean;
+	userEmail: string;
 };
 
 export type Publisher = {

@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
-import { FC, useState } from "react";
-import { FieldValues, useForm } from "react-hook-form";
+import { type FC, useState } from "react";
+import { type FieldValues, useForm } from "react-hook-form";
 import Header from "~/app/_components/shared/Header";
 import { urlCheck } from "~/app/_constants/api";
 import { Button } from "~/components/ui/button";
@@ -19,7 +19,7 @@ import {
 import {
 	Select,
 	SelectContent,
-SelectItem,
+	SelectItem,
 	SelectTrigger,
 	SelectValue,
 } from "~/components/ui/select";

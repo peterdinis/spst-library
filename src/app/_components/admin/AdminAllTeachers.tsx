@@ -2,25 +2,22 @@
 
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { getCookie } from "cookies-next";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import type { FC } from "react";
+import { urlCheck } from "~/app/_constants/api";
+import type { Student } from "~/app/types/tableTypes";
 import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import { DataTable } from "../shared/GlobalTable";
 import Header from "../shared/Header";
-import { columns} from "./columns/studentColumns";
-import { urlCheck } from "~/app/_constants/api";
-import { Student } from "~/app/types/tableTypes";
-import { getCookie } from "cookies-next";
+import { columns } from "./columns/studentColumns";
 
 const AdminAllTeachers: FC = () => {
 	const { data, isLoading, isError } = useQuery({
 		queryKey: ["allTeachers"],
 		queryFn: () => {
-		return axios.get(
-				(urlCheck) +
-					"auth/users/teachers",
-			);
+			return axios.get(urlCheck + "auth/users/teachers");
 		},
 	});
 

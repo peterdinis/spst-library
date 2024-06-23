@@ -43,15 +43,15 @@ const CategorySelect: FC<ICategorySelectProps> = ({ onChange, value }) => {
 				</SelectTrigger>
 				<SelectContent>
 					{data?.map((item) => {
-							return (
-								<SelectItem
-									key={item.id}
-									value={item.id.toString()}
-								>
-									{item.name}
-								</SelectItem>
-							);
-						})}
+						return (
+							<SelectItem
+								key={item.id}
+								value={item.id.toString()}
+							>
+								{item.name}
+							</SelectItem>
+						);
+					})}
 				</SelectContent>
 			</Select>
 		</section>

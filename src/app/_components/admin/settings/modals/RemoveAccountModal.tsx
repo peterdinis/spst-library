@@ -41,19 +41,14 @@ const RemoveAccountModal: FC = () => {
 	const { data, isLoading } = useQuery({
 		queryKey: ["allUsers"],
 		queryFn: async () => {
-			return await axios.get(
-				urlCheck + "auth/users",
-			);
+			return await axios.get(urlCheck + "auth/users");
 		},
 	});
 
 	const removeAccountModal = useMutation({
 		mutationKey: ["removeAccount"],
 		mutationFn: async (data: any) => {
-			return await axios.delete(
-				urlCheck + "auth/account/delete",
-				data,
-			);
+			return await axios.delete(urlCheck + "auth/account/delete", data);
 		},
 
 		onSuccess: () => {

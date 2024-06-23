@@ -1,5 +1,6 @@
 "use client";
 
+import { getCookie } from "cookies-next";
 import { Book, Info, Settings, Users } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -7,7 +8,6 @@ import type { FC } from "react";
 import { BentoGrid, BentoGridItem } from "~/components/ui/bento-grid";
 import { Button } from "~/components/ui/button";
 import Header from "../shared/Header";
-import { getCookie } from "cookies-next";
 
 const items = [
 	{

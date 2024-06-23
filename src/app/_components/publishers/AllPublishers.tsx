@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
 import { Ghost, Loader2 } from "lucide-react";
 import { type ChangeEvent, type FC, useMemo, useState } from "react";
+import { limit } from "~/app/_constants/app-constants";
 import { Input } from "~/components/ui/input";
 import { useDebounce } from "~/hooks/useDebounce";
 import { api } from "~/trpc/react";
 import GlobalCard from "../shared/GlobalCard";
 import GlobalPagination from "../shared/GlobalPagination";
 import Header from "../shared/Header";
-import { limit } from "~/app/_constants/app-constants";
 
 const AllPublishers: FC = () => {
 	const [searchTerm, setSearchTerm] = useState("");
@@ -34,10 +34,11 @@ const AllPublishers: FC = () => {
 	const nextCursor = paginatedData?.pages[page]?.nextCursor;
 
 	const filteredData = useMemo(() => {
-		return (
-			toShow?.filter((item) =>
-				item.name?.toLowerCase().includes(debouncedSearchTerm.toLowerCase()), // Use optional chaining
-			)
+		return toShow?.filter(
+			(item) =>
+				item.name
+					?.toLowerCase()
+					.includes(debouncedSearchTerm.toLowerCase()), // Use optional chaining
 		);
 	}, [toShow, debouncedSearchTerm]);
 
@@ -90,16 +91,20 @@ const AllPublishers: FC = () => {
 			)}
 
 			<div className="mx-auto mt-5 grid gap-8 overflow-x-auto pt-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-				{filteredData?.map((filteredItem) => ( // Use optional chaining
-					<GlobalCard
-						key={filteredItem.id}
-						description={filteredItem.description}
-						image={filteredItem.image}
-						linkName="publishers"
-						name={filteredItem.name}
-						id={filteredItem.id}
-					/>
-				))}
+				{filteredData?.map(
+					(
+						filteredItem, // Use optional chaining
+					) => (
+						<GlobalCard
+							key={filteredItem.id}
+							description={filteredItem.description}
+							image={filteredItem.image}
+							linkName="publishers"
+							name={filteredItem.name}
+							id={filteredItem.id}
+						/>
+					),
+				)}
 			</div>
 
 			<GlobalPagination

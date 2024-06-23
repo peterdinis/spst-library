@@ -3,13 +3,13 @@
 import { getCookie } from "cookies-next";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { type FC} from "react";
+import type { FC } from "react";
+import type { Author } from "~/app/types/tableTypes";
 import { api } from "~/trpc/react";
 import GlobalErrorComponent from "../shared/GlobalErrorComponent";
 import { DataTable } from "../shared/GlobalTable";
 import Header from "../shared/Header";
 import { columns } from "./columns/authorColumns";
-import { Author } from "~/app/types/tableTypes";
 
 const AdminAllAuthors: FC = () => {
 	const { data, isLoading, isError } = api.author.fetchAuthors.useQuery();

@@ -45,7 +45,10 @@ const PublisherInfo: FC = () => {
 			<Header text="Detail o vydavateľstve" />
 			{!isLoading ? (
 				<>
-					<section key={id as unknown as Key} className="body-font mt-2 overflow-hidden dark:bg-background text-gray-700">
+					<section
+						key={id as unknown as Key}
+						className="body-font mt-2 overflow-hidden dark:bg-background text-gray-700"
+					>
 						<div className="container mx-auto px-5 py-12">
 							<div className="mx-auto flex flex-wrap lg:w-4/5">
 								<Image

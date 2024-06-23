@@ -2,6 +2,7 @@
 
 import { Ghost, Loader2 } from "lucide-react";
 import { type ChangeEvent, type FC, useMemo, useState } from "react";
+import { limit } from "~/app/_constants/app-constants";
 import type { IBookCard } from "~/app/types/bookTypes";
 import { Input } from "~/components/ui/input";
 import { useDebounce } from "~/hooks/useDebounce";
@@ -9,7 +10,6 @@ import { api } from "~/trpc/react";
 import GlobalCard from "../shared/GlobalCard";
 import GlobalPagination from "../shared/GlobalPagination";
 import Header from "../shared/Header";
-import { limit } from "~/app/_constants/app-constants";
 
 const AllBooksWrapper: FC = () => {
 	const [searchTerm, setSearchTerm] = useState("");

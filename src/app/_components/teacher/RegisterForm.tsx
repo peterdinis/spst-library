@@ -6,11 +6,11 @@ import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { type FC, useState } from "react";
-import { type FieldValues, useForm, type SubmitHandler } from "react-hook-form";
-import { type IRegisterType } from "~/app/types/authTypes";
+import { type FieldValues, type SubmitHandler, useForm } from "react-hook-form";
+import { urlCheck } from "~/app/_constants/api";
+import type { IRegisterType } from "~/app/types/authTypes";
 import { useToast } from "~/components/ui/use-toast";
 import Header from "../shared/Header";
-import { urlCheck } from "~/app/_constants/api";
 
 const RegisterForm: FC = () => {
 	const {
@@ -53,6 +53,14 @@ const RegisterForm: FC = () => {
 			isActive: true,
 			hasAdminRights: false,
 			role: "TEACHER",
+		});
+		await axios.post("/api/send", {
+			email: data.email,
+		});
+		toast({
+			title: "Prišiel vám potvrdzujúci email",
+			duration: 2000,
+			className: "bg-green-500 text-black font-bold",
 		});
 	};
 

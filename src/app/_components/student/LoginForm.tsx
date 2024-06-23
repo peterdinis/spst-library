@@ -2,15 +2,15 @@
 
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import { setCookie } from "cookies-next";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { type FC, useState } from "react";
 import { type FieldValues, useForm } from "react-hook-form";
+import { urlCheck } from "~/app/_constants/api";
 import type { ILoginType } from "~/app/types/authTypes";
 import { useToast } from "~/components/ui/use-toast";
 import Header from "../shared/Header";
-import { urlCheck } from "~/app/_constants/api";
-import { setCookie } from "cookies-next";
 
 const LoginForm: FC = () => {
 	const {
@@ -24,10 +24,7 @@ const LoginForm: FC = () => {
 	const loginStudentMut = useMutation({
 		mutationKey: ["loginStudent"],
 		mutationFn: async (data: ILoginType) => {
-			return await axios.post(
-				urlCheck + "auth/login",
-				data,
-			);
+			return await axios.post(urlCheck + "auth/login", data);
 		},
 		onSuccess: (data) => {
 			setCookie("studentD", JSON.stringify(data?.data?.user));

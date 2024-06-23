@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
@@ -106,11 +106,18 @@ const AdminRemoveRightsModal: FC = () => {
 								<Select
 									onValueChange={(value) => {
 										const selectedAccount = data?.data.find(
-											(item) => item.id.toString() === value
+											(item) =>
+												item.id.toString() === value,
 										);
 										if (selectedAccount) {
-											setValue("accountId", selectedAccount.id);
-											setValue("email", selectedAccount.email);
+											setValue(
+												"accountId",
+												selectedAccount.id,
+											);
+											setValue(
+												"email",
+												selectedAccount.email,
+											);
 										}
 									}}
 								>
@@ -120,16 +127,25 @@ const AdminRemoveRightsModal: FC = () => {
 									<SelectContent>
 										{data &&
 											data.data.map((item) => (
-												<SelectItem key={item.id} value={item.id.toString()}>
+												<SelectItem
+													key={item.id}
+													value={item.id.toString()}
+												>
 													{item.email}
 												</SelectItem>
 											))}
 									</SelectContent>
 								</Select>
 								{errors.accountId && (
-									<p className="text-red-500">{errors.accountId.message as string}</p>
+									<p className="text-red-500">
+										{errors.accountId.message as string}
+									</p>
 								)}
-								<Button type="submit" className="mt-10" variant={"default"}>
+								<Button
+									type="submit"
+									className="mt-10"
+									variant={"default"}
+								>
 									Odstrániť práva
 								</Button>
 							</section>
