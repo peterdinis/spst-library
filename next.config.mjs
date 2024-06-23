@@ -6,13 +6,6 @@ const config = {
 		remotePatterns: [
 			{
 				protocol: "https",
-				hostname: "picsum.photos",
-				port: "",
-				pathname: "/**",
-			},
-
-			{
-				protocol: "https",
 				hostname: "*",
 				port: "",
 				pathname: "/**",
