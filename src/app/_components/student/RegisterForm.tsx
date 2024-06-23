@@ -36,7 +36,6 @@ const RegisterForm: FC = () => {
 				duration: 2000,
 				className: "bg-green-500 text-white",
 			});
-			axios.post("/api/send")
 			router.push("/student/login");
 		},
 
@@ -59,6 +58,14 @@ const RegisterForm: FC = () => {
 			hasAdminRights: false,
 			role: "STUDENT",
 		});
+		await axios.post("/api/send", {
+			email: data.email
+		})
+		toast({
+			title: "Prišiel vám potvrdzujúci email",
+			duration: 2000,
+			className: "bg-green-500 text-black font-bold"
+		})
 	};
 	return (
 		<>
