@@ -1,4 +1,3 @@
-
 import type { NextRequest } from "next/server";
 import { Resend } from "resend";
 import { getGreeting } from "~/lib/getHour";
@@ -10,7 +9,7 @@ const greeting = getGreeting();
 export async function POST(req: NextRequest) {
 	const body = await req.json();
 
-	const {email, bookName} = body;
+	const { email, bookName } = body;
 	try {
 		const { data, error } = await resend.emails.send({
 			from: "onboarding@resend.dev",
