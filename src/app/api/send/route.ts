@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
 	const email = body.email;
 	try {
 		const { data, error } = await resend.emails.send({
-			from: "onboarding@resend.dev", // TODO: Zmeniť doménu neskôr
+			from: "onboarding@resend.dev",
 			to: email,
 			subject: "Potvrdenie registrácie",
 			text: `${greeting} ${email}. Vaša registrácia do applikácie bola úspešná. S pozdravom Admin SPŠT Knižnica.`,
