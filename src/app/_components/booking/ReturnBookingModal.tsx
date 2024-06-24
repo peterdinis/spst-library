@@ -16,6 +16,7 @@ import { Input } from "~/components/ui/input";
 import { useToast } from "~/components/ui/use-toast";
 import { api } from "~/trpc/react";
 import Header from "../shared/Header";
+import axios from "axios";
 
 const ReturnBookingModal: FC = () => {
 	const [open, setOpen] = useState(false);
@@ -58,6 +59,11 @@ const ReturnBookingModal: FC = () => {
 			returnDate: data.returnDate,
 			userEmail: data.userEmail,
 		});
+
+		await axios.post("/api/send/return", {
+			email: data.userEmail,
+			bookName: data.bookName
+		})
 	};
 
 	return (

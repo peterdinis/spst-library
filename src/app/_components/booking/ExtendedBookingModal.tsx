@@ -16,6 +16,7 @@ import { Input } from "~/components/ui/input";
 import { useToast } from "~/components/ui/use-toast";
 import { api } from "~/trpc/react";
 import Header from "../shared/Header";
+import axios from "axios";
 
 const ExtendedBookingModal: FC = () => {
 	const [open, setOpen] = useState(false);
@@ -59,6 +60,11 @@ const ExtendedBookingModal: FC = () => {
 			to: data.to,
 			userEmail: data.userEmail,
 		});
+
+		await axios.post("/api/send/extended", {
+			email: data.userEmail,
+			bookName: data.bookName
+		})
 	};
 
 	return (
