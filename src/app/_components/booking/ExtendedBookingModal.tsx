@@ -1,5 +1,6 @@
 "use client";
 
+import axios from "axios";
 import { usePathname, useRouter } from "next/navigation";
 import { type FC, useState } from "react";
 import { type FieldValues, useForm } from "react-hook-form";
@@ -16,7 +17,6 @@ import { Input } from "~/components/ui/input";
 import { useToast } from "~/components/ui/use-toast";
 import { api } from "~/trpc/react";
 import Header from "../shared/Header";
-import axios from "axios";
 
 const ExtendedBookingModal: FC = () => {
 	const [open, setOpen] = useState(false);
@@ -63,8 +63,8 @@ const ExtendedBookingModal: FC = () => {
 
 		await axios.post("/api/send/extended", {
 			email: data.userEmail,
-			bookName: data.bookName
-		})
+			bookName: data.bookName,
+		});
 	};
 
 	return (

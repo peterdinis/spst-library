@@ -1,5 +1,6 @@
 "use client";
 
+import axios from "axios";
 import { useRouter } from "next/navigation";
 import { type FC, useState } from "react";
 import { type FieldValues, useForm } from "react-hook-form";
@@ -16,7 +17,6 @@ import { Input } from "~/components/ui/input";
 import { useToast } from "~/components/ui/use-toast";
 import { api } from "~/trpc/react";
 import Header from "../shared/Header";
-import axios from "axios";
 
 const BookingModal: FC = () => {
 	const [open, setOpen] = useState(false);
@@ -62,8 +62,8 @@ const BookingModal: FC = () => {
 			email: data.userEmail,
 			bookName: data.bookName,
 			from: data.from,
-			to: data.to
-		})
+			to: data.to,
+		});
 	};
 
 	return (
