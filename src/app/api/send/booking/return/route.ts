@@ -10,13 +10,13 @@ const greeting = getGreeting();
 export async function POST(req: NextRequest) {
 	const body = await req.json();
 
-	const email = body.email;
+	const {email, bookName} = body;
 	try {
 		const { data, error } = await resend.emails.send({
 			from: "onboarding@resend.dev",
 			to: email,
-			subject: "Potvrdenie registrácie",
-			text: `${greeting} ${email}. Vaša registrácia do applikácie bola úspešná. S pozdravom Admin SPŠT Knižnica.`,
+			subject: "Vrátenie knihy",
+			text: `${greeting} ${email} Kniha: ${bookName} bola úspešné vrátená. S pozdravom Admin SPŠT Knižnica.`,
 		});
 
 		if (error) {
