@@ -8,6 +8,11 @@ import { useToast } from "~/components/ui/use-toast";
 import { api } from "~/trpc/react";
 import Header from "../shared/Header";
 
+interface CategoryFormValues {
+	name: string;
+	description: string;
+}
+
 const CreateCategory: FC = () => {
 	const { toast } = useToast();
 
@@ -16,7 +21,7 @@ const CreateCategory: FC = () => {
 		handleSubmit,
 		reset,
 		formState: { errors },
-	} = useForm();
+	} = useForm<CategoryFormValues>();
 	const router = useRouter();
 	const addCategoryMut = api.category.createCategory.useMutation({
 		onSuccess: () => {
