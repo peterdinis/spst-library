@@ -74,4 +74,5 @@ model Booking {
     isExtended Boolean? // Predlženie knihy
     userEmail  String
     createdAt  DateTime @default(now())
+    updatedAt   DateTime @default(now()) @updatedAt
 }
