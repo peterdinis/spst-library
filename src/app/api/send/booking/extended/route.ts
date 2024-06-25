@@ -18,7 +18,7 @@ interface ResendResponse {
 
 export async function POST(req: NextRequest) {
   try {
-    const body: RequestBody = await req.json();
+    const body = (await req.json()) as RequestBody;
 
     const { email, bookName } = body;
 
