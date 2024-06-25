@@ -2,7 +2,7 @@ import type { NextRequest } from "next/server";
 import { Resend } from "resend";
 import { getGreeting } from "~/lib/getHour";
 
-const resend = new Resend(process.env.RESEND_AUTH_KEY!);
+const resend = new Resend(process.env.RESEND_AUTH_KEY);
 
 const greeting = getGreeting();
 
@@ -11,13 +11,18 @@ interface RequestBody {
   bookName: string;
 }
 
+interface ResendResponse {
+  data?: unknown;
+  error?: unknown;
+}
+
 export async function POST(req: NextRequest) {
   try {
     const body: RequestBody = await req.json();
 
     const { email, bookName } = body;
 
-    const { data, error } = await resend.emails.send({
+    const { data, error }: ResendResponse = await resend.emails.send({
       from: "onboarding@resend.dev",
       to: email,
       subject: "Predlženie knihy",
@@ -29,6 +34,6 @@ export async function POST(req: NextRequest) {
     }
     return Response.json(data);
   } catch (error) {
-    return Response.json({ error: (error as Error).message }, { status: 500 }); // Provide a specific type for error
+    return Response.json({ error: (error as Error).message }, { status: 500 });
   }
 }
