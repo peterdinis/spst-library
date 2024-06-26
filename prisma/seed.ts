@@ -3,7 +3,7 @@ import { db } from "~/server/db";
 async function main() {
 	// Create categories
 	const categories = [];
-	for (let i = 0; i < 16; i++) {
+	for (let i = 0; i < 25; i++) {
 		const category = await db.category.create({
 			data: {
 				name: `Category ${i + 1}`,
@@ -15,7 +15,7 @@ async function main() {
 
 	// Create publishers
 	const publishers = [];
-	for (let i = 0; i < 16; i++) {
+	for (let i = 0; i < 25; i++) {
 		const publisher = await db.publisher.create({
 			data: {
 				name: `Publisher ${i + 1}`,
@@ -28,7 +28,7 @@ async function main() {
 
 	// Create authors
 	const authors = [];
-	for (let i = 0; i < 16; i++) {
+	for (let i = 0; i < 25; i++) {
 		const author = await db.author.create({
 			data: {
 				name: `Author ${i + 1}`,
@@ -44,7 +44,7 @@ async function main() {
 
 	// Create books
 	const books = [];
-	for (let i = 0; i < 16; i++) {
+	for (let i = 0; i < 25; i++) {
 		const book = await db.book.create({
 			data: {
 				name: `Book ${i + 1}`,
@@ -54,9 +54,9 @@ async function main() {
 				pages: 300 + i,
 				isAvaiable: true,
 				itemsInStock: 10 + i,
-				categoryId: categories[i % 16]!.id,
-				publisherId: publishers[i % 16]!.id,
-				authorId: authors[i % 16]!.id,
+				categoryId: categories[i % 25]!.id,
+				publisherId: publishers[i % 25]!.id,
+				authorId: authors[i % 25]!.id,
 			},
 		});
 		books.push(book);
