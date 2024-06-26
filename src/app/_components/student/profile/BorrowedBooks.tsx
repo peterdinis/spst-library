@@ -29,7 +29,7 @@ const BorrowedBooks: FC = () => {
             userEmail: studentCookie?.email ?? "", // Using optional chaining and nullish coalescing operator
         },
         {
-            getNextPageParam: (lastPage) => lastPage.nextCursor ?? undefined, // Using optional chaining and nullish coalescing operator
+            getNextPageParam: (lastPage) => lastPage?.nextCursor ?? undefined, // Using optional chaining and nullish coalescing operator
         }
     );
 
@@ -75,8 +75,7 @@ const BorrowedBooks: FC = () => {
                             </div>
                         )}
                         {!paginatedLoading &&
-                            toShow &&
-                            toShow.map((item: IBorrowedBookingTypes) => (
+                            toShow?.map((item: IBorrowedBookingTypes) => (
                                 <div
                                     key={item.id as React.Key}
                                     className="flex items-center space-x-4"
