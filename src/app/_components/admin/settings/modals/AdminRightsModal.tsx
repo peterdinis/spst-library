@@ -62,7 +62,7 @@ const AdminRightsModal: FC = () => {
 			});
 		},
 
-		onError: (error: any) => {
+		onError: () => {
 			toast({
 				title: "Nepodarilo sa nastaviť pre účet, admin práva",
 				duration: 2000,

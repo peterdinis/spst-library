@@ -3,7 +3,7 @@
 import type { Book } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import type { FC, FormEvent } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { useToast } from "~/components/ui/use-toast";
@@ -13,6 +13,15 @@ import SheetHelper from "../shared/SheetHelper";
 interface IBookSheetsProps {
 	name: string;
 	data: Book;
+}
+
+interface BookFormValues {
+	name: string;
+	description: string;
+	image: string;
+	year: string;
+	isAvaiable: boolean;
+	itemsInStock: number;
 }
 
 const BookSheets: FC<IBookSheetsProps> = ({ name, data }: IBookSheetsProps) => {
@@ -36,18 +45,13 @@ const BookSheets: FC<IBookSheetsProps> = ({ name, data }: IBookSheetsProps) => {
 		router.push("/books");
 	};
 
-	const { register, handleSubmit } = useForm();
+	const { register, handleSubmit } = useForm<BookFormValues>();
 
-	const onSubmit = async (formData: any) => {
+	const onSubmit: SubmitHandler<BookFormValues> = async (formData) => {
 		try {
 			await updateBookMut.mutateAsync({
 				id: data.id,
-				name: formData.name,
-				description: formData.description,
-				image: formData.image,
-				year: formData.year,
-				isAvaiable: formData.isAvaiable,
-				itemsInStock: formData.itemsInStock,
+				...formData,
 			});
 
 			toast({
@@ -82,28 +86,28 @@ const BookSheets: FC<IBookSheetsProps> = ({ name, data }: IBookSheetsProps) => {
 							className="mt-5"
 							placeholder="Názov"
 							defaultValue={data?.name}
-							{...register("name")}
+							{...register("name", { required: true })}
 						/>
 						<Input
 							type="text"
 							className="mt-5"
 							placeholder="Popis"
 							defaultValue={data?.description}
-							{...register("description")}
+							{...register("description", { required: true })}
 						/>
 						<Input
 							type="text"
 							className="mt-5"
 							placeholder="Obrázok"
 							defaultValue={data?.image}
-							{...register("image")}
+							{...register("image", { required: true })}
 						/>
 						<Input
 							type="text"
 							className="mt-5"
 							placeholder="Rok"
 							defaultValue={data?.year}
-							{...register("year")}
+							{...register("year", { required: true })}
 						/>
 						<div className="mt-5">
 							<label>
@@ -121,7 +125,10 @@ const BookSheets: FC<IBookSheetsProps> = ({ name, data }: IBookSheetsProps) => {
 							className="mt-5"
 							placeholder="Počet kusov na sklade"
 							defaultValue={data?.itemsInStock}
-							{...register("itemsInStock")}
+							{...register("itemsInStock", {
+								required: true,
+								valueAsNumber: true,
+							})}
 						/>
 
 						<Button

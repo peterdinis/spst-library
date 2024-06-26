@@ -6,23 +6,34 @@ const resend = new Resend(process.env.RESEND_AUTH_KEY);
 
 const greeting = getGreeting();
 
+interface RequestBody {
+  email: string;
+  bookName: string;
+}
+
+interface ResendResponse {
+  data?: unknown;
+  error?: unknown;
+}
+
 export async function POST(req: NextRequest) {
-	const body = await req.json();
+  try {
+    const body = (await req.json()) as RequestBody;
 
-	const { email, bookName } = body;
-	try {
-		const { data, error } = await resend.emails.send({
-			from: "onboarding@resend.dev",
-			to: email,
-			subject: "Predlženie knihy",
-			text: `${greeting} ${email} Kniha: ${bookName} bola úspešné predlžená. S pozdravom Admin SPŠT Knižnica.`,
-		});
+    const { email, bookName } = body;
 
-		if (error) {
-			return Response.json({ error }, { status: 500 });
-		}
-		return Response.json(data);
-	} catch (error) {
-		return Response.json({ error }, { status: 500 });
-	}
+    const { data, error }: ResendResponse = await resend.emails.send({
+      from: "onboarding@resend.dev",
+      to: email,
+      subject: "Predlženie knihy",
+      text: `${greeting} ${email} Kniha: ${bookName} bola úspešné predlžená. S pozdravom Admin SPŠT Knižnica.`,
+    });
+
+    if (error) {
+      return Response.json({ error }, { status: 500 });
+    }
+    return Response.json(data);
+  } catch (error) {
+    return Response.json({ error: (error as Error).message }, { status: 500 });
+  }
 }
