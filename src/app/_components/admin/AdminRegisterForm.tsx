@@ -1,12 +1,12 @@
 "use client";
 
 import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
+import axios, { type AxiosResponse } from "axios";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { type FC, useState } from "react";
-import { type FieldValues, useForm } from "react-hook-form";
+import { useForm, type SubmitHandler } from "react-hook-form";
 import { urlCheck } from "~/app/_constants/api";
 import type { IRegisterType } from "~/app/types/authTypes";
 import { useToast } from "~/components/ui/use-toast";
@@ -17,7 +17,7 @@ const AdminRegisterForm: FC = () => {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm();
+	} = useForm<IRegisterType>();
 	const [showPassword, setShowPassword] = useState(false);
 	const { toast } = useToast();
 	const router = useRouter();
@@ -25,7 +25,7 @@ const AdminRegisterForm: FC = () => {
 	const registerAdminMut = useMutation({
 		mutationKey: ["registerAdmin"],
 		mutationFn: async (data: IRegisterType) => {
-			return await axios.post(urlCheck + "auth/register", data);
+			return await axios.post<AxiosResponse>(urlCheck + "auth/register", data);
 		},
 		onSuccess: () => {
 			toast({
@@ -45,7 +45,7 @@ const AdminRegisterForm: FC = () => {
 		},
 	});
 
-	const onStudentSubmit = async (data: FieldValues) => {
+	const onStudentSubmit: SubmitHandler<IRegisterType> = async (data) => {
 		await registerAdminMut.mutateAsync({
 			name: data.name,
 			lastName: data.lastName,
@@ -64,6 +64,7 @@ const AdminRegisterForm: FC = () => {
 			className: "bg-green-500 text-black font-bold",
 		});
 	};
+
 	return (
 		<>
 			<Header text="Registrácia admin" />
@@ -73,7 +74,7 @@ const AdminRegisterForm: FC = () => {
 						<div className="mb-2">
 							<label
 								className="text-grey-darker mb-2 block text-sm font-bold"
-								htmlFor="password"
+								htmlFor="name"
 							>
 								Meno
 							</label>
@@ -92,17 +93,16 @@ const AdminRegisterForm: FC = () => {
 									Meno je povinné
 								</span>
 							)}
-							{errors.name &&
-								errors.name.type === "minLength" && (
-									<span className="text-red-500">
-										Meno musí mať minimálne 5 znakov
-									</span>
-								)}
+							{errors.name && errors.name.type === "minLength" && (
+								<span className="text-red-500">
+									Meno musí mať minimálne 5 znakov
+								</span>
+							)}
 						</div>
 						<div className="mb-2">
 							<label
 								className="text-grey-darker mb-2 block text-sm font-bold"
-								htmlFor="password"
+								htmlFor="lastName"
 							>
 								Priezvisko
 							</label>
@@ -116,33 +116,30 @@ const AdminRegisterForm: FC = () => {
 								})}
 								placeholder="Priezvisko"
 							/>
-							{errors.lastName &&
-								errors.lastName.type === "required" && (
-									<span className="text-red-500">
-										Priezivsko je povinné
-									</span>
-								)}
-							{errors.lastName &&
-								errors.lastName.type === "minLength" && (
-									<span className="text-red-500">
-										Priezivsko musí mať minimálne 5 znakov
-									</span>
-								)}
+							{errors.lastName && errors.lastName.type === "required" && (
+								<span className="text-red-500">
+									Priezvisko je povinné
+								</span>
+							)}
+							{errors.lastName && errors.lastName.type === "minLength" && (
+								<span className="text-red-500">
+									Priezvisko musí mať minimálne 5 znakov
+								</span>
+							)}
 						</div>
 						<div className="mb-2">
 							<label
 								className="text-grey-darker mb-2 block text-sm font-bold"
-								htmlFor="password"
+								htmlFor="email"
 							>
 								Email
 							</label>
 							<input
 								className="passwordInput border-red text-grey-darker mb-3 w-full appearance-none rounded border px-3 py-2 dark:text-black shadow"
-								id="Email"
+								id="email"
 								type="email"
 								{...register("email", {
 									required: true,
-									minLength: 5,
 									pattern: {
 										value: /^\S+@\S+$/i,
 										message: "Zlý formát emailu",
@@ -150,14 +147,17 @@ const AdminRegisterForm: FC = () => {
 								})}
 								placeholder="Email"
 							/>
-							{errors.email &&
-								errors.email.type === "required" && (
-									<span className="text-red-500">
-										Email je povinný
-									</span>
-								)}
+							{errors.email && errors.email.type === "required" && (
+								<span className="text-red-500">
+									Email je povinný
+								</span>
+							)}
+							{errors.email && errors.email.message && (
+								<span className="text-red-500">
+									{errors.email.message}
+								</span>
+							)}
 						</div>
-
 						<div className="mb-2">
 							<label
 								className="text-grey-darker mb-2 block text-sm font-bold"
@@ -174,28 +174,23 @@ const AdminRegisterForm: FC = () => {
 										required: true,
 										minLength: 5,
 									})}
-									autoFocus
 									autoComplete="current-password"
-									placeholder="********************************************"
+									placeholder="************"
 								/>
-								{errors.password &&
-									errors.password.type === "required" && (
-										<span className="text-red-500">
-											Heslo je povinné
-										</span>
-									)}
-								{errors.password &&
-									errors.password.type === "minLength" && (
-										<span className="text-red-500">
-											Heslo musí mať minimálne 5 znakov
-										</span>
-									)}
+								{errors.password && errors.password.type === "required" && (
+									<span className="text-red-500">
+										Heslo je povinné
+									</span>
+								)}
+								{errors.password && errors.password.type === "minLength" && (
+									<span className="text-red-500">
+										Heslo musí mať minimálne 5 znakov
+									</span>
+								)}
 								<button
 									type="button"
 									className="absolute inset-y-0 right-0 flex items-center px-4 bg-transparent text-gray-500 focus:outline-none"
-									onClick={() =>
-										setShowPassword(!showPassword)
-									}
+									onClick={() => setShowPassword(!showPassword)}
 								>
 									{showPassword ? <Eye /> : <EyeOff />}
 								</button>
