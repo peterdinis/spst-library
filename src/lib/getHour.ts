@@ -3,7 +3,7 @@ export function getGreeting(): string {
 	const currentHour = now.getHours();
 
 	if (currentHour < 6) {
-		return "Dobrú Večer";
+		return "Dobrý Večer";
 	} else if (currentHour < 12) {
 		return "Dobré ráno";
 	} else if (currentHour < 18) {
