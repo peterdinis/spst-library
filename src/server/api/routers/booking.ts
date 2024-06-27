@@ -84,7 +84,7 @@ export const bookingRouter = createTRPCRouter({
 				nextCursor = nextItem?.id;
 			}
 			return {
-				items,
+				items: items.length ? items : [],
 				nextCursor,
 			};
 		}),

@@ -88,7 +88,7 @@ export const categoryRouter = createTRPCRouter({
 				nextCursor = nextItem?.id;
 			}
 			return {
-				items,
+				items: items.length ? items : [],
 				nextCursor,
 			};
 		}),

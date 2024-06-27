@@ -59,7 +59,7 @@ export const publisherRouter = createTRPCRouter({
 				nextCursor = nextItem?.id;
 			}
 			return {
-				items,
+				items: items.length ? items : [],
 				nextCursor,
 			};
 		}),

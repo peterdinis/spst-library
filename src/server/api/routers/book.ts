@@ -62,13 +62,13 @@ export const bookRouter = createTRPCRouter({
 			return findOneBook;
 		}),
 
-	paginatedBooks: publicProcedure
+		paginatedBooks: publicProcedure
 		.input(
 			z.object({
 				limit: z.number(),
 				cursor: z.number().optional(),
 				skip: z.number().optional(),
-			}),
+			})
 		)
 		.query(async ({ ctx, input }) => {
 			const { limit, skip, cursor } = input;
@@ -80,14 +80,16 @@ export const bookRouter = createTRPCRouter({
 					id: "asc",
 				},
 			});
-
+	
 			let nextCursor = undefined;
 			if (items.length > limit) {
 				const nextItem = items.pop();
 				nextCursor = nextItem?.id;
 			}
+	
+			// Return empty array if no items are found
 			return {
-				items,
+				items: items.length ? items : [],
 				nextCursor,
 			};
 		}),
