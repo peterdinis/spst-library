@@ -30,7 +30,7 @@ const AllAuthors: FC = () => {
 		},
 	);
 
-	const toShow = paginatedData?.pages[page]?.items;
+	const toShow = paginatedData?.pages[page]?.items ?? [];
 	const nextCursor = paginatedData?.pages[page]?.nextCursor;
 
 	const filteredData = useMemo(() => {
