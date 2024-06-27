@@ -3,7 +3,7 @@
 import type { Book } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import type { FC, FormEvent } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { type SubmitHandler, useForm } from "react-hook-form";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { useToast } from "~/components/ui/use-toast";

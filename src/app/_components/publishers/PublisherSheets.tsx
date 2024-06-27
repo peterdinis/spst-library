@@ -10,153 +10,173 @@ import { api } from "~/trpc/react";
 import SheetHelper from "../shared/SheetHelper";
 
 interface IPublisherSheetProps {
-    name: string;
-    data: Publisher;
+	name: string;
+	data: Publisher;
 }
 
 const PublisherSheets: FC<IPublisherSheetProps> = ({
-    name,
-    data,
+	name,
+	data,
 }: IPublisherSheetProps) => {
-    const updatePublisherMut = api.publisher.updatePublisher.useMutation();
-    const deletePublisherMut = api.publisher.deletePublisher.useMutation();
-    const { toast } = useToast();
-    const router = useRouter();
+	const updatePublisherMut = api.publisher.updatePublisher.useMutation();
+	const deletePublisherMut = api.publisher.deletePublisher.useMutation();
+	const { toast } = useToast();
+	const router = useRouter();
 
-    const [publisherName, setPublisherName] = useState<string>(data?.name || "");
-    const [publisherDescription, setPublisherDescription] = useState<string>(data?.description || "");
-    const [publisherImage, setPublisherImage] = useState<string>(data?.image || "");
-    const [publisherBossName, setPublisherBossName] = useState<string>(data?.bossName || "");
-    const [publisherIsActive, setPublisherIsActive] = useState<boolean>(data?.isActive || false);
-    const [publisherCreatedDated, setPublisherCreatedDated] = useState<Date | string>(data?.createdDated || "");
+	const [publisherName, setPublisherName] = useState<string>(
+		data?.name || "",
+	);
+	const [publisherDescription, setPublisherDescription] = useState<string>(
+		data?.description || "",
+	);
+	const [publisherImage, setPublisherImage] = useState<string>(
+		data?.image || "",
+	);
+	const [publisherBossName, setPublisherBossName] = useState<string>(
+		data?.bossName || "",
+	);
+	const [publisherIsActive, setPublisherIsActive] = useState<boolean>(
+		data?.isActive || false,
+	);
+	const [publisherCreatedDated, setPublisherCreatedDated] = useState<
+		Date | string
+	>(data?.createdDated || "");
 
-    const updatePublisherFn = async (e: FormEvent) => {
-        e.preventDefault();
+	const updatePublisherFn = async (e: FormEvent) => {
+		e.preventDefault();
 
-        await updatePublisherMut.mutateAsync({
-            id: data.id,
-            name: publisherName,
-            description: publisherDescription,
-            image: publisherImage,
-            bossName: publisherBossName,
-            isActive: publisherIsActive,
-            createdDated: String(publisherCreatedDated),
-        });
+		await updatePublisherMut.mutateAsync({
+			id: data.id,
+			name: publisherName,
+			description: publisherDescription,
+			image: publisherImage,
+			bossName: publisherBossName,
+			isActive: publisherIsActive,
+			createdDated: String(publisherCreatedDated),
+		});
 
-        toast({
-            title: "Vydavateľstvo bolo úspešne upravené",
-            duration: 2000,
-            className: "bg-green-500",
-        });
-        router.push("/publishers");
-    };
+		toast({
+			title: "Vydavateľstvo bolo úspešne upravené",
+			duration: 2000,
+			className: "bg-green-500",
+		});
+		router.push("/publishers");
+	};
 
-    const deletePublisherFn = async (e: FormEvent) => {
-        e.preventDefault();
+	const deletePublisherFn = async (e: FormEvent) => {
+		e.preventDefault();
 
-        await deletePublisherMut.mutateAsync({
-            id: data.id,
-        });
+		await deletePublisherMut.mutateAsync({
+			id: data.id,
+		});
 
-        toast({
-            title: "Vydavateľstvo bolo úspešne zmazané",
-            duration: 2000,
-            className: "bg-green-500",
-        });
-        router.push("/publishers");
-    };
+		toast({
+			title: "Vydavateľstvo bolo úspešne zmazané",
+			duration: 2000,
+			className: "bg-green-500",
+		});
+		router.push("/publishers");
+	};
 
-    return (
-        <div className="flex mt-5">
-            <SheetHelper
-                variantProp="default"
-                title={"Upraviť vydavateľstvo"}
-                secondTitle={"Upraviť vydavateľstvo"}
-            >
-                <span className="mt-2 font-bold text-xl">
-                    Úprava vydavateľstva: {name}
-                </span>
-                <div>
-                    <form onSubmit={updatePublisherFn}>
-                        <Input
-                            type="text"
-                            className="mt-5"
-                            placeholder="Meno"
-                            value={publisherName}
-                            onChange={(e) => setPublisherName(e.target.value)}
-                        />
-                        <Input
-                            type="text"
-                            className="mt-5"
-                            placeholder="Popis"
-                            value={publisherDescription}
-                            onChange={(e) => setPublisherDescription(e.target.value)}
-                        />
-                        <Input
-                            type="text"
-                            className="mt-5"
-                            placeholder="Obrázok"
-                            value={publisherImage}
-                            onChange={(e) => setPublisherImage(e.target.value)}
-                        />
-                        <Input
-                            type="text"
-                            className="mt-5"
-                            placeholder="Meno šéfa"
-                            value={publisherBossName}
-                            onChange={(e) => setPublisherBossName(e.target.value)}
-                        />
-                        <Input
-                            type="text"
-                            className="mt-5"
-                            placeholder="Dátum vytvorenia"
-                            value={publisherCreatedDated.toString()} // Ensure string conversion
-                            onChange={(e) => setPublisherCreatedDated(e.target.value)}
-                        />
-                        <div className="mt-5 flex items-center">
-                            <label className="mr-2">Aktívny</label>
-                            <input
-                                type="checkbox"
-                                checked={publisherIsActive}
-                                onChange={(e) => setPublisherIsActive(e.target.checked)}
-                            />
-                        </div>
+	return (
+		<div className="flex mt-5">
+			<SheetHelper
+				variantProp="default"
+				title={"Upraviť vydavateľstvo"}
+				secondTitle={"Upraviť vydavateľstvo"}
+			>
+				<span className="mt-2 font-bold text-xl">
+					Úprava vydavateľstva: {name}
+				</span>
+				<div>
+					<form onSubmit={updatePublisherFn}>
+						<Input
+							type="text"
+							className="mt-5"
+							placeholder="Meno"
+							value={publisherName}
+							onChange={(e) => setPublisherName(e.target.value)}
+						/>
+						<Input
+							type="text"
+							className="mt-5"
+							placeholder="Popis"
+							value={publisherDescription}
+							onChange={(e) =>
+								setPublisherDescription(e.target.value)
+							}
+						/>
+						<Input
+							type="text"
+							className="mt-5"
+							placeholder="Obrázok"
+							value={publisherImage}
+							onChange={(e) => setPublisherImage(e.target.value)}
+						/>
+						<Input
+							type="text"
+							className="mt-5"
+							placeholder="Meno šéfa"
+							value={publisherBossName}
+							onChange={(e) =>
+								setPublisherBossName(e.target.value)
+							}
+						/>
+						<Input
+							type="text"
+							className="mt-5"
+							placeholder="Dátum vytvorenia"
+							value={publisherCreatedDated.toString()} // Ensure string conversion
+							onChange={(e) =>
+								setPublisherCreatedDated(e.target.value)
+							}
+						/>
+						<div className="mt-5 flex items-center">
+							<label className="mr-2">Aktívny</label>
+							<input
+								type="checkbox"
+								checked={publisherIsActive}
+								onChange={(e) =>
+									setPublisherIsActive(e.target.checked)
+								}
+							/>
+						</div>
 
-                        <Button
-                            className="mt-6"
-                            variant={"secondary"}
-                            size={"lg"}
-                            type="submit"
-                        >
-                            Upraviť vydavateľstvo
-                        </Button>
-                    </form>
-                </div>
-            </SheetHelper>
-            <div className="ml-4">
-                <SheetHelper
-                    variantProp="outline"
-                    title="Zmazať vydavateľstvo"
-                    secondTitle="Chcete zmazať vydavateľstvo"
-                >
-                    <span className="mt-2 font-bold text-xl">
-                        Chcete zmazať vydavateľstvo: {name}
-                    </span>
-                    <div className="p-5 mt-5">
-                        <form onSubmit={deletePublisherFn}>
-                            <Button
-                                variant={"destructive"}
-                                size={"lg"}
-                                type="submit"
-                            >
-                                Zmazať
-                            </Button>
-                        </form>
-                    </div>
-                </SheetHelper>
-            </div>
-        </div>
-    );
+						<Button
+							className="mt-6"
+							variant={"secondary"}
+							size={"lg"}
+							type="submit"
+						>
+							Upraviť vydavateľstvo
+						</Button>
+					</form>
+				</div>
+			</SheetHelper>
+			<div className="ml-4">
+				<SheetHelper
+					variantProp="outline"
+					title="Zmazať vydavateľstvo"
+					secondTitle="Chcete zmazať vydavateľstvo"
+				>
+					<span className="mt-2 font-bold text-xl">
+						Chcete zmazať vydavateľstvo: {name}
+					</span>
+					<div className="p-5 mt-5">
+						<form onSubmit={deletePublisherFn}>
+							<Button
+								variant={"destructive"}
+								size={"lg"}
+								type="submit"
+							>
+								Zmazať
+							</Button>
+						</form>
+					</div>
+				</SheetHelper>
+			</div>
+		</div>
+	);
 };
 
 export default PublisherSheets;

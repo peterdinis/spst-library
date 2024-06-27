@@ -6,7 +6,7 @@ import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { type FC, useState } from "react";
-import { useForm, type SubmitHandler } from "react-hook-form";
+import { type SubmitHandler, useForm } from "react-hook-form";
 import { urlCheck } from "~/app/_constants/api";
 import type { IRegisterType } from "~/app/types/authTypes";
 import { useToast } from "~/components/ui/use-toast";
@@ -25,7 +25,10 @@ const AdminRegisterForm: FC = () => {
 	const registerAdminMut = useMutation({
 		mutationKey: ["registerAdmin"],
 		mutationFn: async (data: IRegisterType) => {
-			return await axios.post<AxiosResponse>(urlCheck + "auth/register", data);
+			return await axios.post<AxiosResponse>(
+				urlCheck + "auth/register",
+				data,
+			);
 		},
 		onSuccess: () => {
 			toast({
@@ -93,11 +96,12 @@ const AdminRegisterForm: FC = () => {
 									Meno je povinné
 								</span>
 							)}
-							{errors.name && errors.name.type === "minLength" && (
-								<span className="text-red-500">
-									Meno musí mať minimálne 5 znakov
-								</span>
-							)}
+							{errors.name &&
+								errors.name.type === "minLength" && (
+									<span className="text-red-500">
+										Meno musí mať minimálne 5 znakov
+									</span>
+								)}
 						</div>
 						<div className="mb-2">
 							<label
@@ -116,16 +120,18 @@ const AdminRegisterForm: FC = () => {
 								})}
 								placeholder="Priezvisko"
 							/>
-							{errors.lastName && errors.lastName.type === "required" && (
-								<span className="text-red-500">
-									Priezvisko je povinné
-								</span>
-							)}
-							{errors.lastName && errors.lastName.type === "minLength" && (
-								<span className="text-red-500">
-									Priezvisko musí mať minimálne 5 znakov
-								</span>
-							)}
+							{errors.lastName &&
+								errors.lastName.type === "required" && (
+									<span className="text-red-500">
+										Priezvisko je povinné
+									</span>
+								)}
+							{errors.lastName &&
+								errors.lastName.type === "minLength" && (
+									<span className="text-red-500">
+										Priezvisko musí mať minimálne 5 znakov
+									</span>
+								)}
 						</div>
 						<div className="mb-2">
 							<label
@@ -147,11 +153,12 @@ const AdminRegisterForm: FC = () => {
 								})}
 								placeholder="Email"
 							/>
-							{errors.email && errors.email.type === "required" && (
-								<span className="text-red-500">
-									Email je povinný
-								</span>
-							)}
+							{errors.email &&
+								errors.email.type === "required" && (
+									<span className="text-red-500">
+										Email je povinný
+									</span>
+								)}
 							{errors.email && errors.email.message && (
 								<span className="text-red-500">
 									{errors.email.message}
@@ -177,20 +184,24 @@ const AdminRegisterForm: FC = () => {
 									autoComplete="current-password"
 									placeholder="************"
 								/>
-								{errors.password && errors.password.type === "required" && (
-									<span className="text-red-500">
-										Heslo je povinné
-									</span>
-								)}
-								{errors.password && errors.password.type === "minLength" && (
-									<span className="text-red-500">
-										Heslo musí mať minimálne 5 znakov
-									</span>
-								)}
+								{errors.password &&
+									errors.password.type === "required" && (
+										<span className="text-red-500">
+											Heslo je povinné
+										</span>
+									)}
+								{errors.password &&
+									errors.password.type === "minLength" && (
+										<span className="text-red-500">
+											Heslo musí mať minimálne 5 znakov
+										</span>
+									)}
 								<button
 									type="button"
 									className="absolute inset-y-0 right-0 flex items-center px-4 bg-transparent text-gray-500 focus:outline-none"
-									onClick={() => setShowPassword(!showPassword)}
+									onClick={() =>
+										setShowPassword(!showPassword)
+									}
 								>
 									{showPassword ? <Eye /> : <EyeOff />}
 								</button>

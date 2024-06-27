@@ -3,7 +3,7 @@
 const config = {
 	reactStrictMode: true,
 	eslint: {
-		ignoreDuringBuilds: true
+		ignoreDuringBuilds: true,
 	},
 	images: {
 		remotePatterns: [
