@@ -7,6 +7,7 @@ import { Button } from "~/components/ui/button";
 import { useToast } from "~/components/ui/use-toast";
 import { api } from "~/trpc/react";
 import Header from "../shared/Header";
+import AuthWrapper from "../auth/AuthWrapper";
 
 const CreateAuthor: FC = () => {
 	const { toast } = useToast();
@@ -51,7 +52,7 @@ const CreateAuthor: FC = () => {
 	};
 
 	return (
-		<>
+		<AuthWrapper>
 			<Header text="Vytvorenie nového spisovateľa/ky" />
 			<form
 				onSubmit={handleSubmit(onSubmit)}
@@ -177,7 +178,7 @@ const CreateAuthor: FC = () => {
 					</Button>
 				</div>
 			</form>
-		</>
+		</AuthWrapper>
 	);
 };
 

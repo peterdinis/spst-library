@@ -12,6 +12,7 @@ import AuthorSelect from "../authors/AuthorSelect";
 import CategorySelect from "../categories/CategorySelect";
 import PublisherSelect from "../publishers/PublisherSelect";
 import Header from "../shared/Header";
+import AuthWrapper from "../auth/AuthWrapper";
 
 const CreateBookForm: FC = () => {
 	const { toast } = useToast();
@@ -61,7 +62,7 @@ const CreateBookForm: FC = () => {
 	};
 
 	return (
-		<>
+		<AuthWrapper>
 			<Header text="Tvorba novej knihy" />
 			<form
 				onSubmit={handleSubmit(onSubmit)}
@@ -230,7 +231,7 @@ const CreateBookForm: FC = () => {
 					</Button>
 				</div>
 			</form>
-		</>
+		</AuthWrapper>
 	);
 };
 

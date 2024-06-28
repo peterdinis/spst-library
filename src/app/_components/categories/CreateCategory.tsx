@@ -7,6 +7,7 @@ import { Button } from "~/components/ui/button";
 import { useToast } from "~/components/ui/use-toast";
 import { api } from "~/trpc/react";
 import Header from "../shared/Header";
+import AuthWrapper from "../auth/AuthWrapper";
 
 interface CategoryFormValues {
 	name: string;
@@ -51,7 +52,7 @@ const CreateCategory: FC = () => {
 	};
 
 	return (
-		<>
+		<AuthWrapper>
 			<Header text="Tvorba novej kategórie" />
 			<form
 				onSubmit={handleSubmit(onSubmit)}
@@ -107,7 +108,7 @@ const CreateCategory: FC = () => {
 					</Button>
 				</div>
 			</form>
-		</>
+		</AuthWrapper>
 	);
 };
 
