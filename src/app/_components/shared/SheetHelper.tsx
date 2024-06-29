@@ -1,6 +1,7 @@
 "use client";
 
-import type { FC, ReactNode } from "react";
+import type { FC} from "react";
+import { ISheetHelperProps } from "~/app/types/sheetTypes";
 import { Button } from "~/components/ui/button";
 import {
 	Sheet,
@@ -10,21 +11,6 @@ import {
 	SheetTitle,
 	SheetTrigger,
 } from "~/components/ui/sheet";
-
-type BtnVariants =
-	| "default"
-	| "destructive"
-	| "outline"
-	| "secondary"
-	| "ghost"
-	| "link";
-
-interface ISheetHelperProps {
-	children?: ReactNode;
-	title: string;
-	secondTitle: string;
-	variantProp: BtnVariants;
-}
 
 const SheetHelper: FC<ISheetHelperProps> = ({
 	children,

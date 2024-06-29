@@ -10,7 +10,6 @@ import {
 	DropdownMenuItem,
 	DropdownMenuLabel,
 	DropdownMenuSeparator,
-	DropdownMenuShortcut,
 	DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu";
 
@@ -31,12 +30,12 @@ const MenuDropdown: FC<IMenuDropdownProps> = ({
 				<Button variant="outline">Profil</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className="w-56">
-				<DropdownMenuLabel>Môj účet</DropdownMenuLabel>
+				<DropdownMenuLabel className="flex justify-center align-top">Môj účet</DropdownMenuLabel>
 				<DropdownMenuSeparator />
 				<DropdownMenuGroup>
 					<DropdownMenuItem>
-						<Link href={profileLink}>
-							<DropdownMenuShortcut>Profil</DropdownMenuShortcut>
+						<Link className="font-bold text-base prose prose-a:" href={profileLink}>
+							Profil
 						</Link>
 					</DropdownMenuItem>
 				</DropdownMenuGroup>
