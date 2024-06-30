@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import { Fira_Code } from "next/font/google";
 import { Toaster } from "~/components/ui/toaster";
 import { TRPCReactProvider } from "~/trpc/react";
-import GlobalBoundary from "./_components/shared/GlobalBoundary";
 import Navigation from "./_components/shared/Navigation";
 import ScrollToTop from "./_components/shared/ScrollToTop";
 import ThemeProvider from "./_components/shared/ThemeProvider";
@@ -36,7 +35,7 @@ export default function RootLayout({
 				<TRPCReactProvider>
 					<ThemeProvider attribute="class">
 						<Navigation />
-						<GlobalBoundary>{children}</GlobalBoundary>
+						{children}
 						<Toaster />
 						<ScrollToTop />
 					</ThemeProvider>
