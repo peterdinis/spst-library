@@ -24,10 +24,10 @@ const NavigationItems: FC = () => {
 		"text-black",
 		"hover:text-primary",
 		"dark:hover:text-primary",
-		"focus:text-blue-500",
-		"dark:focus:text-blue-300",
-		"active:text-blue-700",
-		"dark:active:text-blue-400"
+		"focus:text-primary",
+		"dark:focus:text-primary",
+		"active:text-primary",
+		"dark:active:text-primary"
 	);
 
 	return (
