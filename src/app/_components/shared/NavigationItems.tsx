@@ -9,6 +9,7 @@ import useStudentCookie from "~/hooks/useStudentCookie";
 import useTeacherCookie from "~/hooks/useTeacherCookie";
 import MenuDropdown from "./MenuDropdown";
 import ThemeButton from "./ThemeButton";
+import { twMerge } from "tailwind-merge";
 
 const NavigationItems: FC = () => {
 	const studentCookie = useStudentCookie();
@@ -16,26 +17,39 @@ const NavigationItems: FC = () => {
 	const adminCookie = useAdminCookie();
 
 	const { toast } = useToast();
+
+	const linkClass = twMerge(
+		"text-xl",
+		"dark:text-blue-50",
+		"text-black",
+		"hover:text-primary",
+		"dark:hover:text-primary",
+		"focus:text-blue-500",
+		"dark:focus:text-blue-300",
+		"active:text-blue-700",
+		"dark:active:text-blue-400"
+	);
+
 	return (
 		<>
-			<li className="text-xl dark:text-blue-50 text-black">
+			<li className={linkClass}>
 				<Link href="/">Domov</Link>
 			</li>
-			<li className="text-xl dark:text-blue-50 text-black">
+			<li className={linkClass}>
 				<Link href="/books">Knihy</Link>
 			</li>
-			<li className="text-xl dark:text-blue-50 text-black">
+			<li className={linkClass}>
 				<Link href="/categories">Kategórie</Link>
 			</li>
-			<li className="text-xl dark:text-blue-50 text-black">
+			<li className={linkClass}>
 				<Link href="/publishers">Vydavateľstvá</Link>
 			</li>
-			<li className="text-xl dark:text-blue-50 text-black">
+			<li className={linkClass}>
 				<Link href="/authors">Spisovatelia</Link>
 			</li>
 
 			{teacherCookie && (
-				<li className="text-xl dark:text-blue-50 text-black">
+				<li className={linkClass}>
 					<MenuDropdown
 						profileLink={"/teacher/profile"}
 						logoutFn={() => {
@@ -52,7 +66,7 @@ const NavigationItems: FC = () => {
 			)}
 
 			{studentCookie && (
-				<li className="text-xl dark:text-blue-50 text-black">
+				<li className={linkClass}>
 					<MenuDropdown
 						profileLink={"/student/profile"}
 						logoutFn={() => {
@@ -70,7 +84,7 @@ const NavigationItems: FC = () => {
 			)}
 
 			{adminCookie && (
-				<li className="text-xl dark:text-blue-50 text-black">
+				<li className={linkClass}>
 					<MenuDropdown
 						profileLink={"/admin/profile"}
 						logoutFn={() => {
@@ -89,16 +103,16 @@ const NavigationItems: FC = () => {
 
 			{!studentCookie && !teacherCookie && !adminCookie && (
 				<>
-					<li className="text-xl dark:text-blue-50 text-black">
+					<li className={linkClass}>
 						<Link href="/student/login">Žiak</Link>
 					</li>
-					<li className="text-xl dark:text-blue-50 text-black">
+					<li className={linkClass}>
 						<Link href="/teacher/login">Učiteľ</Link>
 					</li>
 				</>
 			)}
 
-			<li className="text-xl text-black">
+			<li className="text-xl text-black dark:text-blue-50">
 				<ThemeButton />
 			</li>
 		</>
