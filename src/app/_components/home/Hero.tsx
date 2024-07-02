@@ -51,10 +51,9 @@ const Hero: FC = () => {
 					<Image
 						src={schollImage}
 						alt="Scholl homepage"
-						placeholder="blur"
 						width={1200}
-						loading="lazy"
 						height={1200}
+						priority={true}
 					/>
 				</div>
 			</div>
