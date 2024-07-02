@@ -25,10 +25,10 @@ const LoginForm: FC = () => {
 	const loginStudentMut = useMutation({
 		mutationKey: ["loginStudent"],
 		mutationFn: async (data: ILoginType) => {
+			setCookie("studentD", JSON.stringify(data))
 			return await axios.post(urlCheck + "auth/login", data);
 		},
-		onSuccess: (data) => {
-			setCookie("studentD", JSON.stringify(data?.data?.user)); // Ensure proper type handling
+		onSuccess: () => {
 			toast({
 				title: "Prihlásenie bolo úspešné",
 				duration: 2000,

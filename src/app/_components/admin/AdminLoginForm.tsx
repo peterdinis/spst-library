@@ -12,12 +12,6 @@ import type { ILoginType } from "~/app/types/authTypes";
 import { useToast } from "~/components/ui/use-toast";
 import Header from "../shared/Header";
 
-interface ApiResponse {
-	data: {
-		user: unknown;
-	};
-}
-
 const AdminLoginForm: FC = () => {
 	const {
 		register,
@@ -29,10 +23,10 @@ const AdminLoginForm: FC = () => {
 	const loginAdminMut = useMutation({
 		mutationKey: ["loginAdmin"],
 		mutationFn: async (data: ILoginType) => {
+			setCookie("adminD", JSON.stringify(data));
 			return await axios.post(urlCheck + "auth/login", data);
 		},
-		onSuccess: (data: ApiResponse) => {
-			setCookie("adminD", JSON.stringify(data?.data?.user));
+		onSuccess: () => {
 			toast({
 				title: "Prihlásenie bolo úspešné",
 				duration: 2000,

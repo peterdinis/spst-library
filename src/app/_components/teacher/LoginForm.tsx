@@ -41,14 +41,13 @@ const LoginForm: FC = () => {
 	const loginTeacherMut = useMutation<LoginResponse, unknown, ILoginType>({
 		mutationKey: ["loginTeacher"],
 		mutationFn: async (data: ILoginType) => {
+			setCookie("teacherD", JSON.stringify(data))
 			return await axios.post<LoginResponseData>(
 				urlCheck + "auth/login",
 				data,
 			);
 		},
-		onSuccess: (data) => {
-			const user = data.data.user;
-			setCookie("teacherD", JSON.stringify(user));
+		onSuccess: () => {
 			setCookie("isTeacherLogin", "true");
 			toast({
 				title: "Prihlásenie bolo úspešné",
