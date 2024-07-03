@@ -22,7 +22,7 @@ import {
 } from "~/components/ui/table";
 import PdfWrapper from "../pdfs/PdfWrapper";
 
-interface Item {
+interface DocumentProps {
 	name: string;
 }
 
@@ -52,7 +52,7 @@ export function DataTable<TData, TValue>({
 				<Link href="/admin/profile">Späť na admin profil</Link>
 			</Button>
 			<PDFDownloadLink
-				document={<PdfWrapper data={data as unknown as Item[]} />}
+				document={<PdfWrapper data={data as unknown as DocumentProps[]} />}
 				fileName="document.pdf"
 			>
 				{({ loading }) =>
