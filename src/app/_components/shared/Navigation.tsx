@@ -6,7 +6,7 @@ import { type FC, useState } from "react";
 import NavigationItems from "./NavigationItems";
 
 const Navigation: FC = () => {
-	const [navbar, setNavbar] = useState<boolean>(false);
+	const [navbar, setNavbar] = useState(false);
 
 	return (
 		<nav className="w-full bg-white dark:bg-background">

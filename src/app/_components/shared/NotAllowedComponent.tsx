@@ -9,7 +9,7 @@ const NotAllowedComponent: FC = () => {
 	useEffect(() => {
 		const redirectTimeout = setTimeout(() => {
 			router.push("/");
-		}, 5000);
+		}, 3000);
 		return () => clearTimeout(redirectTimeout);
 	}, [router]);
 
