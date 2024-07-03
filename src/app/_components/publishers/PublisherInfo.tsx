@@ -57,7 +57,7 @@ const PublisherInfo: FC = () => {
 									src={data?.image!}
 									width={400}
 									height={400}
-									loading="lazy"
+									priority={true}
 								/>
 								<div className="mt-6 w-full lg:mt-0 lg:w-1/2 lg:py-6 lg:pl-10">
 									<div>

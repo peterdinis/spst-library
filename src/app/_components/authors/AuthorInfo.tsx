@@ -61,7 +61,7 @@ const AuthorInfo: FC = () => {
 								<Image
 									width={400}
 									height={400}
-									loading="lazy"
+									priority={true}
 									alt={data?.name!}
 									className="w-full rounded-lg border object-cover object-center drop-shadow-md lg:w-1/2"
 									src={data?.authorImage!}

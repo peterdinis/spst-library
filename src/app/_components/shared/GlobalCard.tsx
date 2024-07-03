@@ -23,7 +23,7 @@ const GlobalCard: FC<IGlobalCardProps> = ({
 							alt={name}
 							width={400}
 							height={400}
-							loading="lazy"
+							priority={true}
 							className="h-80 w-72 rounded-t-xl object-cover"
 						/>
 					</>
