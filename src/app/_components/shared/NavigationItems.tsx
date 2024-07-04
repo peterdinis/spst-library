@@ -1,6 +1,6 @@
 "use client";
 
-import Cookie from "js-cookie";
+import { deleteCookie } from "cookies-next";
 import Link from "next/link";
 import type { FC } from "react";
 import { useToast } from "~/components/ui/use-toast";
@@ -53,7 +53,8 @@ const NavigationItems: FC = () => {
 					<MenuDropdown
 						profileLink={"/teacher/profile"}
 						logoutFn={() => {
-							Cookie.remove("teacherD");
+							deleteCookie("teacherD");
+							deleteCookie("isTeacherLogin")
 							window.location.replace("/teacher/login");
 							toast({
 								title: "Odhlásenie bolo úspešné",
@@ -70,8 +71,8 @@ const NavigationItems: FC = () => {
 					<MenuDropdown
 						profileLink={"/student/profile"}
 						logoutFn={() => {
-							Cookie.remove("studentD");
-							Cookie.remove("isStudentLogin");
+							deleteCookie("studentD");
+							deleteCookie("isStudentLogin");
 							window.location.replace("/student/login");
 							toast({
 								title: "Odhlásenie bolo úspešné",
@@ -88,8 +89,8 @@ const NavigationItems: FC = () => {
 					<MenuDropdown
 						profileLink={"/admin/profile"}
 						logoutFn={() => {
-							Cookie.remove("adminD");
-							Cookie.remove("isAdminLogin");
+							deleteCookie("adminD");
+							deleteCookie("isAdminLogin");
 							window.location.replace("/admin/login");
 							toast({
 								title: "Odhlásenie bolo úspešné",
