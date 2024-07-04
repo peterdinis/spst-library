@@ -30,7 +30,7 @@ const Hero: FC = () => {
 						SPŠT Knižnica
 					</h1>
 					<h2 className="prose py-4 text-center text-lg dark:text-blue-50  text-gray-700 md:w-8/12 md:py-8 md:text-left lg:text-2xl">
-						<q>Knihy sú jedinečne prenosné kúzlo - Stephen King</q>
+						<q>Knihy sú jedinečne prenosné kúzlo</q> - Stephen King
 					</h2>
 					<div className="flex justify-center sm:block md:block">
 						<Button size="default" variant={"default"}>
