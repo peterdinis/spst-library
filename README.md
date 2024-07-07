@@ -19,4 +19,4 @@ Môže tiež vykonávať CRUD operácie pre knihy, kategórie, vydavateľstvá a
 
 Admin:
 
-- Má rovnaké schopnosti ako učiteľ a žiak.
+- Má rovnaké schopnosti ako učiteľ a žiak. Plus admin vie priradiť permisiu a odobrať permisiu účtu. Cez admina sa riešia aktivácia/deaktívácia učtov
