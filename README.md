@@ -9,7 +9,7 @@
 
 Študent:
 
-- Môže požičiavať knihy.
+- Vie si požičať / vrátiť knihu
 Prezerať knihy s pagináciou a filtrovať knihy, kategórie, vydavateľstvá a autorov.
 
 Učiteľ:
