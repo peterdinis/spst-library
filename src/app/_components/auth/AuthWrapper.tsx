@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, ReactNode, useEffect } from "react";
+import { FC, Fragment, ReactNode, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import useAdminCookie from "~/hooks/useAdminCookie";
 import useTeacherCookie from "~/hooks/useTeacherCookie";
@@ -25,9 +25,9 @@ const AuthWrapper: FC<IAuthWrapperProps> = ({children}: IAuthWrapperProps) => {
     }
 
     return (
-        <>
+        <Fragment>
             {children}
-        </>
+        </Fragment>
     );
 }
 
