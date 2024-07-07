@@ -19,4 +19,4 @@ Môže tiež vykonávať CRUD operácie pre knihy, kategórie, vydavateľstvá a
 
 Admin:
 
-- Má rovnaké schopnosti ako učiteľ.
+- Má rovnaké schopnosti ako učiteľ a žiak.
