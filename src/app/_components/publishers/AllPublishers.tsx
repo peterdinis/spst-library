@@ -38,7 +38,7 @@ const AllPublishers: FC = () => {
 			(item) =>
 				item.name
 					?.toLowerCase()
-					.includes(debouncedSearchTerm.toLowerCase()), // Use optional chaining
+					.includes(debouncedSearchTerm.toLowerCase()),
 		);
 	}, [toShow, debouncedSearchTerm]);
 
@@ -85,7 +85,7 @@ const AllPublishers: FC = () => {
 				<div className="mt-5 flex justify-center align-top">
 					<span className="text-center font-bold text-gray-500">
 						<Ghost className="h-8 w-8 animate-bounce" />
-						Žiadne Vydavateľstvá neboli nájdené.
+						Žiadne Vydavateľstvá neboli vytvorené
 					</span>
 				</div>
 			)}

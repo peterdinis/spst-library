@@ -82,7 +82,7 @@ const AllCategories: FC = () => {
 				<div className="mt-5 flex justify-center align-top">
 					<span className="text-center font-bold text-gray-500">
 						<Ghost className="h-8 w-8 animate-bounce" />
-						Žiadne kategórie neboli nájdené.
+						Žiadne kategórie neboli vytvorené
 					</span>
 				</div>
 			)}
